@@ -1,0 +1,27 @@
+[
+  {
+    "id": "101", "unread": true, "reason": "review_requested", "updated_at": "2026-10-11T00:00:05Z", "last_read_at": null,
+    "subject": { "title": "新增議程頁深色模式", "url": "https://api.github.com/repos/sitcon-tw/2027.sitcon.org/pulls/127", "latest_comment_url": null, "type": "PullRequest" },
+    "repository": { "full_name": "sitcon-tw/2027.sitcon.org", "html_url": "https://github.com/sitcon-tw/2027.sitcon.org" },
+    "url": "https://api.github.com/notifications/threads/101"
+  },
+  {
+    "id": "102", "unread": true, "reason": "ci_activity", "updated_at": "2026-10-11T17:40:00Z", "last_read_at": null,
+    "subject": { "title": "CI failed on main", "url": null, "latest_comment_url": null, "type": "CheckSuite" },
+    "repository": { "full_name": "sitcon-tw/2027.sitcon.org", "html_url": "https://github.com/sitcon-tw/2027.sitcon.org" },
+    "url": "https://api.github.com/notifications/threads/102"
+  },
+  {
+    "id": "103", "unread": true, "reason": "subscribed", "updated_at": "2026-10-10T02:00:00Z", "last_read_at": null,
+    "subject": { "title": "v6.0.0", "url": "https://api.github.com/repos/vitejs/vite/releases/123", "latest_comment_url": null, "type": "Release" },
+    "repository": { "full_name": "vitejs/vite", "html_url": "https://github.com/vitejs/vite" },
+    "url": "https://api.github.com/notifications/threads/103"
+  },
+  {
+    "id": "104", "unread": true, "reason": "mention", "updated_at": "2026-10-12T00:20:00Z", "last_read_at": null,
+    "subject": { "title": "Week view overflows at 320px", "url": "https://api.github.com/repos/Suzu1Dev/bell-personal/issues/9", "latest_comment_url": null, "type": "Issue" },
+    "repository": { "full_name": "Suzu1Dev/bell-personal", "html_url": "https://github.com/Suzu1Dev/bell-personal" },
+    "url": "https://api.github.com/notifications/threads/104"
+  },
+  { "id": "not-a-number", "unread": true, "subject": { "title": "ignored" }, "repository": { "full_name": "x/y" } }
+]

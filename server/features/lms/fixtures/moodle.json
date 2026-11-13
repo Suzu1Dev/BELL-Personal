@@ -1,0 +1,76 @@
+{
+  "_comment": "Moodle web-service answers (shapes from Moodle 4.x docs, values invented) for now = 2026-10-12T00:42:00Z (08:42 Asia/Taipei).",
+  "token": { "token": "0123456789abcdef0123456789abcdef", "privatetoken": "not-stored-either" },
+  "siteInfo": {
+    "sitename": "國立陽明交通大學 E3 數位教學平台",
+    "username": "312551000",
+    "firstname": "鈴",
+    "lastname": "林",
+    "fullname": "林鈴",
+    "lang": "zh_tw",
+    "userid": 42,
+    "siteurl": "https://e3p.nycu.edu.tw",
+    "release": "4.1.9+ (Build: 20240301)",
+    "functions": []
+  },
+  "courses": {
+    "courses": [
+      { "id": 101, "fullname": "【115上】作業系統 Operating Systems", "shortname": "OS", "visible": true },
+      { "id": 102, "fullname": "計算機網路", "shortname": "CN", "visible": true }
+    ],
+    "nextoffset": 2
+  },
+  "events": {
+    "events": [
+      {
+        "id": 8001, "name": "HW3：CPU Scheduling 模擬 到期", "activityname": "HW3：CPU Scheduling 模擬", "modulename": "assign", "instance": 10,
+        "eventtype": "due", "timestart": 1791820740, "timesort": 1791820740, "overdue": false,
+        "course": { "id": 101, "fullname": "【115上】作業系統 Operating Systems", "shortname": "OS" },
+        "action": { "name": "新增繳交", "url": "https://e3p.nycu.edu.tw/mod/assign/view.php?id=30512&action=editsubmission", "itemcount": 1, "actionable": true },
+        "url": "https://e3p.nycu.edu.tw/mod/assign/view.php?id=30512"
+      },
+      {
+        "id": 8002, "name": "Lab 2：Socket Programming 到期", "activityname": "Lab 2：Socket Programming", "modulename": "assign", "instance": 20,
+        "eventtype": "due", "timestart": 1791993540, "timesort": 1791993540, "overdue": false,
+        "course": { "id": 102, "fullname": "計算機網路", "shortname": "CN" },
+        "action": { "name": "新增繳交", "url": "https://e3p.nycu.edu.tw/mod/assign/view.php?id=30744&action=editsubmission", "itemcount": 1, "actionable": true },
+        "url": "https://e3p.nycu.edu.tw/mod/assign/view.php?id=30744"
+      },
+      {
+        "id": 9001, "name": "Quiz 2：TCP 關閉", "activityname": "Quiz 2：TCP", "modulename": "quiz", "instance": 7,
+        "eventtype": "close", "timestart": 1791864000, "timesort": 1791864000, "overdue": false,
+        "course": { "id": 102, "fullname": "計算機網路", "shortname": "CN" },
+        "action": { "name": "作答測驗", "url": "https://e3p.nycu.edu.tw/mod/quiz/view.php?id=30900", "itemcount": 1, "actionable": true },
+        "url": "https://e3p.nycu.edu.tw/mod/quiz/view.php?id=30900"
+      }
+    ],
+    "firstid": 8001,
+    "lastid": 9001
+  },
+  "assignments": {
+    "courses": [
+      {
+        "id": 101, "fullname": "【115上】作業系統 Operating Systems", "shortname": "OS",
+        "assignments": [
+          { "id": 8, "cmid": 30300, "course": 101, "name": "HW1：Process", "duedate": 1788278340, "intro": "", "timemodified": 1790820000 },
+          { "id": 9, "cmid": 30401, "course": 101, "name": "HW2：Threads", "duedate": 1791215940, "intro": "", "timemodified": 1790820000 },
+          { "id": 10, "cmid": 30512, "course": 101, "name": "HW3：CPU Scheduling 模擬", "duedate": 1791820740, "intro": "<p>請實作 <b>FCFS</b> &amp; RR，並比較平均等待時間。</p>", "timemodified": 1790820000 }
+        ]
+      },
+      {
+        "id": 102, "fullname": "計算機網路", "shortname": "CN",
+        "assignments": [
+          { "id": 20, "cmid": 30744, "course": 102, "name": "Lab 2：Socket Programming", "duedate": 1791993540, "intro": "", "timemodified": 1790820000 },
+          { "id": 21, "cmid": 30800, "course": 102, "name": "Lab 3：HTTP Server", "duedate": 1793203140, "intro": "", "timemodified": 1790820000 }
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "statuses": {
+    "9": { "lastattempt": { "submission": { "status": "submitted" }, "gradingstatus": "graded" }, "feedback": { "gradefordisplay": "95.00&nbsp;/&nbsp;100.00", "grade": { "grade": "95.00000" } }, "warnings": [] },
+    "10": { "lastattempt": { "submission": { "status": "new" }, "gradingstatus": "notgraded", "extensionduedate": null }, "warnings": [] },
+    "20": { "lastattempt": { "submission": { "status": "draft" }, "gradingstatus": "notgraded", "extensionduedate": 1792079940 }, "warnings": [] },
+    "21": { "lastattempt": { "submission": { "status": "submitted" }, "gradingstatus": "notgraded" }, "warnings": [] }
+  }
+}

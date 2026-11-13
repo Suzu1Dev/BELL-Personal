@@ -1,0 +1,1359 @@
+{
+  "$meta": {
+    "product": "BELL Personal · First-Run Setup & Settings v3",
+    "author": "Muse (UX Writer)",
+    "locales": [
+      "zh-TW",
+      "en"
+    ],
+    "contract": "../strings.working.js + ../strings.limits.js (validated via `node tools/strings.mjs build`)"
+  },
+  "zh-TW": {
+    "brand": "BELL Personal",
+    "skip": "先略過，直接逛逛",
+    "back": "上一步",
+    "next": "繼續",
+    "listSep": "、",
+    "steps": {
+      "roles": "身分",
+      "ai": "AI",
+      "data": "資料"
+    },
+    "stepOf": "{n} / 3 · {label}",
+    "nav": {
+      "today": "今日",
+      "inbox": "收件匣",
+      "calendar": "行事曆",
+      "tasks": "待辦",
+      "workStudent": "作業與專案",
+      "workDev": "專案",
+      "events": "活動",
+      "ideas": "靈感",
+      "habits": "習慣",
+      "settings": "連線與設定",
+      "guide": "使用指南",
+      "search": "搜尋"
+    },
+    "a11y": {
+      "progress": "設定進度",
+      "roles": "選擇你的身分",
+      "provider": "選擇 AI 服務",
+      "cities": "選擇天氣城市",
+      "paste": "貼上授權碼",
+      "menu": "開啟側欄選單",
+      "code": "登入代碼 {spelled}",
+      "themeToggle": "切換亮暗主題"
+    },
+    "role": {
+      "title": "平常你用它做什麼？",
+      "lead": "可以複選。勾了就會打開對應功能，之後隨時能改。",
+      "nextNone": "先不選，繼續",
+      "base": "都不勾也沒問題，今日、收件匣、行事曆、待辦、靈感和習慣都能直接用。",
+      "previewLabel": "你的側欄預覽",
+      "previewCalendar": "行事曆裡會多出「課表」。",
+      "previewNone": "目前只顯示基本功能。勾選任一身分，對應項目就會出現在這裡。",
+      "addsLead": "側欄會加上：{items}。",
+      "addsCal": "行事曆也會加上課表。",
+      "addsNone": "目前只顯示基本功能。"
+    },
+    "roles": {
+      "student": {
+        "name": "學生",
+        "gets": "學校 E3／Canvas 作業與截止日、每週課表"
+      },
+      "developer": {
+        "name": "開發者",
+        "gets": "GitHub 待審 PR 與 issue、專案進度"
+      },
+      "ctf": {
+        "name": "CTF 選手",
+        "gets": "近期 CTFtime 賽事提醒，重點比賽會問你要不要參加"
+      }
+    },
+    "ai": {
+      "title": "接上你常用的 AI",
+      "lead": "寫每日摘要、整理信件與靈感時會用到。挑一種作為使用中連線，隨時能換。",
+      "subLabel": "用現有訂閱登入",
+      "keyLabel": "或自備 API 金鑰",
+      "otherLabel": "或換一種方式",
+      "chatgpt": {
+        "name": "ChatGPT",
+        "meta": "支援 Plus、Pro 或 Team 帳號"
+      },
+      "claude": {
+        "name": "Claude",
+        "meta": "支援 Pro 或 Max 帳號"
+      },
+      "key": {
+        "name": "API 金鑰",
+        "meta": "支援 OpenAI 或 Anthropic，依用量計費"
+      },
+      "privacy": "登入狀態與金鑰只留在這台電腦，BELL 不會看到你的密碼。",
+      "skip": "先不用 AI",
+      "skipHint": "不接 AI 也能照常使用，每日摘要會先關閉。",
+      "found": "這台電腦已登入 {name}",
+      "foundMeta": "{account} · 按一下就能直接用",
+      "use": "使用 {name}",
+      "signedIn": "已登入",
+      "otherWays": "改用其他方式",
+      "login": {
+        "chatgptTitle": "用 ChatGPT 登入",
+        "chatgptLead": "直接用你的 ChatGPT 帳號，用量算在既有方案裡。",
+        "claudeTitle": "用 Claude 登入",
+        "claudeLead": "直接用你的 Claude 訂閱帳號，用量算在既有方案裡。",
+        "preparing": "正在準備登入…",
+        "open": "開啟登入頁",
+        "openChatgpt": "開啟 ChatGPT 登入頁",
+        "openChatgptHint": "會在新分頁開啟 OpenAI 網頁，請登入你的帳號。",
+        "openClaude": "開啟 Claude 登入頁",
+        "openClaudeHint": "會在新分頁開啟 Anthropic 網頁，登入後點選「授權」。",
+        "enterCode": "在網頁輸入這組一次性代碼",
+        "enterCodeHint": "開啟上面的登入連結後，填入這組代碼。15 分鐘內有效。",
+        "copy": "複製代碼",
+        "waiting": "正在等你在瀏覽器完成登入，好了會自動往下走。",
+        "otherDevice": "用手機登入也行：開啟 {url}，輸入同一組一次性代碼。",
+        "pasteCode": "把授權碼貼回 BELL",
+        "pasteCodeHint": "按下授權後，把網頁顯示的授權碼複製貼回這裡就好。",
+        "pastePlaceholder": "在此貼上授權碼",
+        "finish": "完成登入",
+        "checking": "正在確認…",
+        "expiredTitle": "代碼過期了",
+        "expiredBody": "這組登入代碼已經超過有效時間。換一組新的就能繼續。",
+        "retry": "換一組新代碼",
+        "expired": "已過期"
+      },
+      "keyFlow": {
+        "title": "使用自備 API 金鑰",
+        "lead": "依實際用量計費，由 OpenAI 或 Anthropic 直接向你收費。",
+        "label": "{provider} API 金鑰",
+        "show": "顯示金鑰",
+        "create": "前往 {provider} 建立金鑰",
+        "stored": "儲存前會先發一則極短訊息測試；金鑰只加密留在這台電腦，僅連往 {provider}。",
+        "submit": "驗證並啟用",
+        "checking": "驗證中…",
+        "invalid": "{provider} 回覆這組金鑰無效。請確認有沒有少貼字元，或換一組新的。"
+      },
+      "errors": {
+        "networkTitle": "暫時連不上 {provider}",
+        "networkBody": "請確認網路連線正常後，再試一次。",
+        "networkKey": "暫時連不上 {provider}，金鑰沒有驗證，也沒有存下來。請檢查網路後重新貼上金鑰。",
+        "noCredit": "這組金鑰目前沒有可用額度。請先到 {provider} 帳單頁面儲值再試。",
+        "cancelledTitle": "登入還沒完成",
+        "cancelledBody": "看起來你在網頁上按了取消，或把分頁關掉了。隨時可以再試一次。",
+        "failedTitle": "登入沒有成功",
+        "failedBody": "{provider} 暫時沒有回應。請再試一次，或換別種方式連接。",
+        "cliErrorTitle": "登入工具遇到問題",
+        "cliErrorBody": "這台電腦上的 {provider} 登入工具，暫時無法完成登入。請再試一次，或改用 API 金鑰。",
+        "timedOutTitle": "登入逾時了",
+        "timedOutBody": "這次登入沒有在時間內完成，請再試一次。",
+        "pasteInvalid": "這組授權碼不對，或已經用過了。請按「再試一次」取得新的登入頁。",
+        "retry": "再試一次",
+        "notInstalled": "這台電腦還沒有安裝 {app}",
+        "notInstalledHint": "使用這項登入前需先安裝 {app}，安裝步驟寫在使用指南裡。",
+        "useKeyInstead": "改用 API 金鑰",
+        "noAiTitle": "這台電腦還差一個小工具",
+        "noAiBody": "需要先安裝 Codex 或 Claude Code。你也可以先略過，之後再回來接。",
+        "loginExpired": "登入已過期，點一下重新登入",
+        "loadFailedTitle": "載入 AI 選項失敗"
+      },
+      "done": {
+        "title": "已接上 {name}",
+        "lead": "{account} · 每日摘要與自動整理都準備好了。",
+        "later": "之後隨時能到「連線與設定 › AI」換模型或改用其他方式。"
+      }
+    },
+    "src": {
+      "title": "接上你的日常資料",
+      "lead": "這裡依你剛選的身分列出。現在沒空也沒關係，都能之後再接。",
+      "groups": {
+        "student": "學生",
+        "developer": "開發者",
+        "ctf": "CTF 選手",
+        "all": "日常必備"
+      },
+      "school": {
+        "name": "學校作業",
+        "meta": "支援 NYCU E3 或 Canvas。只讀取進度，絕不會替你繳交。"
+      },
+      "schoolId": "學號或帳號",
+      "schoolPw": "密碼",
+      "schoolPwHint": "密碼只用來拿取連線憑證，不會存下來。",
+      "canvas": "改連 Canvas？",
+      "moodle": "改連 E3？",
+      "canvasUrl": "Canvas 網址",
+      "canvasToken": "存取碼",
+      "canvasTokenHint": "到 Canvas「帳號 › 設定 › 新增存取碼」產生，只會加密留在這台電腦。",
+      "connect": "連接",
+      "later": "之後再接",
+      "ctf": {
+        "name": "CTF 賽事",
+        "meta": "在今日頁顯示近期重點比賽（權重 25+），問你要不要參加。"
+      },
+      "github": {
+        "name": "GitHub",
+        "meta": "把等你看的 PR 和指派給你的 issue 收進工作台。"
+      },
+      "githubFound": "已接上 {login}",
+      "google": {
+        "name": "Google",
+        "meta": "整合 Gmail 與行事曆，一鍵前往 Google 授權即可同步。",
+        "advanced": "進階選項"
+      },
+      "googleStart": "連接 Google",
+      "weather": {
+        "name": "天氣",
+        "meta": "在今日頁頂端放上氣溫與帶傘提醒。"
+      },
+      "weatherCity": "天氣（{city}）",
+      "cities": {
+        "taipei": "台北",
+        "hsinchu": "新竹"
+      },
+      "moreCities": "換其他城市",
+      "finish": "完成設定"
+    },
+    "done": {
+      "title": "一切就緒",
+      "lead": "你的工作台已經照剛剛的選擇排好了。",
+      "rows": {
+        "roles": "身分",
+        "ai": "AI",
+        "data": "資料"
+      },
+      "notYet": "{what} 尚未連接",
+      "nextLabel": "順手做這件小事",
+      "tipTitle": "把每週課表放進來",
+      "tipMeta": "在行事曆加好固定上課時段，今日頁就會自動提醒下一堂課。",
+      "go": "前往今日",
+      "change": "所有選項之後都能在「連線與設定」隨時調整。"
+    },
+    "settings": {
+      "title": "連線與設定",
+      "lead": "帳號與金鑰只留在這台電腦上，不會傳到瀏覽器。",
+      "tabs": {
+        "sources": "帳號與來源",
+        "roles": "身分與功能",
+        "ai": "AI",
+        "brief": "每日摘要",
+        "appearance": "外觀",
+        "privacy": "資料與隱私"
+      },
+      "tabsAria": "設定分頁",
+      "roles": {
+        "title": "你的身分",
+        "hint": "可複選。勾選後會自動打開下面對應的功能。"
+      },
+      "feats": {
+        "title": "顯示的功能",
+        "hint": "關掉只是從側欄收起來，裡面的資料完整保留。"
+      },
+      "features": {
+        "assignments": {
+          "name": "作業",
+          "meta": "把學校作業與截止日排進今日佇列。"
+        },
+        "timetable": {
+          "name": "課表",
+          "meta": "在行事曆顯示每週固定上課時段。"
+        },
+        "projects": {
+          "name": "專案",
+          "meta": "追蹤手邊專案的進度與里程碑。"
+        },
+        "github": {
+          "name": "GitHub",
+          "meta": "等你審查的 PR 與指派給你的 issue。"
+        },
+        "events": {
+          "name": "活動與 CTF",
+          "meta": "CTFtime 賽事與你追蹤的活動。"
+        }
+      },
+      "custom": "已手動打開",
+      "customOff": "已手動隱藏",
+      "restore": "跟隨身分",
+      "rerun": "重跑一次新手設定",
+      "aiWays": {
+        "title": "AI 連線方式",
+        "hint": "選一種作為使用中連線。在這裡切換不會登出 ChatGPT 或 Claude。"
+      },
+      "inUse": "使用中",
+      "viaCodex": "共用這台電腦的 Codex 登入",
+      "viaClaude": "共用這台電腦的 Claude Code 登入",
+      "notSignedIn": "尚未登入",
+      "signIn": "登入",
+      "keyOpenai": "OpenAI API 金鑰",
+      "keyAnthropic": "Anthropic API 金鑰",
+      "keySaved": "{masked} · {date} 驗證",
+      "keyNone": "尚未設定",
+      "add": "加入",
+      "remove": "移除",
+      "pending": "正在登入或驗證金鑰…",
+      "replace": "重新輸入",
+      "keyUnreadable": "已儲存的金鑰無法讀取，請重新輸入。",
+      "wrongLogin": "目前偵測到的是 API 金鑰，請改用訂閱帳號登入。",
+      "vaultDisabled": "尚未設定加密主金鑰，目前無法儲存 API 金鑰。請改用訂閱帳號登入，或先完成環境設定。",
+      "removeKey": {
+        "title": "要移除 {provider} 金鑰嗎？",
+        "body": "這是目前使用中的連線。移除後 AI 功能會先暫停，每日摘要也會一併關閉。",
+        "confirm": "移除金鑰",
+        "cancel": "取消"
+      },
+      "briefLink": "想換 AI 連線或模型，請到「AI」分頁設定。",
+      "toasts": {
+        "saveFailed": "剛才沒存成功，已恢復原狀。請再試一次。",
+        "modelReset": "{provider} 不支援原本的模型，已幫你切回預設模型。"
+      },
+      "model": {
+        "title": "模型偏好",
+        "hint": "套用到所有 AI 摘要與整理功能。",
+        "catalogError": "模型清單暫時無法載入。",
+        "model": "模型",
+        "modelValue": "預設模型",
+        "effort": "思考深度",
+        "effortValue": "預設",
+        "effortDefault": "{level}（預設）",
+        "effortHint": "調高會想得更細，但回應較慢、額度也用得較快。",
+        "effortLevels": {
+          "none": "不思考",
+          "minimal": "最少",
+          "low": "低",
+          "medium": "中",
+          "high": "高",
+          "xhigh": "很高",
+          "ultra": "極高",
+          "max": "最高"
+        },
+        "descriptions": {
+          "sonnet": "速度與能力平衡，適合每日摘要與信件整理。",
+          "haiku": "最快、用量最低；不支援思考深度設定。",
+          "opus": "較深入的推理，回覆較慢、用量較多。",
+          "fable": "能力最強，單次工作可能較久；需方案支援。"
+        }
+      },
+      "bot": {
+        "title": "Personal Bot 自動化程度",
+        "hint": "決定首頁 Personal Bot 操作待辦、信件、行事曆與其他 BELL 產品時，何時直接執行、何時先請你確認。",
+        "levels": {
+          "cautious": {
+            "name": "每次詢問（謹慎）",
+            "meta": "所有寫入、修改與跨產品操作都會先顯示核准卡，由你按一下確認才執行。"
+          },
+          "balanced": {
+            "name": "分級權限（預設）",
+            "meta": "新增待辦、靈感、本機行程與習慣打卡立即執行並附復原鈕；信件、Google 行事曆、刪除與跨產品寫入先請你核准。"
+          },
+          "auto": {
+            "name": "全自動模式",
+            "meta": "自動完成本機、Google 與 BELL Suite 跨產品操作，並在對話中記錄每一步與復原入口。"
+          }
+        }
+      }
+    },
+    "hidden": {
+      "title": "這個功能目前收起來了",
+      "body": "別擔心，原本的資料都在。打開後就會回到左側欄。",
+      "open": "重新打開",
+      "assignmentsDisabled": "「學校作業」目前沒有開啟。勾選「學生」或打開「作業」後就能使用。",
+      "openRoles": "前往 設定 › 身分與功能"
+    },
+    "today": {
+      "emptySources": "這裡還空空的。隨時可以到「連線與設定」接上學校、Google 或 GitHub。"
+    },
+    "googleGuide": {
+      "title": "連接 Google 帳號",
+      "sub": "直接前往 Google 登入授權，Gmail 和行事曆就會自動同步。",
+      "quickTitle": "一鍵連接 Google",
+      "quickBody": "使用內建 OAuth 安全授權（PKCE S256），不需建立 Google Cloud 專案或手動複製權杖；授權憑證只加密保存在這台電腦。",
+      "quickScopes": "將要求授權：Gmail（讀取、封存、標為已讀）· Google 行事曆（讀取與新增你確認的行程）",
+      "clientBuiltin": "目前使用內建一鍵連線，直接按下方按鈕即可前往 Google 授權。",
+      "advancedSummary": "進階選項：自訂 Google Cloud 用戶端或手動貼上網址",
+      "resetBuiltin": "恢復內建一鍵連線",
+      "clientReset": "已恢復內建 Google 一鍵連線",
+      "back": "帳號與來源",
+      "intro": "照順序做一次就好，大約 10 分鐘。每完成一步就勾起來，下次回來會記得做到哪裡。",
+      "stepsLabel": "設定步驟",
+      "progress": "已完成 {done} / {total} 步",
+      "stepDone": "完成「{title}」",
+      "steps": {
+        "project": {
+          "title": "建立專案",
+          "why": "Google Cloud 專案是放這個應用程式設定的地方，只有你自己會用到。",
+          "linkLabel": "開啟 Google Cloud 新增專案"
+        },
+        "apis": {
+          "title": "啟用信件與行事曆 API",
+          "why": "沒有啟用 API，授權之後也讀不到信件和行程。兩個都要啟用。",
+          "linkLabel": "開啟 API 程式庫"
+        },
+        "consent": {
+          "title": "設定同意畫面（外部、正式版）",
+          "why": "測試版授權 7 天失效；發布為正式版才免每週重連。首頁與隱私權網址填下方這兩個。",
+          "linkLabel": "開啟同意畫面設定"
+        },
+        "client": {
+          "title": "建立網頁用戶端",
+          "why": "應用程式類型選「網頁應用程式」，Google 才會把你送回這台電腦。",
+          "linkLabel": "開啟憑證頁面"
+        },
+        "redirect": {
+          "title": "複製重新導向網址",
+          "why": "貼到用戶端的「已授權的重新導向 URI」，須完全一致，連字尾斜線都不能多。"
+        },
+        "secret": {
+          "title": "下載用戶端密碼",
+          "why": "把 Google 顯示的用戶端 ID 與密碼貼到下方，密碼只加密留在這台電腦。"
+        }
+      },
+      "homeUrl": "應用程式首頁",
+      "privacyUrl": "隱私權政策",
+      "redirectLabel": "重新導向網址",
+      "copy": "複製",
+      "copyAria": "複製{label}",
+      "copied": "已複製",
+      "copyFailed": "沒有複製到剪貼簿，請手動選取網址。",
+      "clientTitle": "用戶端 ID 與密碼",
+      "clientId": "用戶端 ID",
+      "clientSecret": "用戶端密碼",
+      "clientSaved": "已儲存用戶端",
+      "clientSavedHint": "用戶端 {hint} · 密碼已加密保存",
+      "clientFromServer": "這台伺服器已經在設定檔提供用戶端，不需要在這裡輸入。",
+      "saveClient": "儲存用戶端",
+      "replaceClient": "更換用戶端",
+      "connectTitle": "連接",
+      "connectHint": "會前往 Google 登入並勾選權限；完成後自動回到這裡。",
+      "connect": "連上帳號",
+      "connectButton": "連接 Google",
+      "needClient": "先儲存用戶端 ID 和密碼，才能連接。",
+      "fallbackSummary": "Google 不接受這個網址？",
+      "fallbackIntro": "網頁版只接受 https。可改建「電腦版」用戶端，再把授權後導回的網址貼到下方。",
+      "fallbackSteps": {
+        "1": "在憑證頁面建立「電腦版應用程式」用戶端，把 ID 和密碼存到下面。",
+        "2": "按「用貼上網址連接」，在 Google 完成授權。",
+        "3": "Google 導回的頁面打不開時，複製網址列的完整網址，貼到下面的欄位。"
+      },
+      "saveDesktopClient": "儲存電腦版用戶端",
+      "pasteStart": "用貼上網址連接",
+      "pasteLabel": "貼上重新導向網址",
+      "pasteSubmit": "完成連接",
+      "connectedTitle": "已連接",
+      "connectedAs": "已連線為 {email}",
+      "connectedAt": "{when} 連接",
+      "grantedLabel": "已授權",
+      "missingLabel": "沒有授權",
+      "vaultOff": "伺服器尚未設定加密金鑰，無法保存密碼與授權。請完成設定後重啟服務。",
+      "vaultOffTitle": "伺服器還沒有設定加密金鑰",
+      "vaultOffBody": "用戶端密碼和授權暫時無法保存。請依部署說明完成設定後重新啟動服務。",
+      "loadFailed": "設定暫時無法載入",
+      "actionFailed": "{label}失敗：{reason}",
+      "offline": "無法連線至本機服務，請確認 BELL Personal 正在執行。",
+      "validation": {
+        "clientId": {
+          "required": "請填寫用戶端 ID。",
+          "invalid": "用戶端 ID 應以 .apps.googleusercontent.com 結尾。"
+        },
+        "clientSecret": {
+          "required": "請填寫用戶端密碼。",
+          "invalid": "用戶端密碼至少 8 個字，不可包含空白。"
+        },
+        "pasteUrl": {
+          "invalid": "請貼上瀏覽器網址列的完整網址，裡面要有 code=。"
+        }
+      },
+      "disconnect": "中斷連線",
+      "disconnectTitle": "中斷 Google 連線？",
+      "disconnectBody": "會撤銷授權並刪除這台電腦快取的信件與行程。用戶端設定會保留，之後可直接重新連接。",
+      "disconnectConfirm": "中斷連線",
+      "disconnectKeep": "保留連線",
+      "disconnected": "已中斷 Google 連線",
+      "disconnectedLocal": "已在這台電腦中斷連線；Google 沒回應，可到 Google 帳戶移除存取權。",
+      "yesterday": "昨天",
+      "yesterdayTime": "昨天 {time}",
+      "scopeNames": {
+        "openid": "身分",
+        "email": "電子郵件地址",
+        "gmailModify": "Gmail（讀取、封存、標為已讀）",
+        "calendarReadonly": "讀取行事曆",
+        "calendarEvents": "新增和修改你確認的行程"
+      }
+    },
+    "googleReturn": {
+      "failed": "沒有連上 Google：{reason}",
+      "unknown": "Google 沒有完成授權，請再試一次。",
+      "errors": {
+        "vault": "伺服器還沒有設定加密金鑰，無法保存 Google 授權。",
+        "client": "還沒有填寫 Google 用戶端 ID 和密碼，請先完成設定指南。",
+        "state": "這次授權已過期，或不是從這裡開始的。請重新按「連接 Google」。",
+        "denied": "你在 Google 取消了授權，沒有連線。",
+        "exchange": "Google 沒有完成授權交換，請再試一次。",
+        "noRefreshToken": "Google 未提供長期授權。請到 Google 帳戶移除存取權後再連一次。",
+        "noScopes": "未勾選 Gmail 或行事曆權限，因此沒有連上。請重新連接並勾選所需權限。"
+      }
+    },
+    "scopeLabels": {
+      "gmailModify": "Gmail",
+      "calendarReadonly": "讀取行事曆",
+      "calendarEvents": "新增行程"
+    },
+    "shell": {
+      "skip": "跳至主要內容",
+      "capture": "快速記下",
+      "captureTitle": "快速記下（N）",
+      "quickbarCapture": "捕捉",
+      "localWorkspace": "本機工作空間",
+      "profileFallback": "我的工作台",
+      "quickGo": "搜尋",
+      "drawerOpen": "開啟選單",
+      "drawerClose": "關閉選單",
+      "railCollapse": "收合側欄",
+      "railExpand": "展開側欄",
+      "sidebarLabel": "主要導覽",
+      "navLabel": "模組",
+      "quickbarLabel": "快速列",
+      "breadcrumbLabel": "麵包屑",
+      "srParens": "（{label}）",
+      "streak": {
+        "title": "連續 {days} 天",
+        "zero": "今天開始第一天。",
+        "body": "習慣正在長出來。",
+        "link": "看看本週 ↗"
+      }
+    },
+    "sync": {
+      "ok": "已同步",
+      "syncing": "同步中…",
+      "warn": "{n} 個來源需要注意",
+      "none": "尚未連接來源",
+      "offline": "無法連線",
+      "okAria": "所有來源已同步，{time}。開啟連線與設定",
+      "syncingAria": "來源同步中。開啟連線與設定",
+      "warnAria": "{n} 個來源需要注意。開啟連線與設定",
+      "noneAria": "還沒有連接任何來源。開啟連線與設定",
+      "offlineAria": "無法連線至本機服務。開啟連線與設定"
+    },
+    "navCount": {
+      "today": "{n} 件待處理",
+      "inbox": "{n} 封未讀",
+      "tasks": "{n} 件進行中",
+      "work": "{n} 件近期到期或待審查",
+      "events": "{n} 個新建議",
+      "habits": "今天還差 {n} 個"
+    },
+    "theme": {
+      "toDark": "切換深色模式",
+      "toLight": "切換淺色模式",
+      "current": {
+        "system": "目前：跟隨系統",
+        "light": "目前：淺色",
+        "dark": "目前：深色"
+      },
+      "options": {
+        "system": "跟隨系統",
+        "light": "淺色",
+        "dark": "深色"
+      }
+    },
+    "meta": {
+      "title": "BELL Personal",
+      "documentTitle": "BELL Personal · 你的每日工作台",
+      "titleFor": "{page} · BELL Personal",
+      "brandLabel": "BELL Personal 今日",
+      "description": "一天打開一次，信件、行程、待辦、靈感與習慣都在這裡。",
+      "shortName": "BELL 今日"
+    },
+    "pageHeads": {
+      "work": "作業、專案和 PR，都在這裡。",
+      "workStudent": "作業、截止日和專案，都在這裡。",
+      "workDev": "專案、進度和 PR，都在這裡。",
+      "workAssignmentsGithub": "作業和待審 PR，都在這裡。",
+      "workAssignmentsOnly": "學校作業與截止日，都在這裡。",
+      "workProjectsOnly": "專案與里程碑進度，都在這裡。",
+      "workGithubOnly": "待審 PR 與指派 issue，都在這裡。",
+      "workTabsAria": "作業、專案與 GitHub 分頁",
+      "workTabsAriaStudent": "作業與專案分頁",
+      "workTabsAriaDev": "專案與 GitHub 分頁"
+    },
+    "todayPlaceFixes": {
+      "workEmptyHint": "把期末專題、社團或自己的作品放進來，今日頁會提醒下一步。",
+      "shortcutCapture": "快速記下（今日頁的輸入框，其他頁開啟快速新增）",
+      "shortcutCaptureShort": "記下",
+      "habitShortHint": "2–4 個字，顯示在今日頁的打卡按鈕；留空會用「{fallback}」。",
+      "habitShortHintEmpty": "2–4 個字，顯示在今日頁的打卡按鈕。",
+      "weatherPurpose": "今日頁開頭的氣溫和降雨提醒，資料來自 Open-Meteo。",
+      "briefOnFirstOpenHint": "如果還沒有今天的摘要，打開今日頁時就整理一份。",
+      "backToToday": "回到今日",
+      "buildingHint": "這一頁正在建置，先回到今日看看。",
+      "shortcutGoToday": "前往今日",
+      "shortcutGoTodayShort": "今日",
+      "helpScopeList": "清單（今日、收件匣、待辦）",
+      "helpScopeHabits": "今日、習慣",
+      "ctfPurpose": "即將舉行的 CTF。權重夠高的會排進今日佇列，問你要不要參加。",
+      "inboxNotConnectedHint": "連接 Google 帳號後，信會自動分類，需要回覆的會排進今日佇列。",
+      "inboxReconnectBody": "Google 授權已失效，新信件不會顯示，也不會排進今日佇列。",
+      "inboxReconnectBodySynced": "Google 授權已失效，新信不會排進今日佇列。上次同步 {time}。",
+      "guideOpenTodayTitle": "打開今日"
+    },
+    "assignmentForm": {
+      "createTitle": "新增作業",
+      "editTitle": "編輯作業",
+      "title": "作業名稱",
+      "titlePlaceholder": "例如 HW5：系統呼叫實作",
+      "course": "課程",
+      "coursePlaceholder": "例如 作業系統",
+      "date": "截止日期",
+      "time": "截止時間",
+      "timeHint": "沒填就是當天 23:59",
+      "submitHint": "繳交方式",
+      "submitHintPlaceholder": "例如 上傳到 E3、紙本交到系辦",
+      "url": "連結",
+      "urlHint": "繳交頁面或說明文件，選填",
+      "notes": "備註",
+      "save": "儲存",
+      "cancel": "取消",
+      "delete": "刪除作業",
+      "fromMail": "來自 {sender} 的信",
+      "fromMailUnknown": "來自老師寄來的信",
+      "openMail": "開啟信件",
+      "dialogClose": "關閉視窗",
+      "titleRequired": "請輸入作業名稱。",
+      "urlHttps": "連結必須是 https:// 開頭的網址。",
+      "timeNeedsDate": "截止時間需要先選日期。",
+      "saveFailed": "沒有存到作業：{reason}",
+      "openRoles": "前往 設定 › 身分與功能"
+    },
+    "moduleHidden": {
+      "roleUnticked": "「{label}」目前沒有開啟。到 設定 › 身分與功能 勾選{roles}後就能使用。",
+      "roleUntickedSingle": "「{label}」目前沒有開啟。到 設定 › 身分與功能 勾選「{role}」後就能使用。",
+      "manuallyDisabled": "「{label}」已在 設定 › 身分與功能 手動關閉，打開後就能使用。",
+      "roleQuote": "「{role}」",
+      "roleOr": "或",
+      "openRoles": "前往 設定 › 身分與功能",
+      "modules": {
+        "lms": "學校作業",
+        "projects": "專案",
+        "github": "GitHub",
+        "events": "活動"
+      }
+    },
+    "switcher": {
+      "label": "切換 BELL 產品",
+      "heading": "BELL 產品",
+      "menuLabel": "BELL 產品",
+      "searchPlaceholder": "切換到…",
+      "empty": "沒有符合的產品。",
+      "current": "目前",
+      "unlinked": "尚未連結",
+      "loading": "正在載入產品清單…",
+      "failed": "無法載入產品清單",
+      "retry": "重試",
+      "apps": {
+        "personal": {
+          "name": "BELL Personal",
+          "summary": "今日與收件匣"
+        },
+        "explain": {
+          "name": "BELL Explain",
+          "summary": "理解與複習"
+        },
+        "pr": {
+          "name": "BELL PR",
+          "summary": "貢獻與審查"
+        },
+        "reader": {
+          "name": "BELL Web Reader",
+          "summary": "網頁閱讀與標註"
+        },
+        "campaign": {
+          "name": "BELL Campaign",
+          "summary": "活動時程與協作"
+        }
+      }
+    },
+    "dialog": {
+      "close": "關閉視窗"
+    },
+    "appearance": {
+      "theme": "主題",
+      "themeHint": "跟隨系統時，會隨裝置的深色模式切換。",
+      "singleKey": "單鍵快捷鍵",
+      "singleKeyHint": "關閉後，只保留 ⌘K / Ctrl K、方向鍵、Enter 與 Esc。",
+      "save": "儲存外觀設定",
+      "weekStartsMonday": "一週從星期一開始",
+      "weekStartsMondayHint": "行事曆的週檢視和習慣的星期標頭從星期一排起。"
+    }
+  },
+  "en": {
+    "brand": "BELL Personal",
+    "skip": "Skip for now",
+    "back": "Back",
+    "next": "Continue",
+    "listSep": ", ",
+    "steps": {
+      "roles": "Roles",
+      "ai": "AI",
+      "data": "Sources"
+    },
+    "stepOf": "{n} / 3 · {label}",
+    "nav": {
+      "today": "Today",
+      "inbox": "Inbox",
+      "calendar": "Calendar",
+      "tasks": "Tasks",
+      "workStudent": "School & Projects",
+      "workDev": "Projects",
+      "events": "Events",
+      "ideas": "Ideas",
+      "habits": "Habits",
+      "settings": "Settings",
+      "guide": "Guide",
+      "search": "Search"
+    },
+    "a11y": {
+      "progress": "Setup progress",
+      "roles": "Choose your roles",
+      "provider": "AI provider",
+      "cities": "Weather city",
+      "paste": "Paste authorization code",
+      "menu": "Open navigation menu",
+      "code": "Verification code {spelled}",
+      "themeToggle": "Switch light or dark theme"
+    },
+    "role": {
+      "title": "What brings you here?",
+      "lead": "Pick all that fit. We'll turn on matching spaces, and you can change them anytime.",
+      "nextNone": "Skip roles for now",
+      "base": "Even with none picked, you still get Today, Inbox, Calendar, Tasks, Ideas, and Habits.",
+      "previewLabel": "Your sidebar",
+      "previewCalendar": "Adds a weekly class schedule to Calendar.",
+      "previewNone": "Core spaces only for now. Pick a role to see what joins your sidebar.",
+      "addsLead": "Adds to sidebar: {items}.",
+      "addsCal": " Plus a class schedule in Calendar.",
+      "addsNone": "Core spaces only for now."
+    },
+    "roles": {
+      "student": {
+        "name": "Student",
+        "gets": "E3 or Canvas assignments, due dates, and your weekly class schedule"
+      },
+      "developer": {
+        "name": "Developer",
+        "gets": "GitHub PRs waiting on you, assigned issues, and project milestones"
+      },
+      "ctf": {
+        "name": "CTF player",
+        "gets": "Upcoming CTFtime events, with a heads-up on high-weight competitions"
+      }
+    },
+    "ai": {
+      "title": "Connect your AI",
+      "lead": "Powers your daily brief and helps tidy up mail and ideas. Pick one active connection, and switch anytime.",
+      "subLabel": "Sign in with a subscription",
+      "keyLabel": "Or bring an API key",
+      "otherLabel": "Or connect another way",
+      "chatgpt": {
+        "name": "ChatGPT",
+        "meta": "Works with Plus, Pro, or Team"
+      },
+      "claude": {
+        "name": "Claude",
+        "meta": "Works with Pro or Max"
+      },
+      "key": {
+        "name": "API key",
+        "meta": "OpenAI or Anthropic, pay as you go"
+      },
+      "privacy": "Sign-ins and keys stay on this computer. BELL never sees your password.",
+      "skip": "Skip AI",
+      "skipHint": "Everything else still works. Daily briefs stay off for now.",
+      "found": "{name} is ready on this computer",
+      "foundMeta": "{account} · Ready in one click",
+      "use": "Use {name}",
+      "signedIn": "Signed in",
+      "otherWays": "Other options",
+      "login": {
+        "chatgptTitle": "Sign in with ChatGPT",
+        "chatgptLead": "Uses your existing ChatGPT plan—no extra billing.",
+        "claudeTitle": "Sign in with Claude",
+        "claudeLead": "Uses your existing Claude Pro or Max plan—no extra billing.",
+        "preparing": "Getting ready…",
+        "open": "Open sign-in page",
+        "openChatgpt": "Open ChatGPT sign-in",
+        "openChatgptHint": "Opens OpenAI in a new browser tab so you can sign in.",
+        "openClaude": "Open Claude sign-in",
+        "openClaudeHint": "Opens Anthropic in a new browser tab. Sign in and click Authorize.",
+        "enterCode": "Enter this one-time code",
+        "enterCodeHint": "Open the sign-in link above and enter this code. Valid for 15 minutes.",
+        "copy": "Copy code",
+        "waiting": "Waiting for you in the browser. We'll continue automatically once you're done.",
+        "otherDevice": "Prefer signing in on your phone? Open {url} and enter the same one-time code.",
+        "pasteCode": "Paste the code back into BELL",
+        "pasteCodeHint": "After clicking Authorize on that page, copy the code it shows and paste it back here.",
+        "pastePlaceholder": "Paste code here",
+        "finish": "Finish sign-in",
+        "checking": "Verifying…",
+        "expiredTitle": "That code expired",
+        "expiredBody": "Sign-in codes last 15 minutes. Grab a fresh code to try again.",
+        "retry": "Get a new code",
+        "expired": "Expired"
+      },
+      "keyFlow": {
+        "title": "Use your own API key",
+        "lead": "Pay only for what you use, billed directly by OpenAI or Anthropic.",
+        "label": "{provider} API key",
+        "show": "Show key",
+        "create": "Create a key on {provider}",
+        "stored": "Checked with one tiny model call before saving, then encrypted on this computer for {provider} only.",
+        "submit": "Verify & save",
+        "checking": "Verifying…",
+        "invalid": "{provider} didn't accept that key. Check that you copied the whole key, or create a fresh one."
+      },
+      "errors": {
+        "networkTitle": "Can't reach {provider}",
+        "networkBody": "Check your internet connection and try again.",
+        "networkKey": "Couldn't reach {provider}, so your key wasn't checked or saved. Check your connection, then paste it again.",
+        "noCredit": "This key has no remaining credit. Top up on your {provider} billing page and try again.",
+        "cancelledTitle": "Sign-in wasn't finished",
+        "cancelledBody": "Looks like the browser tab was closed or declined. You can try again anytime.",
+        "failedTitle": "Couldn't finish signing in",
+        "failedBody": "{provider} didn't respond in time. Try again, or pick another way to connect.",
+        "cliErrorTitle": "Sign-in helper hit a problem",
+        "cliErrorBody": "The {provider} sign-in helper on this computer couldn't finish. Try again, or use an API key instead.",
+        "timedOutTitle": "Sign-in timed out",
+        "timedOutBody": "Sign-in didn't finish in time. Try again when you're ready.",
+        "pasteInvalid": "That code didn't work or was already used. Choose Try again to get a fresh sign-in page.",
+        "retry": "Try again",
+        "notInstalled": "{app} isn't installed on this computer yet",
+        "notInstalledHint": "Install {app} on this computer first. Step-by-step help is in the Guide.",
+        "useKeyInstead": "Use an API key instead",
+        "noAiTitle": "One helper app needed first",
+        "noAiBody": "Install Codex or Claude Code on this computer, or skip AI for now and connect it later.",
+        "loginExpired": "Session expired—sign in again",
+        "loadFailedTitle": "Couldn't load AI options"
+      },
+      "done": {
+        "title": "{name} is connected",
+        "lead": "{account} · Daily briefs and smart tidying are turned on.",
+        "later": "Switch models or connection methods anytime in Settings › AI."
+      }
+    },
+    "src": {
+      "title": "Connect your sources",
+      "lead": "Picked for your roles. Connect what's handy now—everything else can wait.",
+      "groups": {
+        "student": "Student",
+        "developer": "Developer",
+        "ctf": "CTF player",
+        "all": "For everyone"
+      },
+      "school": {
+        "name": "School assignments",
+        "meta": "NYCU E3 or Canvas. Read-only, never submits anything for you."
+      },
+      "schoolId": "Student ID",
+      "schoolPw": "Password",
+      "schoolPwHint": "Used once to connect and never stored.",
+      "canvas": "Using Canvas?",
+      "moodle": "Using NYCU E3?",
+      "canvasUrl": "Canvas address",
+      "canvasToken": "Access code",
+      "canvasTokenHint": "Create one in Canvas under Account › Settings › New Access Code. Encrypted on this computer only.",
+      "connect": "Connect",
+      "later": "Later",
+      "ctf": {
+        "name": "CTF competitions",
+        "meta": "Highlights major CTFtime events (weight 25+) on Today so you can decide."
+      },
+      "github": {
+        "name": "GitHub",
+        "meta": "Pulls in PRs awaiting your review and issues assigned to you."
+      },
+      "githubFound": "Found {login}",
+      "google": {
+        "name": "Google",
+        "meta": "Brings in Gmail and Google Calendar with one-click Google sign-in.",
+        "advanced": "Advanced options"
+      },
+      "googleStart": "Connect Google",
+      "weather": {
+        "name": "Weather",
+        "meta": "Morning temperature and rain heads-up at the top of Today."
+      },
+      "weatherCity": "Weather ({city})",
+      "cities": {
+        "taipei": "Taipei",
+        "hsinchu": "Hsinchu"
+      },
+      "moreCities": "Other cities",
+      "finish": "Finish"
+    },
+    "done": {
+      "title": "You're all set",
+      "lead": "Personal is tailored around how you work.",
+      "rows": {
+        "roles": "Roles",
+        "ai": "AI",
+        "data": "Sources"
+      },
+      "notYet": "{what} not connected yet",
+      "nextLabel": "Good first move",
+      "tipTitle": "Add your class schedule",
+      "tipMeta": "Put your weekly classes in Calendar and Today will nudge you before the next one.",
+      "go": "Go to Today",
+      "change": "You can tweak any of this anytime in Settings."
+    },
+    "settings": {
+      "title": "Settings",
+      "lead": "Credentials stay on this computer and are never sent to your browser.",
+      "tabs": {
+        "sources": "Sources",
+        "roles": "Roles & Spaces",
+        "ai": "AI",
+        "brief": "Daily Brief",
+        "appearance": "Appearance",
+        "privacy": "Data & Privacy"
+      },
+      "roles": {
+        "title": "Your roles",
+        "hint": "Pick all that apply. Each role turns on its matching spaces below."
+      },
+      "feats": {
+        "title": "Spaces",
+        "hint": "Turning a space off only hides it. Your data stays safe."
+      },
+      "features": {
+        "assignments": {
+          "name": "Assignments",
+          "meta": "School coursework and due dates in your Today queue."
+        },
+        "timetable": {
+          "name": "Class schedule",
+          "meta": "Weekly recurring class times inside Calendar."
+        },
+        "projects": {
+          "name": "Projects",
+          "meta": "Active project progress and milestones."
+        },
+        "github": {
+          "name": "GitHub",
+          "meta": "PRs awaiting your review and assigned issues."
+        },
+        "events": {
+          "name": "Events & CTF",
+          "meta": "CTFtime competitions and events you follow."
+        }
+      },
+      "custom": "On by you",
+      "customOff": "Hidden by you",
+      "restore": "Follow roles",
+      "rerun": "Run first-time setup again",
+      "aiWays": {
+        "title": "Connection method",
+        "hint": "Pick one active connection. Switching here never signs you out of ChatGPT or Claude."
+      },
+      "inUse": "Active",
+      "viaCodex": "Shared from Codex on this computer",
+      "viaClaude": "Shared from Claude Code on this computer",
+      "notSignedIn": "Not signed in",
+      "signIn": "Sign in",
+      "keyOpenai": "OpenAI API key",
+      "keyAnthropic": "Anthropic API key",
+      "keySaved": "{masked} · Verified {date}",
+      "keyNone": "Not set",
+      "keyUnreadable": "Saved key couldn't be read. Enter it again.",
+      "vaultDisabled": "Encryption isn't set up yet, so API keys can't be saved. Sign in with a subscription, or finish setup first.",
+      "wrongLogin": "Currently using an API key. Sign in with your subscription instead.",
+      "pending": "Signing in or verifying key…",
+      "add": "Add",
+      "replace": "Replace key",
+      "remove": "Remove",
+      "removeKey": {
+        "title": "Remove {provider} API key?",
+        "body": "This is your active AI connection. Removing it pauses AI features and turns off your daily brief.",
+        "confirm": "Remove key",
+        "cancel": "Cancel"
+      },
+      "briefLink": "Manage your AI connection and model in the AI tab.",
+      "toasts": {
+        "saveFailed": "Couldn't save that change, so we switched it back. Try again.",
+        "modelReset": "{provider} doesn't offer that model, so we switched back to the default."
+      },
+      "model": {
+        "title": "Model",
+        "hint": "Shared across all AI features.",
+        "catalogError": "Couldn't load the model list",
+        "model": "Model",
+        "modelValue": "Default model",
+        "effort": "Thinking depth",
+        "effortValue": "Default",
+        "effortDefault": "{level} (default)",
+        "effortHint": "Deeper thinking takes a bit longer and uses more quota.",
+        "effortLevels": {
+          "none": "None",
+          "minimal": "Minimal",
+          "low": "Low",
+          "medium": "Medium",
+          "high": "High",
+          "xhigh": "Very high",
+          "ultra": "Ultra",
+          "max": "Max"
+        },
+        "descriptions": {
+          "sonnet": "Balanced speed and quality for daily briefs and mail triage.",
+          "haiku": "Fastest and lightest on quota. Doesn't support thinking depth.",
+          "opus": "Deeper reasoning with slower replies and higher quota use.",
+          "fable": "Most capable for complex work, but takes longer. Requires plan support."
+        }
+      },
+      "bot": {
+        "title": "Personal Bot autonomy",
+        "hint": "Choose when your homepage Personal Bot runs actions right away versus asking for approval first.",
+        "levels": {
+          "cautious": {
+            "name": "Ask every time",
+            "meta": "Every local write, external update, or cross-app action waits on an approval card first."
+          },
+          "balanced": {
+            "name": "Tiered permissions (default)",
+            "meta": "Reversible local tasks, ideas, events, and check-ins run immediately with Undo; mail, Google Calendar, deletes, and cross-app writes ask first."
+          },
+          "auto": {
+            "name": "Full auto",
+            "meta": "Runs local, Google, and BELL Suite actions automatically and logs each result with Undo links."
+          }
+        }
+      },
+      "tabsAria": "Settings tabs"
+    },
+    "hidden": {
+      "title": "This space is hidden right now",
+      "body": "Nothing was deleted. Turn it back on to return it to your sidebar.",
+      "open": "Turn on",
+      "assignmentsDisabled": "\"School assignments\" isn't turned on. Enable \"Student\" or \"Assignments\" in Settings › Roles & Spaces.",
+      "openRoles": "Go to Settings › Roles & Spaces"
+    },
+    "today": {
+      "emptySources": "Nothing connected yet. Head to Settings to hook up school, Google, or GitHub."
+    },
+    "googleGuide": {
+      "title": "Connect your Google account",
+      "sub": "Sign in with Google directly so Gmail and Calendar sync automatically.",
+      "quickTitle": "One-click Google sign-in",
+      "quickBody": "Uses built-in PKCE S256 OAuth—no Google Cloud project or manual tokens needed. Your grant stays encrypted on this computer.",
+      "quickScopes": "Requests access to: Gmail (read, archive, mark read) · Google Calendar (read and add events you confirm)",
+      "clientBuiltin": "Using built-in Google sign-in. Click below to authorize right away.",
+      "advancedSummary": "Advanced: Use a custom Google Cloud client or paste redirect URL",
+      "resetBuiltin": "Use built-in sign-in",
+      "clientReset": "Switched back to built-in Google sign-in",
+      "back": "Sources",
+      "intro": "Do this once in order—it takes about 10 minutes. Check off each step as you go; we'll save your progress.",
+      "stepsLabel": "Setup steps",
+      "progress": "{done} of {total} done",
+      "stepDone": "Mark \"{title}\" done",
+      "steps": {
+        "project": {
+          "title": "Create a project",
+          "why": "A Google Cloud project holds this app's settings, for your own use only.",
+          "linkLabel": "New project in Google Cloud"
+        },
+        "apis": {
+          "title": "Enable Gmail & Calendar APIs",
+          "why": "Without both APIs enabled, BELL can't read your mail or calendar even after you sign in.",
+          "linkLabel": "Open API Library"
+        },
+        "consent": {
+          "title": "Set consent screen (External, Production)",
+          "why": "Testing sign-ins expire after 7 days. Publish to production so you stay connected, using the two URLs below.",
+          "linkLabel": "Open consent screen"
+        },
+        "client": {
+          "title": "Create a web client",
+          "why": "Pick \"Web application\" as the type so Google sends you back to this computer.",
+          "linkLabel": "Open Credentials"
+        },
+        "redirect": {
+          "title": "Copy the redirect URL",
+          "why": "Paste this under \"Authorized redirect URIs\" so it matches character for character, with no trailing slash."
+        },
+        "secret": {
+          "title": "Save your client ID and secret",
+          "why": "Paste the client ID and secret Google shows into the fields below. Your secret stays encrypted on this computer."
+        }
+      },
+      "homeUrl": "App home URL",
+      "privacyUrl": "Privacy policy URL",
+      "redirectLabel": "Redirect URL",
+      "copy": "Copy",
+      "copyAria": "Copy {label}",
+      "copied": "Copied",
+      "copyFailed": "Couldn't copy automatically. Select and copy the URL by hand.",
+      "clientTitle": "Client ID & secret",
+      "clientId": "Client ID",
+      "clientSecret": "Client secret",
+      "clientSaved": "Client saved",
+      "clientSavedHint": "Client {hint} · Secret encrypted on this computer",
+      "clientFromServer": "This server already provides a Google client in its config, so you don't need to enter one here.",
+      "saveClient": "Save client",
+      "replaceClient": "Replace client",
+      "connectTitle": "Connect",
+      "connectHint": "Opens Google to sign in and choose permissions, then brings you right back.",
+      "connect": "Connect Google",
+      "connectButton": "Connect Google",
+      "needClient": "Save your client ID and secret first to connect.",
+      "fallbackSummary": "Google won't accept this URL?",
+      "fallbackIntro": "Web clients need https. Use a \"Desktop app\" client instead, then copy and paste the redirect URL below.",
+      "fallbackSteps": {
+        "1": "On Credentials, create a \"Desktop app\" client and save its ID and secret below.",
+        "2": "Click \"Connect by pasting URL\" and approve access in Google.",
+        "3": "When the redirect page fails to load, copy the full URL from your address bar and paste it below."
+      },
+      "saveDesktopClient": "Save desktop client",
+      "pasteStart": "Connect by pasting URL",
+      "pasteLabel": "Paste redirect URL",
+      "pasteSubmit": "Finish connecting",
+      "connectedTitle": "Connected",
+      "connectedAs": "Connected as {email}",
+      "connectedAt": "Connected {when}",
+      "grantedLabel": "Granted",
+      "missingLabel": "Not granted",
+      "vaultOff": "Encryption isn't set up on this server yet, so secrets and sign-ins can't be saved. Finish setup and restart.",
+      "vaultOffTitle": "Encryption isn't set up yet",
+      "vaultOffBody": "Secrets and sign-ins can't be saved on this server yet. Finish setup and restart.",
+      "loadFailed": "Couldn't load settings",
+      "actionFailed": "{label} failed: {reason}",
+      "offline": "Can't reach the local service. Make sure BELL Personal is running.",
+      "validation": {
+        "clientId": {
+          "required": "Enter your client ID.",
+          "invalid": "Client ID must end with .apps.googleusercontent.com."
+        },
+        "clientSecret": {
+          "required": "Enter your client secret.",
+          "invalid": "Client secret must be at least 8 characters with no spaces."
+        },
+        "pasteUrl": {
+          "invalid": "Paste the full URL from your address bar, including code=."
+        }
+      },
+      "disconnect": "Disconnect",
+      "disconnectTitle": "Disconnect Google?",
+      "disconnectBody": "Revokes access and clears cached mail and events here. Your client stays saved so you can reconnect anytime.",
+      "disconnectConfirm": "Disconnect",
+      "disconnectKeep": "Keep connected",
+      "disconnected": "Disconnected Google",
+      "disconnectedLocal": "Disconnected on this computer. Google didn't respond, so you can also remove access in your Google Account.",
+      "yesterday": "yesterday",
+      "yesterdayTime": "yesterday at {time}",
+      "scopeNames": {
+        "openid": "Identity",
+        "email": "Email address",
+        "gmailModify": "Gmail (read, archive, mark read)",
+        "calendarReadonly": "Read calendar",
+        "calendarEvents": "Create and edit events you confirm"
+      }
+    },
+    "googleReturn": {
+      "failed": "Couldn't connect Google: {reason}",
+      "unknown": "Google didn't finish connecting. Try again.",
+      "errors": {
+        "vault": "Encryption isn't set up on this server yet, so Google sign-in can't be saved.",
+        "client": "Enter your Google client ID and secret in the setup guide first.",
+        "state": "That sign-in expired or started elsewhere. Click \"Connect Google\" again.",
+        "denied": "You canceled in Google, so nothing was connected.",
+        "exchange": "Google didn't finish the sign-in handshake. Try again.",
+        "noRefreshToken": "Google didn't grant long-term access. Remove BELL Personal in your Google Account permissions, then connect again.",
+        "noScopes": "Neither Gmail nor Calendar was checked, so nothing was connected. Reconnect and check the permissions you want."
+      }
+    },
+    "scopeLabels": {
+      "gmailModify": "Gmail",
+      "calendarReadonly": "Read calendar",
+      "calendarEvents": "Add events"
+    },
+    "shell": {
+      "skip": "Skip to main content",
+      "capture": "Quick note",
+      "captureTitle": "Quick note (N)",
+      "quickbarCapture": "Capture",
+      "localWorkspace": "On this computer",
+      "profileFallback": "My workspace",
+      "quickGo": "Search",
+      "drawerOpen": "Open menu",
+      "drawerClose": "Close menu",
+      "railCollapse": "Collapse sidebar",
+      "railExpand": "Expand sidebar",
+      "sidebarLabel": "Main navigation",
+      "navLabel": "Spaces",
+      "quickbarLabel": "Quick bar",
+      "breadcrumbLabel": "Breadcrumb",
+      "srParens": "({label})",
+      "streak": {
+        "title": "{days}-day streak",
+        "zero": "Start day one today.",
+        "body": "Your habits are taking root.",
+        "link": "See this week ↗"
+      }
+    },
+    "sync": {
+      "ok": "Synced",
+      "syncing": "Syncing…",
+      "warn": "{n} need attention",
+      "none": "No sources yet",
+      "offline": "Offline",
+      "okAria": "All sources synced at {time}. Open Settings",
+      "syncingAria": "Syncing sources. Open Settings",
+      "warnAria": "{n} sources need attention. Open Settings",
+      "noneAria": "No sources connected yet. Open Settings",
+      "offlineAria": "Can't reach local service. Open Settings"
+    },
+    "navCount": {
+      "today": "{n} to handle",
+      "inbox": "{n} unread",
+      "tasks": "{n} in progress",
+      "work": "{n} due soon or awaiting review",
+      "events": "{n} new suggestions",
+      "habits": "{n} left today"
+    },
+    "theme": {
+      "toDark": "Switch to dark mode",
+      "toLight": "Switch to light mode",
+      "current": {
+        "system": "Theme: System",
+        "light": "Theme: Light",
+        "dark": "Theme: Dark"
+      },
+      "options": {
+        "system": "System",
+        "light": "Light",
+        "dark": "Dark"
+      }
+    },
+    "meta": {
+      "title": "BELL Personal",
+      "documentTitle": "BELL Personal · Your daily workspace",
+      "titleFor": "{page} · BELL Personal",
+      "brandLabel": "BELL Personal Today",
+      "description": "Open once a day—mail, calendar, tasks, ideas, and habits in one calm place.",
+      "shortName": "BELL Today"
+    },
+    "pageHeads": {
+      "work": "Assignments, projects, and PRs, all in one place.",
+      "workStudent": "Assignments, due dates, and projects, all in one place.",
+      "workDev": "Projects, milestones, and PRs, all in one place.",
+      "workAssignmentsGithub": "Assignments and PRs, all in one place.",
+      "workAssignmentsOnly": "Assignments and due dates, all in one place.",
+      "workProjectsOnly": "Projects and milestones, all in one place.",
+      "workGithubOnly": "PR reviews and assigned issues, all in one place.",
+      "workTabsAria": "Assignments, projects, and GitHub tabs",
+      "workTabsAriaStudent": "Assignments and projects tabs",
+      "workTabsAriaDev": "Projects and GitHub tabs"
+    },
+    "todayPlaceFixes": {
+      "workEmptyHint": "Add a term project, club, or side project, and Today will nudge your next step.",
+      "shortcutCapture": "Quick note (focuses the Today input, or opens Quick Add elsewhere)",
+      "shortcutCaptureShort": "Capture",
+      "habitShortHint": "2–4 characters shown on Today's check-in button; defaults to \"{fallback}\".",
+      "habitShortHintEmpty": "2–4 characters shown on Today's check-in button.",
+      "weatherPurpose": "Morning temperature and rain heads-up at the top of Today, powered by Open-Meteo.",
+      "briefOnFirstOpenHint": "If today's brief isn't ready yet, generate one when you open Today.",
+      "backToToday": "Back to Today",
+      "buildingHint": "This page is still under construction. Head back to Today for now.",
+      "shortcutGoToday": "Go to Today",
+      "shortcutGoTodayShort": "Today",
+      "helpScopeList": "Lists (Today, Inbox, Tasks)",
+      "helpScopeHabits": "Today & Habits",
+      "ctfPurpose": "Upcoming CTFs. High-weight events appear in your Today queue so you can decide.",
+      "inboxNotConnectedHint": "Connect Google to sort mail automatically and surface replies in your Today queue.",
+      "inboxReconnectBody": "Google access expired, so new mail won't appear here or in your Today queue.",
+      "inboxReconnectBodySynced": "Google access expired, so new mail won't join your Today queue. Last synced {time}.",
+      "guideOpenTodayTitle": "Open Today"
+    },
+    "assignmentForm": {
+      "createTitle": "New assignment",
+      "editTitle": "Edit assignment",
+      "title": "Assignment title",
+      "titlePlaceholder": "e.g., HW5: System calls",
+      "course": "Course",
+      "coursePlaceholder": "e.g., Operating Systems",
+      "date": "Due date",
+      "time": "Due time",
+      "timeHint": "Defaults to 23:59 that day",
+      "submitHint": "How to submit",
+      "submitHintPlaceholder": "e.g., Upload to E3 or drop off at office",
+      "url": "Link",
+      "urlHint": "Submission page or handout, optional",
+      "notes": "Notes",
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete assignment",
+      "fromMail": "Email from {sender}",
+      "fromMailUnknown": "From an instructor's email",
+      "openMail": "Open email",
+      "dialogClose": "Close dialog",
+      "titleRequired": "Enter an assignment title.",
+      "urlHttps": "Link must start with https://.",
+      "timeNeedsDate": "Pick a due date before setting a time.",
+      "saveFailed": "Couldn't save assignment: {reason}",
+      "openRoles": "Go to Settings › Roles & Spaces"
+    },
+    "moduleHidden": {
+      "roleUnticked": "\"{label}\" isn't turned on. Check {roles} in Settings › Roles & Spaces to use it.",
+      "roleUntickedSingle": "\"{label}\" isn't turned on. Check \"{role}\" in Settings › Roles & Spaces to use it.",
+      "manuallyDisabled": "\"{label}\" was turned off in Settings › Roles & Spaces. Turn it back on to use it.",
+      "roleQuote": "\"{role}\"",
+      "roleOr": " or ",
+      "openRoles": "Go to Settings › Roles & Spaces",
+      "modules": {
+        "lms": "School assignments",
+        "projects": "Projects",
+        "github": "GitHub",
+        "events": "Events"
+      }
+    },
+    "switcher": {
+      "label": "Switch BELL products",
+      "heading": "BELL products",
+      "menuLabel": "BELL products",
+      "searchPlaceholder": "Switch to…",
+      "empty": "No matching products.",
+      "current": "Current",
+      "unlinked": "Not linked",
+      "loading": "Loading BELL products…",
+      "failed": "Couldn't load BELL products",
+      "retry": "Try again",
+      "apps": {
+        "personal": {
+          "name": "BELL Personal",
+          "summary": "Today and inbox"
+        },
+        "explain": {
+          "name": "BELL Explain",
+          "summary": "Understanding and review"
+        },
+        "pr": {
+          "name": "BELL PR",
+          "summary": "Contributions and review"
+        },
+        "reader": {
+          "name": "BELL Web Reader",
+          "summary": "Web reading and markup"
+        },
+        "campaign": {
+          "name": "BELL Campaign",
+          "summary": "Event timeline and collaboration"
+        }
+      }
+    },
+    "dialog": {
+      "close": "Close dialog"
+    },
+    "appearance": {
+      "theme": "Theme",
+      "themeHint": "System follows your device's light or dark appearance.",
+      "singleKey": "Single-key shortcuts",
+      "singleKeyHint": "When off, only ⌘K / Ctrl K, arrow keys, Enter, and Esc stay active.",
+      "save": "Save appearance",
+      "weekStartsMonday": "Start week on Monday",
+      "weekStartsMondayHint": "Starts Calendar week view and Habit headers on Monday."
+    }
+  }
+}

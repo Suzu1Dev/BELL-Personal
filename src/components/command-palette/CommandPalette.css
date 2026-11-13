@@ -1,0 +1,270 @@
+/* Command palette (SPEC-ux §6.6, §9; ported from mockup states.css "Command palette"). Native <dialog>. */
+.palette {
+  width: min(760px, calc(100vw - 32px));
+  max-width: none;
+  max-height: min(640px, calc(100dvh - 96px));
+  margin: max(56px, 12vh) auto auto;
+  padding: 0;
+  display: none;
+  flex-direction: column;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-modal);
+  overflow: hidden;
+}
+
+.palette[open] {
+  display: flex;
+  animation: palette-in .18s var(--ease);
+}
+
+.palette::backdrop {
+  background: var(--scrim);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.palette[open]::backdrop {
+  animation: palette-backdrop-in .18s var(--ease);
+}
+
+@keyframes palette-in {
+  from { opacity: 0; transform: scale(.98); }
+}
+
+@keyframes palette-backdrop-in {
+  from { opacity: 0; }
+}
+
+.pal-q {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-lg);
+  color: var(--ink);
+}
+
+.pal-q > .ico {
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+}
+
+/* The input sits on a mirror of its own text where the parser's tokens are marked (mockup: 「明天 9:00」 highlighted). */
+.pal-field {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.pal-mirror {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: pre;
+  font-size: var(--fs-lg);
+  color: transparent;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* With marks, the mirror draws the text (tokens in --m-cal) and the input keeps only its caret and selection. */
+.pal-field.has-marks .pal-mirror {
+  color: var(--ink);
+}
+
+.pal-field.has-marks input {
+  color: transparent;
+}
+
+.pal-q .pal-mirror mark {
+  padding: 0;
+  border-radius: 3px;
+  background: var(--m-cal-bg);
+  color: var(--m-cal);
+  box-shadow: 0 0 0 2px var(--m-cal-bg), inset 0 -1.5px 0 color-mix(in srgb, var(--m-cal) 45%, transparent);
+}
+
+.pal-q input {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-size: var(--fs-lg);
+  color: var(--ink);
+  caret-color: var(--accent);
+}
+
+.pal-q input:focus,
+.pal-q input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.pal-q input::placeholder {
+  color: var(--muted);
+}
+
+.pal-q mark {
+  background: var(--m-cal-bg);
+  color: var(--m-cal);
+  border-radius: 4px;
+  padding: 1px 3px;
+  box-shadow: inset 0 -1.5px 0 color-mix(in srgb, var(--m-cal) 45%, transparent);
+}
+
+.pal-body {
+  flex: 1;
+  min-height: 0;
+  padding: 8px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.pal-sec {
+  padding: 10px 10px 4px;
+  font: 600 var(--fs-xs)/1.4 var(--font-sans);
+  color: var(--muted);
+}
+
+.pal-opt {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  column-gap: 12px;
+  align-items: center;
+  padding: 9px 10px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+}
+
+.pal-opt .tile {
+  width: 30px;
+  height: 30px;
+}
+
+.pal-opt.is-active {
+  background: var(--accent-soft);
+}
+
+.pal-opt .t {
+  display: block;
+  font-size: var(--fs-md);
+  font-weight: 550;
+  color: var(--ink);
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pal-opt .m {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  line-height: 1.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pal-opt.is-active .m {
+  color: var(--ink-2);
+}
+
+.pal-opt .r {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pal-opt .r .ai-tag + kbd {
+  margin-left: 4px;
+}
+
+/* The parse row's own styles live in components/capture/ParseRow.css; here only its place under the option. */
+.pal-detail .parse-row {
+  padding: 4px 10px 10px 52px;
+}
+
+.pal-empty {
+  padding: 18px 12px 20px;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  text-align: center;
+}
+
+.pal-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-soft);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.pal-foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pal-foot kbd {
+  min-width: 16px;
+  height: 17px;
+  padding: 0 4px;
+}
+
+/* ≤720: a bottom sheet, input autofocused, no key legend. */
+@media (max-width: 720px) {
+  .palette {
+    width: 100%;
+    max-height: 85dvh;
+    margin: auto 0 0;
+    border-radius: var(--r-xl) var(--r-xl) 0 0;
+    border-bottom: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .palette[open] {
+    animation: palette-sheet-in var(--dur-2) var(--ease);
+  }
+
+  .pal-q {
+    padding: 8px 6px 8px 16px;
+    font-size: var(--fs-md);
+  }
+
+  .pal-q input {
+    font-size: var(--fs-lg);
+  }
+
+  .pal-detail .parse-row {
+    padding-left: 10px;
+  }
+
+  .pal-opt .r kbd,
+  .pal-foot {
+    display: none;
+  }
+
+  .pal-opt {
+    min-height: var(--tap);
+  }
+}
+
+@keyframes palette-sheet-in {
+  from { transform: translateY(24px); opacity: 0; }
+}

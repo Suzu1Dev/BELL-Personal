@@ -1,0 +1,348 @@
+<span id="drawer" hidden></span><!-- mockup: index.html#drawer opens the mobile drawer -->
+<a class="skip" href="#main">跳至主要內容</a>
+
+<div class="app-shell">
+  <!-- ===== Sidebar (§B4) ===== -->
+  <aside class="sidebar" id="primary-sidebar" aria-label="主要導覽"><div class="side-inner">
+    <a class="brand" href="#/today" aria-label="BELL Personal 首頁">
+      <span class="brand-tile"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></span>
+      <span class="wordmark"><b>bell</b>/personal<i>.</i></span>
+    </a>
+    <button class="cta" type="button" title="快速記下（N）"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg><span>快速記下</span><kbd>N</kbd></button>
+
+    <div class="side-label">Today</div>
+    <nav class="nav" aria-label="模組">
+      <a href="#/today" aria-current="page" title="今天"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg><span>今天</span><span class="n" aria-label="8 件待處理">8</span></a>
+      <a href="#/inbox" title="收件匣"><svg class="ico" aria-hidden="true"><use href="#i-inbox"/></svg><span>收件匣</span><span class="n" aria-label="12 封未讀">12</span></a>
+      <a href="#/calendar" title="行事曆"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg><span>行事曆</span></a>
+      <a href="#/tasks" title="待辦"><svg class="ico" aria-hidden="true"><use href="#i-todo"/></svg><span>待辦</span><span class="n">4</span></a>
+      <a href="#/work" title="作業與專案"><svg class="ico" aria-hidden="true"><use href="#i-kanban"/></svg><span>作業與專案</span><span class="n">3</span></a>
+      <a href="#/events" title="活動"><svg class="ico" aria-hidden="true"><use href="#i-ticket"/></svg><span>活動</span></a>
+      <a href="#/ideas" title="靈感"><svg class="ico" aria-hidden="true"><use href="#i-bulb"/></svg><span>靈感</span></a>
+      <a href="#/habits" title="習慣"><svg class="ico" aria-hidden="true"><use href="#i-flame"/></svg><span>習慣</span><span class="n" aria-label="今天還差 2 個">2</span></a>
+    </nav>
+
+    <div class="side-proj">
+      <div class="side-label">Projects</div>
+      <ul class="proj">
+        <li><a href="#/work/projects/os-final"><span class="dot" style="--c:var(--m-task)"></span>OS 期末專題<span class="pct">20%</span></a></li>
+        <li><a href="#/work/projects/ctf-notes"><span class="dot" style="--c:var(--m-event)"></span>ctf-notes<span class="pct">64%</span></a></li>
+        <li><a href="#/work/projects/bell-personal"><span class="dot" style="--c:var(--accent)"></span>bell-personal<span class="pct">38%</span></a></li>
+      </ul>
+    </div>
+
+    <div class="side-bottom">
+      <div class="streak-card">
+        <b><svg class="ico ico-sm" aria-hidden="true"><use href="#i-flame"/></svg>連續 12 天</b>
+        <p class="kp">習慣正在長出來。</p>
+        <a href="#/habits">看看本週 ↗</a>
+      </div>
+      <a href="#/settings/sources" title="連線與設定"><svg class="ico" aria-hidden="true"><use href="#i-settings"/></svg><span>連線與設定</span></a>
+      <a href="#/guide" title="使用指南"><svg class="ico" aria-hidden="true"><use href="#i-help"/></svg><span>使用指南</span><kbd>?</kbd></a>
+      <div class="profile">
+        <span class="avatar" aria-hidden="true">S</span>
+        <div><b>Suzu</b><small><span class="okdot"></span>本機工作空間</small></div>
+      </div>
+    </div>
+  </div></aside>
+  <a class="scrim" href="#" aria-label="關閉選單"></a>
+
+  <!-- ===== Workspace ===== -->
+  <div class="workspace">
+    <header class="topbar">
+      <a class="btn btn-icon m-only" href="#drawer" aria-label="開啟選單" aria-controls="primary-sidebar"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></a>
+      <button class="btn btn-icon d-only" type="button" aria-label="收合側欄"><svg class="ico" aria-hidden="true"><use href="#i-panel"/></svg></button>
+      <span class="brand-tile m-brand m-only" aria-hidden="true"><svg class="ico"><use href="#i-sun"/></svg></span>
+      <nav class="crumbs" aria-label="麵包屑"><span class="ws">工作空間</span><svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg><b>今天</b></nav>
+      <div class="top-actions">
+        <button class="kpill d-only" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-search"/></svg>快速前往<kbd>⌘ K</kbd></button>
+        <button class="btn btn-icon m-only" type="button" aria-label="快速前往"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg></button>
+        <button class="sync-chip" type="button" aria-label="所有來源已同步，08:40。開啟連線與設定"><span class="okdot"></span><span class="lbl">已同步</span><span class="mono">08:40</span></button>
+        <button class="btn btn-icon" type="button" data-theme-toggle aria-label="切換深色模式"><svg class="ico tg-moon" aria-hidden="true"><use href="#i-moon"/></svg><svg class="ico tg-sun" aria-hidden="true"><use href="#i-sun"/></svg></button>
+        <span class="avatar d-only" aria-hidden="true">S</span>
+      </div>
+    </header>
+
+    <main id="main" class="page">
+      <!-- ===== Hero ===== -->
+      <section class="today-hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">Mon · 10/12<span class="sep"></span><span class="wx"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-cloud-sun"/></svg>新竹 24° 多雲</span><span class="sep"></span><span class="wx"><svg class="ico ico-sm rain" aria-hidden="true"><use href="#i-rain"/></svg>21:00 後降雨 60%</span></p>
+          <h1 id="hero-title" class="hero-title kp">早安，還有 <span class="uline">8 件事<svg viewBox="0 0 270 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q125 -2 268 6"/></svg></span> 等你處理。</h1>
+          <p class="brief"><span class="ai-tag" title="AI 整理於 06:30"><svg class="ico ico-xs" aria-hidden="true"><use href="#i-sparkles"/></svg>AI 摘要</span><span class="kp">先回林教授的專題信，再把 OS HW3 收尾，今晚 23:59 截止。下午 2:00 讀書會前記得準備 Ch.5 簡報；15:30 後有 4 小時空檔。<button class="brief-refresh" type="button" aria-label="重新整理摘要"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-refresh"/></svg></button></span></p>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress">
+            <div class="prog-top"><span id="prog-label">今日進度</span><b>3<small> / 11</small></b></div>
+            <div class="segs" role="progressbar" aria-labelledby="prog-label" aria-valuemin="0" aria-valuemax="11" aria-valuenow="3" aria-valuetext="已處理 3 件，共 11 件"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <p class="prog-foot"><span>已處理 3 件</span><span>照這個節奏，約 <b>35 分鐘</b> 清空</span></p>
+          </div>
+          <a class="next-up" href="#/calendar"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-cal"/></svg><span class="mono">10:10</span><b>作業系統</b><span class="in">1 小時 28 分後</span><svg class="ico ico-xs chev" aria-hidden="true"><use href="#i-chev"/></svg></a>
+        </div>
+      </section>
+
+      <div class="today-grid">
+        <!-- ===== Main column ===== -->
+        <div class="col">
+          <section class="card queue" aria-labelledby="q-title">
+            <header class="q-head">
+              <div class="card-head">
+                <span class="tile t-accent"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></span>
+                <h2 id="q-title">專注佇列</h2><span class="count">8</span>
+              </div>
+              <div class="chips" role="group" aria-label="依來源篩選">
+                <button class="chip" type="button" aria-pressed="true">全部 <span class="mono">8</span></button>
+                <button class="chip" type="button" aria-pressed="false">信件 <span class="mono">2</span></button>
+                <button class="chip" type="button" aria-pressed="false">作業 <span class="mono">2</span></button>
+                <button class="chip" type="button" aria-pressed="false">GitHub <span class="mono">1</span></button>
+                <button class="chip" type="button" aria-pressed="false">活動 <span class="mono">2</span></button>
+                <button class="chip" type="button" aria-pressed="false">待辦 <span class="mono">1</span></button>
+              </div>
+            </header>
+
+            <!-- group 1 -->
+            <section class="q-group" aria-labelledby="g1">
+              <div class="q-ghead"><h3 id="g1">最重要</h3><span class="count">3</span><span class="hint">先做這些，今天就輕鬆了</span></div>
+              <ul class="q-list">
+                <li class="q-row is-focus" aria-current="true">
+                  <span class="person" aria-hidden="true">林</span>
+                  <div class="q-main">
+                    <button class="q-title" type="button" aria-expanded="true" tabindex="0">Re: OS 期末專題題目討論</button>
+                    <p class="q-meta">林志明 教授 · 作業系統 · 待回覆</p>
+                  </div>
+                  <div class="q-end"><span class="when">08:05</span></div>
+                  <div class="q-detail">
+                    <p class="q-sum"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-sparkles"/></svg><span class="kp">教授同意用 eBPF 觀察排程延遲當期末專題，請你在週三 10:00 meeting 前回信，附上一頁提案並確認時間。</span></p>
+                    <div class="q-actions">
+                      <button class="btn btn-primary btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-reply"/></svg>回覆<kbd>↵</kbd></button>
+                      <button class="btn btn-secondary btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-list-plus"/></svg>轉待辦<kbd>T</kbd></button>
+                      <button class="btn btn-secondary btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-alarm"/></svg>延後<kbd>S</kbd></button>
+                      <button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-archive"/></svg>封存<kbd>E</kbd></button>
+                      <a class="link ext" href="#">在 Gmail 開啟<svg class="ico ico-xs" aria-hidden="true"><use href="#i-out"/></svg></a>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="q-row">
+                  <span class="tile t-task"><svg class="ico" aria-hidden="true"><use href="#i-cap"/></svg></span>
+                  <div class="q-main">
+                    <button class="q-title" type="button" aria-expanded="false" tabindex="-1">作業系統 HW3：CPU Scheduling 模擬</button>
+                    <p class="q-meta">NYCU E3 · 作業系統 · 今晚 23:59 截止 · 尚未繳交</p>
+                  </div>
+                  <div class="q-end">
+                    <div class="q-acts"><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-out"/></svg>開啟 E3<kbd>↵</kbd></button><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-check"/></svg>標為已交<kbd>E</kbd></button><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-alarm"/></svg>延後<kbd>S</kbd></button></div>
+                    <span class="when zh hot">剩 15 小時</span>
+                    <button class="btn btn-secondary btn-sm q-primary" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-check"/></svg>已交</button>
+                  </div>
+                </li>
+
+                <li class="q-row">
+                  <span class="tile t-info"><svg class="ico" aria-hidden="true"><use href="#i-pr"/></svg></span>
+                  <div class="q-main">
+                    <button class="q-title" type="button" aria-expanded="false" tabindex="-1">審查 #127 新增議程頁深色模式</button>
+                    <p class="q-meta">sitcon-tw/2027.sitcon.org · yuchen 請你審查 · <span class="add mono">+142</span> <span class="del mono">−38</span></p>
+                  </div>
+                  <div class="q-end">
+                    <div class="q-acts"><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-eye"/></svg>開始審查<kbd>↵</kbd></button><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-alarm"/></svg>延後<kbd>S</kbd></button></div>
+                    <span class="when zh">昨天</span>
+                    <button class="btn btn-secondary btn-sm q-primary" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-eye"/></svg>審查</button>
+                  </div>
+                </li>
+              </ul>
+            </section>
+
+            <!-- group 2 -->
+            <section class="q-group" aria-labelledby="g2">
+              <div class="q-ghead"><h3 id="g2">今天內</h3><span class="count">3</span><span class="hint">找個空檔處理</span></div>
+              <ul class="q-list">
+                <li class="q-row is-ai">
+                  <span class="tile t-accent"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg></span>
+                  <div class="q-main">
+                    <p class="q-title">從信件找到 1 個活動，要加入行事曆嗎？</p>
+                    <p class="q-meta">SITCON 秋季交流會 · 10/25（六）13:30 · 中研院人文館 · 來自 KKTIX 報名成功信</p>
+                  </div>
+                  <div class="q-end">
+                    <button class="btn btn-secondary btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-cal-plus"/></svg>加入行事曆<kbd>C</kbd></button>
+                    <button class="btn btn-ghost btn-sm" type="button" aria-label="略過這個建議">略過</button>
+                  </div>
+                </li>
+
+                <li class="q-row">
+                  <span class="tile t-warn"><svg class="ico" aria-hidden="true"><use href="#i-receipt"/></svg></span>
+                  <div class="q-main">
+                    <button class="q-title" type="button" aria-expanded="false" tabindex="-1">中華電信 9 月帳單 NT$599</button>
+                    <p class="q-meta">帳單 · 10/20 截止 · 沒有設定自動扣繳</p>
+                  </div>
+                  <div class="q-end">
+                    <div class="q-acts"><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-list-plus"/></svg>轉成待辦<kbd>T</kbd></button><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-archive"/></svg>封存<kbd>E</kbd></button></div>
+                    <span class="when zh">還有 8 天</span>
+                    <button class="btn btn-secondary btn-sm q-primary" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-list-plus"/></svg>轉待辦</button>
+                  </div>
+                </li>
+
+                <li class="q-row">
+                  <span class="tile t-task"><svg class="ico" aria-hidden="true"><use href="#i-todo"/></svg></span>
+                  <div class="q-main">
+                    <button class="q-title" type="button" aria-expanded="false" tabindex="-1">準備讀書會簡報：Ch.5 Deadlocks</button>
+                    <p class="q-meta">待辦 · 讀書會 14:00 前 · 預估 40 分鐘</p>
+                  </div>
+                  <div class="q-end">
+                    <div class="q-acts"><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-check"/></svg>完成<kbd>E</kbd></button><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-alarm"/></svg>延後<kbd>S</kbd></button></div>
+                    <span class="when warm">14:00</span>
+                    <button class="btn btn-secondary btn-sm q-primary" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-check"/></svg>完成</button>
+                  </div>
+                </li>
+              </ul>
+            </section>
+
+            <!-- group 3 -->
+            <section class="q-group" aria-labelledby="g3">
+              <div class="q-ghead"><h3 id="g3">可以等</h3><span class="count">2</span><span class="hint">這週內處理就好</span></div>
+              <ul class="q-list">
+                <li class="q-row">
+                  <span class="tile t-task"><svg class="ico" aria-hidden="true"><use href="#i-cap"/></svg></span>
+                  <div class="q-main">
+                    <button class="q-title" type="button" aria-expanded="false" tabindex="-1">計算機網路 Lab 2：Socket Programming</button>
+                    <p class="q-meta">NYCU E3 · 計算機網路 · 週三 23:59 截止</p>
+                  </div>
+                  <div class="q-end">
+                    <div class="q-acts"><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-out"/></svg>開啟 E3<kbd>↵</kbd></button><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-check"/></svg>標為已交<kbd>E</kbd></button></div>
+                    <span class="when zh">還有 2 天</span>
+                    <button class="btn btn-secondary btn-sm q-primary" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-out"/></svg>開啟</button>
+                  </div>
+                </li>
+
+                <li class="q-row">
+                  <span class="tile t-event"><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg></span>
+                  <div class="q-main">
+                    <button class="q-title" type="button" aria-expanded="false" tabindex="-1">Balsn CTF 2026，要參加嗎？</button>
+                    <p class="q-meta">CTFtime · 10/17（六）08:00 起 48 小時 · 線上 · 權重 55</p>
+                  </div>
+                  <div class="q-end">
+                    <div class="q-acts"><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-cal-plus"/></svg>要參加<kbd>C</kbd></button><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-x"/></svg>略過<kbd>E</kbd></button></div>
+                    <span class="when zh">還有 5 天</span>
+                    <button class="btn btn-secondary btn-sm q-primary" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-cal-plus"/></svg>要參加</button>
+                  </div>
+                </li>
+              </ul>
+            </section>
+
+            <footer class="q-foot">
+              <span class="done"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-circle-check"/></svg>今天已處理 3 件</span>
+              <button class="link" type="button">顯示<svg class="ico ico-xs" aria-hidden="true"><use href="#i-chev-down"/></svg></button>
+              <div class="legend" aria-label="鍵盤快捷鍵">
+                <span><kbd>J</kbd><kbd>K</kbd>移動</span>
+                <span><kbd>E</kbd>處理完</span>
+                <span><kbd>S</kbd>延後</span>
+                <span><kbd>T</kbd>轉待辦</span>
+                <span><kbd>C</kbd>行事曆</span>
+                <span><kbd>Z</kbd>復原</span>
+                <span><kbd>?</kbd>全部</span>
+              </div>
+            </footer>
+          </section>
+
+          <section class="card digest" aria-labelledby="dg-title">
+            <span class="tile t-mail"><svg class="ico" aria-hidden="true"><use href="#i-inbox"/></svg></span>
+            <div class="txt">
+              <b id="dg-title">另外 9 封信已自動分類，不用處理</b>
+              <span>電子報 <span class="mono">3</span> · 學校公告 <span class="mono">2</span> · GitHub 通知 <span class="mono">4</span> · 信都還在你的 Gmail</span>
+            </div>
+            <div class="acts">
+              <button class="btn btn-secondary btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-checks"/></svg>全部標為已讀</button>
+              <button class="btn btn-ghost btn-sm" type="button" aria-expanded="false">逐類看<svg class="ico ico-xs" aria-hidden="true"><use href="#i-chev-down"/></svg></button>
+            </div>
+          </section>
+
+          <section class="card later" aria-label="明天與之後、專案">
+            <button class="later-sum" type="button" aria-expanded="false"><svg class="ico ico-sm" aria-hidden="true" style="color:var(--m-cal)"><use href="#i-cal"/></svg><span class="kp"><b>明天 09:00 計算機網路</b> · 本週還有 3 個活動 · 3 個專案進行中</span><svg class="ico ico-sm" aria-hidden="true"><use href="#i-chev-down"/></svg></button>
+            <section aria-labelledby="up-title">
+              <div class="card-head"><h2 id="up-title">明天與之後</h2><a class="link" href="#/events">活動<svg class="ico ico-xs" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+              <div class="ev-row"><span class="dblock"><b>10/13</b><span>明天</span></span><div><span class="t">09:00 計算機網路</span><span class="m">工程三館 EC122 · Google 行事曆</span></div></div>
+              <div class="ev-row"><span class="dblock"><b>10/24</b><span>週六</span></span><div><span class="t">g0v 零時政府第柒拾次大松</span><span class="m">中研院 · g0v 行事曆訂閱</span></div></div>
+              <div class="ev-row"><span class="dblock"><b>10/30</b><span>週五</span></span><div><span class="t">停修申請截止</span><span class="m">NYCU 校園行事曆 · 還有 18 天</span></div></div>
+            </section>
+            <section aria-labelledby="pj-title">
+              <div class="card-head"><h2 id="pj-title">專案</h2><a class="link" href="#/work">作業與專案<svg class="ico ico-xs" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+              <div class="pj-row"><div class="pj-top"><span class="t">OS 期末專題</span><span class="pct">20%</span></div><div class="bar"><i style="width:20%"></i></div><span class="m">下一步：10/19 題目提案 · 等林教授回覆</span></div>
+              <div class="pj-row"><div class="pj-top"><span class="t">ctf-notes</span><span class="pct">64%</span></div><div class="bar"><i style="width:64%;--c:var(--m-event)"></i></div><span class="m">下一步：Balsn 前整理 heap 筆記</span></div>
+              <div class="pj-row"><div class="pj-top"><span class="t">vitejs/vite #18234</span><span class="pct">PR</span></div><span class="m">fix(css): preserve @layer order · 等待審查 3 天</span></div>
+            </section>
+          </section>
+        </div>
+
+        <!-- ===== Side column ===== -->
+        <div class="col">
+          <section class="card capture" aria-label="快速記下">
+            <label class="cap-field">
+              <svg class="ico" aria-hidden="true"><use href="#i-bulb"/></svg>
+              <span class="sr-only">快速記下</span>
+              <input type="text" placeholder="記下任何事…" autocomplete="off">
+              <kbd>N</kbd>
+            </label>
+            <p class="cap-hint"><svg class="ico ico-xs" aria-hidden="true"><use href="#i-sparkles"/></svg>例如「明天 9:00 交報告」，Enter 自動分類<a class="link" href="#/ideas">靈感<svg class="ico ico-xs" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <div class="recent">
+              <p class="idea"><span>用 eBPF 量 CFS 排程延遲，當期末專題</span><small>昨天</small></p>
+              <p class="idea"><span>CTF writeup 改寫成部落格系列</span><small>10/9</small></p>
+            </div>
+          </section>
+
+          <section class="card habits" aria-labelledby="hb-title">
+            <div class="card-head">
+              <span class="tile t-habit"><svg class="ico" aria-hidden="true"><use href="#i-flame"/></svg></span>
+              <h2 id="hb-title">習慣打卡</h2><span class="count">1/3</span>
+              <span class="keys">按 <kbd>1</kbd>–<kbd>3</kbd> 打卡</span>
+            </div>
+            <div class="habit-list">
+              <div class="habit h-head" aria-hidden="true"><span></span><span></span><span class="h-days"><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span><span class="today">一</span></span><span></span></div>
+              <div class="habit is-done">
+                <button class="hcheck" type="button" aria-pressed="true" aria-label="閱讀 20 分鐘，今天已完成。按 1 切換"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></button>
+                <div><span class="h-name">閱讀 20 分鐘</span><span class="h-short" aria-hidden="true">閱讀</span><span class="h-cad">今天 07:50 完成</span></div>
+                <div class="h-dots" aria-hidden="true"><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="y t"></i></div>
+                <span class="h-streak" aria-label="連續 12 天"><svg class="ico" aria-hidden="true"><use href="#i-flame"/></svg>12</span>
+              </div>
+              <div class="habit">
+                <button class="hcheck" type="button" aria-pressed="false" aria-label="運動，今天尚未完成。按 2 切換"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></button>
+                <div><span class="h-name">運動</span><span class="h-short" aria-hidden="true">運動</span><span class="h-cad">每週 3 次 · 0/3</span></div>
+                <div class="h-dots" aria-hidden="true"><i class="y"></i><i class="rest"></i><i class="y"></i><i class="rest"></i><i class="y"></i><i class="rest"></i><i class="t"></i></div>
+                <span class="h-streak" aria-label="連續 4 週"><svg class="ico" aria-hidden="true"><use href="#i-flame"/></svg>4</span>
+              </div>
+              <div class="habit">
+                <button class="hcheck" type="button" aria-pressed="false" aria-label="寫日記，今天尚未完成。按 3 切換"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></button>
+                <div><span class="h-name">寫日記</span><span class="h-short" aria-hidden="true">日記</span><span class="h-cad">每天 · 睡前</span></div>
+                <div class="h-dots" aria-hidden="true"><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i><i class="t"></i></div>
+                <span class="h-streak" aria-label="連續 27 天"><svg class="ico" aria-hidden="true"><use href="#i-flame"/></svg>27</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="card agenda" aria-labelledby="tl-title">
+            <div class="card-head">
+              <span class="tile t-cal"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg></span>
+              <h2 id="tl-title">今日行程</h2><span class="count">3</span>
+              <a class="link" href="#/calendar">行事曆<svg class="ico ico-xs" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+            <div class="tl">
+              <div class="tl-now" role="note" aria-label="現在 08:42"><span>08:42</span><i></i></div>
+              <div class="tl-row"><div class="tl-time">10:10<small>12:00</small></div><span class="tl-bar"></span><div class="tl-body"><b>作業系統<span class="soon">1 小時 28 分後</span></b><span>工程三館 EC115 · 林志明</span></div></div>
+              <div class="tl-row"><div class="tl-time">14:00<small>15:30</small></div><span class="tl-bar"></span><div class="tl-body"><b>OS 讀書會 · Ch.5</b><span>浩然圖書館 討論室 B</span></div></div>
+              <div class="tl-row tl-gap"><div class="tl-time">15:30</div><span class="tl-bar"></span><div class="gap-box"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-sparkles"/></svg><span><b>4 小時空檔</b>適合寫 HW3</span><button class="btn btn-secondary btn-sm" type="button">排進</button></div></div>
+              <div class="tl-row"><div class="tl-time">19:30<small>20:30</small></div><span class="tl-bar" style="--rc:var(--m-habit)"></span><div class="tl-body"><b>健身</b><span>光復校區 體育館 · 結束後一鍵打卡「運動」</span></div></div>
+              <div class="tl-row is-due"><div class="tl-time">23:59</div><span class="tl-bar"></span><div class="tl-body"><b>HW3 截止</b><span>作業系統 · NYCU E3</span></div></div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <footer class="endmark"><i aria-hidden="true"></i><p class="kp"><b>今天的版面到這裡。</b>下一份摘要明天 06:30 送到。</p></footer>
+    </main>
+  </div>
+</div>
+
+<nav class="quickbar" aria-label="快速列">
+  <a href="#/today" aria-current="page"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg>今天</a>
+  <a href="#/inbox"><svg class="ico" aria-hidden="true"><use href="#i-inbox"/></svg>收件匣<span class="badge" aria-label="12 封未讀">12</span></a>
+  <a href="#/tasks"><svg class="ico" aria-hidden="true"><use href="#i-todo"/></svg>待辦</a>
+  <a href="#capture" class="cap"><span class="plus"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></span>捕捉</a>
+</nav>
+<div class="toast-host" role="status" aria-live="polite"></div>

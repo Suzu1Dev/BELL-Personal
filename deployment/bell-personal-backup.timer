@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily BELL Personal data snapshot
+
+[Timer]
+# The host clock is UTC: 05:00 UTC is 13:00 in Taipei, after bell-explain's 04:30–04:45 window.
+OnCalendar=*-*-* 05:00:00
+Persistent=true
+RandomizedDelaySec=15min
+
+[Install]
+WantedBy=timers.target

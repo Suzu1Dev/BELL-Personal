@@ -1,0 +1,96 @@
+/* Button (SPEC-ux §9; ported from mockup app.css "Button"). min-height 36 (sm 32), 44 on coarse pointers. */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 8px 13px;
+  border-radius: var(--r-sm);
+  border: 1px solid transparent;
+  font-size: var(--fs-sm);
+  font-weight: 550;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-primary:hover {
+  background: var(--accent-strong);
+}
+
+/* Kbd inside a primary button: --accent-strong fill (SPEC-ux §2, fixes the 3.98:1 failure). */
+.btn-primary kbd {
+  background: var(--accent-strong);
+  border-color: transparent;
+  color: var(--on-accent);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  border-color: var(--border-strong);
+  color: var(--ink);
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-soft);
+}
+
+.btn-ghost {
+  color: var(--ink-2);
+}
+
+.btn-ghost:hover {
+  background: var(--surface-sunk);
+  color: var(--ink);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: var(--on-accent);
+}
+
+.btn-icon {
+  width: 36px;
+  padding: 0;
+  color: var(--ink-2);
+}
+
+.btn-icon:hover {
+  background: var(--surface-sunk);
+  color: var(--ink);
+}
+
+.btn-sm {
+  min-height: 32px;
+  padding: 6px 10px;
+  gap: 6px;
+}
+
+.btn-sm kbd {
+  margin-left: 2px;
+}
+
+.btn[disabled],
+.btn[aria-disabled="true"] {
+  opacity: .48;
+  pointer-events: none;
+}
+
+@media (pointer: coarse) {
+  .btn {
+    min-height: var(--tap);
+  }
+
+  .btn-icon {
+    width: var(--tap);
+  }
+}

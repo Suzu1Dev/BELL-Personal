@@ -1,0 +1,56 @@
+/* Checkbox (SPEC-ux §9 "Not in the mockup but required": 18px, --r-xs, 2px --border-strong; checked = accent + Check). */
+.checkbox {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--r-xs);
+  border: 2px solid var(--border-strong);
+  background: var(--surface);
+  color: transparent;
+  transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+}
+
+.checkbox .ico {
+  width: 12px;
+  height: 12px;
+  stroke-width: 3;
+}
+
+.checkbox:hover {
+  border-color: var(--accent);
+}
+
+.checkbox[aria-checked="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+/* ≥ 24px target everywhere (WCAG 2.5.8), 44px on coarse pointers. */
+.checkbox::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+}
+
+@media (pointer: coarse) {
+  .checkbox::after {
+    inset: -13px;
+  }
+}
+
+.checkbox:disabled {
+  opacity: .48;
+}
+
+.checkbox-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-md);
+  color: var(--ink);
+  cursor: pointer;
+}

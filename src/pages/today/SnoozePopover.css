@@ -1,0 +1,142 @@
+/* .snooze-pop (SPEC-ux §9 "Not in the mockup but required": --surface, --shadow-pop, --r-md, .pal-opt-style rows with kbd 1–5). */
+.snooze-pop {
+  position: fixed;
+  z-index: var(--z-modal);
+  width: 264px;
+  max-width: calc(100vw - 32px);
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-pop);
+  animation: snooze-in .18s var(--ease);
+}
+
+@keyframes snooze-in {
+  from {
+    opacity: 0;
+    transform: scale(.98);
+  }
+}
+
+.snooze-head {
+  padding: 6px 10px 4px;
+  font: 600 var(--fs-xs)/1.4 var(--font-sans);
+  color: var(--muted);
+}
+
+.snooze-opts {
+  display: grid;
+  gap: 1px;
+}
+
+.snooze-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 10px;
+  border-radius: var(--r-sm);
+  text-align: left;
+  font-size: var(--fs-sm);
+  color: var(--ink);
+  transition: background var(--dur-1) var(--ease);
+}
+
+.snooze-opt:hover,
+.snooze-opt:focus-visible {
+  background: var(--accent-soft);
+}
+
+.snooze-opt:focus-visible {
+  outline-offset: -3px;
+}
+
+.snooze-opt .t {
+  font-weight: 550;
+}
+
+.snooze-opt .m {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.snooze-opt kbd {
+  margin-left: auto;
+}
+
+.snooze-opt:disabled {
+  background: none;
+}
+
+.snooze-opt:disabled .t {
+  color: var(--muted);
+  font-weight: 450;
+}
+
+.snooze-pick {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 4px 4px;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.snooze-pick .input {
+  flex: 1 1 150px;
+  min-height: 36px;
+  padding: 6px 10px;
+  font-size: var(--fs-sm);
+}
+
+.snooze-pick .field-error {
+  flex-basis: 100%;
+}
+
+.snooze-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-modal) - 1);
+  background: var(--scrim);
+  animation: snooze-fade var(--dur-2) var(--ease);
+}
+
+@keyframes snooze-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ≤720: a bottom sheet with 44px rows. */
+.snooze-pop.is-sheet {
+  inset: auto 0 0 0;
+  width: auto;
+  max-width: none;
+  padding: 10px 10px calc(14px + env(safe-area-inset-bottom));
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  animation: snooze-up var(--dur-2) var(--ease);
+}
+
+@keyframes snooze-up {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+}
+
+.snooze-pop.is-sheet .snooze-opt {
+  min-height: var(--tap);
+}
+
+.snooze-pop.is-sheet kbd {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  .snooze-opt {
+    min-height: var(--tap);
+  }
+}

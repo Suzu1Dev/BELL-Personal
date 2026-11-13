@@ -1,0 +1,56 @@
+/* Skeleton (SPEC-ux §2 colour decision, §9; mockup app.css ".skel", states.css ".skel-status .spin"). */
+.skel {
+  display: block;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(100deg, var(--surface-sunk) 30%, var(--surface-soft) 50%, var(--surface-sunk) 70%);
+  background-size: 300% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+@keyframes shimmer {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+.skel-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.spin {
+  display: inline-block;
+  flex: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  border-top-color: var(--accent);
+  animation: spin .9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.skel-row {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  column-gap: 14px;
+  align-items: center;
+  padding: 10px 12px;
+}
+
+.skel-row > div {
+  display: grid;
+  gap: 8px;
+}
+
+.skel-row .skel-tile {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--r-sm);
+}

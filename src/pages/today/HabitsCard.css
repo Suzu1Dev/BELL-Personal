@@ -1,0 +1,419 @@
+/* HabitsCard (SPEC-ux §4.7, §9; mockup app.css "Habits" and the ≤1080 chip mode). */
+.habits {
+  padding-bottom: 12px;
+}
+
+.habits .card-head {
+  margin-bottom: 4px;
+}
+
+.keys {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.keys kbd {
+  min-width: 16px;
+  height: 17px;
+  padding: 0 4px;
+}
+
+.habit {
+  position: relative;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto 28px;
+  column-gap: 8px;
+  align-items: center;
+  padding: 9px 0;
+}
+
+.habit + .habit {
+  border-top: 1px solid var(--border);
+}
+
+.h-head {
+  padding: 0 0 2px;
+}
+
+.h-head + .habit {
+  border-top: 0;
+}
+
+.hcheck {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  display: grid;
+  place-items: center;
+  color: transparent;
+  background: var(--surface);
+  transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+
+.hcheck .ico {
+  width: 15px;
+  height: 15px;
+  stroke-width: 2.6;
+}
+
+.hcheck:hover {
+  border-color: var(--m-habit);
+}
+
+.hcheck:active {
+  transform: scale(.92);
+}
+
+.hcheck[aria-pressed="true"] {
+  background: var(--m-habit);
+  border-color: var(--m-habit);
+  color: var(--on-accent);
+}
+
+.h-name {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 550;
+  color: var(--ink);
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.h-short {
+  display: none;
+}
+
+.habit.is-done .h-name {
+  color: var(--ink-2);
+}
+
+.h-cad {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.h-dots {
+  display: grid;
+  grid-template-columns: repeat(7, 10px);
+  gap: 4px;
+}
+
+.h-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--surface-sunk);
+}
+
+.h-dots i.y {
+  background: var(--m-habit);
+}
+
+.h-dots i.rest {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--border-strong);
+}
+
+.h-dots i.t {
+  box-shadow: 0 0 0 1.5px var(--surface), 0 0 0 3px var(--accent);
+}
+
+.h-days {
+  display: grid;
+  grid-template-columns: repeat(7, 10px);
+  gap: 4px;
+  font-size: var(--fs-xs);
+  line-height: 1;
+  color: var(--muted);
+  text-align: center;
+}
+
+.h-days .today {
+  color: var(--accent);
+  font-weight: 650;
+}
+
+.h-streak {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  justify-content: flex-end;
+  font: 600 var(--fs-xs)/1 var(--font-mono);
+  color: var(--ink-2);
+}
+
+.h-streak .ico {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+}
+
+.habit-more,
+.habit-add-chip {
+  display: none;
+}
+
+/* Loading rows */
+.habit-skel {
+  grid-template-columns: 32px minmax(0, 1fr);
+}
+
+.habit-skel .hcheck-skel {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.habit-skel > div {
+  display: grid;
+  gap: 7px;
+}
+
+.habits.is-empty .empty-state {
+  margin-top: 8px;
+  padding: 20px 16px;
+}
+
+@media (pointer: coarse) {
+  .hcheck::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+  }
+
+  .keys {
+    display: none;
+  }
+}
+
+/* ≤1080: three one-tap chips with no card chrome. */
+@media (max-width: 1080px) {
+  .habits {
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .habits .card-head,
+  .habit.h-head {
+    display: none;
+  }
+
+  .habit-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    max-width: 600px;
+  }
+
+  .habit-list.has-more {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+    max-width: 660px;
+  }
+
+  .habit {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-height: var(--tap);
+    padding: 0 10px 0 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    background: var(--surface);
+    box-shadow: var(--shadow-btn);
+  }
+
+  .habit + .habit {
+    border-top: 1px solid var(--border);
+  }
+
+  .habit.is-done {
+    background: var(--m-habit-bg);
+    border-color: color-mix(in srgb, var(--m-habit) 35%, transparent);
+  }
+
+  .habit.is-extra {
+    display: none;
+  }
+
+  .hcheck {
+    position: static;
+    width: 22px;
+    height: 22px;
+    flex: none;
+  }
+
+  .hcheck .ico {
+    width: 12px;
+    height: 12px;
+  }
+
+  .hcheck:active {
+    transform: none;
+  }
+
+  .hcheck:active .ico {
+    transform: scale(.92);
+  }
+
+  /* The whole chip is the hit area. */
+  .hcheck::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .habit > div:not(.h-dots) {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .h-name,
+  .h-cad,
+  .h-dots {
+    display: none;
+  }
+
+  .h-short {
+    display: block;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .h-streak {
+    margin-left: auto;
+  }
+
+  .habit-more {
+    display: flex;
+    justify-content: center;
+    padding: 0 14px;
+    font: 600 var(--fs-sm)/1 var(--font-mono);
+    color: var(--ink-2);
+  }
+
+  .habit-skel {
+    display: flex;
+  }
+
+  .habit-skel > div {
+    display: none;
+  }
+
+  .habit-skel .hcheck-skel {
+    width: 22px;
+    height: 22px;
+  }
+
+  .habits.is-empty .empty-state {
+    display: none;
+  }
+
+  .habit-add-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap);
+    padding: 0 16px;
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--r-pill);
+    background: var(--surface);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .today-grid .habits {
+    order: 1;
+  }
+}
+
+@media (max-width: 720px) {
+  .habits {
+    padding: 0;
+  }
+
+  .habit-list,
+  .habit-list.has-more {
+    max-width: none;
+  }
+
+  .habit-list.has-more {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .habit-list.has-more .habit-more {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+
+/* Wide secondary text may wrap instead of being truncated. */
+@media (min-width: 1081px) {
+  .h-cad {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+}
+
+@media (max-width: 400px) {
+  .habit-list,
+  .habit-list.has-more {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .habit {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    gap: 8px;
+    min-height: 44px;
+    padding: 6px 8px;
+  }
+
+  .hcheck {
+    width: 28px;
+    height: 28px;
+  }
+
+  .h-name {
+    display: block;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    font-size: var(--text-ui);
+  }
+
+  .h-short {
+    display: none;
+  }
+
+  .h-streak {
+    font-size: var(--text-micro);
+  }
+}
+
+@media (max-width: 360px) {
+  .habit .h-streak .ico {
+    display: none;
+  }
+}

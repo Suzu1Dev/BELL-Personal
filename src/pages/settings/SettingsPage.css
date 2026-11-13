@@ -1,0 +1,351 @@
+/* 連線與設定 layout: built from the Card, Field and Switch tokens (SPEC-ux §3.3: no new button, card, pill or row styles). */
+.settings-notice {
+  max-width: 880px;
+  margin-bottom: 16px;
+}
+
+.settings-stack {
+  display: grid;
+  gap: 12px;
+  max-width: 880px;
+}
+
+/* One card of preferences: rows split by hairlines, like the appearance block. */
+.settings-card {
+  display: grid;
+  gap: 18px;
+}
+
+.settings-card > * + *,
+.settings-group > * + * {
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.settings-group {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.settings-group:disabled {
+  opacity: .55;
+}
+
+.settings-label {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.settings-lead {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.settings-ok,
+.settings-warn {
+  margin-top: 4px;
+  font-size: var(--fs-xs);
+  font-weight: 550;
+}
+
+.settings-ok {
+  color: var(--ok);
+}
+
+.settings-warn {
+  color: var(--warn);
+}
+
+.settings-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 16px;
+}
+
+.settings-action {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.settings-action > div {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.settings-action .checkbox-field {
+  margin-top: 8px;
+}
+
+/* Inside source cards */
+.sc-note {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.source-card .sc-note {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.sc-form {
+  display: grid;
+  gap: 12px;
+  max-width: 460px;
+}
+
+.sc-form-inline {
+  max-width: none;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto;
+  align-items: start;
+  margin-top: 12px;
+}
+
+.sc-form-inline .sc-form-acts {
+  padding-top: 27px;
+}
+
+.sc-form-acts {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Switches end at the card's right edge, as on 每日摘要; the fields inside keep their own widths (.sc-short, .sc-search). */
+.sc-rows {
+  display: grid;
+  gap: 14px;
+}
+
+.sc-short .input {
+  max-width: 220px;
+}
+
+.settings-pair .field {
+  align-content: start;
+}
+
+/* A segmented choice beside its label keeps its own width (the label column takes the rest). */
+.settings-action > .seg {
+  flex: none;
+}
+
+/* 資料與隱私 › 信任的寄件者: the feed list's rows, and one field with its button. */
+.trusted-senders {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.trusted-form {
+  max-width: 560px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  margin-top: 4px;
+}
+
+.trusted-form .sc-form-acts {
+  padding-top: 27px;
+}
+
+@media (max-width: 720px) {
+  .trusted-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .trusted-form .sc-form-acts {
+    padding-top: 0;
+  }
+}
+
+.feed-list {
+  display: grid;
+  /* One shrinkable column: a long feed address ellipsizes instead of widening the page at 320px. */
+  grid-template-columns: minmax(0, 1fr);
+  border-top: 1px solid var(--border);
+}
+
+.feed-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.feed-list li > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.feed-list b {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.feed-list span {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feed-list .sc-error {
+  color: var(--danger);
+  white-space: normal;
+}
+
+.sc-search {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 460px;
+}
+
+.sc-search .field {
+  flex: 1;
+}
+
+.geo-results {
+  display: grid;
+  max-width: 460px;
+  border-top: 1px solid var(--border);
+}
+
+.geo-results li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-sm);
+}
+
+.geo-results li span {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .settings-pair,
+  .sc-form-inline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sc-form-inline .sc-form-acts {
+    padding-top: 0;
+  }
+}
+
+.onboarding-settings .settings-section + .settings-section {
+  margin-top: 40px;
+}
+
+.onboarding-settings .sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.onboarding-settings .sec-head h2 {
+  margin: 0;
+  font-size: var(--fs-lg);
+}
+
+.onboarding-settings .sec-head .hint {
+  margin: 0 0 0 auto;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+.onboarding-settings .feat .opt {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.onboarding-settings .feat .switch-row {
+  margin: 0;
+}
+
+.onboarding-settings .by-tag {
+  color: var(--muted);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+}
+
+.onboarding-settings .by-tag.custom {
+  color: var(--warn);
+}
+
+.onboarding-settings .restore {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent-strong);
+  font-size: var(--fs-xs);
+}
+
+.onboarding-settings .ai-method {
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+}
+
+.onboarding-settings .radio {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+.onboarding-settings .radio[aria-checked="true"] {
+  border: 5px solid var(--accent);
+}
+
+.onboarding-settings .model-row {
+  grid-template-columns: minmax(0, 1fr) minmax(180px, auto);
+}
+
+.onboarding-settings .model-row .field {
+  min-width: 200px;
+}
+
+.ai-connect-modal {
+  width: min(680px, calc(100vw - 32px));
+}
+
+@media (max-width: 720px) {
+  .onboarding-settings .sec-head {
+    flex-wrap: wrap;
+  }
+
+  .onboarding-settings .sec-head .hint {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .onboarding-settings .model-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .onboarding-settings .model-row .field {
+    min-width: 0;
+  }
+}

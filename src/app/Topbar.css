@@ -1,0 +1,196 @@
+/* Topbar (SPEC-ux §3.2, §7, §9; ported from mockup app.css "shell"). Sticky glass. */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-topbar);
+  height: var(--topbar);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 24px 0 16px;
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.crumbs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  margin-left: 6px;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.crumbs .ico {
+  width: 14px;
+  height: 14px;
+  color: var(--faint);
+}
+
+.crumbs b {
+  color: var(--ink);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.crumbs .ws {
+  white-space: nowrap;
+}
+
+.top-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+.kpill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 8px 0 12px;
+  min-width: 220px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  transition: border-color var(--dur-1) var(--ease);
+}
+
+.kpill:hover {
+  border-color: var(--border-strong);
+  color: var(--ink-2);
+}
+
+.kpill kbd {
+  margin-left: auto;
+  border-radius: var(--r-pill);
+  padding: 0 7px;
+  height: 22px;
+}
+
+.sync-chip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  white-space: nowrap;
+  transition: border-color var(--dur-1) var(--ease);
+}
+
+.sync-chip:hover {
+  border-color: var(--border-strong);
+}
+
+.sync-chip .mono {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.sync-chip > .ico {
+  color: var(--muted);
+}
+
+.sync-chip.is-warn > .ico {
+  color: var(--warn);
+}
+
+.sync-chip.is-warn {
+  border-color: color-mix(in srgb, var(--warn) 40%, var(--border));
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+
+.sync-chip.is-warn .mono {
+  color: var(--warn);
+}
+
+/* Theme toggle: the moon in light, the sun in dark (follows the effective theme). */
+.tg-sun {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tg-sun { display: block; }
+  :root:not([data-theme="light"]) .tg-moon { display: none; }
+}
+
+:root[data-theme="dark"] .tg-sun { display: block; }
+:root[data-theme="dark"] .tg-moon { display: none; }
+
+.top-avatar .avatar {
+  width: 32px;
+  height: 32px;
+  margin-left: 4px;
+}
+
+.m-brand {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  margin-right: 4px;
+}
+
+.m-brand .ico {
+  width: 15px;
+  height: 15px;
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    height: 56px;
+    padding: 0 8px 0 6px;
+    gap: 2px;
+  }
+
+  .crumbs {
+    margin-left: 2px;
+    font-size: var(--fs-md);
+  }
+
+  .crumbs .ws,
+  .crumbs .ico {
+    display: none;
+  }
+
+  .top-actions {
+    gap: 0;
+  }
+
+  .sync-chip {
+    height: 32px;
+    padding: 0 10px;
+    font-size: var(--fs-xs);
+    margin-right: 2px;
+  }
+
+  .sync-chip .lbl {
+    display: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .sync-chip {
+    position: relative;
+  }
+
+  .sync-chip::after {
+    content: "";
+    position: absolute;
+    inset: -6px 0;
+  }
+}

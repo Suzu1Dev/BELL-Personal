@@ -1,0 +1,68 @@
+/* Chip — filter (SPEC-ux §9; mockup app.css "Chip"). */
+.chips {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.chips::-webkit-scrollbar {
+  display: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  height: 30px;
+  padding: 0 11px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  white-space: nowrap;
+  transition: border-color var(--dur-1) var(--ease), background var(--dur-1) var(--ease);
+}
+
+.chip .mono {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.chip:hover {
+  border-color: var(--border-strong);
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--accent-soft);
+  border-color: var(--accent-ring);
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.chip[aria-pressed="true"] .mono {
+  color: var(--accent-strong);
+}
+
+.chip.is-error {
+  border-style: dashed;
+  color: var(--muted);
+}
+
+.chip.is-error .ico {
+  color: var(--warn);
+}
+
+/* Inside a scrolling chip row the focus ring must not be clipped. */
+.chips .chip:focus-visible {
+  outline-offset: -3px;
+}
+
+@media (pointer: coarse) {
+  .chip {
+    height: auto;
+    min-height: var(--tap);
+  }
+}

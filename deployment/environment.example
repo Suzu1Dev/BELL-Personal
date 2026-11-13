@@ -1,0 +1,23 @@
+# BELL Personal production settings: install as ~/.config/bell-personal/environment (mode 0600).
+#   install -m600 deployment/environment.example ~/.config/bell-personal/environment
+# systemd reads this file (EnvironmentFile=); .env is for development only.
+BELLPERSONAL_HOST=127.0.0.1
+BELLPERSONAL_PORT=20003
+BELLPERSONAL_FRONTEND_PORT=20003
+BELLPERSONAL_DATA_DIR=/home/you/apps/bell-personal/data
+# Required in production; the first entry must be the https tailnet address (Google redirect, /privacy).
+BELLPERSONAL_ALLOWED_ORIGINS=https://<your-tailnet-host>:20003
+# Tailscale logins allowed to open the page. Production refuses to start without one.
+BELLPERSONAL_TAILSCALE_USERS=alice@github
+BELLPERSONAL_SECRETS_DIR=/home/you/.config/bell-personal/secrets
+# 32 random bytes, base64. Generate once and keep it: changing it means reconnecting every source.
+#   node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+BELLPERSONAL_MASTER_KEY=
+BELLPERSONAL_TZ=Asia/Taipei
+BELLPERSONAL_MAX_AGENT_PROCESSES=1
+BELLPERSONAL_DRAIN_SECONDS=10
+# Optional: the Google OAuth client can also be entered in 連線與設定 (stored encrypted).
+# BELLPERSONAL_GOOGLE_CLIENT_ID=
+# BELLPERSONAL_GOOGLE_CLIENT_SECRET=
+CLAUDE_CLI_PATH=/home/you/.local/bin/claude
+CODEX_CLI_PATH=/home/you/.local/bin/codex

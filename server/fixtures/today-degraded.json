@@ -1,0 +1,668 @@
+{
+  "date": "2026-10-12",
+  "now": "2026-10-12T00:42:00.000Z",
+  "greeting": "早安",
+  "weather": {
+    "city": "新竹",
+    "tempC": 24,
+    "text": "多雲",
+    "rain": {
+      "from": "2026-10-12T13:00:00.000Z",
+      "pct": 60
+    }
+  },
+  "brief": {
+    "state": "fallback",
+    "source": "rule",
+    "reason": "Claude 尚未登入",
+    "next": "06:30",
+    "text": "1 封信待回覆，1 項作業今晚 23:59 截止。第一個行程是 10:10 作業系統，15:30 後有 4 小時空檔。"
+  },
+  "counts": {
+    "open": 8,
+    "handled": 3,
+    "total": 11,
+    "handledBy": {
+      "reply": 1,
+      "done": 2,
+      "snooze": 0,
+      "calendar": 0
+    },
+    "inboxUnread": 12,
+    "habitsLeft": 2,
+    "nav": {
+      "tasks": 4,
+      "work": 3,
+      "events": 0
+    }
+  },
+  "paceMinutes": 35,
+  "nextUp": {
+    "start": "2026-10-12T02:10:00.000Z",
+    "title": "作業系統"
+  },
+  "queue": [
+    {
+      "group": "now",
+      "items": [
+        {
+          "id": "gmail:18c2f0a1b2c3d4e5",
+          "kind": "mail.reply",
+          "group": "now",
+          "source": "gmail",
+          "title": "Re: OS 期末專題題目討論",
+          "meta": [
+            "林志明 教授",
+            "作業系統",
+            "待回覆"
+          ],
+          "avatar": {
+            "initial": "林"
+          },
+          "when": {
+            "label": "08:05",
+            "mono": true
+          },
+          "summary": "教授同意用 eBPF 觀察排程延遲當期末專題，請你在週三 10:00 meeting 前回信，附上一頁提案並確認時間。",
+          "summarySource": "ai",
+          "actions": [
+            {
+              "id": "reply",
+              "label": "回覆",
+              "touchLabel": "回覆",
+              "key": "Enter"
+            },
+            {
+              "id": "todo",
+              "label": "轉待辦",
+              "touchLabel": "轉待辦",
+              "key": "T"
+            },
+            {
+              "id": "snooze",
+              "label": "延後",
+              "touchLabel": "延後",
+              "key": "S"
+            },
+            {
+              "id": "archive",
+              "label": "封存",
+              "touchLabel": "封存",
+              "key": "E"
+            },
+            {
+              "id": "trash",
+              "label": "刪除",
+              "touchLabel": "刪除",
+              "key": "#"
+            }
+          ],
+          "url": "https://mail.google.com/mail/u/0/#inbox/18c2f0a1b2c3d4e5"
+        },
+        {
+          "id": "moodle:assign-30512",
+          "kind": "assignment",
+          "group": "now",
+          "source": "moodle",
+          "title": "作業系統 HW3：CPU Scheduling 模擬",
+          "meta": [
+            "NYCU E3",
+            "作業系統",
+            "今晚 23:59 截止",
+            "尚未繳交"
+          ],
+          "when": {
+            "label": "剩 15 小時",
+            "tone": "hot",
+            "mono": false
+          },
+          "actions": [
+            {
+              "id": "open",
+              "label": "開啟 E3",
+              "touchLabel": "開啟",
+              "key": "Enter"
+            },
+            {
+              "id": "submitted",
+              "label": "標為已交",
+              "touchLabel": "已交",
+              "key": "E"
+            },
+            {
+              "id": "snooze",
+              "label": "延後",
+              "touchLabel": "延後",
+              "key": "S"
+            }
+          ],
+          "url": "https://e3p.nycu.edu.tw/mod/assign/view.php?id=30512",
+          "snoozeLimit": "2026-10-12T13:59:00.000Z"
+        },
+        {
+          "id": "github:PR_kwDOSitcon127",
+          "kind": "review",
+          "group": "now",
+          "source": "github",
+          "title": "審查 #127 新增議程頁深色模式",
+          "meta": [
+            "sitcon-tw/2027.sitcon.org",
+            "yuchen 請你審查"
+          ],
+          "diff": {
+            "add": 142,
+            "del": 38
+          },
+          "when": {
+            "label": "昨天",
+            "mono": false
+          },
+          "actions": [
+            {
+              "id": "open",
+              "label": "開始審查",
+              "touchLabel": "審查",
+              "key": "Enter"
+            },
+            {
+              "id": "reviewed",
+              "label": "標為已審查",
+              "touchLabel": "已審查",
+              "key": "E"
+            },
+            {
+              "id": "snooze",
+              "label": "延後",
+              "touchLabel": "延後",
+              "key": "S"
+            }
+          ],
+          "url": "https://github.com/sitcon-tw/2027.sitcon.org/pull/127"
+        }
+      ],
+      "hidden": 0,
+      "cap": 5
+    },
+    {
+      "group": "today",
+      "items": [
+        {
+          "id": "ai:sg-sitcon-autumn",
+          "kind": "suggestion.event",
+          "group": "today",
+          "source": "ai",
+          "title": "從信件找到 1 個活動，要加入行事曆嗎？",
+          "meta": [
+            "SITCON 秋季交流會",
+            "10/25（日）13:30",
+            "中研院人文館",
+            "來自 KKTIX 報名成功信"
+          ],
+          "actions": [
+            {
+              "id": "calendar",
+              "label": "加入行事曆",
+              "touchLabel": "加入行事曆",
+              "key": "C"
+            },
+            {
+              "id": "dismiss",
+              "label": "略過",
+              "touchLabel": "略過",
+              "key": "E"
+            }
+          ],
+          "url": "https://mail.google.com/mail/u/0/#inbox/18c2d1c0b9a8f7e6"
+        },
+        {
+          "id": "gmail:18c2e9d0a1b2c3f6",
+          "kind": "mail.bill",
+          "group": "today",
+          "source": "gmail",
+          "title": "中華電信 9 月帳單 NT$599",
+          "meta": [
+            "帳單",
+            "10/20 截止",
+            "沒有設定自動扣繳"
+          ],
+          "when": {
+            "label": "還有 8 天",
+            "tone": "muted",
+            "mono": false
+          },
+          "summary": "9 月電信費 NT$599，10/20 前繳。這個門號沒有設定自動扣繳，可用 Hami Pay 或超商代收。",
+          "summarySource": "ai",
+          "actions": [
+            {
+              "id": "todo",
+              "label": "轉成待辦",
+              "touchLabel": "轉待辦",
+              "key": "T"
+            },
+            {
+              "id": "archive",
+              "label": "封存",
+              "touchLabel": "封存",
+              "key": "E"
+            },
+            {
+              "id": "snooze",
+              "label": "延後",
+              "touchLabel": "延後",
+              "key": "S"
+            },
+            {
+              "id": "trash",
+              "label": "刪除",
+              "touchLabel": "刪除",
+              "key": "#"
+            }
+          ],
+          "url": "https://mail.google.com/mail/u/0/#inbox/18c2e9d0a1b2c3f6",
+          "snoozeLimit": "2026-10-20T13:59:00.000Z"
+        },
+        {
+          "id": "native:todo-study-slides",
+          "kind": "todo",
+          "group": "today",
+          "source": "native",
+          "title": "準備讀書會簡報：Ch.5 Deadlocks",
+          "meta": [
+            "待辦",
+            "讀書會 14:00 前",
+            "預估 40 分鐘"
+          ],
+          "when": {
+            "label": "14:00",
+            "tone": "warm",
+            "mono": true
+          },
+          "actions": [
+            {
+              "id": "done",
+              "label": "完成",
+              "touchLabel": "完成",
+              "key": "E"
+            },
+            {
+              "id": "snooze",
+              "label": "延後",
+              "touchLabel": "延後",
+              "key": "S"
+            },
+            {
+              "id": "open",
+              "label": "開啟",
+              "touchLabel": "開啟",
+              "key": "Enter"
+            }
+          ],
+          "snoozeLimit": "2026-10-12T04:00:00.000Z"
+        }
+      ],
+      "hidden": 0,
+      "cap": 5
+    },
+    {
+      "group": "later",
+      "items": [
+        {
+          "id": "moodle:assign-30744",
+          "kind": "assignment",
+          "group": "later",
+          "source": "moodle",
+          "title": "計算機網路 Lab 2：Socket Programming",
+          "meta": [
+            "NYCU E3",
+            "計算機網路",
+            "週三 23:59 截止"
+          ],
+          "when": {
+            "label": "還有 2 天",
+            "tone": "muted",
+            "mono": false
+          },
+          "actions": [
+            {
+              "id": "open",
+              "label": "開啟 E3",
+              "touchLabel": "開啟",
+              "key": "Enter"
+            },
+            {
+              "id": "submitted",
+              "label": "標為已交",
+              "touchLabel": "已交",
+              "key": "E"
+            },
+            {
+              "id": "snooze",
+              "label": "延後",
+              "touchLabel": "延後",
+              "key": "S"
+            }
+          ],
+          "url": "https://e3p.nycu.edu.tw/mod/assign/view.php?id=30744",
+          "snoozeLimit": "2026-10-14T13:59:00.000Z"
+        },
+        {
+          "id": "ctftime:2846",
+          "kind": "event.decide",
+          "group": "later",
+          "source": "ctftime",
+          "title": "Balsn CTF 2026，要參加嗎？",
+          "subject": "Balsn CTF 2026",
+          "meta": [
+            "CTFtime",
+            "10/17（六）08:00 起 48 小時",
+            "線上",
+            "權重 55"
+          ],
+          "when": {
+            "label": "還有 5 天",
+            "tone": "muted",
+            "mono": false
+          },
+          "actions": [
+            {
+              "id": "going",
+              "label": "要參加",
+              "touchLabel": "要參加",
+              "key": "C"
+            },
+            {
+              "id": "dismiss",
+              "label": "略過",
+              "touchLabel": "略過",
+              "key": "E"
+            }
+          ],
+          "url": "https://ctftime.org/event/2846"
+        }
+      ],
+      "hidden": 0,
+      "cap": 3
+    }
+  ],
+  "digest": {
+    "total": 9,
+    "categories": [
+      {
+        "key": "newsletter",
+        "label": "電子報",
+        "count": 3,
+        "action": "read"
+      },
+      {
+        "key": "school",
+        "label": "學校公告",
+        "count": 2,
+        "action": "open"
+      },
+      {
+        "key": "github",
+        "label": "GitHub 通知",
+        "count": 4,
+        "action": "read"
+      }
+    ]
+  },
+  "agenda": {
+    "items": [
+      {
+        "start": "2026-10-12T02:10:00.000Z",
+        "end": "2026-10-12T04:00:00.000Z",
+        "title": "作業系統",
+        "meta": "工程三館 EC115 · 林志明",
+        "kind": "event",
+        "past": false
+      },
+      {
+        "start": "2026-10-12T06:00:00.000Z",
+        "end": "2026-10-12T07:30:00.000Z",
+        "title": "OS 讀書會 · Ch.5",
+        "meta": "浩然圖書館 討論室 B",
+        "kind": "event",
+        "past": false
+      },
+      {
+        "start": "2026-10-12T11:30:00.000Z",
+        "end": "2026-10-12T12:30:00.000Z",
+        "title": "健身",
+        "meta": "光復校區 體育館",
+        "kind": "event",
+        "habitLink": "運動",
+        "habitId": "habit-move",
+        "past": false
+      },
+      {
+        "start": "2026-10-12T15:59:00.000Z",
+        "title": "HW3 截止",
+        "meta": "作業系統 · NYCU E3",
+        "kind": "due",
+        "itemId": "moodle:assign-30512",
+        "past": false
+      }
+    ],
+    "gap": {
+      "start": "2026-10-12T07:30:00.000Z",
+      "end": "2026-10-12T11:30:00.000Z",
+      "hours": 4,
+      "forItemId": "moodle:assign-30512",
+      "label": "適合寫 HW3",
+      "estimateMinutes": 180
+    }
+  },
+  "habits": [
+    {
+      "id": "habit-read",
+      "name": "閱讀 20 分鐘",
+      "short": "閱讀",
+      "cadence": "今天 07:50 完成",
+      "doneToday": true,
+      "week": [
+        "y",
+        "y",
+        "y",
+        "y",
+        "y",
+        "y",
+        "y"
+      ],
+      "streak": 12,
+      "streakUnit": "天"
+    },
+    {
+      "id": "habit-move",
+      "name": "運動",
+      "short": "運動",
+      "cadence": "每週 3 次 · 0/3",
+      "doneToday": false,
+      "week": [
+        "y",
+        "rest",
+        "y",
+        "rest",
+        "y",
+        "rest",
+        "n"
+      ],
+      "streak": 4,
+      "streakUnit": "週"
+    },
+    {
+      "id": "habit-diary",
+      "name": "寫日記",
+      "short": "日記",
+      "cadence": "每天 · 睡前",
+      "doneToday": false,
+      "week": [
+        "y",
+        "y",
+        "y",
+        "y",
+        "y",
+        "y",
+        "n"
+      ],
+      "streak": 27,
+      "streakUnit": "天"
+    }
+  ],
+  "ideas": [
+    {
+      "id": "idea-ebpf-cfs",
+      "text": "用 eBPF 量 CFS 排程延遲，當期末專題",
+      "at": "2026-10-11T15:10:00.000Z"
+    },
+    {
+      "id": "idea-ctf-blog",
+      "text": "CTF writeup 改寫成部落格系列",
+      "at": "2026-10-09T13:00:00.000Z"
+    }
+  ],
+  "later": {
+    "events": [
+      {
+        "date": "10/13",
+        "label": "明天",
+        "title": "09:00 計算機網路",
+        "meta": "工程三館 EC122 · Google 行事曆",
+        "start": "2026-10-13T01:00:00.000Z"
+      },
+      {
+        "date": "10/24",
+        "label": "週六",
+        "title": "g0v 零時政府第柒拾次大松",
+        "meta": "中研院 · g0v 行事曆訂閱",
+        "start": "2026-10-24T01:00:00.000Z"
+      },
+      {
+        "date": "10/30",
+        "label": "週五",
+        "title": "停修申請截止",
+        "meta": "NYCU 校園行事曆 · 還有 18 天",
+        "start": "2026-10-29T16:00:00.000Z"
+      }
+    ],
+    "projects": [
+      {
+        "name": "OS 期末專題",
+        "pct": 20,
+        "next": "10/19 題目提案 · 等林教授回覆",
+        "color": "task",
+        "href": "#/work/projects/os-final"
+      },
+      {
+        "name": "ctf-notes",
+        "pct": 64,
+        "next": "Balsn 前整理 heap 筆記",
+        "color": "event",
+        "href": "#/work/projects/ctf-notes"
+      },
+      {
+        "name": "vitejs/vite #18234",
+        "next": "fix(css): preserve @layer order · 等待審查 3 天",
+        "pr": true,
+        "href": "https://github.com/vitejs/vite/pull/18234"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "gmail",
+      "label": "Gmail",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:40:00.000Z"
+    },
+    {
+      "id": "google-calendar",
+      "label": "Google 行事曆",
+      "state": "reconnect",
+      "lastSyncedAt": "2026-10-11T14:10:00.000Z",
+      "message": "Google 行事曆 需要重新連線：請到「連線與設定」重新授權。"
+    },
+    {
+      "id": "moodle",
+      "label": "Moodle",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:31:00.000Z"
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:38:00.000Z"
+    },
+    {
+      "id": "ctftime",
+      "label": "CTFtime",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:00:00.000Z"
+    },
+    {
+      "id": "feeds",
+      "label": "活動訂閱",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:00:00.000Z"
+    },
+    {
+      "id": "weather",
+      "label": "天氣",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:30:00.000Z"
+    }
+  ],
+  "handled": [
+    {
+      "itemId": "native:todo-scholarship",
+      "kind": "todo",
+      "title": "寄出獎學金申請文件",
+      "action": "done",
+      "at": "2026-10-12T00:33:00.000Z",
+      "actionId": "demo-action-3",
+      "undoable": true
+    },
+    {
+      "itemId": "native:todo-dorm-fee",
+      "kind": "todo",
+      "title": "繳宿舍網路費",
+      "action": "done",
+      "at": "2026-10-12T00:27:00.000Z",
+      "actionId": "demo-action-2",
+      "undoable": true
+    },
+    {
+      "itemId": "gmail:18c2a7b6c5d4e3f2",
+      "kind": "mail.reply",
+      "title": "Re: HW2 成績疑問",
+      "action": "reply",
+      "at": "2026-10-12T00:20:00.000Z",
+      "actionId": "demo-action-1",
+      "undoable": false
+    }
+  ],
+  "sidebar": {
+    "projects": [
+      {
+        "id": "os-final",
+        "name": "OS 期末專題",
+        "pct": 20,
+        "color": "task"
+      },
+      {
+        "id": "ctf-notes",
+        "name": "ctf-notes",
+        "pct": 64,
+        "color": "event"
+      },
+      {
+        "id": "bell-personal",
+        "name": "bell-personal",
+        "pct": 38,
+        "color": "accent"
+      }
+    ],
+    "streakDays": 12
+  }
+}

@@ -1,0 +1,16 @@
+/* 外觀 preferences block (built from Card/Field tokens). */
+.appearance-controls {
+  display: grid;
+  gap: 18px;
+}
+
+.appearance-controls > * + * {
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.appearance-label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink);
+}

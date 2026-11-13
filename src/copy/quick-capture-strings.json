@@ -1,0 +1,222 @@
+{
+  "zh-TW": {
+    "captureTypeLabels": {
+      "todo": "待辦",
+      "event": "行程",
+      "idea": "靈感"
+    },
+    "capture": {
+      "label": "快速記下",
+      "placeholder": "記下任何事…",
+      "hintIdle": "例如「明天 9:00 交報告」，Enter 自動分類",
+      "preview": "→ {label} · Tab 換類型",
+      "previewWithWhen": "→ {label} · {when} · Tab 換類型",
+      "ideasLink": "靈感",
+      "typeGroup": "類型",
+      "tabSwitch": "Tab 切換類型",
+      "saving": "記下中…",
+      "chipEdit": "修改日期與時間",
+      "chipDuration": "{text}",
+      "chipLocation": "@{place}",
+      "chipTags": "{tags}",
+      "dateInputLabel": "日期",
+      "timeInputLabel": "時間",
+      "repeatOff": "重複",
+      "repeatOffHint": "每週重複，例如每週一的課。",
+      "repeatOnHint": "每週行程只存在 BELL，不會加入 Google 行事曆。",
+      "repeatRemove": "{label}，按一下改成不重複",
+      "repeatUntil": "直到",
+      "repeatUntilLabel": "直到哪一天（可留白）",
+      "repeatPreview": "{label}重複",
+      "localOnly": "只存在 BELL"
+    },
+    "paletteCapture": {
+      "empty": "輸入一件事，例如「明天 9:00 交報告」或「每週一 10:10 作業系統」，Enter 自動分類。",
+      "enter": {
+        "todo": "建立待辦",
+        "event": "建立行程",
+        "idea": "記下靈感"
+      },
+      "metaTodoDue": "待辦 · {when} 到期",
+      "metaTodoNoDue": "待辦 · 沒有期限",
+      "metaEvent": "行程 · {when}",
+      "metaEventWithPlace": "行程 · {when} · {place}",
+      "metaIdea": "靈感 · 記到靈感清單",
+      "metaIdeaWithTags": "靈感 · {tags}",
+      "alternative": {
+        "todo": "建立待辦「{title}」",
+        "event": "建立行程「{title}」",
+        "idea": "記成靈感「{title}」"
+      },
+      "calendarGoogle": "Google 行事曆",
+      "calendarLocal": "本機行事曆",
+      "aiLoading": "AI 正在解析…",
+      "aiLoadingMeta": "規則看不太懂這句，請 AI 再讀一次",
+      "aiFailed": "AI 這次沒有解析成功",
+      "aiAsk": "交給 AI 解析",
+      "aiAskMeta": "按 ⌘↵ 請 AI 讀這一句",
+      "aiBasis": "從「{basis}」推得",
+      "searchMeta": {
+        "todo": "待辦",
+        "done": "已完成的待辦",
+        "idea": "靈感",
+        "project": "專案"
+      },
+      "searchOpen": "開啟",
+      "searchPct": "{pct}%"
+    },
+    "captureToasts": {
+      "todo": "已加入待辦「{title}」",
+      "todoWithWhen": "已加入待辦「{title}」· {when}",
+      "event": "已加入行事曆「{title}」· {when}",
+      "eventWeekly": "已加入每週行程「{title}」· {when}",
+      "idea": "已記下靈感",
+      "failedOffline": "沒有記下來：無法連線至本機服務。草稿已保留。",
+      "failed": "沒有記下來：{reason}。草稿已保留。",
+      "undoFailed": "沒有復原：{reason}"
+    },
+    "tidy": {
+      "working": "整理中…",
+      "workingAria": "AI 正在整理這一項",
+      "action": "整理",
+      "actionAria": "用 AI 整理「{title}」",
+      "actionHint": "AI 把標題整理得簡潔，細節移到備註，可以復原。",
+      "original": "原文：{text}",
+      "revert": "復原整理",
+      "revertAria": "復原「{title}」的整理",
+      "reverted": "已復原成「{title}」",
+      "undoFailed": "沒有復原整理：{reason}",
+      "failed": "沒有整理：{reason}。",
+      "reasons": {
+        "same": "已經很簡潔了，不需要整理。",
+        "unsure": "AI 看不太懂這一項，保留原本的內容。",
+        "rejected": "AI 的整理結果不夠可靠，保留原本的內容。",
+        "edited": "整理期間內容改過了，保留你的修改。",
+        "gone": "這一項已經刪除了。",
+        "google": "這個行程已在 Google 行事曆，請到 Google 行事曆修改。"
+      }
+    },
+    "captureDays": {
+      "yesterday": "昨天",
+      "today": "今天",
+      "tomorrow": "明天",
+      "dayAfter": "後天"
+    },
+    "api": {
+      "requestFailed": "操作未完成，請再試一次。",
+      "jobNotFound": "找不到這個工作，伺服器可能已重新啟動。",
+      "jobStatusUnavailable": "暫時無法確認工作狀態。",
+      "jobStreamDisconnected": "與服務的連線中斷，工作仍在背景進行，稍後重新整理即可看到結果。"
+    }
+  },
+  "en": {
+    "captureTypeLabels": {
+      "todo": "Task",
+      "event": "Event",
+      "idea": "Idea"
+    },
+    "capture": {
+      "label": "Quick capture",
+      "placeholder": "Jot down anything…",
+      "hintIdle": "e.g. Submit report tomorrow 9:00 — press Enter to sort",
+      "preview": "→ {label} · Tab to switch type",
+      "previewWithWhen": "→ {label} · {when} · Tab to switch type",
+      "ideasLink": "Ideas",
+      "typeGroup": "Type",
+      "tabSwitch": "Tab to switch type",
+      "saving": "Saving…",
+      "chipEdit": "Edit date and time",
+      "chipDuration": "{text}",
+      "chipLocation": "@{place}",
+      "chipTags": "{tags}",
+      "dateInputLabel": "Date",
+      "timeInputLabel": "Time",
+      "repeatOff": "Repeat",
+      "repeatOffHint": "Repeat weekly, like a Monday class.",
+      "repeatOnHint": "Weekly events stay in BELL and aren't added to Google Calendar.",
+      "repeatRemove": "{label}, click to turn off repeat",
+      "repeatUntil": "Until",
+      "repeatUntilLabel": "Repeat until date (optional)",
+      "repeatPreview": "{label}",
+      "localOnly": "In BELL only"
+    },
+    "paletteCapture": {
+      "empty": "Type anything, like “Submit report tomorrow 9:00” or “OS lab Mon 10:10–12:00” — press Enter to sort.",
+      "enter": {
+        "todo": "Create task",
+        "event": "Create event",
+        "idea": "Save idea"
+      },
+      "metaTodoDue": "Task · Due {when}",
+      "metaTodoNoDue": "Task · No due date",
+      "metaEvent": "Event · {when}",
+      "metaEventWithPlace": "Event · {when} · {place}",
+      "metaIdea": "Idea · Save to Ideas",
+      "metaIdeaWithTags": "Idea · {tags}",
+      "alternative": {
+        "todo": "Create task “{title}”",
+        "event": "Create event “{title}”",
+        "idea": "Save as idea “{title}”"
+      },
+      "calendarGoogle": "Google Calendar",
+      "calendarLocal": "Local calendar",
+      "aiLoading": "Reading with AI…",
+      "aiLoadingMeta": "Not sure how to sort this yet — asking AI to take a look",
+      "aiFailed": "AI couldn't sort this right now",
+      "aiAsk": "Ask AI to sort",
+      "aiAskMeta": "Press ⌘↵ to have AI read this",
+      "aiBasis": "From “{basis}”",
+      "searchMeta": {
+        "todo": "Task",
+        "done": "Completed task",
+        "idea": "Idea",
+        "project": "Project"
+      },
+      "searchOpen": "Open",
+      "searchPct": "{pct}%"
+    },
+    "captureToasts": {
+      "todo": "Added task “{title}”",
+      "todoWithWhen": "Added task “{title}” · {when}",
+      "event": "Added to Calendar “{title}” · {when}",
+      "eventWeekly": "Added weekly event “{title}” · {when}",
+      "idea": "Saved to Ideas",
+      "failedOffline": "Not saved: Can't reach the local service. Draft kept.",
+      "failed": "Not saved: {reason}. Draft kept.",
+      "undoFailed": "Couldn't undo: {reason}"
+    },
+    "tidy": {
+      "working": "Tidying…",
+      "workingAria": "AI is tidying this item",
+      "action": "Tidy",
+      "actionAria": "Tidy “{title}” with AI",
+      "actionHint": "AI makes the title concise and moves details to notes. You can undo anytime.",
+      "original": "Original: {text}",
+      "revert": "Undo tidy",
+      "revertAria": "Undo tidy for “{title}”",
+      "reverted": "Restored “{title}”",
+      "undoFailed": "Couldn't undo tidy: {reason}",
+      "failed": "Couldn't tidy: {reason}.",
+      "reasons": {
+        "same": "Already concise — no changes needed.",
+        "unsure": "AI wasn't sure about this one, so your original text was kept.",
+        "rejected": "AI's edit didn't look reliable, so your original text was kept.",
+        "edited": "Edited while tidying — kept your changes.",
+        "gone": "This item was already deleted.",
+        "google": "This event is in Google Calendar — edit it there."
+      }
+    },
+    "captureDays": {
+      "yesterday": "Yesterday",
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "dayAfter": "In 2 days"
+    },
+    "api": {
+      "requestFailed": "That didn't go through — please try again.",
+      "jobNotFound": "That background step wasn't found — the service may have restarted.",
+      "jobStatusUnavailable": "Status is temporarily unavailable — please try again.",
+      "jobStreamDisconnected": "Connection lost — still running in the background. Refresh shortly to check."
+    }
+  }
+}

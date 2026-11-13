@@ -1,0 +1,25 @@
+/* StaleNote (SPEC-ux §9; mockup app.css ".stale-note"). */
+.stale-note {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.stale-note .ico {
+  color: var(--warn);
+}
+
+.stale-note button {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (pointer: coarse) {
+  .stale-note button {
+    min-height: var(--tap);
+  }
+}

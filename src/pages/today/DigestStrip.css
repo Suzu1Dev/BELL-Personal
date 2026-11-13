@@ -1,0 +1,97 @@
+/* DigestStrip (SPEC-ux §4.4, §9; mockup app.css "Digest strip"). */
+.digest {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px 14px 18px;
+}
+
+.digest .txt {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.digest .txt b {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.digest .txt > span {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.digest .txt .mono {
+  display: inline;
+  color: var(--ink-2);
+}
+
+.digest .acts {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  flex: none;
+}
+
+.digest .acts .is-open {
+  transform: rotate(180deg);
+}
+
+/* 逐類看: one row per category with its one action. */
+.digest-cats {
+  flex-basis: 100%;
+  display: grid;
+  margin: 0 0 -4px 40px;
+  border-top: 1px solid var(--border);
+}
+
+.digest-cats li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 4px 0;
+  font-size: var(--fs-sm);
+  color: var(--ink);
+}
+
+.digest-cats li + li {
+  border-top: 1px solid var(--border);
+}
+
+.digest-cats .mono {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+
+.digest-cats .btn {
+  margin-left: auto;
+}
+
+@media (max-width: 720px) {
+  .digest {
+    padding: 14px 16px;
+  }
+
+  /* As in the mockup: the text takes its own line under the tile when it does not fit beside it. */
+  .digest .txt {
+    flex-basis: auto;
+  }
+
+  .digest .acts {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 40px;
+    justify-content: flex-start;
+  }
+
+  .digest-cats {
+    margin-left: 0;
+  }
+}

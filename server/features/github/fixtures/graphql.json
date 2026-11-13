@@ -1,0 +1,85 @@
+{
+  "data": {
+    "viewer": {
+      "login": "Suzu1Dev",
+      "contributionsCollection": {
+        "contributionCalendar": {
+          "totalContributions": 31,
+          "weeks": [
+            { "contributionDays": [
+              { "date": "2026-09-27", "contributionCount": 4 }, { "date": "2026-09-28", "contributionCount": 0 }, { "date": "2026-09-29", "contributionCount": 3 },
+              { "date": "2026-09-30", "contributionCount": 2 }, { "date": "2026-10-01", "contributionCount": 5 }, { "date": "2026-10-02", "contributionCount": 0 },
+              { "date": "2026-10-03", "contributionCount": 1 }
+            ] },
+            { "contributionDays": [
+              { "date": "2026-10-04", "contributionCount": 0 }, { "date": "2026-10-05", "contributionCount": 2 }, { "date": "2026-10-06", "contributionCount": 3 },
+              { "date": "2026-10-07", "contributionCount": 1 }, { "date": "2026-10-08", "contributionCount": 0 }, { "date": "2026-10-09", "contributionCount": 4 },
+              { "date": "2026-10-10", "contributionCount": 2 }
+            ] },
+            { "contributionDays": [
+              { "date": "2026-10-11", "contributionCount": 3 }, { "date": "2026-10-12", "contributionCount": 1 }
+            ] }
+          ]
+        }
+      }
+    },
+    "mine": {
+      "nodes": [
+        {
+          "id": "PR_kwDOVite18234", "number": 18234, "title": "fix(css): preserve @layer order", "url": "https://github.com/vitejs/vite/pull/18234",
+          "isDraft": false, "createdAt": "2026-10-09T07:00:00Z", "updatedAt": "2026-10-09T07:00:00Z", "additions": 40, "deletions": 12,
+          "reviewDecision": "REVIEW_REQUIRED", "repository": { "nameWithOwner": "vitejs/vite" },
+          "commits": { "nodes": [{ "commit": { "statusCheckRollup": { "state": "SUCCESS" } } }] },
+          "latestReviews": { "nodes": [] }
+        },
+        {
+          "id": "PR_kwDOBell42", "number": 42, "title": "Add the work page", "url": "https://github.com/Suzu1Dev/bell-personal/pull/42",
+          "isDraft": false, "createdAt": "2026-10-10T03:00:00Z", "updatedAt": "2026-10-11T12:00:00Z", "additions": 900, "deletions": 20,
+          "reviewDecision": "CHANGES_REQUESTED", "repository": { "nameWithOwner": "Suzu1Dev/bell-personal" },
+          "commits": { "nodes": [{ "commit": { "statusCheckRollup": { "state": "SUCCESS" } } }] },
+          "latestReviews": { "nodes": [
+            { "state": "COMMENTED", "submittedAt": "2026-10-11T08:00:00Z", "author": { "login": "cubic-dev-ai" } },
+            { "state": "CHANGES_REQUESTED", "submittedAt": "2026-10-11T11:30:00Z", "author": { "login": "yuchen" } }
+          ] }
+        },
+        {
+          "id": "PR_kwDOCtf7", "number": 7, "title": "Bump vite to 7.1", "url": "https://github.com/Suzu1Dev/ctf-notes/pull/7",
+          "isDraft": false, "createdAt": "2026-10-11T00:00:00Z", "updatedAt": "2026-10-12T00:10:00Z", "additions": 3, "deletions": 3,
+          "reviewDecision": null, "repository": { "nameWithOwner": "Suzu1Dev/ctf-notes" },
+          "commits": { "nodes": [{ "commit": { "statusCheckRollup": { "state": "FAILURE" } } }] },
+          "latestReviews": { "nodes": [] }
+        },
+        {
+          "id": "PR_kwDODraft9", "number": 9, "title": "WIP: heap notes", "url": "https://github.com/Suzu1Dev/ctf-notes/pull/9",
+          "isDraft": true, "createdAt": "2026-10-01T00:00:00Z", "updatedAt": "2026-10-02T00:00:00Z", "additions": 120, "deletions": 0,
+          "reviewDecision": null, "repository": { "nameWithOwner": "Suzu1Dev/ctf-notes" },
+          "commits": { "nodes": [{ "commit": { "statusCheckRollup": { "state": "FAILURE" } } }] },
+          "latestReviews": { "nodes": [] }
+        },
+        {}
+      ]
+    },
+    "reviews": {
+      "nodes": [
+        {
+          "id": "PR_kwDOSitcon127", "number": 127, "title": "新增議程頁深色模式", "url": "https://github.com/sitcon-tw/2027.sitcon.org/pull/127",
+          "isDraft": false, "createdAt": "2026-10-10T10:00:00Z", "updatedAt": "2026-10-11T09:00:00Z", "additions": 142, "deletions": 38,
+          "author": { "login": "yuchen" }, "repository": { "nameWithOwner": "sitcon-tw/2027.sitcon.org" },
+          "timelineItems": { "nodes": [
+            { "createdAt": "2026-10-11T00:00:00Z", "requestedReviewer": { "login": "Suzu1Dev" } },
+            { "createdAt": "2026-10-11T06:00:00Z", "requestedReviewer": { "login": "someone-else" } }
+          ] }
+        }
+      ]
+    },
+    "assigned": {
+      "nodes": [
+        {
+          "id": "I_kwDOBell9", "number": 9, "title": "Week view overflows at 320px", "url": "https://github.com/Suzu1Dev/bell-personal/issues/9",
+          "createdAt": "2026-10-08T02:00:00Z", "updatedAt": "2026-10-10T02:00:00Z", "author": { "login": "Suzu1Dev" },
+          "repository": { "nameWithOwner": "Suzu1Dev/bell-personal" }
+        }
+      ]
+    }
+  }
+}

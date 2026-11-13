@@ -1,0 +1,176 @@
+/* Form controls for settings, from the capture-field tokens (mockup app.css ".cap-field"). */
+.field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field > label,
+.switch-row label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.field-hint {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.field-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: var(--fs-xs);
+  color: var(--danger);
+  font-weight: 550;
+  line-height: 1.55;
+}
+
+.field-error .ico {
+  flex: none;
+  margin-top: 2px;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--muted);
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.select:focus-visible {
+  outline: 2px solid var(--accent-ring);
+  outline-offset: 2px;
+}
+
+.select:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.input:disabled,
+.textarea:disabled,
+.select:disabled {
+  background: var(--surface-soft);
+  color: var(--ink-2);
+}
+
+.has-error .input,
+.has-error .textarea,
+.has-error .select {
+  border-color: var(--danger);
+}
+
+.textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.select-wrap {
+  position: relative;
+  display: block;
+}
+
+.select {
+  appearance: none;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+/* Chevron drawn with borders so no image or hex is needed. */
+.select-wrap::after {
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 1.7px solid var(--muted);
+  border-bottom: 1.7px solid var(--muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.switch-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  min-width: 0;
+}
+
+.switch-row > .switch-text {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.switch {
+  position: relative;
+  flex: none;
+  width: 40px;
+  height: 24px;
+  border-radius: var(--r-pill);
+  background: var(--border-strong);
+  transition: background var(--dur-1) var(--ease);
+}
+
+.switch span {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--shadow-btn);
+  transition: transform var(--dur-1) var(--ease);
+}
+
+.switch[aria-checked="true"] {
+  background: var(--accent);
+}
+
+.switch[aria-checked="true"] span {
+  transform: translateX(16px);
+}
+
+.switch:disabled {
+  opacity: .48;
+}
+
+.switch::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+}
+
+@media (pointer: coarse) {
+  .input,
+  .select {
+    min-height: var(--tap);
+  }
+
+  .switch::after {
+    inset: -10px -2px;
+  }
+}

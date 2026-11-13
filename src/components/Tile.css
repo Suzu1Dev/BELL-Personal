@@ -1,0 +1,45 @@
+/* Tile (SPEC-ux §9; mockup app.css ".tile", ".t-*", ".empty-state .tile54"). */
+.tile {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border-radius: var(--r-sm);
+  display: grid;
+  place-items: center;
+  background: var(--tb, var(--surface-sunk));
+  color: var(--tc, var(--ink-2));
+}
+
+.tile .ico {
+  width: 15px;
+  height: 15px;
+}
+
+.tile54 {
+  width: 54px;
+  height: 54px;
+  flex: none;
+  border-radius: var(--r-lg);
+  display: grid;
+  place-items: center;
+  background: var(--tb, var(--surface-soft));
+  color: var(--tc, var(--muted));
+}
+
+.tile54 .ico {
+  width: 26px;
+  height: 26px;
+  stroke-width: 1.6;
+}
+
+.t-mail { --tb: var(--m-mail-bg); --tc: var(--m-mail); }
+.t-cal { --tb: var(--m-cal-bg); --tc: var(--m-cal); }
+.t-task { --tb: var(--m-task-bg); --tc: var(--m-task); }
+.t-event { --tb: var(--m-event-bg); --tc: var(--m-event); }
+.t-idea { --tb: var(--m-idea-bg); --tc: var(--m-idea); }
+.t-habit { --tb: var(--m-habit-bg); --tc: var(--m-habit); }
+.t-accent { --tb: var(--accent-soft); --tc: var(--accent); }
+.t-info { --tb: var(--info-soft); --tc: var(--info); }
+.t-warn { --tb: var(--warn-soft); --tc: var(--warn); }
+.t-danger { --tb: var(--danger-soft); --tc: var(--danger); }
+.t-ok { --tb: var(--ok-soft); --tc: var(--ok); }

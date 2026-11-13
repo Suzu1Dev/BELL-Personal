@@ -1,0 +1,39 @@
+/* Link (SPEC-ux §9; mockup app.css ".link"). */
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.link:hover {
+  color: var(--accent);
+}
+
+.link.accent {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/*
+ * A hit area at least --tap (44px) tall on touch without changing the layout
+ * (SPEC-ux §7 "Touch targets"): the 12px text is only about 19px tall, so a
+ * fixed inset reached 35px. Centred on the link, 8px wider on each side.
+ */
+@media (pointer: coarse) {
+  .link {
+    position: relative;
+  }
+
+  .link::after {
+    content: "";
+    position: absolute;
+    left: -8px;
+    right: -8px;
+    top: 50%;
+    height: max(100% + 16px, var(--tap));
+    transform: translateY(-50%);
+  }
+}

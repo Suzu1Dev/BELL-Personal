@@ -1,0 +1,922 @@
+{
+  "$meta": {
+    "product": "BELL Suite Polish - BELL Personal Calendar (#/calendar) & Guide (#/guide) Bilingual Copy Spec",
+    "author": "Muse (UX Writer)",
+    "locales": [
+      "zh-TW",
+      "en"
+    ],
+    "sourceCommit": "0ab616c1769bb6090bb6a7fd545b19fbe5d451f2",
+    "targets": {
+      "calendarPageHead": "BELL-Personal src/copy/common.ts (PAGE_HEADS.calendar.title, line 261) rendered on src/pages/calendar/CalendarPage.tsx (lines 48-51)",
+      "calendar": "BELL-Personal src/copy/calendar.ts (CALENDAR, lines 6-105) rendered across src/pages/calendar/CalendarPage.tsx, AgendaTimeline.tsx, WeekGrid.tsx, EventEditor.tsx, RemoveMenu.tsx, calendar-model.ts, and event-editor.ts",
+      "calendarPrefill": "BELL-Personal src/copy/calendar.ts (CALENDAR_PREFILL, lines 108-113) invoked by prefillText() in src/pages/calendar/calendar-model.ts (lines 50-58)",
+      "calendarModel": "BELL-Personal src/pages/calendar/calendar-model.ts (dayTitle), src/pages/calendar/WeekGrid.tsx (eventLabel, weekdayChar), shared/calendar.ts (weeklyLabel), shared/today-format.ts (relativeStart), and server/features/calendar/agenda.ts + google.ts + shared/sources.ts (SOURCE_TEXT, SOURCE_LABELS, deadline item title, untitled fallback)",
+      "calendarShared": "BELL-Personal src/copy/common.ts (ACTION_TOASTS.schedule, ACTION_LABELS.schedule, ERRORS, STALE, TOAST.undo) and src/copy/capture.ts (TIDY row actions) rendered directly on CalendarPage.tsx and AgendaTimeline.tsx",
+      "calendarServerErrors": "BELL-Personal server/features/calendar/google.ts (lines 55-68), router.ts (lines 40-210), and store.ts (lines 22-295) user-facing validation, sync, reconnect, and creation messages surfaced on #/calendar notices and error toasts",
+      "guidePageHead": "BELL-Personal src/copy/common.ts (PAGE_HEADS.guide.title, line 269) rendered on src/pages/guide/GuidePage.tsx (line 28)",
+      "guide": "BELL-Personal src/copy/guide.ts (GUIDE, lines 6-46) rendered on src/pages/guide/GuidePage.tsx (lines 30-70)",
+      "guideShared": "BELL-Personal src/copy/common.ts (HELP, lines 134-144, and AI_TAGS, lines 123-128) rendered inside src/pages/guide/GuidePage.tsx (lines 46, 57-58) and src/components/ShortcutList.tsx (lines 22-31)",
+      "shortcutLabels": "BELL-Personal src/copy/common.ts (SHORTCUT_LABELS, lines 278-305) rendered in #/guide's ShortcutList table and shared shortcut legends",
+      "todayPlaceFixes": "SIGNOFF-copy-2026-11-09.md section 3 Today place-name companions for calendar.backToToday, guide.daily.steps.step1.title, guideShared.help.scopes.{list,habits}, and shortcutLabels.{capture,goToday}"
+    },
+    "placeholders": {
+      "{date}": "Formatted month/day or month/day with weekday string (e.g. 10/12 or 10/12 (Mon)) in calendar titles, ARIA labels, toasts, stale timestamps, and capture prefills.",
+      "{from}": "First day of the visible week formatted by dayShort() (e.g. 10/12) in calendar.weekOf.",
+      "{to}": "Last day of the visible week formatted by dayShort() (e.g. 10/18) in calendar.weekOf.",
+      "{n}": "Event count on Day or Week card headers (calendar.countLabel*) or folded past-event count on Today's timeline (calendar.pastFold*).",
+      "{time}": "24-hour local HH:MM clock string (nowAria, syncedLabel yesterdayAt/dateAt, weekEventTooltip, relativeStart) or formatted sync timestamp in calendarShared.staleShowing.",
+      "{hours}": "Whole or half-hour free-slot duration string from slotHours() (e.g. 1, 1.5, 4) in calendar.gapHours*.",
+      "{start}": "24-hour local start time HH:MM of a free slot in calendar.gapRange, calendar.addInGapAria, and calendarPrefill.slot.",
+      "{end}": "24-hour local end time HH:MM of a free slot in calendar.gapRange, calendar.addInGapAria, and calendarPrefill.slot.",
+      "{label}": "Suggested Today queue gap description in calendar.scheduleAria or localized action name in calendarShared.actionFailed.",
+      "{habit}": "Linked active habit name offered for one-tap check-in on an agenda row (calendar.habitAfter, calendar.checkIn).",
+      "{title}": "Calendar event or assignment title in ARIA labels, edit/delete toasts, weekly delete menu, week tooltips, and Tidy controls.",
+      "{when}": "24-hour start or range clock string in calendar.editBlockAria* or formatted day/time phrase in calendarServerErrors.created*.",
+      "{meta}": "Optional weekly recurrence phrase (e.g. Every Mon) appended in calendar.editBlockAriaWithMeta.",
+      "{weekday}": "Localized short weekday label (Sun-Sat in en) in calendarModel.dayTitle.",
+      "{weekly}": "Localized weekly recurrence label (Every Sun-Every Sat in en) in calendarModel.weekEventTooltip.weekly.",
+      "{m}": "Minute count (1-59) until today's next event starts in calendarModel.relativeStart.",
+      "{h}": "Hour count (>= 1) until today's next event starts in calendarModel.relativeStart.",
+      "{reason}": "Underlying server or network error message interpolated into actionFailed and undoFailed toasts.",
+      "{max}": "Maximum allowed character count (200 for title/location, 4000 for notes) in calendarServerErrors.*TooLong*."
+    },
+    "budgets": {
+      "calendarViewToggleEnMaxChars": 4,
+      "calendarNavTodayButtonEnMaxChars": 5,
+      "calendarAddEventButtonEnMaxChars": 9,
+      "calendarScheduleChipButtonEnMaxChars": 9,
+      "calendarTimelineTimeColEnMaxChars": 7,
+      "calendarEditorActionButtonEnMaxChars": 12,
+      "calendarSeriesRemoveButtonEnMaxChars": 20,
+      "guideCardTitleWithLinkEnMaxChars": 18,
+      "guideCardHeadLinkEnMaxChars": 16,
+      "guideShortcutShortEnMaxChars": 9,
+      "toastTemplateEnMaxChars": 44,
+      "overallEnMaxChars": 179,
+      "layoutNote": "Measured against AppShell.css, precise.css, PageHead.css, CalendarPage.css, SegmentedControl.css, Button.css, Card.css, GuidePage.css, and ShortcutList.css at 320px (288px .page inner width, 254px .card inner width) and 360px (328px .page inner width, 294px .card inner width): (1) Calendar toolbar (.cal-bar at <= 720px): .cal-range wraps to its own full-width first row; row 2 shares 288px at 320px between SegmentedControl ('Day' 3 chars + 'Week' 4 chars = ~115px even with 14px coarse-pointer button padding), 12px gap, and .cal-nav (two 44px coarse-pointer icon buttons + 4px gaps + 'Today' 5-char sm button ~59px = ~151px), totaling ~278px <= 288px with zero overflow. (2) PageHead primary action 'Add event' (9 chars, ~102px) wraps onto its own action row below <= 720px and sits cleanly inline above 720px. (3) AgendaTimeline .tl-time (42px column + 12px gap) fits 'All day' (7 chars, ~50px in 12px mono, clearing the 3px .tl-bar) and WeekGrid --wk-label (48px) fits 'All day' (~38px in 12px sans); .gap-box (185px at 320px, 225px at 360px, flex-wrap: wrap) fits 'Schedule' (8 chars, ~78px) and 'Add event' (9 chars, ~103px). (4) EventEditor (.ev-pop.is-sheet: 288px inner width at 320px, 328px at 360px; .ev-pop popover: >= 266px): primary actions 'Save' (52px) + 'Cancel' (65px) + 'Delete event' (117px) + gaps total ~246px <= 266px on a single row, wrapping cleanly when 'Open link' (99px) is also present; weekly removal actions 'Delete this one' (15 chars, ~134px) and 'Delete weekly series' (20 chars, ~148px) fit on one row at 360px (~288px <= 328px), wrap cleanly at 320px, and keep RemoveMenu (.rm-pop, white-space: nowrap) at ~160px << 296px viewport cap. (5) Guide CardHead (.card-head has display: flex without wrap, and both h2 and .link have white-space: nowrap, leaving 206px for h2 + .link at 320px and 246px at 360px): pairing 'Keyboard shortcuts' (18) + 'Appearance' (10) (~186px), 'How AI helps' (12) + 'Daily brief' (11) (~149px), and 'Data & privacy' (14) + 'Privacy settings' (16) (~190px) keeps every CardHead <= 190px <= 206px at 320px while the card body prose spells out the full 'Settings › Appearance', 'Settings › Daily brief', and 'Settings › Data & privacy' paths."
+    },
+    "rationale": [
+      "Preserves every shipped zh-TW string from commit 0ab616c1769bb6090bb6a7fd545b19fbe5d451f2 byte-for-byte across calendar.ts, guide.ts, common.ts, and server/features/calendar so existing unit and render tests (calendar-model.test.ts, event-editor.test.ts, AgendaTimeline.test.ts, WeekGrid.test.ts, calendar.test.ts, edit.test.ts, repeat.test.ts) pass with zero regression.",
+      "Expands conditional template functions (CALENDAR.editBlockAria and WeekGrid eventLabel) into explicit static leaf keys with 100% placeholder parity and adds *One singular companions wherever English requires singular/plural agreement (countLabelOne, gapHoursOne, pastFoldOne, relativeStart.minutesOne/hoursOne, and server *TooLongOne limits).",
+      "Enforces SIGNOFF-copy-2026-11-09.md section 3 strictly: place references to the Today page use capitalized 'Today' in English and receive ready-to-wire zh-TW place-name updates in todayPlaceFixes, while calendar-date references keep date wording ('today' lowercase in English prose, 'Today' on standalone calendar date controls).",
+      "Aligns #/calendar and #/guide 100% with BELL Personal's shipped Today, Habits, Events, Quick Capture, and Onboarding glossary: Today, Quick note, Tasks, Calendar, Ideas, Habits, School & Projects, Settings › Appearance, Settings › Daily brief, Settings › Data & privacy, ChatGPT, Claude, AI brief, and Quick summary.",
+      "Rewrites technical AI and privacy bullets on #/guide into warm, Apple-style beginner prose in English with zero developer sign-in or command-line jargon, zero CJK characters in en or $meta, zero forbidden synonyms for Ideas, and zero em dashes across the entire file."
+    ],
+    "assumptions": [
+      "Primary zh-TW keys preserve exact 0ab616c1 bytes for non-regression. Per SIGNOFF-copy-2026-11-09.md section 3: calendarPageHead.title, calendar.today (date jump button inside Navigate dates), calendar.emptyToday, calendar.googleReconnect, calendar.todayMark, calendarPrefill.today, guide.daily.steps.step1.body (queue group), guide.daily.steps.step5.body (endmark quote), and shortcutLabels.habits.label are calendar-date uses and keep date wording; calendar.todayTitle is already place-compliant in 0ab616c1; calendar.backToToday, guide.daily.steps.step1.title, guideShared.help.scopes.{list,habits}, and shortcutLabels.{capture,goToday} are Today place-name uses whose updated zh-TW strings are provided in todayPlaceFixes.",
+      "Array-valued sections in src/copy/guide.ts (GUIDE.daily.steps, GUIDE.ai.points, GUIDE.privacy.points) are represented as ordered keyed objects (step1-step5, point1-point4) so every leaf in the JSON spec has an explicit addressable key path; engineers can pass Object.values(...) directly to preserve the exact runtime array shapes.",
+      "CALENDAR.editBlockAria(when, title, meta) is split into calendar.editBlockAria (when meta is empty) and calendar.editBlockAriaWithMeta (when meta is non-empty) so no conditional separator logic remains hidden inside copy functions.",
+      "In calendarPrefill.today, English uses lowercase 'today' ('+today 15:30-16:30 '), which shared/capture-parse.ts line 417 matches case-insensitively right after '+'.",
+      "GuidePage.tsx renders HELP.intro, ShortcutList (HELP.scopes, HELP.then, SHORTCUT_LABELS), and AiTag ('summary' and 'rule') from src/copy/common.ts alongside PAGE_HEADS.guide and GUIDE; guideShared and shortcutLabels include all of them so #/guide renders 100% in English under ?lang=en."
+    ]
+  },
+  "zh-TW": {
+    "calendarPageHead": {
+      "title": "把今天安排得剛剛好。"
+    },
+    "calendar": {
+      "viewLabel": "檢視方式",
+      "views": {
+        "day": "日",
+        "week": "週"
+      },
+      "add": "新增行程",
+      "navLabel": "切換日期",
+      "prev": {
+        "day": "前一天",
+        "week": "上一週"
+      },
+      "next": {
+        "day": "後一天",
+        "week": "下一週"
+      },
+      "today": "今天",
+      "backToToday": "回到今天",
+      "todayTitle": "今日行程",
+      "dayTitle": "{date} 行程",
+      "weekTitle": "本週行程",
+      "weekOf": "{from} – {to}",
+      "countLabelOne": "{n} 個行程",
+      "countLabel": "{n} 個行程",
+      "now": "現在",
+      "nowAria": "現在 {time}",
+      "allDay": "整天",
+      "due": "截止",
+      "emptyToday": "今天沒有行程，留點時間給自己。",
+      "emptyDay": "這一天沒有行程。",
+      "emptyWeekDay": "沒有行程",
+      "gapHoursOne": "{hours} 小時空檔",
+      "gapHours": "{hours} 小時空檔",
+      "gapRange": "{start}–{end}",
+      "schedule": "排進",
+      "scheduleAria": "排進空檔：{label}",
+      "addInGap": "新增行程",
+      "addInGapAria": "在 {start}–{end} 新增行程",
+      "pastFoldOne": "已結束 {n} 個 · 顯示",
+      "pastFold": "已結束 {n} 個 · 顯示",
+      "pastHide": "收合已結束的行程",
+      "habitAfter": "結束後一鍵打卡「{habit}」",
+      "checkIn": "打卡「{habit}」",
+      "going": "要參加",
+      "local": "本機",
+      "openEvent": "開啟「{title}」",
+      "remove": "刪除行程",
+      "removeAria": "刪除行程「{title}」",
+      "removed": "已刪除行程「{title}」",
+      "removeAction": "刪除行程",
+      "restoreAction": "復原行程",
+      "removeMenu": "刪除「{title}」",
+      "removeOne": "只刪這一次",
+      "removeSeries": "刪除整個每週行程",
+      "removedOne": "已刪除「{title}」這一次 · {date}",
+      "removedSeries": "已刪除每週行程「{title}」",
+      "skipAction": "刪除這一次",
+      "restoreOneAction": "復原這一次",
+      "notSetUp": "連接 Google 行事曆或加入 iCal 訂閱，行程就會出現在這裡。",
+      "notSetUpTitle": "還沒有連接行事曆",
+      "connect": "連接",
+      "googleErrorTitle": "無法讀取 Google 行事曆",
+      "googleReconnect": "授權已過期。重新連線後會自動補上今天的行程。",
+      "reconnect": "重新連線",
+      "icsErrorTitle": "無法讀取 iCal 訂閱",
+      "retry": "重試",
+      "loadErrorTitle": "行事曆暫時無法載入",
+      "weekGridLabel": "一週行程",
+      "allDayLabel": "整天",
+      "openDay": "看 {date} 的行程",
+      "todayMark": "今天",
+      "yesterdayAt": "昨天 {time}",
+      "dateAt": "{date} {time}",
+      "edit": "編輯行程",
+      "editAria": "編輯行程「{title}」",
+      "editBlockAria": "編輯行程：{when} {title}",
+      "editBlockAriaWithMeta": "編輯行程：{when} {title} · {meta}",
+      "updated": "已更新「{title}」",
+      "updateAction": "更新行程",
+      "restoreEditAction": "復原更新",
+      "editor": {
+        "heading": "編輯行程",
+        "title": "標題",
+        "date": "日期",
+        "endDate": "結束日期",
+        "start": "開始",
+        "end": "結束",
+        "allDay": "全天",
+        "location": "地點",
+        "locationPlaceholder": "選填",
+        "repeat": "每週重複",
+        "until": "直到",
+        "untilHint": "可留白，留白就一直重複。",
+        "seriesNote": "這是每週行程，每週都會跟著改。",
+        "repeatOnNote": "每週同一天重複，只存在 BELL，不會加入 Google 行事曆。",
+        "repeatOffNote": "關閉每週重複後，只會留下這一天的行程。",
+        "save": "儲存",
+        "cancel": "取消",
+        "open": "開啟連結",
+        "titleRequired": "請輸入行程名稱。",
+        "dateRequired": "請選擇日期。",
+        "startRequired": "請填開始時間。",
+        "endRequired": "請填結束時間。",
+        "endBeforeStart": "結束時間要晚於開始時間。",
+        "endDayBeforeStart": "結束日期不能早於開始日期。",
+        "untilInvalid": "請選擇「直到」的日期，或留白。",
+        "untilBeforeFirst": "「直到」的日期不能早於第一次行程。",
+        "tooLong": "一個行程最長兩週。"
+      }
+    },
+    "calendarPrefill": {
+      "plain": "+",
+      "day": "+{date} ",
+      "slot": "+{date} {start}-{end} ",
+      "today": "今天"
+    },
+    "calendarModel": {
+      "dayTitle": "{date}（{weekday}）",
+      "weekdaysShort": {
+        "sun": "日",
+        "mon": "一",
+        "tue": "二",
+        "wed": "三",
+        "thu": "四",
+        "fri": "五",
+        "sat": "六"
+      },
+      "weeklyLabels": {
+        "sun": "每週日",
+        "mon": "每週一",
+        "tue": "每週二",
+        "wed": "每週三",
+        "thu": "每週四",
+        "fri": "每週五",
+        "sat": "每週六"
+      },
+      "weekEventTooltip": {
+        "oneOff": "{time} {title}",
+        "weekly": "{time} {title} · {weekly}"
+      },
+      "relativeStart": {
+        "minutesOne": "{m} 分後",
+        "minutes": "{m} 分後",
+        "hoursOne": "{h} 小時後",
+        "hours": "{h} 小時後",
+        "hoursMinutes": "{h} 小時 {m} 分後",
+        "tomorrowAt": "明天 {time}",
+        "dateAt": "{date} {time}"
+      },
+      "dueItemTitle": "{title} 截止",
+      "untitledGoogleEvent": "（無標題）",
+      "sourceLabels": {
+        "google": "Google 行事曆",
+        "ics": "iCal 訂閱",
+        "manual": "本機行程",
+        "ctftime": "CTFtime",
+        "feeds": "活動訂閱",
+        "moodle": "NYCU E3",
+        "moodleGeneric": "Moodle",
+        "canvas": "Canvas"
+      }
+    },
+    "calendarShared": {
+      "actionToasts": {
+        "schedule": "已排進行事曆「{title}」"
+      },
+      "actionLabels": {
+        "schedule": "排進"
+      },
+      "offline": "無法連線至本機服務，請確認 BELL Personal 正在執行。",
+      "actionFailed": "{label}失敗：{reason}",
+      "undoFailed": "沒有復原：{reason}",
+      "staleShowing": "顯示 {time} 的資料",
+      "staleRefresh": "重新整理",
+      "toastUndo": "復原",
+      "tidy": {
+        "working": "整理中…",
+        "workingAria": "AI 正在整理這一項",
+        "actionAria": "用 AI 整理「{title}」",
+        "actionHint": "AI 把標題整理得簡潔，細節移到備註，可以復原。",
+        "revert": "復原整理",
+        "revertAria": "復原「{title}」的整理"
+      }
+    },
+    "calendarServerErrors": {
+      "googleNeedsReconnect": "Google 行事曆需要重新連線。",
+      "googleRateLimitedAutoRetry": "Google 行事曆暫時限制請求頻率，稍後會自動重試。",
+      "googleWritePermissionMissing": "Google 行事曆沒有允許新增行程，請重新連線並勾選行事曆權限。",
+      "googleReadPermissionMissing": "Google 行事曆拒絕讀取，請重新連線並勾選行事曆權限。",
+      "googleWriteRejected": "Google 行事曆拒絕了這個行程，請到 Google 行事曆確認。",
+      "googleCalendarReadRejected": "Google 行事曆拒絕讀取其中一個行事曆，稍後會自動重試。",
+      "googleRateLimitedRetryLater": "Google 行事曆暫時限制請求頻率，稍後再試。",
+      "googleTimeout": "Google 行事曆回應逾時，稍後再試。",
+      "googleWriteNoResponse": "Google 行事曆沒有回應，請稍後再試。",
+      "googleReadNoResponse": "Google 行事曆暫時沒有回應，稍後會自動重試。",
+      "invalidTime": "時間格式不正確",
+      "invalidDate": "日期格式不正確",
+      "invalidUrl": "網址必須是 http(s)",
+      "titleRequired": "請輸入行程名稱。",
+      "titleTooLongOne": "行程名稱最多 {max} 個字。",
+      "titleTooLong": "行程名稱最多 {max} 個字。",
+      "locationTooLongOne": "地點最多 {max} 個字。",
+      "locationTooLong": "地點最多 {max} 個字。",
+      "notesTooLongOne": "備註最多 {max} 個字。",
+      "notesTooLong": "備註最多 {max} 個字。",
+      "endBeforeStart": "行程的結束時間必須在開始之後。",
+      "tooLong": "一個行程最長兩週。",
+      "allDayFormat": "整天行程請用 YYYY-MM-DD 指定日期。",
+      "invalidStartTime": "行程的開始時間格式不正確。",
+      "invalidEndTime": "行程的結束時間格式不正確。",
+      "untilBeforeFirst": "「直到」的日期不能早於第一次行程。",
+      "dateOutOfQueryRange": "日期超出可查詢的範圍。",
+      "dateOutOfCreateRange": "日期超出可新增的範圍。",
+      "dateOutOfEditRange": "日期超出可設定的範圍。",
+      "notFound": "找不到這個行程，可能已經刪除。",
+      "alreadyInGoogleEdit": "這個行程已經送到 Google 行事曆，請到 Google 行事曆修改。",
+      "weeklyLocalOnly": "每週行程只存在 BELL，不會加入 Google 行事曆。",
+      "alreadyInGoogle": "這個行程已經在 Google 行事曆了。",
+      "googleWriteNotConnected": "請先在「連線與設定」連接 Google 行事曆，並允許新增行程。",
+      "tooManySkips": "這個每週行程已經跳過太多次了，請刪除後重新建立。",
+      "notWeekly": "這不是每週行程。",
+      "notOccurrenceDay": "這一天沒有這個每週行程。",
+      "createdEvent": "已加入行程「{title}」· {when}",
+      "createdWeekly": "已加入每週行程「{title}」· {when}"
+    },
+    "guidePageHead": {
+      "title": "怎麼用最順手。"
+    },
+    "guide": {
+      "sectionsLabel": "使用指南章節",
+      "daily": {
+        "title": "每天這樣用",
+        "steps": {
+          "step1": {
+            "title": "打開今天",
+            "body": "信件、作業、審查、活動和待辦排成一個佇列，分成最重要、今天內和可以等。"
+          },
+          "step2": {
+            "title": "從游標那一列開始",
+            "body": "最上面那一列已經展開，主要動作就在第一顆按鈕；按 ↵ 或點一下就完成。"
+          },
+          "step3": {
+            "title": "處理完就往下",
+            "body": "封存、完成、延後或略過後，那一列會離開，游標自動移到下一列；6 秒內都能復原。"
+          },
+          "step4": {
+            "title": "想到什麼先記下",
+            "body": "按 N 或點「快速記下」，寫「明天 9:00 交報告」這樣的句子，會自動變成待辦、行程或靈感。"
+          },
+          "step5": {
+            "title": "看到版面結尾就收工",
+            "body": "「今天的版面到這裡。」代表沒有別的了；習慣另外打卡，不算在佇列裡。"
+          }
+        }
+      },
+      "keys": {
+        "title": "鍵盤快捷鍵",
+        "settings": "外觀設定"
+      },
+      "ai": {
+        "title": "AI 怎麼幫忙",
+        "points": {
+          "point1": "AI 只提出建議：分類信件、整理今日摘要、從信裡找出活動和待辦。要不要採用，都由你點一下決定；不會自動封存、寄信或建立任何東西。",
+          "point2": "用的是伺服器上你自己登入的 Claude Code 或 Codex，不需要另外的 API 金鑰；可以在每日摘要設定切換。",
+          "point3": "AI 沒有回應時，頁面不會等它：摘要改用規則整理，標示「規則整理」，並說明原因。",
+          "point4": "送去整理的只有必要的片段（信件主旨、寄件者和摘錄、行程標題），而且只交給你自己的 CLI。"
+        },
+        "tagsTitle": "看到這些標記",
+        "tagAi": "由 AI 產生，請自己判斷。",
+        "tagRule": "AI 沒有參與，依固定規則整理。",
+        "settings": "每日摘要設定"
+      },
+      "privacy": {
+        "title": "資料與隱私",
+        "points": {
+          "point1": "所有資料都存在這台電腦；Google、E3、Canvas 的憑證另外加密保存，瀏覽器不會存任何密碼。",
+          "point2": "信件只保存摘要和一小段純文字，預設 30 天後自動刪除；信本身一直留在你的 Gmail。",
+          "point3": "可以隨時匯出全部資料，或清除快取的信件。",
+          "point4": "中斷 Google 連線會撤銷授權並刪除快取；也可以到 Google 帳戶的第三方存取權移除。"
+        },
+        "settings": "資料與隱私設定",
+        "policy": "閱讀隱私權政策"
+      }
+    },
+    "guideShared": {
+      "help": {
+        "title": "鍵盤快捷鍵",
+        "intro": "單鍵快捷鍵可以在 連線與設定 › 外觀 關閉。輸入文字或使用注音輸入法時不會觸發。",
+        "scopes": {
+          "everywhere": "任何頁面",
+          "list": "清單（今天、收件匣、待辦）",
+          "habits": "今天、習慣",
+          "inbox": "收件匣",
+          "toast": "復原提示出現時"
+        },
+        "then": "接著"
+      },
+      "aiTags": {
+        "summary": "AI 摘要",
+        "suggestion": "AI 建議",
+        "rule": "規則整理",
+        "ruleParse": "規則解析"
+      }
+    },
+    "shortcutLabels": {
+      "palette": {
+        "label": "開啟快速前往",
+        "short": "快速前往"
+      },
+      "capture": {
+        "label": "快速記下（今天頁的輸入框，其他頁開啟快速新增）",
+        "short": "記下"
+      },
+      "help": {
+        "label": "顯示所有快捷鍵",
+        "short": "全部"
+      },
+      "goToday": {
+        "label": "前往今天",
+        "short": "今天"
+      },
+      "goInbox": {
+        "label": "前往收件匣",
+        "short": "收件匣"
+      },
+      "goCalendar": {
+        "label": "前往行事曆",
+        "short": "行事曆"
+      },
+      "goTasks": {
+        "label": "前往待辦",
+        "short": "待辦"
+      },
+      "goWork": {
+        "label": "前往作業與專案",
+        "short": "作業與專案"
+      },
+      "goEvents": {
+        "label": "前往活動",
+        "short": "活動"
+      },
+      "goIdeas": {
+        "label": "前往靈感",
+        "short": "靈感"
+      },
+      "goHabits": {
+        "label": "前往習慣",
+        "short": "習慣"
+      },
+      "next": {
+        "label": "移到下一項",
+        "short": "移動"
+      },
+      "prev": {
+        "label": "移到上一項",
+        "short": "移動"
+      },
+      "primary": {
+        "label": "執行這一項的主要動作",
+        "short": "主要動作"
+      },
+      "close": {
+        "label": "處理完：封存、標為已讀、完成、標為已交、標為已審查或略過",
+        "short": "處理完"
+      },
+      "snooze": {
+        "label": "延後；在待辦頁，替沒有期限的待辦排日期",
+        "short": "延後"
+      },
+      "todo": {
+        "label": "轉成待辦",
+        "short": "轉待辦"
+      },
+      "calendar": {
+        "label": "加入行事曆或要參加",
+        "short": "行事曆"
+      },
+      "expand": {
+        "label": "展開或收合，不移動游標",
+        "short": "展開"
+      },
+      "escape": {
+        "label": "關閉彈出選單、指令面板，或收合目前這一列",
+        "short": "關閉"
+      },
+      "undo": {
+        "label": "復原最近一個動作",
+        "short": "復原"
+      },
+      "habits": {
+        "label": "切換第 1–9 個習慣今天的打卡",
+        "short": "打卡"
+      },
+      "trash": {
+        "label": "刪除信件（移到 Gmail 垃圾桶）",
+        "short": "刪除"
+      },
+      "assignment": {
+        "label": "把信轉成作業，或加入建議的作業",
+        "short": "轉作業"
+      },
+      "search": {
+        "label": "搜尋信件",
+        "short": "搜尋"
+      },
+      "images": {
+        "label": "顯示這封信的外部圖片（經由你的伺服器載入）",
+        "short": "顯示圖片"
+      }
+    },
+    "todayPlaceFixes": {
+      "calendarBackToToday": "回到今日",
+      "guideOpenTodayTitle": "打開今日",
+      "helpScopeList": "清單（今日、收件匣、待辦）",
+      "helpScopeHabits": "今日、習慣",
+      "shortcutCaptureLabel": "快速記下（今日頁的輸入框，其他頁開啟快速新增）",
+      "shortcutGoTodayLabel": "前往今日",
+      "shortcutGoTodayShort": "今日"
+    }
+  },
+  "en": {
+    "calendarPageHead": {
+      "title": "Plan today just right."
+    },
+    "calendar": {
+      "viewLabel": "View",
+      "views": {
+        "day": "Day",
+        "week": "Week"
+      },
+      "add": "Add event",
+      "navLabel": "Navigate dates",
+      "prev": {
+        "day": "Previous day",
+        "week": "Previous week"
+      },
+      "next": {
+        "day": "Next day",
+        "week": "Next week"
+      },
+      "today": "Today",
+      "backToToday": "Back to Today",
+      "todayTitle": "Today's schedule",
+      "dayTitle": "Schedule for {date}",
+      "weekTitle": "This week's schedule",
+      "weekOf": "{from} – {to}",
+      "countLabelOne": "{n} event",
+      "countLabel": "{n} events",
+      "now": "Now",
+      "nowAria": "Now {time}",
+      "allDay": "All day",
+      "due": "Due",
+      "emptyToday": "Nothing scheduled today. Take some time for yourself.",
+      "emptyDay": "Nothing scheduled on this day.",
+      "emptyWeekDay": "No events",
+      "gapHoursOne": "{hours} hour free",
+      "gapHours": "{hours} hours free",
+      "gapRange": "{start}–{end}",
+      "schedule": "Schedule",
+      "scheduleAria": "Schedule into free slot: {label}",
+      "addInGap": "Add event",
+      "addInGapAria": "Add event for {start}–{end}",
+      "pastFoldOne": "{n} ended · Show",
+      "pastFold": "{n} ended · Show",
+      "pastHide": "Hide past events",
+      "habitAfter": "One-tap check-in for “{habit}” after",
+      "checkIn": "Check in “{habit}”",
+      "going": "Going",
+      "local": "Local",
+      "openEvent": "Open “{title}”",
+      "remove": "Delete event",
+      "removeAria": "Delete event “{title}”",
+      "removed": "Deleted event “{title}”",
+      "removeAction": "Delete event",
+      "restoreAction": "Restore event",
+      "removeMenu": "Delete “{title}”",
+      "removeOne": "Delete this one",
+      "removeSeries": "Delete weekly series",
+      "removedOne": "Deleted “{title}” · {date}",
+      "removedSeries": "Deleted weekly series “{title}”",
+      "skipAction": "Delete occurrence",
+      "restoreOneAction": "Restore occurrence",
+      "notSetUp": "Connect Google Calendar or add an iCal feed to see your schedule here.",
+      "notSetUpTitle": "No calendar connected yet",
+      "connect": "Connect",
+      "googleErrorTitle": "Couldn't read Google Calendar",
+      "googleReconnect": "Access expired. Reconnect to bring back today's schedule.",
+      "reconnect": "Reconnect",
+      "icsErrorTitle": "Couldn't read iCal feed",
+      "retry": "Try again",
+      "loadErrorTitle": "Calendar couldn't load right now",
+      "weekGridLabel": "Weekly schedule",
+      "allDayLabel": "All day",
+      "openDay": "View schedule for {date}",
+      "todayMark": "Today",
+      "yesterdayAt": "yesterday at {time}",
+      "dateAt": "{date} {time}",
+      "edit": "Edit event",
+      "editAria": "Edit event “{title}”",
+      "editBlockAria": "Edit event: {when} {title}",
+      "editBlockAriaWithMeta": "Edit event: {when} {title} · {meta}",
+      "updated": "Updated “{title}”",
+      "updateAction": "Update event",
+      "restoreEditAction": "Undo update",
+      "editor": {
+        "heading": "Edit event",
+        "title": "Title",
+        "date": "Date",
+        "endDate": "End date",
+        "start": "Start",
+        "end": "End",
+        "allDay": "All day",
+        "location": "Location",
+        "locationPlaceholder": "Optional",
+        "repeat": "Repeat weekly",
+        "until": "Until",
+        "untilHint": "Optional. Leave blank to repeat every week.",
+        "seriesNote": "This is a weekly event. Changes apply to every week.",
+        "repeatOnNote": "Repeats weekly on this day. Saved only in BELL, not added to Google Calendar.",
+        "repeatOffNote": "Turning off weekly repeat keeps only this day's event.",
+        "save": "Save",
+        "cancel": "Cancel",
+        "open": "Open link",
+        "titleRequired": "Enter an event title.",
+        "dateRequired": "Choose a date.",
+        "startRequired": "Enter a start time.",
+        "endRequired": "Enter an end time.",
+        "endBeforeStart": "End time must be after the start time.",
+        "endDayBeforeStart": "End date can't be earlier than the start date.",
+        "untilInvalid": "Choose an “Until” date, or leave it blank.",
+        "untilBeforeFirst": "“Until” date can't be earlier than the first event.",
+        "tooLong": "An event can last at most two weeks."
+      }
+    },
+    "calendarPrefill": {
+      "plain": "+",
+      "day": "+{date} ",
+      "slot": "+{date} {start}-{end} ",
+      "today": "today"
+    },
+    "calendarModel": {
+      "dayTitle": "{date} ({weekday})",
+      "weekdaysShort": {
+        "sun": "Sun",
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat"
+      },
+      "weeklyLabels": {
+        "sun": "Every Sun",
+        "mon": "Every Mon",
+        "tue": "Every Tue",
+        "wed": "Every Wed",
+        "thu": "Every Thu",
+        "fri": "Every Fri",
+        "sat": "Every Sat"
+      },
+      "weekEventTooltip": {
+        "oneOff": "{time} {title}",
+        "weekly": "{time} {title} · {weekly}"
+      },
+      "relativeStart": {
+        "minutesOne": "in {m}m",
+        "minutes": "in {m}m",
+        "hoursOne": "in {h}h",
+        "hours": "in {h}h",
+        "hoursMinutes": "in {h}h {m}m",
+        "tomorrowAt": "Tomorrow {time}",
+        "dateAt": "{date} {time}"
+      },
+      "dueItemTitle": "{title} due",
+      "untitledGoogleEvent": "(No title)",
+      "sourceLabels": {
+        "google": "Google Calendar",
+        "ics": "iCal feed",
+        "manual": "Local event",
+        "ctftime": "CTFtime",
+        "feeds": "Event feeds",
+        "moodle": "NYCU E3",
+        "moodleGeneric": "Moodle",
+        "canvas": "Canvas"
+      }
+    },
+    "calendarShared": {
+      "actionToasts": {
+        "schedule": "Scheduled “{title}”"
+      },
+      "actionLabels": {
+        "schedule": "Schedule"
+      },
+      "offline": "Can't reach the local service. Make sure BELL Personal is running.",
+      "actionFailed": "{label} failed: {reason}",
+      "undoFailed": "Couldn't undo: {reason}",
+      "staleShowing": "Showing data from {time}",
+      "staleRefresh": "Refresh",
+      "toastUndo": "Undo",
+      "tidy": {
+        "working": "Tidying…",
+        "workingAria": "AI is tidying this item",
+        "actionAria": "Tidy “{title}” with AI",
+        "actionHint": "AI makes the title concise and moves details to notes. You can undo anytime.",
+        "revert": "Undo tidy",
+        "revertAria": "Undo tidy for “{title}”"
+      }
+    },
+    "calendarServerErrors": {
+      "googleNeedsReconnect": "Google Calendar needs to be reconnected.",
+      "googleRateLimitedAutoRetry": "Google Calendar is temporarily limiting requests. BELL will try again shortly.",
+      "googleWritePermissionMissing": "Google Calendar doesn't have permission to add events. Reconnect and allow calendar access.",
+      "googleReadPermissionMissing": "Google Calendar couldn't be read. Reconnect and allow calendar access.",
+      "googleWriteRejected": "Google Calendar declined this event. Check Google Calendar for details.",
+      "googleCalendarReadRejected": "One of your Google Calendars couldn't be read. BELL will try again shortly.",
+      "googleRateLimitedRetryLater": "Google Calendar is temporarily limiting requests. Try again in a moment.",
+      "googleTimeout": "Google Calendar timed out. Try again in a moment.",
+      "googleWriteNoResponse": "Google Calendar didn't respond. Try again in a moment.",
+      "googleReadNoResponse": "Google Calendar isn't responding right now. BELL will try again shortly.",
+      "invalidTime": "Invalid time format",
+      "invalidDate": "Invalid date format",
+      "invalidUrl": "Link must start with http:// or https://",
+      "titleRequired": "Enter an event title.",
+      "titleTooLongOne": "Event title can't exceed {max} character.",
+      "titleTooLong": "Event title can't exceed {max} characters.",
+      "locationTooLongOne": "Location can't exceed {max} character.",
+      "locationTooLong": "Location can't exceed {max} characters.",
+      "notesTooLongOne": "Notes can't exceed {max} character.",
+      "notesTooLong": "Notes can't exceed {max} characters.",
+      "endBeforeStart": "End time must be after the start time.",
+      "tooLong": "An event can last at most two weeks.",
+      "allDayFormat": "Use YYYY-MM-DD dates for all-day events.",
+      "invalidStartTime": "Invalid event start time.",
+      "invalidEndTime": "Invalid event end time.",
+      "untilBeforeFirst": "“Until” date can't be earlier than the first event.",
+      "dateOutOfQueryRange": "That date is outside the viewable calendar range.",
+      "dateOutOfCreateRange": "That date is outside the allowed range for new events.",
+      "dateOutOfEditRange": "That date is outside the allowed calendar range.",
+      "notFound": "Couldn't find this event. It may have been deleted.",
+      "alreadyInGoogleEdit": "This event was already added to Google Calendar. Edit it there instead.",
+      "weeklyLocalOnly": "Weekly events stay in BELL and aren't added to Google Calendar.",
+      "alreadyInGoogle": "This event is already in Google Calendar.",
+      "googleWriteNotConnected": "Connect Google Calendar in Settings first and allow adding events.",
+      "tooManySkips": "This weekly event has too many skipped dates. Delete and recreate it instead.",
+      "notWeekly": "This isn't a weekly event.",
+      "notOccurrenceDay": "This weekly event doesn't occur on that day.",
+      "createdEvent": "Added to Calendar “{title}” · {when}",
+      "createdWeekly": "Added weekly event “{title}” · {when}"
+    },
+    "guidePageHead": {
+      "title": "Get into an easy rhythm."
+    },
+    "guide": {
+      "sectionsLabel": "Guide sections",
+      "daily": {
+        "title": "Your daily flow",
+        "steps": {
+          "step1": {
+            "title": "Open Today",
+            "body": "Mail, assignments, reviews, events, and Tasks line up in one queue, grouped into Most important, Today, and Can wait."
+          },
+          "step2": {
+            "title": "Start at the highlighted row",
+            "body": "The top row opens ready to go, with its main action on the first button. Press ↵ or select it to finish."
+          },
+          "step3": {
+            "title": "Keep moving down the list",
+            "body": "Archive, complete, snooze, or skip an item and focus moves straight to the next row. You have 6 seconds to undo."
+          },
+          "step4": {
+            "title": "Jot thoughts down right away",
+            "body": "Press N or choose Quick note and type a line like “Submit report tomorrow 9:00”. BELL sorts it into Tasks, Calendar, or Ideas."
+          },
+          "step5": {
+            "title": "Wrap up at the end mark",
+            "body": "“That's all for today.” means nothing else is waiting. Habits are checked in separately and don't count toward the queue."
+          }
+        }
+      },
+      "keys": {
+        "title": "Keyboard shortcuts",
+        "settings": "Appearance"
+      },
+      "ai": {
+        "title": "How AI helps",
+        "points": {
+          "point1": "AI only suggests: sorting mail, writing your daily brief, and spotting events or Tasks. You decide what to keep in one tap; nothing is archived, sent, or created on its own.",
+          "point2": "Uses the ChatGPT or Claude account signed in on this computer, with no separate key to manage. Switch anytime in Settings › Daily brief.",
+          "point3": "If AI doesn't respond, the page never waits around: your brief falls back to built-in rules, shows “Quick summary”, and explains why.",
+          "point4": "Only essential snippets are shared (mail subjects, senders, short excerpts, and event titles), and only with your own signed-in ChatGPT or Claude connection on this computer."
+        },
+        "tagsTitle": "What these labels mean",
+        "tagAi": "Generated by AI. Use your own judgment.",
+        "tagRule": "Organized by fixed rules, without AI.",
+        "settings": "Daily brief"
+      },
+      "privacy": {
+        "title": "Data & privacy",
+        "points": {
+          "point1": "Everything stays on this computer. Your Google, E3, and Canvas sign-in details are stored encrypted, and your browser never saves any passwords.",
+          "point2": "For mail, only a summary and a short plain-text excerpt are kept, and they clear automatically after 30 days by default. Your messages stay safely in Gmail.",
+          "point3": "Export all your data or clear saved mail previews anytime in Settings › Data & privacy.",
+          "point4": "Disconnecting Google revokes access and clears saved copies right away. You can also remove BELL under third-party access in your Google Account."
+        },
+        "settings": "Privacy settings",
+        "policy": "Read privacy policy"
+      }
+    },
+    "guideShared": {
+      "help": {
+        "title": "Keyboard shortcuts",
+        "intro": "You can turn off single-key shortcuts in Settings › Appearance. They pause automatically while typing or using an input method.",
+        "scopes": {
+          "everywhere": "Anywhere",
+          "list": "Lists (Today, Inbox, Tasks)",
+          "habits": "Today & Habits",
+          "inbox": "Inbox",
+          "toast": "While an undo notice is shown"
+        },
+        "then": "then"
+      },
+      "aiTags": {
+        "summary": "AI brief",
+        "suggestion": "AI suggestion",
+        "rule": "Quick summary",
+        "ruleParse": "Quick parse"
+      }
+    },
+    "shortcutLabels": {
+      "palette": {
+        "label": "Open Quick Go",
+        "short": "Quick Go"
+      },
+      "capture": {
+        "label": "Quick note (focuses the Today input, or opens Quick Add elsewhere)",
+        "short": "Capture"
+      },
+      "help": {
+        "label": "Show all keyboard shortcuts",
+        "short": "All"
+      },
+      "goToday": {
+        "label": "Go to Today",
+        "short": "Today"
+      },
+      "goInbox": {
+        "label": "Go to Inbox",
+        "short": "Inbox"
+      },
+      "goCalendar": {
+        "label": "Go to Calendar",
+        "short": "Calendar"
+      },
+      "goTasks": {
+        "label": "Go to Tasks",
+        "short": "Tasks"
+      },
+      "goWork": {
+        "label": "Go to School & Projects",
+        "short": "Projects"
+      },
+      "goEvents": {
+        "label": "Go to Events",
+        "short": "Events"
+      },
+      "goIdeas": {
+        "label": "Go to Ideas",
+        "short": "Ideas"
+      },
+      "goHabits": {
+        "label": "Go to Habits",
+        "short": "Habits"
+      },
+      "next": {
+        "label": "Move to next item",
+        "short": "Move"
+      },
+      "prev": {
+        "label": "Move to previous item",
+        "short": "Move"
+      },
+      "primary": {
+        "label": "Run the item's main action",
+        "short": "Action"
+      },
+      "close": {
+        "label": "Mark handled: archive, mark read, complete, mark submitted, mark reviewed, or skip",
+        "short": "Done"
+      },
+      "snooze": {
+        "label": "Snooze, or pick a date for an undated task in Tasks",
+        "short": "Snooze"
+      },
+      "todo": {
+        "label": "Turn into a task",
+        "short": "To task"
+      },
+      "calendar": {
+        "label": "Add to Calendar or mark Going",
+        "short": "Calendar"
+      },
+      "expand": {
+        "label": "Expand or collapse without moving focus",
+        "short": "Expand"
+      },
+      "escape": {
+        "label": "Close menu or command bar, or collapse the current row",
+        "short": "Close"
+      },
+      "undo": {
+        "label": "Undo the last action",
+        "short": "Undo"
+      },
+      "habits": {
+        "label": "Toggle today's check-in for habits 1–9",
+        "short": "Check in"
+      },
+      "trash": {
+        "label": "Delete mail (move to Gmail Trash)",
+        "short": "Delete"
+      },
+      "assignment": {
+        "label": "Turn mail into an assignment, or add a suggested one",
+        "short": "Assign"
+      },
+      "search": {
+        "label": "Search mail",
+        "short": "Search"
+      },
+      "images": {
+        "label": "Show external images in this message (loaded via this computer)",
+        "short": "Images"
+      }
+    },
+    "todayPlaceFixes": {
+      "calendarBackToToday": "Back to Today",
+      "guideOpenTodayTitle": "Open Today",
+      "helpScopeList": "Lists (Today, Inbox, Tasks)",
+      "helpScopeHabits": "Today & Habits",
+      "shortcutCaptureLabel": "Quick note (focuses the Today input, or opens Quick Add elsewhere)",
+      "shortcutGoTodayLabel": "Go to Today",
+      "shortcutGoTodayShort": "Today"
+    }
+  }
+}

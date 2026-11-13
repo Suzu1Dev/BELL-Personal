@@ -1,0 +1,108 @@
+/* Composer (brief §B6: EX .composer; :focus-within ring from the capture field tokens). */
+.composer {
+  padding: 0;
+  overflow: hidden;
+  transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
+}
+
+.composer:focus-within {
+  box-shadow: none;
+}
+
+.composer .composer-tabs {
+  margin: 0;
+  padding: 2px 10px 0;
+}
+
+.composer .composer-tabs .tab {
+  min-height: 38px;
+}
+
+.composer-body {
+  padding: 12px 18px 10px;
+}
+
+.composer-input {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  max-height: 320px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  resize: none;
+  background: transparent;
+  font-size: var(--fs-lg);
+  line-height: var(--lh-body);
+  color: var(--ink);
+}
+
+.composer-input::placeholder {
+  color: var(--muted);
+}
+
+/* The card's :focus-within ring is the focus indicator. */
+.composer-input:focus,
+.composer-input:focus-visible {
+  outline: none;
+}
+
+.composer-parse {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 10px;
+}
+
+.composer-preview {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+
+.composer-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px 8px 18px;
+  border-top: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.composer-saved {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 18px;
+  margin-right: auto;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.composer-saved .ico {
+  color: var(--ok);
+}
+
+.composer-keys {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+@media (pointer: coarse) {
+  .composer-keys {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .composer-body {
+    padding: 12px 16px 10px;
+  }
+
+  .composer-foot {
+    padding-left: 16px;
+  }
+}

@@ -1,0 +1,81 @@
+/* Parse row (SPEC-ux §6.6; mockup states.css ".parse-row", ".tokchip"). Placement padding comes from the host (.pal-detail, .task-add). */
+.parse-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.tokchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 26px;
+  padding: 0 9px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.tokchip .ico {
+  color: var(--m-cal);
+}
+
+button.tokchip {
+  cursor: pointer;
+  transition: border-color var(--dur-1) var(--ease);
+}
+
+button.tokchip:hover {
+  border-color: var(--border-strong);
+}
+
+/* 重複 on: a plain chip that turns the repeat off, next to the optional 直到 day. */
+.tokchip.is-on {
+  border-color: var(--border-strong);
+  color: var(--ink);
+}
+
+.tokchip.is-on .ico:last-child {
+  color: var(--muted);
+}
+
+label.tokchip {
+  cursor: text;
+}
+
+.tokchip.is-tags {
+  color: var(--m-idea);
+}
+
+.tokchip.is-editing {
+  gap: 4px;
+  padding-right: 4px;
+  border-color: var(--accent-ring);
+}
+
+.tokchip.is-editing input {
+  height: 24px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: var(--r-xs);
+  background: var(--surface-soft);
+  color: var(--ink);
+  font: 500 var(--fs-xs)/1 var(--font-mono);
+}
+
+.tokchip.is-editing input:focus,
+.tokchip.is-editing input:focus-visible {
+  outline: none;
+}
+
+@media (pointer: coarse) {
+  .tokchip {
+    min-height: 32px;
+  }
+}

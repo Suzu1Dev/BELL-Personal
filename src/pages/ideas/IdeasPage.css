@@ -1,0 +1,338 @@
+/*
+ * #/ideas (SPEC-ux §3.3 「靈感」). Rows follow the capture card's `.idea`
+ * line (6px --m-idea square, 13–14px text, muted time); headings follow
+ * `.q-ghead`. Tags are `#tag` in --m-idea; AI proposals are dashed chips.
+ */
+.ideas-page {
+  max-width: 880px;
+}
+
+.ideas-page .composer {
+  margin-bottom: 20px;
+}
+
+.ideas-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin-bottom: 14px;
+}
+
+.ideas-search {
+  position: relative;
+  flex: 0 1 300px;
+  min-width: 200px;
+}
+
+.ideas-search > .ico {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.ideas-search .input {
+  padding-left: 36px;
+  min-height: 38px;
+}
+
+.ideas-tags {
+  flex: 1 1 280px;
+  min-width: 0;
+  -webkit-mask-image: linear-gradient(90deg, black 85%, transparent);
+  mask-image: linear-gradient(90deg, black 85%, transparent);
+}
+
+.ideas-tags:focus-within {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.ideas-list {
+  padding: 0;
+  overflow: hidden;
+}
+
+.ideas-skeleton {
+  display: grid;
+  gap: 4px;
+  padding: 10px 20px 14px;
+}
+
+.idea-day {
+  padding: 2px 8px 8px;
+}
+
+.idea-day + .idea-day {
+  border-top: 1px solid var(--border);
+}
+
+.idea-day .q-ghead {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 12px 14px 4px;
+}
+
+.idea-day .q-ghead h3 {
+  font-size: var(--fs-sm);
+  font-weight: 650;
+  color: var(--ink);
+}
+
+.idea-row {
+  display: grid;
+  grid-template-columns: 6px minmax(0, 1fr) auto;
+  column-gap: 14px;
+  align-items: start;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  transition: background var(--dur-1) var(--ease);
+}
+
+.idea-row:hover,
+.idea-row:focus-within {
+  background: var(--surface-soft);
+}
+
+.idea-row.is-flash {
+  animation: idea-flash 1.6s var(--ease);
+}
+
+@keyframes idea-flash {
+  0%, 40% { background: var(--accent-soft); }
+}
+
+.idea-dot {
+  width: 6px;
+  height: 6px;
+  margin-top: 9px;
+  border-radius: 2px;
+  background: var(--m-idea);
+}
+
+.idea-row.is-pinned .idea-dot {
+  background: var(--accent);
+}
+
+.idea-main {
+  min-width: 0;
+}
+
+.idea-title {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.idea-text {
+  font-size: var(--fs-md);
+  line-height: 1.7;
+  color: var(--ink);
+  white-space: pre-line;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.idea-title + .idea-text {
+  color: var(--ink-2);
+  font-size: var(--fs-sm);
+}
+
+.idea-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  margin-top: 4px;
+}
+
+.idea-tag {
+  font-size: var(--fs-xs);
+  font-weight: 550;
+  color: var(--m-idea);
+}
+
+.idea-tag:hover {
+  text-decoration: underline;
+}
+
+.tag-proposal {
+  display: inline-flex;
+  align-items: center;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--m-idea);
+}
+
+.tag-proposal button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 24px;
+  font-size: var(--fs-xs);
+  font-weight: 550;
+  color: inherit;
+}
+
+.tag-proposal-add {
+  padding: 0 4px 0 8px;
+}
+
+.tag-proposal-add .ico {
+  color: var(--accent);
+}
+
+.tag-proposal .tag-proposal-x {
+  padding: 0 7px 0 3px;
+  color: var(--muted);
+}
+
+.tag-proposal:hover {
+  border-color: var(--m-idea);
+}
+
+.idea-side {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 24px;
+}
+
+.idea-time {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.idea-acts {
+  display: none;
+  gap: 2px;
+}
+
+.idea-desktop-actions {
+  display: contents;
+}
+
+.idea-compact-actions {
+  display: none;
+}
+
+.idea-acts .btn-icon {
+  width: 30px;
+  min-height: 30px;
+  padding: 0;
+}
+
+.idea-acts .idea-todo {
+  min-height: 30px;
+  margin-right: 4px;
+  color: var(--ink-2);
+}
+
+.idea-row:hover .idea-acts,
+.idea-row:focus-within .idea-acts {
+  display: flex;
+}
+
+.idea-row:hover .idea-time,
+.idea-row:focus-within .idea-time {
+  display: none;
+}
+
+.idea-edit {
+  display: grid;
+  gap: 8px;
+}
+
+.idea-edit .textarea {
+  min-height: 72px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.idea-edit-acts {
+  display: flex;
+  gap: 6px;
+}
+
+/* No hover-only affordances on touch: the actions stay visible under the time. */
+@media (pointer: coarse), (max-width: 720px) {
+  .idea-row {
+    grid-template-columns: 6px minmax(0, 1fr);
+  }
+
+  .idea-side {
+    grid-column: 2;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+
+  .idea-acts,
+  .idea-row:hover .idea-time,
+  .idea-row:focus-within .idea-time {
+    display: flex;
+  }
+
+  .idea-acts .btn-icon {
+    width: var(--tap);
+    min-height: var(--tap);
+  }
+
+  /* Five 44px targets fit beside the time only as icons; the label stays in the aria-label and tooltip. */
+  .idea-acts .idea-todo {
+    width: var(--tap);
+    min-height: var(--tap);
+    margin-right: 0;
+    padding: 0;
+  }
+
+  .idea-todo-label {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .ideas-search {
+    flex-basis: 100%;
+  }
+
+  .ideas-tags {
+    flex-basis: 100%;
+  }
+
+  .idea-day {
+    padding: 2px 4px 6px;
+  }
+
+  .idea-row {
+    padding: 10px 8px;
+  }
+
+  .ideas-list {
+    overflow: visible;
+  }
+
+  .idea-desktop-actions {
+    display: none;
+  }
+
+  .idea-compact-actions {
+    display: inline-flex;
+  }
+}
+
+/* #/ideas/<id>: the landed row takes focus (tabIndex -1). */
+.idea-row:focus {
+  outline: none;
+}
+
+.idea-row:focus-visible {
+  box-shadow: 0 0 0 3px var(--accent-ring);
+}

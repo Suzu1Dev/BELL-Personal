@@ -1,0 +1,503 @@
+/*
+ * #/habits (SPEC-ux §3.3, §4.7). Built from the HabitsCard grammar of the
+ * mockup (.habit, .hcheck, .h-name, .h-cad, .h-days, .h-streak, dots 12px,
+ * app.css "Habits"). Every rule is scoped under .habit-page and states its
+ * layout in full, so the Today card's chip mode (≤1080) never reaches here.
+ */
+.habit-page {
+  display: grid;
+  gap: 16px;
+  max-width: 880px;
+}
+
+.habit-page > .page-head {
+  margin-bottom: 8px;
+}
+
+/* ------------------------------------------------------------ board */
+.habit-page .habit-board {
+  padding-bottom: 14px;
+}
+
+.habit-page .habit-board .card-head {
+  margin-bottom: 6px;
+}
+
+.habit-page .keys {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.habit-page .keys kbd {
+  min-width: 16px;
+  height: 17px;
+  padding: 0 4px;
+}
+
+.habit-page .habit-board .stale-note {
+  margin: 0 0 6px;
+}
+
+.habit-page .habit-list {
+  display: block;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.habit-page .habit {
+  position: relative;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto 72px 36px;
+  grid-template-areas: "check main heat streak menu";
+  column-gap: 18px;
+  row-gap: 0;
+  align-items: center;
+  min-height: 0;
+  padding: 12px 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.habit-page .habit-list > .habit + .habit,
+.habit-page .habit.h-head + .habit-list > .habit:first-child {
+  border-top: 1px solid var(--border);
+}
+
+/* Weekday initials above the heat columns. */
+.habit-page .habit.h-head {
+  display: grid;
+  padding: 2px 0 8px;
+  border-top: 0;
+}
+
+.habit-page .h-head-label {
+  grid-area: main;
+  justify-self: end;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.habit-page .h-days {
+  grid-area: heat;
+  display: grid;
+  grid-template-columns: repeat(7, 12px);
+  gap: 5px;
+  font-size: var(--fs-xs);
+  line-height: 1;
+  color: var(--muted);
+  text-align: center;
+}
+
+.habit-page .h-days .today {
+  color: var(--accent);
+  font-weight: 650;
+}
+
+.habit-page .h-head-streak {
+  grid-area: streak;
+  justify-self: end;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+/* ------------------------------------------------------------ check */
+.habit-page .hcheck {
+  grid-area: check;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  background: var(--surface);
+  color: transparent;
+  transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+
+.habit-page .hcheck::after {
+  content: none;
+}
+
+.habit-page .hcheck .ico {
+  width: 15px;
+  height: 15px;
+  stroke-width: 2.6;
+}
+
+.habit-page button.hcheck:hover {
+  border-color: var(--m-habit);
+}
+
+.habit-page button.hcheck:active {
+  transform: scale(.92);
+}
+
+.habit-page .hcheck[aria-pressed="true"],
+.habit-page .hcheck[data-pressed="true"] {
+  background: var(--m-habit);
+  border-color: var(--m-habit);
+  color: var(--on-accent);
+}
+
+/* The automatic habit fills itself: a dashed ring until GitHub counts a contribution. */
+.habit-page .habit.is-auto .hcheck:not([data-pressed="true"]) {
+  border-style: dashed;
+}
+
+/* ------------------------------------------------------------- text */
+.habit-page .h-main {
+  grid-area: main;
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.habit-page .h-name {
+  display: block;
+  font-size: var(--fs-md);
+  font-weight: 550;
+  line-height: 1.4;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.habit-page .habit.is-done .h-name {
+  color: var(--ink-2);
+}
+
+.habit-page .h-cad {
+  display: block;
+  font-size: var(--fs-xs);
+  line-height: 1.45;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ------------------------------------------------- heat strip (5 × 7) */
+.habit-page .h-heat {
+  grid-area: heat;
+  display: grid;
+  grid-template-columns: repeat(7, 12px);
+  grid-auto-rows: 12px;
+  gap: 5px;
+}
+
+.habit-page .h-heat i,
+.habit-page .habit-legend i {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--surface-sunk);
+}
+
+.habit-page .h-heat i.y,
+.habit-page .habit-legend i.y {
+  background: var(--m-habit);
+}
+
+.habit-page .h-heat i.rest,
+.habit-page .habit-legend i.rest {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--border-strong);
+}
+
+/* Future days and days before the habit existed: just a trace of the grid. */
+.habit-page .h-heat i.off {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.habit-page .h-heat i.t,
+.habit-page .habit-legend i.t {
+  box-shadow: 0 0 0 1.5px var(--surface), 0 0 0 3px var(--accent);
+}
+
+.habit-page .habit-legend i.t {
+  background: transparent;
+}
+
+/* ----------------------------------------------------------- streak */
+.habit-page .h-streak {
+  grid-area: streak;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 3px;
+  margin-left: 0;
+  font: 600 var(--fs-sm)/1 var(--font-mono);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.habit-page .h-streak .ico {
+  align-self: center;
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+}
+
+.habit-page .h-streak small {
+  font: 500 var(--fs-xs)/1 var(--font-sans);
+  color: var(--muted);
+}
+
+/* ----------------------------------------------------------- legend */
+.habit-page .habit-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.habit-page .habit-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* --------------------------------------------------------- skeleton */
+.habit-page .habit-skel .habit-skel-check {
+  grid-area: check;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.habit-page .habit-skel .h-main {
+  gap: 8px;
+}
+
+.habit-page .habit-skel .habit-skel-heat {
+  grid-area: heat;
+  width: 114px;
+  height: 80px;
+  border-radius: var(--r-sm);
+}
+
+/* ------------------------------------------------------ GitHub card */
+.habit-page .habit-auto {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.habit-page .habit-auto .tile {
+  margin-top: 2px;
+}
+
+.habit-page .habit-auto-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.habit-page .habit-auto-note {
+  margin-top: 10px;
+  font-size: var(--fs-xs);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+/* --------------------------------------------------------- archived */
+.habit-page .habit-archived {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+}
+
+.habit-page .habit-archived .btn .ico {
+  transition: transform var(--dur-2) var(--ease);
+}
+
+.habit-page .habit-archived .btn.is-open .ico {
+  transform: rotate(180deg);
+}
+
+.habit-page .habit-archived ul {
+  justify-self: stretch;
+  margin: 0;
+  padding: 4px 16px;
+  list-style: none;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-md);
+}
+
+.habit-page .habit-archived li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.habit-page .habit-archived li + li {
+  border-top: 1px solid var(--border);
+}
+
+.habit-page .habit-archived .h-main {
+  flex: 1;
+}
+
+/* ----------------------------------------------------------- dialog */
+.habit-form {
+  display: grid;
+  gap: 16px;
+}
+
+.habit-form-note {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.habit-form-cadence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px 16px;
+}
+
+.habit-form-label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.habit-form .seg {
+  justify-self: start;
+}
+
+.habit-form .seg button {
+  min-height: 34px;
+  padding: 0 14px;
+  font-size: var(--fs-sm);
+}
+
+.habit-form-cadence .field:last-child:not(:first-child) {
+  min-width: 140px;
+}
+
+.habit-form .habit-form-short {
+  max-width: 200px;
+}
+
+.habit-dialog .dialog-foot .btn-primary {
+  min-width: 88px;
+}
+
+/* ------------------------------------------------------- responsive */
+@media (pointer: coarse) {
+  .habit-page .keys {
+    display: none;
+  }
+
+  .habit-page .hcheck::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+  }
+
+}
+
+@media (max-width: 720px) {
+  .habit-page .keys {
+    display: none;
+  }
+
+  /* Name, cadence and streak stack beside the heat strip, so a row stays as tall as the strip. */
+  .habit-page .habit {
+    grid-template-columns: 32px minmax(0, 1fr) auto 36px;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "check main heat menu"
+      "check streak heat menu";
+    column-gap: 12px;
+    row-gap: 6px;
+  }
+
+  .habit-page .h-main {
+    align-self: end;
+  }
+
+  .habit-page .h-streak {
+    align-self: start;
+    justify-self: start;
+  }
+
+  .habit-page .habit-menu-wrap {
+    margin-right: -6px;
+  }
+
+  .habit-page .habit.h-head {
+    grid-template-rows: auto;
+    grid-template-areas: "check main heat menu";
+    padding-bottom: 6px;
+  }
+
+  .habit-page .h-head-streak {
+    display: none;
+  }
+
+  .habit-page .habit-skel .habit-skel-heat {
+    width: 114px;
+  }
+
+  .habit-page .habit-archived li {
+    flex-wrap: wrap;
+  }
+
+  .habit-page .habit-archived .h-main {
+    flex-basis: 100%;
+  }
+}
+
+/* Narrow phones (320–374): the heat strip moves under the name so the name keeps its width. */
+@media (max-width: 374px) {
+  .habit-page .habit {
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "check main streak menu"
+      ". heat heat heat";
+    row-gap: 10px;
+  }
+
+  .habit-page .h-main {
+    align-self: center;
+  }
+
+  .habit-page .h-streak {
+    align-self: center;
+    justify-self: end;
+  }
+
+  .habit-page .h-heat {
+    justify-self: start;
+  }
+
+  .habit-page .habit.h-head {
+    grid-template-columns: 32px minmax(0, 1fr);
+    grid-template-areas: ". heat";
+  }
+
+  .habit-page .h-head-label {
+    display: none;
+  }
+}

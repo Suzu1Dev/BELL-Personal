@@ -1,0 +1,16 @@
+/* NotFoundPage styles. */
+.not-found-path {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+/* <MissingObject>: a deep link to a task, event or idea that is not there. */
+.missing-object {
+  outline: none;
+}
+
+.missing-object:focus-visible {
+  box-shadow: 0 0 0 3px var(--accent-ring);
+  border-radius: var(--r-md);
+}

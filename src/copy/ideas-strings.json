@@ -1,0 +1,188 @@
+{
+  "zh-TW": {
+    "ideas": {
+      "pageHead": {
+        "title": "讓好靈感不再溜走。"
+      },
+      "composer": {
+        "label": "寫下靈感、待辦或筆記",
+        "tabsLabel": "要記成什麼",
+        "tabs": {
+          "idea": "靈感",
+          "todo": "待辦",
+          "note": "筆記"
+        },
+        "placeholders": {
+          "idea": "想到什麼都先寫下來，#標籤 可以分類…",
+          "todo": "例如：週五前繳電費…",
+          "note": "第一行是標題，下面寫內容…"
+        },
+        "submit": {
+          "idea": "記下靈感",
+          "todo": "新增待辦",
+          "note": "儲存筆記"
+        },
+        "enterType": {
+          "todo": "建立待辦",
+          "event": "建立行程",
+          "idea": "記下靈感"
+        },
+        "saved": "已自動儲存",
+        "unsaved": "草稿",
+        "submitHint": "送出",
+        "tooLong": "內容最多 {max} 字。"
+      },
+      "searchLabel": "搜尋靈感",
+      "searchPlaceholder": "搜尋靈感或 #標籤",
+      "tagsLabel": "依標籤篩選",
+      "allTags": "全部",
+      "pinned": "釘選",
+      "today": "今天",
+      "yesterday": "昨天",
+      "countOne": "{n} 則",
+      "count": "{n} 則",
+      "emptyTitle": "還沒有靈感，先寫下第一個。",
+      "emptyHint": "任何頁面按 N 都能記。",
+      "noMatchTitle": "沒有符合的靈感。",
+      "noMatchHint": "換個關鍵字，或清除標籤篩選。",
+      "clearFilters": "清除篩選",
+      "loadErrorTitle": "靈感暫時無法載入",
+      "archivedToggle": "查看封存",
+      "backToActive": "回到靈感",
+      "archivedHead": "已封存的靈感",
+      "actions": {
+        "pin": "釘選",
+        "unpin": "取消釘選",
+        "archive": "封存",
+        "unarchive": "移回靈感",
+        "delete": "刪除",
+        "toTodo": "轉成待辦",
+        "edit": "編輯",
+        "save": "儲存",
+        "cancel": "取消",
+        "more": "更多動作"
+      },
+      "linked": {
+        "missingTitle": "找不到這則靈感",
+        "missingHint": "可能已刪除。",
+        "back": "回到全部靈感",
+        "openFailed": "開啟靈感"
+      },
+      "proposalLabel": "加上 AI 建議的標籤 #{tag}",
+      "proposalDismiss": "略過 AI 建議的標籤 #{tag}",
+      "proposalsTitle": "AI 建議的標籤",
+      "suggestTags": "請 AI 建議標籤",
+      "suggesting": "AI 正在整理標籤…",
+      "toasts": {
+        "saved": "已記下靈感",
+        "noteSaved": "已儲存筆記",
+        "archived": "已封存靈感",
+        "unarchived": "已移回靈感",
+        "deleted": "已刪除靈感",
+        "pinned": "已釘選",
+        "unpinned": "已取消釘選",
+        "toTodo": "已轉成待辦「{title}」",
+        "tagAdded": "已加上標籤 #{tag}",
+        "saveFailed": "儲存靈感",
+        "updateFailed": "更新靈感",
+        "deleteFailed": "刪除靈感",
+        "toTodoFailed": "轉成待辦",
+        "tagFailed": "加上標籤",
+        "suggestFailed": "AI 標籤建議"
+      }
+    }
+  },
+  "en": {
+    "ideas": {
+      "pageHead": {
+        "title": "Never let a good idea slip away."
+      },
+      "composer": {
+        "label": "Write an idea, task, or note",
+        "tabsLabel": "Capture type",
+        "tabs": {
+          "idea": "Idea",
+          "todo": "Task",
+          "note": "Note"
+        },
+        "placeholders": {
+          "idea": "Jot down whatever comes to mind. Use #tags to organize…",
+          "todo": "e.g., Pay bill by Fri",
+          "note": "First line becomes the title, with your note below…"
+        },
+        "submit": {
+          "idea": "Save idea",
+          "todo": "Add task",
+          "note": "Save note"
+        },
+        "enterType": {
+          "todo": "Create task",
+          "event": "Create event",
+          "idea": "Save idea"
+        },
+        "saved": "Auto-saved",
+        "unsaved": "Draft",
+        "submitHint": "Submit",
+        "tooLong": "Keep it under {max} characters."
+      },
+      "searchLabel": "Search ideas",
+      "searchPlaceholder": "Search ideas or #tags",
+      "tagsLabel": "Filter by tag",
+      "allTags": "All",
+      "pinned": "Pinned",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "countOne": "{n} idea",
+      "count": "{n} ideas",
+      "emptyTitle": "No ideas yet. Capture your first one.",
+      "emptyHint": "Press N from any page to jot one down.",
+      "noMatchTitle": "No matching ideas.",
+      "noMatchHint": "Try another keyword or clear your tag filter.",
+      "clearFilters": "Clear filters",
+      "loadErrorTitle": "Couldn't load ideas right now",
+      "archivedToggle": "View archived",
+      "backToActive": "Back to Ideas",
+      "archivedHead": "Archived ideas",
+      "actions": {
+        "pin": "Pin",
+        "unpin": "Unpin",
+        "archive": "Archive",
+        "unarchive": "Move to Ideas",
+        "delete": "Delete",
+        "toTodo": "Turn into task",
+        "edit": "Edit",
+        "save": "Save",
+        "cancel": "Cancel",
+        "more": "More actions"
+      },
+      "linked": {
+        "missingTitle": "Can't find this idea",
+        "missingHint": "It may have been deleted.",
+        "back": "Back to all ideas",
+        "openFailed": "Opening idea"
+      },
+      "proposalLabel": "Add AI-suggested tag #{tag}",
+      "proposalDismiss": "Dismiss AI-suggested tag #{tag}",
+      "proposalsTitle": "AI-suggested tag",
+      "suggestTags": "Suggest tags",
+      "suggesting": "Suggesting tags…",
+      "toasts": {
+        "saved": "Saved to Ideas",
+        "noteSaved": "Note saved",
+        "archived": "Idea archived",
+        "unarchived": "Moved back to Ideas",
+        "deleted": "Idea deleted",
+        "pinned": "Pinned",
+        "unpinned": "Unpinned",
+        "toTodo": "Turned into task “{title}”",
+        "tagAdded": "Added #{tag}",
+        "saveFailed": "Saving idea",
+        "updateFailed": "Updating idea",
+        "deleteFailed": "Deleting idea",
+        "toTodoFailed": "Turning into task",
+        "tagFailed": "Adding tag",
+        "suggestFailed": "Tag suggestion"
+      }
+    }
+  }
+}

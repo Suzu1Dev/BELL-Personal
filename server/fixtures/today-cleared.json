@@ -1,0 +1,403 @@
+{
+  "date": "2026-10-12",
+  "now": "2026-10-12T13:40:00.000Z",
+  "greeting": "辛苦了",
+  "weather": {
+    "city": "新竹",
+    "tempC": 21,
+    "text": "陣雨"
+  },
+  "brief": {
+    "state": "ready",
+    "source": "ai",
+    "generatedAt": "2026-10-11T22:30:00.000Z",
+    "next": "06:30",
+    "text": "先回林教授的專題信，再把 OS HW3 收尾，今晚 23:59 截止。下午 2:00 讀書會前記得準備 Ch.5 簡報；15:30 後有 4 小時空檔。"
+  },
+  "counts": {
+    "open": 0,
+    "handled": 11,
+    "total": 11,
+    "handledBy": {
+      "reply": 3,
+      "done": 4,
+      "snooze": 2,
+      "calendar": 2
+    },
+    "inboxUnread": 9,
+    "habitsLeft": 2,
+    "nav": {
+      "tasks": 2,
+      "work": 1,
+      "events": 0
+    }
+  },
+  "nextUp": {
+    "start": "2026-10-13T01:00:00.000Z",
+    "title": "計算機網路"
+  },
+  "queue": [
+    {
+      "group": "now",
+      "items": [],
+      "hidden": 0,
+      "cap": 5
+    },
+    {
+      "group": "today",
+      "items": [],
+      "hidden": 0,
+      "cap": 5
+    },
+    {
+      "group": "later",
+      "items": [],
+      "hidden": 0,
+      "cap": 3
+    }
+  ],
+  "digest": {
+    "total": 9,
+    "categories": [
+      {
+        "key": "newsletter",
+        "label": "電子報",
+        "count": 3,
+        "action": "read"
+      },
+      {
+        "key": "school",
+        "label": "學校公告",
+        "count": 2,
+        "action": "open"
+      },
+      {
+        "key": "github",
+        "label": "GitHub 通知",
+        "count": 4,
+        "action": "read"
+      }
+    ]
+  },
+  "agenda": {
+    "items": [
+      {
+        "start": "2026-10-12T02:10:00.000Z",
+        "end": "2026-10-12T04:00:00.000Z",
+        "title": "作業系統",
+        "meta": "工程三館 EC115 · 林志明",
+        "kind": "event",
+        "past": true
+      },
+      {
+        "start": "2026-10-12T06:00:00.000Z",
+        "end": "2026-10-12T07:30:00.000Z",
+        "title": "OS 讀書會 · Ch.5",
+        "meta": "浩然圖書館 討論室 B",
+        "kind": "event",
+        "past": true
+      },
+      {
+        "start": "2026-10-12T11:30:00.000Z",
+        "end": "2026-10-12T12:30:00.000Z",
+        "title": "健身",
+        "meta": "光復校區 體育館",
+        "kind": "event",
+        "habitLink": "運動",
+        "habitId": "habit-move",
+        "past": true
+      },
+      {
+        "start": "2026-10-12T15:59:00.000Z",
+        "title": "HW3 截止",
+        "meta": "作業系統 · NYCU E3",
+        "kind": "due",
+        "itemId": "moodle:assign-30512",
+        "past": true
+      }
+    ]
+  },
+  "habits": [
+    {
+      "id": "habit-read",
+      "name": "閱讀 20 分鐘",
+      "short": "閱讀",
+      "cadence": "今天 07:50 完成",
+      "doneToday": true,
+      "week": [
+        "y",
+        "y",
+        "y",
+        "y",
+        "y",
+        "y",
+        "y"
+      ],
+      "streak": 12,
+      "streakUnit": "天"
+    },
+    {
+      "id": "habit-move",
+      "name": "運動",
+      "short": "運動",
+      "cadence": "每週 3 次 · 0/3",
+      "doneToday": false,
+      "week": [
+        "y",
+        "rest",
+        "y",
+        "rest",
+        "y",
+        "rest",
+        "n"
+      ],
+      "streak": 4,
+      "streakUnit": "週"
+    },
+    {
+      "id": "habit-diary",
+      "name": "寫日記",
+      "short": "日記",
+      "cadence": "每天 · 睡前",
+      "doneToday": false,
+      "week": [
+        "y",
+        "y",
+        "y",
+        "y",
+        "y",
+        "y",
+        "n"
+      ],
+      "streak": 27,
+      "streakUnit": "天"
+    }
+  ],
+  "ideas": [
+    {
+      "id": "idea-ebpf-cfs",
+      "text": "用 eBPF 量 CFS 排程延遲，當期末專題",
+      "at": "2026-10-11T15:10:00.000Z"
+    },
+    {
+      "id": "idea-ctf-blog",
+      "text": "CTF writeup 改寫成部落格系列",
+      "at": "2026-10-09T13:00:00.000Z"
+    }
+  ],
+  "later": {
+    "events": [
+      {
+        "date": "10/13",
+        "label": "明天",
+        "title": "09:00 計算機網路",
+        "meta": "工程三館 EC122 · Google 行事曆",
+        "start": "2026-10-13T01:00:00.000Z"
+      },
+      {
+        "date": "10/24",
+        "label": "週六",
+        "title": "g0v 零時政府第柒拾次大松",
+        "meta": "中研院 · g0v 行事曆訂閱",
+        "start": "2026-10-24T01:00:00.000Z"
+      },
+      {
+        "date": "10/30",
+        "label": "週五",
+        "title": "停修申請截止",
+        "meta": "NYCU 校園行事曆 · 還有 18 天",
+        "start": "2026-10-29T16:00:00.000Z"
+      }
+    ],
+    "projects": [
+      {
+        "name": "OS 期末專題",
+        "pct": 20,
+        "next": "10/19 題目提案 · 等林教授回覆",
+        "color": "task",
+        "href": "#/work/projects/os-final"
+      },
+      {
+        "name": "ctf-notes",
+        "pct": 64,
+        "next": "Balsn 前整理 heap 筆記",
+        "color": "event",
+        "href": "#/work/projects/ctf-notes"
+      },
+      {
+        "name": "vitejs/vite #18234",
+        "next": "fix(css): preserve @layer order · 等待審查 3 天",
+        "pr": true,
+        "href": "https://github.com/vitejs/vite/pull/18234"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "gmail",
+      "label": "Gmail",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:40:00.000Z"
+    },
+    {
+      "id": "google-calendar",
+      "label": "Google 行事曆",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:40:00.000Z"
+    },
+    {
+      "id": "moodle",
+      "label": "Moodle",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:31:00.000Z"
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:38:00.000Z"
+    },
+    {
+      "id": "ctftime",
+      "label": "CTFtime",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:00:00.000Z"
+    },
+    {
+      "id": "feeds",
+      "label": "活動訂閱",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:00:00.000Z"
+    },
+    {
+      "id": "weather",
+      "label": "天氣",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-12T00:30:00.000Z"
+    }
+  ],
+  "handled": [
+    {
+      "itemId": "ctftime:2846",
+      "kind": "event.decide",
+      "title": "Balsn CTF 2026",
+      "action": "going",
+      "at": "2026-10-12T13:10:00.000Z",
+      "actionId": "demo-cleared-11",
+      "undoable": true
+    },
+    {
+      "itemId": "ai:sg-sitcon-autumn",
+      "kind": "suggestion.event",
+      "title": "從信件找到 1 個活動，要加入行事曆嗎？",
+      "action": "calendar",
+      "at": "2026-10-12T13:05:00.000Z",
+      "actionId": "demo-cleared-10",
+      "undoable": true
+    },
+    {
+      "itemId": "gmail:18c2e9d0a1b2c3f6",
+      "kind": "mail.bill",
+      "title": "中華電信 9 月帳單 NT$599",
+      "action": "snooze",
+      "at": "2026-10-12T09:00:00.000Z",
+      "actionId": "demo-cleared-9",
+      "undoable": true
+    },
+    {
+      "itemId": "moodle:assign-30744",
+      "kind": "assignment",
+      "title": "計算機網路 Lab 2：Socket Programming",
+      "action": "snooze",
+      "at": "2026-10-12T08:55:00.000Z",
+      "actionId": "demo-cleared-8",
+      "undoable": true
+    },
+    {
+      "itemId": "native:todo-scholarship",
+      "kind": "todo",
+      "title": "寄出獎學金申請文件",
+      "action": "done",
+      "at": "2026-10-12T08:50:00.000Z",
+      "actionId": "demo-cleared-7",
+      "undoable": true
+    },
+    {
+      "itemId": "native:todo-dorm-fee",
+      "kind": "todo",
+      "title": "繳宿舍網路費",
+      "action": "done",
+      "at": "2026-10-12T04:45:00.000Z",
+      "actionId": "demo-cleared-6",
+      "undoable": true
+    },
+    {
+      "itemId": "native:todo-study-slides",
+      "kind": "todo",
+      "title": "準備讀書會簡報：Ch.5 Deadlocks",
+      "action": "done",
+      "at": "2026-10-12T04:40:00.000Z",
+      "actionId": "demo-cleared-5",
+      "undoable": true
+    },
+    {
+      "itemId": "moodle:assign-30512",
+      "kind": "assignment",
+      "title": "作業系統 HW3：CPU Scheduling 模擬",
+      "action": "submitted",
+      "at": "2026-10-12T04:35:00.000Z",
+      "actionId": "demo-cleared-4",
+      "undoable": true
+    },
+    {
+      "itemId": "gmail:18c29f8e7d6c5b4a",
+      "kind": "mail.reply",
+      "title": "Re: 社團器材借用",
+      "action": "reply",
+      "at": "2026-10-12T00:30:00.000Z",
+      "actionId": "demo-cleared-3",
+      "undoable": false
+    },
+    {
+      "itemId": "gmail:18c2a7b6c5d4e3f2",
+      "kind": "mail.reply",
+      "title": "Re: HW2 成績疑問",
+      "action": "reply",
+      "at": "2026-10-12T00:25:00.000Z",
+      "actionId": "demo-cleared-2",
+      "undoable": false
+    },
+    {
+      "itemId": "gmail:18c2f0a1b2c3d4e5",
+      "kind": "mail.reply",
+      "title": "Re: OS 期末專題題目討論",
+      "action": "reply",
+      "at": "2026-10-12T00:20:00.000Z",
+      "actionId": "demo-cleared-1",
+      "undoable": false
+    }
+  ],
+  "sidebar": {
+    "projects": [
+      {
+        "id": "os-final",
+        "name": "OS 期末專題",
+        "pct": 20,
+        "color": "task"
+      },
+      {
+        "id": "ctf-notes",
+        "name": "ctf-notes",
+        "pct": 64,
+        "color": "event"
+      },
+      {
+        "id": "bell-personal",
+        "name": "bell-personal",
+        "pct": 38,
+        "color": "accent"
+      }
+    ],
+    "streakDays": 12
+  }
+}

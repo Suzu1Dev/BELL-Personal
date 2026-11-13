@@ -1,0 +1,76 @@
+/* Capture field (SPEC-ux §4.6; mockup app.css "Capture": .cap-field, .cap-hint). The card chrome (.capture, .recent) belongs to Today. */
+.cap-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 6px 5px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  transition: border-color var(--dur-1), box-shadow var(--dur-1);
+}
+
+.cap-field:focus-within {
+  box-shadow: none;
+}
+
+.cap-field > .ico {
+  color: var(--m-idea);
+}
+
+.cap-field input {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: var(--fs-md);
+  color: var(--ink);
+}
+
+.cap-field input::placeholder {
+  color: var(--muted);
+}
+
+.cap-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 8px 2px 0;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  min-width: 0;
+}
+
+.cap-hint .ico {
+  color: var(--accent);
+}
+
+/* The live preview may wrap to a second line in the 340px side column; it never hides 「Tab 換類型」. */
+.cap-hint-text {
+  min-width: 0;
+  line-height: 1.5;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.cap-hint > .ico {
+  flex: none;
+  margin-top: 2px;
+}
+
+.cap-hint .link {
+  margin-left: auto;
+  flex: none;
+}
+
+@media (max-width: 720px) {
+  .cap-field kbd {
+    display: none;
+  }
+
+  .cap-field input {
+    font-size: var(--fs-lg);
+  }
+}

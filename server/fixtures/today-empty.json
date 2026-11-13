@@ -1,0 +1,227 @@
+{
+  "date": "2026-10-17",
+  "now": "2026-10-17T00:30:00.000Z",
+  "greeting": "早安",
+  "weather": {
+    "city": "新竹",
+    "tempC": 26,
+    "text": "晴"
+  },
+  "brief": {
+    "state": "off",
+    "source": "rule",
+    "text": "沒有到期的作業，也沒有行程。下一個是 10/19（一）09:00 計算機網路。"
+  },
+  "counts": {
+    "open": 0,
+    "handled": 0,
+    "total": 0,
+    "handledBy": {
+      "reply": 0,
+      "done": 0,
+      "snooze": 0,
+      "calendar": 0
+    },
+    "inboxUnread": 0,
+    "habitsLeft": 2,
+    "nav": {
+      "tasks": 0,
+      "work": 0,
+      "events": 0
+    }
+  },
+  "queue": [
+    {
+      "group": "now",
+      "items": [],
+      "hidden": 0,
+      "cap": 5
+    },
+    {
+      "group": "today",
+      "items": [],
+      "hidden": 0,
+      "cap": 5
+    },
+    {
+      "group": "later",
+      "items": [],
+      "hidden": 0,
+      "cap": 3
+    }
+  ],
+  "agenda": {
+    "items": []
+  },
+  "habits": [
+    {
+      "id": "habit-read",
+      "name": "閱讀 20 分鐘",
+      "short": "閱讀",
+      "cadence": "每天",
+      "doneToday": false,
+      "week": [
+        "y",
+        "y",
+        "y",
+        "y",
+        "y",
+        "y",
+        "n"
+      ],
+      "streak": 16,
+      "streakUnit": "天"
+    },
+    {
+      "id": "habit-move",
+      "name": "運動",
+      "short": "運動",
+      "cadence": "每週 3 次 · 3/3",
+      "doneToday": false,
+      "week": [
+        "y",
+        "rest",
+        "y",
+        "rest",
+        "y",
+        "rest",
+        "rest"
+      ],
+      "streak": 5,
+      "streakUnit": "週",
+      "due": false
+    },
+    {
+      "id": "habit-diary",
+      "name": "寫日記",
+      "short": "日記",
+      "cadence": "每天 · 睡前",
+      "doneToday": false,
+      "week": [
+        "y",
+        "y",
+        "y",
+        "y",
+        "y",
+        "y",
+        "n"
+      ],
+      "streak": 31,
+      "streakUnit": "天"
+    }
+  ],
+  "ideas": [
+    {
+      "id": "idea-ebpf-cfs",
+      "text": "用 eBPF 量 CFS 排程延遲，當期末專題",
+      "at": "2026-10-11T15:10:00.000Z"
+    },
+    {
+      "id": "idea-ctf-blog",
+      "text": "CTF writeup 改寫成部落格系列",
+      "at": "2026-10-09T13:00:00.000Z"
+    }
+  ],
+  "later": {
+    "events": [
+      {
+        "date": "10/19",
+        "label": "週一",
+        "title": "09:00 計算機網路",
+        "meta": "工程三館 EC122 · Google 行事曆",
+        "start": "2026-10-19T01:00:00.000Z"
+      },
+      {
+        "date": "10/24",
+        "label": "週六",
+        "title": "g0v 零時政府第柒拾次大松",
+        "meta": "中研院 · g0v 行事曆訂閱",
+        "start": "2026-10-24T01:00:00.000Z"
+      }
+    ],
+    "projects": [
+      {
+        "name": "OS 期末專題",
+        "pct": 20,
+        "next": "10/19 題目提案 · 等林教授回覆",
+        "color": "task",
+        "href": "#/work/projects/os-final"
+      },
+      {
+        "name": "ctf-notes",
+        "pct": 64,
+        "next": "Balsn 前整理 heap 筆記",
+        "color": "event",
+        "href": "#/work/projects/ctf-notes"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "gmail",
+      "label": "Gmail",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-17T00:28:00.000Z"
+    },
+    {
+      "id": "google-calendar",
+      "label": "Google 行事曆",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-17T00:28:00.000Z"
+    },
+    {
+      "id": "moodle",
+      "label": "Moodle",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-17T00:28:00.000Z"
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-17T00:28:00.000Z"
+    },
+    {
+      "id": "ctftime",
+      "label": "CTFtime",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-17T00:28:00.000Z"
+    },
+    {
+      "id": "feeds",
+      "label": "活動訂閱",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-17T00:28:00.000Z"
+    },
+    {
+      "id": "weather",
+      "label": "天氣",
+      "state": "ok",
+      "lastSyncedAt": "2026-10-17T00:28:00.000Z"
+    }
+  ],
+  "handled": [],
+  "sidebar": {
+    "projects": [
+      {
+        "id": "os-final",
+        "name": "OS 期末專題",
+        "pct": 20,
+        "color": "task"
+      },
+      {
+        "id": "ctf-notes",
+        "name": "ctf-notes",
+        "pct": 64,
+        "color": "event"
+      },
+      {
+        "id": "bell-personal",
+        "name": "bell-personal",
+        "pct": 38,
+        "color": "accent"
+      }
+    ],
+    "streakDays": 16
+  }
+}

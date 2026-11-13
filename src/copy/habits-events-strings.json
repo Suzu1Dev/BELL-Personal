@@ -1,0 +1,659 @@
+{
+  "$meta": {
+    "product": "BELL Suite Polish - BELL Personal Habits (#/habits) & Events (#/events) Bilingual Copy Spec",
+    "author": "Muse (UX Writer)",
+    "locales": [
+      "zh-TW",
+      "en"
+    ],
+    "sourceCommit": "0ab616c1769bb6090bb6a7fd545b19fbe5d451f2",
+    "targets": {
+      "habitsPageHead": "BELL-Personal src/copy/common.ts (PAGE_HEADS.habits.title, line 266) rendered on src/pages/habits/HabitsPage.tsx (lines 182-186)",
+      "habits": "BELL-Personal src/copy/habits.ts (HABITS, lines 7-33) rendered across src/pages/habits/HabitsPage.tsx and src/pages/habits/HabitRow.tsx",
+      "habitMenu": "BELL-Personal src/copy/habits.ts (HABIT_MENU, lines 35-45) rendered across src/pages/habits/HabitRow.tsx and src/pages/habits/HabitMenu.tsx",
+      "habitArchive": "BELL-Personal src/copy/habits.ts (HABIT_ARCHIVE, lines 47-52) rendered on src/pages/habits/HabitsPage.tsx (lines 266-285)",
+      "habitDialog": "BELL-Personal src/copy/habits.ts (HABIT_DIALOG, lines 54-81) rendered on src/pages/habits/HabitDialog.tsx",
+      "habitAuto": "BELL-Personal src/copy/habits.ts (HABIT_AUTO, lines 83-88) rendered on src/pages/habits/HabitsPage.tsx (lines 254-264)",
+      "habitToasts": "BELL-Personal src/copy/habits.ts (HABIT_TOASTS, lines 90-104) and src/copy/common.ts (ACTION_TOASTS.habitUndo, line 174) invoked in src/pages/habits/HabitsPage.tsx and src/pages/habits/useHabitKeys.ts",
+      "habitErrors": "BELL-Personal src/copy/habits.ts (HABIT_ERRORS, lines 106-111) and src/copy/common.ts (BUTTONS.retry, line 209) invoked in src/pages/habits/HabitsPage.tsx and src/pages/habits/useHabitKeys.ts",
+      "habitModel": "BELL-Personal src/pages/habits/model.ts (streak units, weekdayHeads, formFromSummary keywords joiner), src/pages/habits/HabitRow.tsx (cellTitle), and shared/habits.ts (HABIT_TEXT cadence lines and streakUnit, lines 190-201 and 308)",
+      "habitServerErrors": "BELL-Personal server/features/habits/store.ts (lines 81, 87, 109, 111, 142, 151, 184, 193 AppError messages surfaced via HABIT_ERRORS.save and HABIT_ERRORS.action)",
+      "eventsPageHead": "BELL-Personal src/copy/common.ts (PAGE_HEADS.events.title, line 264) rendered on src/pages/events/EventsPage.tsx (lines 167-172)",
+      "events": "BELL-Personal src/copy/events.ts (EVENTS, lines 6-58) rendered across src/pages/events/EventsPage.tsx and src/pages/events/events-model.ts",
+      "eventModel": "BELL-Personal src/pages/events/events-model.ts, shared/today-format.ts (dayLabel, monthDayWeek, durationText), src/pages/calendar/calendar-model.ts (syncedLabel), and server EventSourceState labels (ctftime, feeds)",
+      "eventShared": "BELL-Personal src/copy/common.ts (ACTION_TOASTS, ACTION_LABELS, ERRORS, STALE) and src/copy/suite.ts (explainThis) invoked directly on src/pages/events/EventsPage.tsx",
+      "eventServerErrors": "BELL-Personal server/features/events/feed-sync.ts (line 83 multi-feed sync error surfaced on EventsPage Notice when feeds have not yet synced)"
+    },
+    "placeholders": {
+      "{done}": "Count of completed habits today (boardCountLabel), completed days in the 5-week heat strip (heatLabel*, heatGroupLabel*), or completed days this week (habitModel.cadenceText.weekly*).",
+      "{total}": "Total active habits count on the Habit check-ins card header (boardCountLabel).",
+      "{name}": "User-visible habit title (habits, habitMenu, habitToasts) or event organizer name (events.explain.organizer).",
+      "{key}": "Single-digit keyboard shortcut 1-9 for the first nine active habits (habits.check*WithKey).",
+      "{streak}": "Consecutive completed due days or weeks for a habit (habits.streakLabel).",
+      "{unit}": "Localized streak unit from habitModel.units (day / days / week / weeks in en).",
+      "{day}": "Numeric month/day string formatted by shortDay() such as 11/3 (habits.heatCell*, habitToasts.day*, habitModel.cellTitle).",
+      "{state}": "Localized heat-cell state label (Done, Missed, Rest day) in habitModel.cellTitle.",
+      "{count}": "Archived habit count in habitArchive.toggle* or failing event feed count in eventServerErrors.allFeedsFailed*.",
+      "{n}": "Weekly goal count 1-6 in habitDialog.timesOption* or event group count in events.countLabel*.",
+      "{fallback}": "Auto-derived 2-4 character default short label from defaultShort(name) in habitDialog.shortHint*.",
+      "{habit}": "Habit name in the Today/Habits shared undo toast (habitToasts.todayUnchecked).",
+      "{reason}": "Underlying error message interpolated into save, action, or undo error toasts.",
+      "{time}": "24-hour local HH:MM clock string (habitModel.cadenceText.doneAt, events.starts/lasts/today/tomorrow) or formatted sync timestamp from syncedLabel() (events.showingAt, events.staleSource, eventShared.staleShowing).",
+      "{times}": "Target check-ins per week (1-7) in habitModel.cadenceText.weekly*.",
+      "{cadence}": "Base localized cadence phrase before appending a user hint in habitModel.cadenceText.withHint.",
+      "{hint}": "Optional user cadence note (e.g. Before bed) in habitModel.cadenceText.withHint.",
+      "{max}": "Maximum active habits limit (HABIT_LIMITS.active = 30) in habitServerErrors.maxActive*.",
+      "{origin}": "Mail message description from which an AI event suggestion was extracted (events.from).",
+      "{weight}": "Rounded integer CTFtime weight 0-100 (events.weight).",
+      "{duration}": "Localized event duration phrase from eventModel.duration (events.lasts).",
+      "{days}": "Multi-day event span in events.allDays* or days remaining until start in events.daysLeft*.",
+      "{source}": "Localized event source name (CTFtime or Event feeds) in events.staleSource.",
+      "{title}": "Event title on cards, ARIA labels, and Google/local calendar undo toasts.",
+      "{date}": "Numeric month/day string (e.g. 10/17) or combined date-block phrase (e.g. 10/17 Sat in events.cardAria).",
+      "{place}": "Resolved event venue or Online label in events.explain.place.",
+      "{label}": "Feed/source label in events.explain.source or localized action noun in eventShared.actionFailed.",
+      "{weekday}": "Localized short weekday token (Sun-Sat in en) in eventModel.monthDayWeek.",
+      "{m}": "Minute count (1-59) in eventModel.duration.",
+      "{h}": "Hour count (>= 1) in eventModel.duration."
+    },
+    "budgets": {
+      "habitHeatWeekdayInitialEnMaxChars": 1,
+      "habitSegmentedCadenceEnMaxChars": 8,
+      "habitBoardHeaderEnMaxChars": 15,
+      "habitActionAndDialogButtonEnMaxChars": 12,
+      "habitMenuItemEnMaxChars": 25,
+      "eventDateBlockDayLabelEnMaxChars": 5,
+      "eventFilterChipEnMaxChars": 9,
+      "eventCardActionButtonEnMaxChars": 15,
+      "toastTemplateEnMaxChars": 59,
+      "overallEnMaxChars": 112,
+      "layoutNote": "Verified against HabitsPage.css, HabitMenu.css, Chip.css, and EventsPage.css at 320px and 360px viewports: (1) .h-days uses grid-template-columns: repeat(7, 12px) with 5px gaps, so 1-char weekday initials (M T W T F S S, <= 9px at 12px font) center cleanly above each 12px dot with zero column collision. (2) At <= 374px, .habit moves the 114px heat strip to row 2 and hides .h-head-label; at 375-720px, 'Last 5 weeks' (12 chars, ~68px) fits inside the >= 93px main column; on > 720px desktop, 'Streak' (6 chars) and '{streak} days/weeks' fit inside the 72px streak column. (3) In HabitDialog (248px inner form width at 320px), segmented options Daily (5) + Weekdays (8) + Weekly (6) total ~224px including 14px button side padding, fitting on a single line even when all 3 options appear. (4) On EventsPage, .event-card .dblock is fixed at 48px wide (46px inner width), so dayBlockLabels use Today (5 chars, ~33px), Tmrw (4 chars, ~31px), and Sun-Sat (3 chars) to prevent overflow while .ev-when displays 'Tomorrow 08:00' in full. (5) Events filter chips All (3), Going (5), CTF (3), Community (9), and From mail (9) stay <= 9 chars each, and .ev-acts buttons Going (5), Add to Calendar (15), Skip (4), and In Calendar (11) fit cleanly inside the 196px (at 320px) / 236px (at 360px) card main column."
+    },
+    "rationale": [
+      "Preserves every shipped zh-TW string and template literal from commit 0ab616c1769bb6090bb6a7fd545b19fbe5d451f2 byte-for-byte so existing zh-TW snapshots and unit tests (HabitRow.test.ts, habits/model.test.ts, shared/habits.test.ts, events-model.test.ts) pass with zero regression.",
+      "Enforces SIGNOFF-copy-2026-11-09.md section 3 across both locales: capitalized 'Today' refers to the Today place/surface (habitDialog.shortHint*: 'on Today's check-in button', plus paired shortHint*TodayPlace keys matching todayPlaceFixes in strings.json), while calendar-date references use 'today' lowercase in sentences ('{done} of {total} completed today', 'done today') and 'Today' when leading a standalone label or phrase ('Today', 'Today {time}').",
+      "Maintains 100% cross-page glossary alignment with BELL Personal's shipped Today, Tasks, Ideas, and Suite specs: Add habit, Undo, Try again, Refresh, Settings, Going, Add to Calendar, In Calendar, Explain this, and typographic curly double quotes around user titles.",
+      "Provides paired *One and plural keys with identical placeholder tokens wherever English requires singular/plural agreement (day/days, week/weeks, 1 time/N times a week, 1 day/N days completed, In 1 day/In N days, 1 event/N events, 1 feed/All N feeds).",
+      "Eliminates all CLI/token/OAuth/API jargon, all CJK characters in en and $meta, all forbidden synonyms for Ideas, and all em-dashes across the entire file."
+    ],
+    "assumptions": [
+      "Conditional functions in src/copy/habits.ts are expanded into explicit static leaf keys with 100% placeholder parity: checkLabel -> checkDoneWithKey / checkDone / checkTodoWithKey / checkTodo; autoCheckLabel -> autoCheckDone / autoCheckPending; heatCellLabel -> heatCellLabel / heatCellTodayLabel / heatCellRestLabel / heatCellTodayRestLabel; HABIT_ARCHIVE.toggle -> toggleOpenOne / toggleOpen / toggleClosedOne / toggleClosed.",
+      "habitDialog.shortHint and habitDialog.shortHintEmpty preserve the exact 0ab616c zh-TW bytes from src/copy/habits.ts lines 66-67 for strict source parity, while habitDialog.shortHintTodayPlace and habitDialog.shortHintEmptyTodayPlace provide the SIGNOFF-copy-2026-11-09.md place-name update (matching strings.json todayPlaceFixes.habitShortHint*) when PO-13 updates zh-TW.",
+      "In HabitsPage.tsx line 259, HABIT_AUTO.notConnected is rendered immediately before a space and <TextLink href='#/settings/sources'>{HABIT_AUTO.settingsLink}</TextLink>, so en.habitAuto.notConnected ends as a complete sentence followed by the standalone 'Settings' link.",
+      "Under ?lang=en, EventsPage.tsx maps server EventSourceState ids ('ctftime', 'feeds') through eventModel.sourceLabels before calling events.staleSource so stale notes never leak the server's Chinese 'feeds' label.",
+      "Inside the 48px-wide .dblock on EventCard, eventModel.dayBlockLabels.tomorrow uses 'Tmrw' (4 chars) so the label never clips horizontally, while the adjacent .ev-when badge spells out 'Tomorrow {time}' in full."
+    ]
+  },
+  "zh-TW": {
+    "habitsPageHead": {
+      "title": "小習慣，天天累積。"
+    },
+    "habits": {
+      "add": "新增習慣",
+      "boardTitle": "習慣打卡",
+      "boardCountLabel": "今天完成 {done} 個，共 {total} 個",
+      "keysBefore": "按",
+      "keysAfter": "打卡",
+      "headStreak": "連續",
+      "headWeeks": "最近 5 週",
+      "checkDoneWithKey": "{name}，今天已完成。按 {key} 切換",
+      "checkDone": "{name}，今天已完成。",
+      "checkTodoWithKey": "{name}，今天尚未完成。按 {key} 切換",
+      "checkTodo": "{name}，今天尚未完成。",
+      "autoCheckDone": "{name}，今天已有貢獻，會自動打卡",
+      "autoCheckPending": "{name}，今天還沒有貢獻，會自動打卡",
+      "streakLabel": "連續 {streak} {unit}",
+      "heatLabelOne": "最近 5 週完成 {done} 天",
+      "heatLabel": "最近 5 週完成 {done} 天",
+      "heatGroupLabelOne": "{name}，最近 5 週完成 {done} 天。按方向鍵選日子，按空白鍵打卡或取消",
+      "heatGroupLabel": "{name}，最近 5 週完成 {done} 天。按方向鍵選日子，按空白鍵打卡或取消",
+      "heatCellLabel": "{day} 打卡",
+      "heatCellTodayLabel": "{day}（今天） 打卡",
+      "heatCellRestLabel": "{day} 打卡（這天不用做）",
+      "heatCellTodayRestLabel": "{day}（今天） 打卡（這天不用做）",
+      "legendDone": "完成",
+      "legendMissed": "沒做到",
+      "legendRest": "這天不用做",
+      "legendToday": "今天",
+      "emptyTitle": "還沒有習慣，從一個小的開始吧。",
+      "emptyHint": "每天打個勾就好，按 1–9 也能直接打卡。",
+      "loadFailed": "習慣暫時無法載入",
+      "loading": "正在載入習慣…"
+    },
+    "habitMenu": {
+      "open": "「{name}」的更多動作",
+      "edit": "編輯",
+      "moveUp": "上移",
+      "moveDown": "下移",
+      "backfill": "補打卡昨天",
+      "unbackfill": "取消昨天的打卡",
+      "archive": "封存",
+      "delete": "刪除",
+      "autoOff": "關閉自動打卡"
+    },
+    "habitArchive": {
+      "toggleOpenOne": "已封存 {count} 個 · 收合",
+      "toggleOpen": "已封存 {count} 個 · 收合",
+      "toggleClosedOne": "已封存 {count} 個 · 顯示",
+      "toggleClosed": "已封存 {count} 個 · 顯示",
+      "restore": "還原",
+      "delete": "刪除",
+      "label": "已封存的習慣"
+    },
+    "habitDialog": {
+      "newTitle": "新增習慣",
+      "editTitle": "編輯習慣",
+      "name": "名稱",
+      "namePlaceholder": "例如 閱讀 20 分鐘",
+      "cadence": "頻率",
+      "daily": "每天",
+      "weekdays": "平日",
+      "weekly": "每週 N 次",
+      "times": "一週幾次",
+      "timesOptionOne": "每週 {n} 次",
+      "timesOption": "每週 {n} 次",
+      "short": "短名稱（選填）",
+      "shortHint": "2–4 個字，顯示在今天頁的打卡按鈕；留空會用「{fallback}」。",
+      "shortHintEmpty": "2–4 個字，顯示在今天頁的打卡按鈕。",
+      "shortHintTodayPlace": "2–4 個字，顯示在今日頁的打卡按鈕；留空會用「{fallback}」。",
+      "shortHintEmptyTodayPlace": "2–4 個字，顯示在今日頁的打卡按鈕。",
+      "hint": "備註（選填）",
+      "hintPlaceholder": "例如 睡前",
+      "hintHelp": "顯示在頻率後面，例如「每天 · 睡前」。",
+      "keywords": "行程關鍵字（選填）",
+      "keywordsPlaceholder": "例如 健身、跑步",
+      "keywordsHelp": "行程標題含這些字時，行程結束後可以一鍵打卡。",
+      "autoNote": "這個習慣依 GitHub 貢獻自動打卡，只能改名稱和短名稱。",
+      "cancel": "取消",
+      "create": "新增",
+      "save": "儲存",
+      "saving": "儲存中…",
+      "nameRequired": "請輸入習慣名稱。",
+      "shortInvalid": "短名稱請用 2–4 個字。"
+    },
+    "habitAuto": {
+      "title": "GitHub 有貢獻",
+      "hint": "有 commit、PR 或 review 的日子自動打卡，資料來自 GitHub 貢獻紀錄。",
+      "notConnected": "還沒有 GitHub 貢獻紀錄：到連線與設定確認 GitHub 已連線，下次同步後就會出現。",
+      "settingsLink": "連線與設定"
+    },
+    "habitToasts": {
+      "created": "已新增「{name}」",
+      "saved": "已儲存「{name}」",
+      "archived": "已封存「{name}」",
+      "restored": "已還原「{name}」",
+      "deleted": "已刪除「{name}」",
+      "backfilled": "已補打卡「{name}」昨天",
+      "unbackfilled": "已取消「{name}」昨天的打卡",
+      "dayChecked": "已補打卡「{name}」{day}",
+      "dayUnchecked": "已取消「{name}」{day}的打卡",
+      "todayUnchecked": "已取消「{habit}」的打卡",
+      "autoOn": "已開啟 GitHub 自動打卡",
+      "autoOff": "已關閉 GitHub 自動打卡",
+      "autoNote": "「GitHub 有貢獻」會依 GitHub 貢獻自動打卡。"
+    },
+    "habitErrors": {
+      "toggle": "打卡沒有存到，請再試一次。",
+      "save": "沒有儲存：{reason}",
+      "action": "沒有完成：{reason}",
+      "retry": "重試"
+    },
+    "habitModel": {
+      "units": {
+        "dayOne": "天",
+        "day": "天",
+        "weekOne": "週",
+        "week": "週"
+      },
+      "weekdays": {
+        "mon": "一",
+        "tue": "二",
+        "wed": "三",
+        "thu": "四",
+        "fri": "五",
+        "sat": "六",
+        "sun": "日"
+      },
+      "cellTitle": "{day} {state}",
+      "keywordsJoiner": "、",
+      "cadenceText": {
+        "doneAt": "今天 {time} 完成",
+        "done": "今天已完成",
+        "daily": "每天",
+        "weekdays": "平日",
+        "weeklyOne": "每週 {times} 次 · {done}/{times}",
+        "weekly": "每週 {times} 次 · {done}/{times}",
+        "withHint": "{cadence} · {hint}",
+        "autoDone": "今天已有 GitHub 貢獻",
+        "autoPending": "每天 · GitHub 自動打卡",
+        "autoName": "GitHub 有貢獻",
+        "autoShort": "貢獻"
+      }
+    },
+    "habitServerErrors": {
+      "notFound": "找不到這個習慣，可能已經刪除。",
+      "maxActiveAdd": "最多 {max} 個進行中的習慣，先封存一些再新增。",
+      "maxActiveRestore": "最多 {max} 個進行中的習慣，先封存一些再還原。",
+      "autoEditRestricted": "自動習慣只能改名稱和短名稱；要停用請關閉 GitHub 自動打卡。",
+      "autoDeleteRestricted": "自動習慣不能刪除；要停用請關閉 GitHub 自動打卡。",
+      "autoCheckRestricted": "這個習慣會依 GitHub 貢獻自動打卡。"
+    },
+    "eventsPageHead": {
+      "title": "值得去的，先標起來。"
+    },
+    "events": {
+      "manage": "管理訂閱",
+      "filterLabel": "依類型篩選",
+      "filters": {
+        "all": "全部",
+        "going": "要參加",
+        "ctf": "CTF",
+        "community": "社群",
+        "mail": "從信件找到"
+      },
+      "groups": {
+        "now": "進行中",
+        "week": "這週",
+        "next": "下週",
+        "later": "之後"
+      },
+      "going": "要參加",
+      "goingDone": "要參加",
+      "addToCalendar": "加入行事曆",
+      "inCalendar": "已在行事曆",
+      "skip": "略過",
+      "open": "開啟",
+      "openCtftime": "CTFtime",
+      "openMail": "在 Gmail 開啟",
+      "aiTitle": "從信件找到的活動",
+      "from": "來自 {origin}",
+      "weight": "權重 {weight}",
+      "online": "線上",
+      "starts": "{time} 起",
+      "lasts": "{time} 起 {duration}",
+      "allDay": "整天",
+      "allDaysOne": "連續 {days} 天",
+      "allDays": "連續 {days} 天",
+      "daysLeftOne": "還有 {days} 天",
+      "daysLeft": "還有 {days} 天",
+      "tomorrow": "明天 {time}",
+      "today": "今天 {time}",
+      "ongoing": "進行中",
+      "emptyTitle": "接下來兩週沒有活動。",
+      "emptyHint": "加入 CTFtime 或 KKTIX 訂閱，好活動不會錯過。",
+      "noMatch": "沒有符合這個篩選的活動。",
+      "showAll": "顯示全部",
+      "loadErrorTitle": "活動暫時無法載入",
+      "ctftimeErrorTitle": "CTFtime 暫時沒有回應",
+      "feedsErrorTitle": "活動訂閱暫時沒有回應",
+      "showingAt": "顯示 {time} 的資料。",
+      "staleSource": "{source} 顯示 {time} 的資料",
+      "retry": "重試",
+      "ctftimeOff": "CTFtime 已關閉，可以在連線與設定打開。",
+      "addedToGoogle": "已加入 Google 行事曆「{title}」",
+      "addToGoogleAction": "加入行事曆",
+      "cardAria": "{title}，{date}",
+      "linked": {
+        "missingTitle": "找不到這個活動",
+        "missingHint": "可能已結束或已略過。",
+        "back": "回到全部活動"
+      },
+      "explain": {
+        "place": "地點：{place}",
+        "organizer": "主辦：{name}",
+        "source": "來源：{label}"
+      },
+      "countLabelOne": "{n} 個活動",
+      "countLabel": "{n} 個活動"
+    },
+    "eventModel": {
+      "sourceLabels": {
+        "ctftime": "CTFtime",
+        "feeds": "活動訂閱"
+      },
+      "dayBlockLabels": {
+        "today": "今天",
+        "tomorrow": "明天",
+        "sun": "週日",
+        "mon": "週一",
+        "tue": "週二",
+        "wed": "週三",
+        "thu": "週四",
+        "fri": "週五",
+        "sat": "週六"
+      },
+      "weekdaysShort": {
+        "sun": "日",
+        "mon": "一",
+        "tue": "二",
+        "wed": "三",
+        "thu": "四",
+        "fri": "五",
+        "sat": "六"
+      },
+      "monthDayWeek": "{date}（{weekday}）",
+      "duration": {
+        "minutesOne": "{m} 分鐘",
+        "minutes": "{m} 分鐘",
+        "hoursOne": "{h} 小時",
+        "hours": "{h} 小時",
+        "hoursMinutes": "{h} 小時 {m} 分鐘"
+      },
+      "syncedAt": {
+        "yesterdayAt": "昨天 {time}",
+        "dateAt": "{date} {time}"
+      }
+    },
+    "eventShared": {
+      "actionToasts": {
+        "going": "已標為要參加「{title}」",
+        "calendar": "已加入行事曆「{title}」",
+        "dismiss": "已略過「{title}」"
+      },
+      "actionLabels": {
+        "going": "要參加",
+        "calendar": "加入行事曆",
+        "dismiss": "略過"
+      },
+      "offline": "無法連線至本機服務，請確認 BELL Personal 正在執行。",
+      "actionFailed": "{label}失敗：{reason}",
+      "undoFailed": "沒有復原：{reason}",
+      "staleShowing": "顯示 {time} 的資料",
+      "staleRefresh": "重新整理",
+      "explainThis": {
+        "label": "解釋這個",
+        "description": "在 BELL Explain 開啟這段文字"
+      }
+    },
+    "eventServerErrors": {
+      "allFeedsFailedOne": "{count} 個訂閱都無法讀取，稍後會自動重試。",
+      "allFeedsFailed": "{count} 個訂閱都無法讀取，稍後會自動重試。"
+    }
+  },
+  "en": {
+    "habitsPageHead": {
+      "title": "Small habits, day by day."
+    },
+    "habits": {
+      "add": "Add habit",
+      "boardTitle": "Habit check-ins",
+      "boardCountLabel": "{done} of {total} completed today",
+      "keysBefore": "Press",
+      "keysAfter": "to check in",
+      "headStreak": "Streak",
+      "headWeeks": "Last 5 weeks",
+      "checkDoneWithKey": "{name}, done today. Press {key} to toggle",
+      "checkDone": "{name}, done today.",
+      "checkTodoWithKey": "{name}, not done today. Press {key} to toggle",
+      "checkTodo": "{name}, not done today.",
+      "autoCheckDone": "{name}, contribution logged today, checks in automatically",
+      "autoCheckPending": "{name}, no contribution yet today, checks in automatically",
+      "streakLabel": "{streak} {unit} in a row",
+      "heatLabelOne": "Completed {done} day in the last 5 weeks",
+      "heatLabel": "Completed {done} days in the last 5 weeks",
+      "heatGroupLabelOne": "{name}, {done} day completed in the last 5 weeks. Use arrow keys to pick a day, Space to check in or undo",
+      "heatGroupLabel": "{name}, {done} days completed in the last 5 weeks. Use arrow keys to pick a day, Space to check in or undo",
+      "heatCellLabel": "Check in for {day}",
+      "heatCellTodayLabel": "Check in for {day} (today)",
+      "heatCellRestLabel": "Check in for {day} (rest day)",
+      "heatCellTodayRestLabel": "Check in for {day} (today, rest day)",
+      "legendDone": "Done",
+      "legendMissed": "Missed",
+      "legendRest": "Rest day",
+      "legendToday": "Today",
+      "emptyTitle": "No habits yet. Start with one small step.",
+      "emptyHint": "Check off each day, or press 1–9 to check in fast.",
+      "loadFailed": "Couldn't load habits right now",
+      "loading": "Loading habits…"
+    },
+    "habitMenu": {
+      "open": "More actions for “{name}”",
+      "edit": "Edit",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "backfill": "Check in yesterday",
+      "unbackfill": "Undo yesterday's check-in",
+      "archive": "Archive",
+      "delete": "Delete",
+      "autoOff": "Turn off auto check-in"
+    },
+    "habitArchive": {
+      "toggleOpenOne": "{count} archived · Hide",
+      "toggleOpen": "{count} archived · Hide",
+      "toggleClosedOne": "{count} archived · Show",
+      "toggleClosed": "{count} archived · Show",
+      "restore": "Restore",
+      "delete": "Delete",
+      "label": "Archived habits"
+    },
+    "habitDialog": {
+      "newTitle": "Add habit",
+      "editTitle": "Edit habit",
+      "name": "Name",
+      "namePlaceholder": "e.g. Read 20 min",
+      "cadence": "Frequency",
+      "daily": "Daily",
+      "weekdays": "Weekdays",
+      "weekly": "Weekly",
+      "times": "Times per week",
+      "timesOptionOne": "{n} time a week",
+      "timesOption": "{n} times a week",
+      "short": "Short label (optional)",
+      "shortHint": "2–4 characters shown on Today's check-in button; defaults to “{fallback}”.",
+      "shortHintEmpty": "2–4 characters shown on Today's check-in button.",
+      "shortHintTodayPlace": "2–4 characters shown on Today's check-in button; defaults to “{fallback}”.",
+      "shortHintEmptyTodayPlace": "2–4 characters shown on Today's check-in button.",
+      "hint": "Note (optional)",
+      "hintPlaceholder": "e.g. Before bed",
+      "hintHelp": "Shown after the frequency, like “Daily · Before bed”.",
+      "keywords": "Event keywords (optional)",
+      "keywordsPlaceholder": "e.g. Gym, Run",
+      "keywordsHelp": "When an event title includes these words, you can check in with one tap after it ends.",
+      "autoNote": "This habit checks in automatically from GitHub contributions. Only its name and short label can be edited.",
+      "cancel": "Cancel",
+      "create": "Add",
+      "save": "Save",
+      "saving": "Saving…",
+      "nameRequired": "Enter a habit name.",
+      "shortInvalid": "Use 2–4 characters for the short label."
+    },
+    "habitAuto": {
+      "title": "GitHub contributions",
+      "hint": "Checks in automatically on days with a commit, PR, or review, using your GitHub contribution history.",
+      "notConnected": "No GitHub contributions yet. Check that GitHub is connected, and they'll show up after the next sync.",
+      "settingsLink": "Settings"
+    },
+    "habitToasts": {
+      "created": "Added “{name}”",
+      "saved": "Saved “{name}”",
+      "archived": "Archived “{name}”",
+      "restored": "Restored “{name}”",
+      "deleted": "Deleted “{name}”",
+      "backfilled": "Checked in “{name}” for yesterday",
+      "unbackfilled": "Undid yesterday's check-in for “{name}”",
+      "dayChecked": "Checked in “{name}” for {day}",
+      "dayUnchecked": "Undid {day} check-in for “{name}”",
+      "todayUnchecked": "Undid check-in for “{habit}”",
+      "autoOn": "Turned on GitHub auto check-in",
+      "autoOff": "Turned off GitHub auto check-in",
+      "autoNote": "“GitHub contributions” checks in automatically from GitHub."
+    },
+    "habitErrors": {
+      "toggle": "Check-in wasn't saved. Please try again.",
+      "save": "Couldn't save: {reason}",
+      "action": "Couldn't finish: {reason}",
+      "retry": "Try again"
+    },
+    "habitModel": {
+      "units": {
+        "dayOne": "day",
+        "day": "days",
+        "weekOne": "week",
+        "week": "weeks"
+      },
+      "weekdays": {
+        "mon": "M",
+        "tue": "T",
+        "wed": "W",
+        "thu": "T",
+        "fri": "F",
+        "sat": "S",
+        "sun": "S"
+      },
+      "cellTitle": "{day} · {state}",
+      "keywordsJoiner": ", ",
+      "cadenceText": {
+        "doneAt": "Done today at {time}",
+        "done": "Done today",
+        "daily": "Daily",
+        "weekdays": "Weekdays",
+        "weeklyOne": "{times} time a week · {done}/{times}",
+        "weekly": "{times} times a week · {done}/{times}",
+        "withHint": "{cadence} · {hint}",
+        "autoDone": "GitHub contribution logged today",
+        "autoPending": "Daily · Auto check-in from GitHub",
+        "autoName": "GitHub contributions",
+        "autoShort": "Git"
+      }
+    },
+    "habitServerErrors": {
+      "notFound": "Couldn't find this habit. It may have been deleted.",
+      "maxActiveAdd": "You can have up to {max} active habits. Archive one before adding another.",
+      "maxActiveRestore": "You can have up to {max} active habits. Archive one before restoring this habit.",
+      "autoEditRestricted": "Only the name and short label can be changed on an automatic habit. Turn off GitHub auto check-in to disable it.",
+      "autoDeleteRestricted": "Automatic habits can't be deleted. Turn off GitHub auto check-in to disable it.",
+      "autoCheckRestricted": "This habit checks in automatically from GitHub contributions."
+    },
+    "eventsPageHead": {
+      "title": "Mark the ones worth going to."
+    },
+    "events": {
+      "manage": "Manage feeds",
+      "filterLabel": "Filter by type",
+      "filters": {
+        "all": "All",
+        "going": "Going",
+        "ctf": "CTF",
+        "community": "Community",
+        "mail": "From mail"
+      },
+      "groups": {
+        "now": "Happening now",
+        "week": "This week",
+        "next": "Next week",
+        "later": "Later"
+      },
+      "going": "Going",
+      "goingDone": "Going",
+      "addToCalendar": "Add to Calendar",
+      "inCalendar": "In Calendar",
+      "skip": "Skip",
+      "open": "Open",
+      "openCtftime": "CTFtime",
+      "openMail": "Open in Gmail",
+      "aiTitle": "Event found in your mail",
+      "from": "From {origin}",
+      "weight": "Weight {weight}",
+      "online": "Online",
+      "starts": "Starts {time}",
+      "lasts": "{time} for {duration}",
+      "allDay": "All day",
+      "allDaysOne": "{days} day",
+      "allDays": "{days} days",
+      "daysLeftOne": "In {days} day",
+      "daysLeft": "In {days} days",
+      "tomorrow": "Tomorrow {time}",
+      "today": "Today {time}",
+      "ongoing": "Ongoing",
+      "emptyTitle": "No events in the next two weeks.",
+      "emptyHint": "Add a CTFtime or KKTIX feed so good events don't slip by.",
+      "noMatch": "No events match this filter.",
+      "showAll": "Show all",
+      "loadErrorTitle": "Couldn't load events right now",
+      "ctftimeErrorTitle": "CTFtime isn't responding right now",
+      "feedsErrorTitle": "Event feeds aren't responding right now",
+      "showingAt": "Showing data from {time}.",
+      "staleSource": "{source} showing data from {time}",
+      "retry": "Try again",
+      "ctftimeOff": "CTFtime is turned off. You can turn it on in Settings.",
+      "addedToGoogle": "Added “{title}” to Google Calendar",
+      "addToGoogleAction": "Add to Calendar",
+      "cardAria": "{title}, {date}",
+      "linked": {
+        "missingTitle": "Can't find this event",
+        "missingHint": "It may have ended or been skipped.",
+        "back": "Back to all events"
+      },
+      "explain": {
+        "place": "Location: {place}",
+        "organizer": "Organizer: {name}",
+        "source": "Source: {label}"
+      },
+      "countLabelOne": "{n} event",
+      "countLabel": "{n} events"
+    },
+    "eventModel": {
+      "sourceLabels": {
+        "ctftime": "CTFtime",
+        "feeds": "Event feeds"
+      },
+      "dayBlockLabels": {
+        "today": "Today",
+        "tomorrow": "Tmrw",
+        "sun": "Sun",
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat"
+      },
+      "weekdaysShort": {
+        "sun": "Sun",
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat"
+      },
+      "monthDayWeek": "{date} ({weekday})",
+      "duration": {
+        "minutesOne": "{m} min",
+        "minutes": "{m} min",
+        "hoursOne": "{h} hr",
+        "hours": "{h} hr",
+        "hoursMinutes": "{h} hr {m} min"
+      },
+      "syncedAt": {
+        "yesterdayAt": "yesterday at {time}",
+        "dateAt": "{date} {time}"
+      }
+    },
+    "eventShared": {
+      "actionToasts": {
+        "going": "Marked “{title}” as going",
+        "calendar": "Added “{title}” to Calendar",
+        "dismiss": "Dismissed “{title}”"
+      },
+      "actionLabels": {
+        "going": "Going",
+        "calendar": "Add to Calendar",
+        "dismiss": "Dismiss"
+      },
+      "offline": "Can't reach the local service. Make sure BELL Personal is running.",
+      "actionFailed": "{label} failed: {reason}",
+      "undoFailed": "Couldn't undo: {reason}",
+      "staleShowing": "Showing data from {time}",
+      "staleRefresh": "Refresh",
+      "explainThis": {
+        "label": "Explain this",
+        "description": "Open this text in BELL Explain"
+      }
+    },
+    "eventServerErrors": {
+      "allFeedsFailedOne": "{count} feed couldn't be read. Will retry automatically shortly.",
+      "allFeedsFailed": "All {count} feeds couldn't be read. Will retry automatically shortly."
+    }
+  }
+}

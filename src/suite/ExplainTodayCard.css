@@ -1,0 +1,139 @@
+/* 今日複習 on Today (bell-suite SPEC §4.5). --bell-* tokens: src/styles/suite-tokens.css. */
+.explain-today .card-head .explain-today-chip {
+  margin-left: auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.explain-today-headline {
+  margin: 0;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--bell-text);
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+
+.explain-today-headline.is-empty,
+.explain-today-headline.is-unknown {
+  font-weight: 500;
+  color: var(--bell-text-muted);
+}
+
+.explain-today-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.explain-today-lessons {
+  display: grid;
+  gap: 2px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.explain-today-lessons li {
+  min-width: 0;
+}
+
+.explain-today-lessons a,
+.explain-today-lessons span {
+  display: block;
+  padding: 6px 8px;
+  margin: 0 -8px;
+  border-radius: var(--r-sm);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--bell-text);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.explain-today-lessons a:hover {
+  background: var(--surface-sunk);
+  color: var(--bell-accent);
+}
+
+.explain-today-lessons a:focus-visible,
+.explain-today .btn:focus-visible {
+  outline: 3px solid var(--bell-focus);
+  outline-offset: 2px;
+}
+
+.explain-today-problem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: var(--fs-sm);
+  color: var(--bell-text-muted);
+}
+
+.explain-today-problem p {
+  flex: 1 1 12em;
+  min-width: 0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.explain-today-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.explain-today.is-quiet .explain-today-foot {
+  margin-top: 0;
+}
+
+.explain-today-time,
+.explain-today-quiet {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--bell-text-muted);
+}
+
+.explain-today-quiet {
+  font-size: var(--fs-sm);
+  flex: 1 1 10em;
+  min-width: 0;
+}
+
+.explain-today-skel {
+  display: grid;
+  gap: 10px;
+}
+
+.explain-today-skel .skel {
+  background: var(--fill-hover);
+}
+
+.explain-today-loading {
+  margin: 8px 0 0;
+  color: var(--text-2);
+  font-size: var(--text-ui);
+  line-height: var(--lh-ui);
+}
+
+@media (max-width: 720px) {
+  .explain-today .btn {
+    min-height: var(--tap);
+  }
+
+  .explain-today-lessons a,
+  .explain-today-lessons span {
+    padding-block: 10px;
+  }
+}

@@ -1,0 +1,201 @@
+/* LaterCard (SPEC-ux §4.5, §9; mockup app.css "Later (明天與之後 + 專案)"). */
+.later {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
+}
+
+.later > section {
+  padding: 16px 20px 14px;
+  min-width: 0;
+}
+
+.later > section + section {
+  border-left: 1px solid var(--border);
+}
+
+.later .card-head {
+  margin-bottom: 6px;
+}
+
+.later h2 {
+  font-size: var(--fs-sm);
+}
+
+.ev-row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  column-gap: 12px;
+  align-items: center;
+  padding: 7px 0;
+}
+
+.ev-row + .ev-row,
+.pj-row + .pj-row {
+  border-top: 1px solid var(--border);
+}
+
+.dblock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 42px;
+  border-radius: var(--r-sm);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+}
+
+.dblock b {
+  font: 600 var(--fs-xs)/1.2 var(--font-mono);
+  color: var(--ink);
+}
+
+.dblock span {
+  font-size: var(--fs-xs);
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.ev-row .t,
+.pj-row .t {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 550;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+}
+
+.ev-row .m,
+.pj-row .m {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+}
+
+.pj-row {
+  display: block;
+  padding: 8px 0;
+}
+
+a.pj-row:hover .t {
+  color: var(--accent);
+}
+
+.pj-top {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.pj-top .t {
+  flex: 1;
+  min-width: 0;
+}
+
+.pj-top .pct {
+  font: 500 var(--fs-xs)/1 var(--font-mono);
+  color: var(--ink-2);
+}
+
+.bar {
+  height: 4px;
+  margin: 6px 0 4px;
+  border-radius: 2px;
+  background: var(--surface-sunk);
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--c, var(--m-task));
+}
+
+.later-empty {
+  padding: 8px 0 4px;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.later-failed {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.later-skel {
+  display: grid;
+  gap: 10px;
+  padding-top: 6px;
+}
+
+.later-sum {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .later {
+    display: block;
+  }
+
+  .later > section {
+    display: none;
+  }
+
+  .later.is-open > section {
+    display: block;
+    padding: 4px 16px 12px;
+  }
+
+  .later.is-open > section + section {
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+
+  .later-sum {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: var(--tap);
+    padding: 12px 16px;
+    text-align: left;
+    font-size: var(--fs-sm);
+    color: var(--ink-2);
+  }
+
+  .later-sum > span {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.5;
+  }
+
+  .later-sum b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .later-sum .later-sum-ico {
+    color: var(--m-cal);
+  }
+
+  .later-sum .later-sum-chev {
+    color: var(--muted);
+    transition: transform var(--dur-1) var(--ease);
+  }
+
+  .later-sum .later-sum-chev.is-open {
+    transform: rotate(180deg);
+  }
+}

@@ -1,0 +1,177 @@
+/* Toast (SPEC-ux §2 colour decisions, §6.5, §8; mockup app.css ".toast", ".toast-host"). */
+.toast-host {
+  position: fixed;
+  left: calc(50% + var(--sidebar-current) / 2);
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  pointer-events: none;
+}
+
+.toast {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: calc(100vw - 32px);
+  padding: 8px 8px 8px 14px;
+  border-radius: var(--r-md);
+  background: var(--ink);
+  color: var(--canvas);
+  box-shadow: var(--shadow-pop);
+  font-size: var(--fs-sm);
+  overflow: hidden;
+  pointer-events: auto;
+  animation: toast-in var(--dur-3) var(--ease);
+  transition: opacity var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+
+.toast.is-leaving {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(8px); }
+}
+
+.toast > span {
+  min-width: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.45;
+}
+
+/* 「整理中…」 after the message: its own flex item, so the 2-line clamp never hides it. */
+.toast .toast-note {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-xs);
+  color: color-mix(in srgb, var(--canvas) 78%, transparent);
+  white-space: nowrap;
+}
+
+.toast .toast-note .spin {
+  width: 11px;
+  height: 11px;
+  border-color: color-mix(in srgb, var(--canvas) 30%, transparent);
+  border-top-color: var(--canvas);
+}
+
+.toast > .ico {
+  color: var(--canvas);
+  opacity: .8;
+}
+
+.toast button {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: var(--canvas);
+  background: color-mix(in srgb, var(--canvas) 16%, transparent);
+}
+
+.toast button:hover {
+  background: color-mix(in srgb, var(--canvas) 24%, transparent);
+}
+
+.toast kbd {
+  background: transparent;
+  color: var(--canvas);
+  border-color: color-mix(in srgb, var(--canvas) 45%, transparent);
+}
+
+.toast .toast-close {
+  padding: 6px;
+  background: transparent;
+}
+
+.toast .timer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-ring);
+  transform-origin: left center;
+  animation: toast-timer var(--toast-ms, 6s) linear forwards;
+}
+
+.toast.is-paused .timer {
+  animation-play-state: paused;
+}
+
+@keyframes toast-timer {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+/*
+ * Reduced motion: the global rule shortens every animation to .01ms, which
+ * left the bar empty for the whole undo window. Keep it full and still: 復原
+ * is available until the toast leaves.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .toast .timer {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
+.toast-error {
+  background: var(--danger-soft);
+  color: var(--ink);
+  border: 1px solid color-mix(in srgb, var(--danger) 35%, transparent);
+}
+
+.toast-error > .ico {
+  color: var(--danger);
+  opacity: 1;
+}
+
+.toast-error button {
+  color: var(--danger);
+  background: var(--surface);
+}
+
+.toast-error button:hover {
+  background: var(--surface-soft);
+}
+
+.toast-error .toast-close {
+  color: var(--ink-2);
+  background: transparent;
+}
+
+@media (pointer: coarse) {
+  .toast button {
+    min-height: 40px;
+  }
+}
+
+/* ≤720: above the quickbar, centred on the screen, no kbd. */
+@media (max-width: 720px) {
+  .toast-host {
+    left: 50%;
+    bottom: calc(var(--quickbar-h) + 12px + env(safe-area-inset-bottom));
+  }
+
+  .toast kbd {
+    display: none;
+  }
+}

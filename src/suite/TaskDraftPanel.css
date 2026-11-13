@@ -1,0 +1,133 @@
+/* The to-do draft from a sibling, above #/tasks (bell-suite SPEC §4.3). --bell-* tokens: src/styles/suite-tokens.css. */
+.suite-draft {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+  min-width: 0;
+}
+
+.suite-draft.is-quiet {
+  color: var(--bell-text-muted);
+}
+
+.suite-back {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 8px;
+  border-radius: var(--r-sm);
+  color: var(--bell-text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 550;
+  text-decoration: none;
+  max-width: 100%;
+}
+
+.suite-back-tile {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-sm);
+  background: var(--explain-tint);
+  color: var(--explain-text);
+}
+
+.suite-back:hover {
+  color: var(--bell-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.suite-back:focus-visible {
+  outline: 3px solid var(--bell-focus);
+  outline-offset: 3px;
+}
+
+.suite-draft-card {
+  display: grid;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--bell-surface);
+  border: 1px solid var(--bell-border);
+  border-left: 3px solid var(--bell-accent);
+  border-radius: var(--bell-radius);
+  box-shadow: var(--shadow-card);
+  min-width: 0;
+}
+
+.suite-draft-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.suite-draft-tile {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--r-sm);
+  background: var(--accent-soft);
+  color: var(--bell-accent);
+}
+
+.suite-draft-head h2 {
+  font-size: var(--fs-md);
+  font-weight: 650;
+  color: var(--bell-text);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.suite-draft-head p {
+  font-size: var(--fs-xs);
+  color: var(--bell-text-muted);
+  line-height: 1.55;
+}
+
+.suite-draft-fields {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.suite-draft-fields .textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+.suite-draft-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.suite-draft .notice bdi {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 720px) {
+  .suite-draft-card {
+    padding: 14px;
+  }
+
+  .suite-draft-actions .btn {
+    flex: 1 1 140px;
+    min-height: var(--tap);
+    justify-content: center;
+  }
+
+  .suite-draft .notice .btn,
+  .suite-draft .notice .btn-sm {
+    min-height: var(--tap);
+  }
+
+  .suite-back {
+    min-height: var(--tap);
+  }
+}

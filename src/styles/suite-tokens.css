@@ -1,0 +1,42 @@
+/* suite-tokens v1 (2026-11-08) — BELL Suite shared tokens, local copy; values map onto Personal's theme */
+/*
+ * The --bell-* names are what the BELL Suite pieces (src/suite/**) use, so the
+ * switcher, the BELL Explain card and the draft panel read the same in every
+ * product. Here each one points at Personal's own token: no new colour is
+ * introduced, and tokens.css stays the only file with hex values. The two
+ * dark blocks are identical (system preference / manual toggle), as in
+ * tokens.css.
+ */
+:root{
+  --bell-surface:var(--surface);
+  --bell-surface-raised:var(--surface);
+  --bell-text:var(--ink);
+  --bell-text-muted:var(--muted);
+  --bell-border:var(--border);
+  --bell-accent:var(--accent);
+  --bell-focus:var(--accent);
+  --bell-radius:var(--r-md);
+  --bell-shadow:var(--shadow-pop);
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --bell-surface:var(--surface);
+  --bell-surface-raised:var(--surface-soft);
+  --bell-text:var(--ink);
+  --bell-text-muted:var(--muted);
+  --bell-border:var(--border-strong);
+  --bell-accent:var(--accent);
+  --bell-focus:var(--accent);
+  --bell-radius:var(--r-md);
+  --bell-shadow:0 1px 0 rgb(255 255 255 / .04),0 10px 28px rgb(0 0 0 / .45);
+}}
+:root[data-theme="dark"]{
+  --bell-surface:var(--surface);
+  --bell-surface-raised:var(--surface-soft);
+  --bell-text:var(--ink);
+  --bell-text-muted:var(--muted);
+  --bell-border:var(--border-strong);
+  --bell-accent:var(--accent);
+  --bell-focus:var(--accent);
+  --bell-radius:var(--r-md);
+  --bell-shadow:0 1px 0 rgb(255 255 255 / .04),0 10px 28px rgb(0 0 0 / .45);
+}

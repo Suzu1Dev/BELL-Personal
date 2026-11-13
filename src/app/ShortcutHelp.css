@@ -1,0 +1,10 @@
+/* The ? dialog. */
+.help-dialog {
+  width: min(640px, calc(100vw - 32px));
+}
+
+.help-intro {
+  margin-bottom: 16px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}

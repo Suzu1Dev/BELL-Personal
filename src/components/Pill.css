@@ -1,0 +1,28 @@
+/* StatusPill (SPEC-ux §9; mockup app.css "StatusPill"). */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: nowrap;
+  background: var(--pb, var(--surface-sunk));
+  color: var(--pc, var(--ink-2));
+}
+
+.pill.dot::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.p-danger { --pb: var(--danger-soft); --pc: var(--danger); }
+.p-warn { --pb: var(--warn-soft); --pc: var(--warn); }
+.p-ok { --pb: var(--ok-soft); --pc: var(--ok); }
+.p-info { --pb: var(--info-soft); --pc: var(--info); }
+.p-accent { --pb: var(--accent-soft); --pc: var(--accent-strong); }

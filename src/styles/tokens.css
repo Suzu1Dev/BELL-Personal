@@ -1,0 +1,53 @@
+/*
+ * BELL Personal design tokens: docs/design/SPEC-ux.md §2 (brief B2 verbatim + the B2.1 additions).
+ * Contrast-checked: never put --muted text on --surface-sunk; --faint is for icons and borders only.
+ * The two dark blocks must stay byte-identical: one follows the system, the other the manual toggle.
+ * This is the only file in src/ that may contain hex colours.
+ */
+:root{
+  --font-sans:"DM Sans","PingFang TC","Noto Sans TC","Noto Sans CJK TC","Microsoft JhengHei",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  --fs-2xs:11px; /* mono eyebrow / kbd ONLY */ --fs-xs:12px; --fs-sm:13px; --fs-md:14px; --fs-lg:16px;
+  --fs-xl:20px; --fs-2xl:26px; --fs-hero:30px; --lh-tight:1.35; --lh-body:1.7; --lh-hero:1.55; --track-eyebrow:1.4px;
+  --canvas:#faf9f6; --surface:#ffffff; --surface-soft:#f5f2ec; --surface-sunk:#efebe3;
+  --ink:#2a2722; --ink-2:#5c564c; --muted:#736b5f; --faint:#8f877a;
+  --border:#e8e3da; --border-strong:#d6cfc2;
+  --accent:#a4532c; --accent-strong:#87421f; --accent-soft:#f6ebe3; --accent-ring:#e8c3ab; --on-accent:#ffffff;
+  --ok:#2f7350; --ok-soft:#e9f4ee; --warn:#99620f; --warn-soft:#fbf3e2; --danger:#b03e36; --danger-soft:#fcedeb; --info:#3f5fbf; --info-soft:#edf1fc;
+  --m-mail:#4f6f95;  --m-mail-bg:#edf2f7;  --m-cal:#6f58a0;   --m-cal-bg:#f2eff8;
+  --m-task:#2f7350;  --m-task-bg:#ecf4ee;  --m-event:#8a6320; --m-event-bg:#faf3e4;
+  --m-idea:#a5506d;  --m-idea-bg:#f9eef2;  --m-habit:#2a716e; --m-habit-bg:#e9f4f3;
+  --r-xs:5px; --r-sm:7px; --r-md:10px; --r-lg:13px; --r-xl:16px; --r-pill:999px;
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:24px; --sp-8:32px; --sp-10:40px;
+  --shadow-card:0 2px 10px rgb(42 33 22 / .04); --shadow-btn:0 1px 2px rgb(42 33 22 / .06);
+  --shadow-pop:0 8px 24px rgb(42 33 22 / .12); --shadow-modal:0 28px 100px rgb(42 33 22 / .25),0 8px 28px rgb(42 33 22 / .08);
+  --scrim:rgb(32 26 20 / .38);
+  --paper:#ffffff; /* the mail frame's card: always white, in both themes (most mail assumes a white page) */
+  --sidebar:228px; --sidebar-rail:64px; --sidebar-current:var(--sidebar); --topbar:64px; --page-max:1240px;
+  --ease:cubic-bezier(.2,.7,.2,1); --dur-1:.15s; --dur-2:.22s;
+  color-scheme:light; font-family:var(--font-sans); font-size:14px; color:var(--ink); background:var(--canvas); font-synthesis:none;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  color-scheme:dark; --canvas:#171512; --surface:#201d19; --surface-soft:#26221d; --surface-sunk:#2c2822;
+  --ink:#ece6dc; --ink-2:#c2b9ab; --muted:#a39a8c; --faint:#857d71; --border:#353029; --border-strong:#4a443b;
+  --accent:#e08a5c; --accent-strong:#eea47d; --accent-soft:#3a2a20; --accent-ring:#7a4a30; --on-accent:#171512;
+  --ok:#6fbf8f; --ok-soft:#1f3328; --warn:#e0b060; --warn-soft:#3a2f1c; --danger:#ef8a80; --danger-soft:#3d2321; --info:#93a9f0; --info-soft:#232b42;
+  --m-mail:#8fb0d6; --m-mail-bg:#1f2a36; --m-cal:#b6a3e0; --m-cal-bg:#2a2438; --m-task:#6fbf8f; --m-task-bg:#1f3328;
+  --m-event:#e0b060; --m-event-bg:#3a2f1c; --m-idea:#e090ac; --m-idea-bg:#3a2129; --m-habit:#6cc4bf; --m-habit-bg:#1c3332;
+  --shadow-card:0 1px 0 rgb(255 255 255 / .03),0 2px 10px rgb(0 0 0 / .25); --scrim:rgb(0 0 0 / .55);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark; --canvas:#171512; --surface:#201d19; --surface-soft:#26221d; --surface-sunk:#2c2822;
+  --ink:#ece6dc; --ink-2:#c2b9ab; --muted:#a39a8c; --faint:#857d71; --border:#353029; --border-strong:#4a443b;
+  --accent:#e08a5c; --accent-strong:#eea47d; --accent-soft:#3a2a20; --accent-ring:#7a4a30; --on-accent:#171512;
+  --ok:#6fbf8f; --ok-soft:#1f3328; --warn:#e0b060; --warn-soft:#3a2f1c; --danger:#ef8a80; --danger-soft:#3d2321; --info:#93a9f0; --info-soft:#232b42;
+  --m-mail:#8fb0d6; --m-mail-bg:#1f2a36; --m-cal:#b6a3e0; --m-cal-bg:#2a2438; --m-task:#6fbf8f; --m-task-bg:#1f3328;
+  --m-event:#e0b060; --m-event-bg:#3a2f1c; --m-idea:#e090ac; --m-idea-bg:#3a2129; --m-habit:#6cc4bf; --m-habit-bg:#1c3332;
+  --shadow-card:0 1px 0 rgb(255 255 255 / .03),0 2px 10px rgb(0 0 0 / .25); --scrim:rgb(0 0 0 / .55);
+}
+
+/* ===== B2.1 additions — non-colour only, shared by light & dark ===== */
+:root{
+  --side-col:340px; --tap:44px; --quickbar-h:64px; --dur-3:.32s;
+  --z-topbar:30; --z-scrim:39; --z-sidebar:40; --z-quickbar:45; --z-toast:60; --z-modal:80;
+}

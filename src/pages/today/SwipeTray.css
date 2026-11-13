@@ -1,0 +1,122 @@
+/*
+ * Row swipes on touch (SPEC-ux §7, SPEC-mail-assignments §2.4), shared by
+ * Today's queue and the inbox list: `.q-swipe` (the right swipe's E action,
+ * the other rows' left snooze) and the mail-row tray, its swipe-reveal
+ * sibling. `--dx` is the content offset and `--reveal` the tray's visible
+ * width (both set by useRowSwipe).
+ *
+ * The browser keeps vertical scrolling and pinch zoom and hands horizontal
+ * drags to the row's pointer handlers. With the default touch-action:auto it
+ * claims them as a pan and sends pointercancel before the 12px threshold, so
+ * no swipe would ever complete.
+ */
+.q-row.can-swipe {
+  touch-action: pan-y pinch-zoom;
+}
+
+/* The content follows the finger over the action colour. */
+.q-row[class*="is-swipe-"] > :not(.q-swipe) {
+  transform: translateX(var(--dx, 0));
+}
+
+/*
+ * The reveal colour wins over the hover, focus and cursor fills whatever the
+ * bundle order (this file is emitted before FocusQueue.css and InboxPage.css):
+ * the doubled class outranks `.q-row:hover` / `.q-row.is-focus`, the inbox
+ * form outranks `.inbox .q-row.is-focus`.
+ */
+.q-row.q-row.is-swipe-done,
+.inbox .q-row.q-row.is-swipe-done {
+  background: var(--ok-soft);
+}
+
+.q-row.q-row.is-swipe-snooze,
+.inbox .q-row.q-row.is-swipe-snooze {
+  background: var(--warn-soft);
+}
+
+.q-swipe {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.is-swipe-done .q-swipe {
+  left: 14px;
+  color: var(--ok);
+}
+
+.is-swipe-snooze .q-swipe {
+  right: 14px;
+  color: var(--warn);
+}
+
+/* ===== The tray: two 72 px buttons pinned to the right edge ===== */
+.q-row.is-traying {
+  overflow: hidden;
+}
+
+.q-row.is-traying > :not(.q-tray) {
+  transform: translateX(var(--dx, 0));
+  transition: transform var(--dur-2) var(--ease);
+}
+
+.q-row.is-dragging > :not(.q-tray),
+.q-row.is-dragging > .q-tray {
+  transition: none;
+}
+
+.q-tray {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  width: var(--reveal, 144px);
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  transition: width var(--dur-2) var(--ease);
+}
+
+.q-tray-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: var(--fs-xs);
+  font-weight: 550;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.q-tray-btn .ico {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.q-tray-btn.is-archive {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.q-tray-btn.is-restore {
+  background: var(--info-soft);
+  color: var(--info);
+}
+
+.q-tray-btn.is-trash {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.q-tray-btn:focus-visible {
+  outline-offset: -3px;
+}

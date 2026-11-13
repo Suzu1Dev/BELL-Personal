@@ -1,0 +1,251 @@
+<main class="sb" id="main">
+  <header class="sb-head">
+    <div>
+      <a class="brand" href="index.html" aria-label="回到今天的參考畫面"><span class="brand-tile"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></span><span class="wordmark"><b>bell</b>/personal<i>.</i></span></a>
+      <p class="eyebrow">States · Today · 2026-10-12</p>
+      <h1 class="kp">每個狀態都先想好，畫面就不會突然空掉。</h1>
+      <p class="sub kp">Today 頁各元件的空白、中斷、AI 失效、快速記下、展開與復原狀態。規則見 SPEC-ux.md §5–§7。</p>
+    </div>
+    <button class="btn btn-icon" type="button" data-theme-toggle aria-label="切換深色模式"><svg class="ico tg-moon" aria-hidden="true"><use href="#i-moon"/></svg><svg class="ico tg-sun" aria-hidden="true"><use href="#i-sun"/></svg></button>
+  </header>
+
+  <div class="board">
+    <!-- 01 empty day -->
+    <figure class="state">
+      <figcaption><span class="s-no">01</span><b>空白的一天</b><span class="kp">一開始就沒有任何待處理項目</span></figcaption>
+      <div class="frame">
+        <div>
+          <p class="eyebrow">Sat · 10/17<span class="sep"></span><span class="wx"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-cloud-sun"/></svg>新竹 26° 晴</span></p>
+          <h2 class="hero-title kp">早安，今天沒有排定的事。</h2>
+          <p class="brief"><span class="ai-tag rule">規則整理</span><span class="kp">沒有到期的作業，也沒有行程。下一個是 10/19（一）09:00 計算機網路。</span></p>
+        </div>
+        <section class="card queue" aria-label="專注佇列（空）">
+          <header class="q-head"><div class="card-head"><span class="tile t-accent"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></span><h2>專注佇列</h2><span class="count">0</span></div></header>
+          <div style="padding:16px">
+            <div class="empty-state">
+              <span class="tile54"><svg class="ico" aria-hidden="true"><use href="#i-sunrise"/></svg></span>
+              <h3>今天沒有要處理的事。</h3>
+              <p class="kp">新的信件、作業和活動會自動出現在這裡。想到什麼，先記下來。</p>
+              <button class="btn btn-secondary" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-plus"/></svg>記下一件事<kbd>N</kbd></button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </figure>
+
+    <!-- 02 cleared -->
+    <figure class="state">
+      <figcaption><span class="s-no">02</span><b>全部處理完</b><span class="kp">佇列清空；習慣另外計算，不會被說成「都完成了」</span></figcaption>
+      <div class="frame">
+        <div>
+          <p class="eyebrow">Mon · 10/12 · 21:40</p>
+          <h2 class="hero-title kp">收工了，<span class="uline">佇列清空了<svg viewBox="0 0 270 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q125 -2 268 6"/></svg></span>。</h2>
+        </div>
+        <section class="card queue" aria-label="專注佇列（已清空）">
+          <div style="padding:20px 16px 18px">
+            <div class="empty-state solid" role="status">
+              <div class="e-art" aria-hidden="true">
+                <i style="left:8px;top:18px;--c:var(--m-mail);--r:18deg"></i>
+                <i style="left:24px;top:54px;--c:var(--m-idea);--r:-24deg"></i>
+                <i style="left:110px;top:12px;--c:var(--m-event);--r:40deg"></i>
+                <i style="left:118px;top:50px;--c:var(--m-cal);--r:-12deg"></i>
+                <span class="tile54 t-ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>
+              </div>
+              <h3>今天的 11 件事都處理完了。</h3>
+              <div class="e-stats">
+                <div><b>3</b><span>回覆</span></div>
+                <div><b>4</b><span>完成</span></div>
+                <div><b>2</b><span>延後</span></div>
+                <div><b>2</b><span>行事曆</span></div>
+              </div>
+              <div class="left-habits">
+                <span>還差 2 個習慣</span>
+                <span class="hchip"><button class="hcheck" type="button" aria-pressed="false" aria-label="運動，今天尚未完成"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></button>運動<span class="h-streak"><svg class="ico" aria-hidden="true"><use href="#i-flame"/></svg>4</span></span>
+                <span class="hchip"><button class="hcheck" type="button" aria-pressed="false" aria-label="寫日記，今天尚未完成"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></button>日記<span class="h-streak"><svg class="ico" aria-hidden="true"><use href="#i-flame"/></svg>27</span></span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </figure>
+
+    <!-- 03 disconnected source in queue -->
+    <figure class="state">
+      <figcaption><span class="s-no">03</span><b>來源中斷 · 佇列</b><span class="kp">合併的佇列絕不默默少算</span></figcaption>
+      <div class="frame">
+        <div class="sub-sync"><span class="frame-label">Topbar</span><button class="sync-chip is-warn" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-alert"/></svg>1 個來源需要注意</button></div>
+        <section class="card queue" aria-label="專注佇列">
+          <header class="q-head">
+            <div class="card-head"><span class="tile t-accent"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></span><h2>專注佇列</h2><span class="count">6</span></div>
+            <div class="chips" role="group" aria-label="依來源篩選">
+              <button class="chip" type="button" aria-pressed="true">全部 <span class="mono">6</span></button>
+              <button class="chip is-error" type="button" aria-pressed="false" title="Gmail 需要重新連線"><svg class="ico ico-xs" aria-hidden="true"><use href="#i-unplug"/></svg>信件</button>
+              <button class="chip" type="button" aria-pressed="false">作業 <span class="mono">2</span></button>
+            </div>
+          </header>
+          <div style="padding:12px 16px 4px">
+            <div class="notice notice-warn" role="alert">
+              <svg class="ico" aria-hidden="true"><use href="#i-unplug"/></svg>
+              <div><b>Gmail 需要重新連線</b><p class="kp">Google 撤銷了授權，新信件沒有列入佇列，所以「6 件」可能少算。上次同步 昨天 22:10。</p></div>
+              <div class="n-acts"><button class="btn btn-secondary btn-sm" type="button">重新連線</button></div>
+            </div>
+          </div>
+          <section class="q-group" aria-label="最重要">
+            <div class="q-ghead"><h3>最重要</h3><span class="count">2</span></div>
+            <ul class="q-list">
+              <li class="q-row"><span class="tile t-task"><svg class="ico" aria-hidden="true"><use href="#i-cap"/></svg></span><div class="q-main"><p class="q-title">作業系統 HW3：CPU Scheduling 模擬</p><p class="q-meta">NYCU E3 · 作業系統 · 今晚 23:59 截止</p></div><div class="q-end"><span class="when zh hot">剩 15 小時</span><button class="btn btn-secondary btn-sm q-primary" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-check"/></svg>已交</button></div></li>
+              <li class="q-row"><span class="tile t-info"><svg class="ico" aria-hidden="true"><use href="#i-pr"/></svg></span><div class="q-main"><p class="q-title">審查 #127 新增議程頁深色模式</p><p class="q-meta">sitcon-tw/2027.sitcon.org · yuchen 請你審查</p></div><div class="q-end"><span class="when zh">昨天</span><button class="btn btn-secondary btn-sm q-primary" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-eye"/></svg>審查</button></div></li>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </figure>
+
+    <!-- 04 widget-level error + stale + settings card -->
+    <figure class="state">
+      <figcaption><span class="s-no">04</span><b>來源中斷 · 卡片與設定</b><span class="kp">每張卡片各自失敗，保留上次的資料</span></figcaption>
+      <div class="frame">
+        <section class="card agenda" aria-label="今日行程（連線中斷）">
+          <div class="card-head"><span class="tile t-cal"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg></span><h2>今日行程</h2><a class="link" href="#/calendar">行事曆<svg class="ico ico-xs" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+          <div class="notice notice-error">
+            <svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>
+            <div><b>無法讀取 Google 行事曆</b><p class="kp">授權已過期。重新連線後會自動補上今天的行程。</p></div>
+            <div class="n-acts"><button class="btn btn-secondary btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-retry"/></svg>重試</button></div>
+          </div>
+          <div class="tl is-stale">
+            <div class="tl-row"><div class="tl-time">10:10<small>12:00</small></div><span class="tl-bar"></span><div class="tl-body"><b>作業系統</b><span>工程三館 EC115</span></div></div>
+            <div class="tl-row"><div class="tl-time">14:00<small>15:30</small></div><span class="tl-bar"></span><div class="tl-body"><b>OS 讀書會 · Ch.5</b><span>浩然圖書館 討論室 B</span></div></div>
+          </div>
+          <p class="stale-note"><svg class="ico ico-xs" aria-hidden="true"><use href="#i-clock"/></svg>顯示 昨天 22:10 的資料 · <button type="button">重新整理</button></p>
+        </section>
+        <span class="frame-label">連線與設定 › 帳號與來源</span>
+        <section class="card source-card" aria-label="Google 連線">
+          <span class="tile t-mail"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></span>
+          <div><h3>Google 帳號</h3><p class="kp">Gmail 摘要與 Google 行事曆。授權被撤銷時，通常是剛改過密碼。</p><p class="meta">suzu1dev@gmail.com · 上次同步 昨天 22:10</p></div>
+          <span class="pill dot p-warn">需要重新連線</span>
+          <div class="acts"><button class="btn btn-primary btn-sm" type="button">重新連線 Google</button><button class="btn btn-ghost btn-sm" type="button">中斷連線</button></div>
+        </section>
+      </div>
+    </figure>
+
+    <!-- 05 AI brief unavailable -->
+    <figure class="state">
+      <figcaption><span class="s-no">05</span><b>AI 摘要無法使用</b><span class="kp">先顯示生成中，失敗就改用規則整理</span></figcaption>
+      <div class="frame">
+        <span class="frame-label">a · 生成中（最多 8 秒）</span>
+        <div>
+          <h2 class="hero-title kp">早安，還有 <span class="uline">8 件事<svg viewBox="0 0 270 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q125 -2 268 6"/></svg></span> 等你處理。</h2>
+          <span class="skel-status" role="status"><span class="spin" aria-hidden="true"></span>正在整理今日摘要…</span>
+          <div class="skel-brief" aria-hidden="true"><span class="skel" style="width:96%"></span><span class="skel" style="width:72%"></span></div>
+        </div>
+        <div class="divider"></div>
+        <span class="frame-label">b · 改用規則整理</span>
+        <div>
+          <h2 class="hero-title kp">早安，還有 <span class="uline">8 件事<svg viewBox="0 0 270 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q125 -2 268 6"/></svg></span> 等你處理。</h2>
+          <p class="brief"><span class="ai-tag rule">規則整理</span><span class="kp">1 封信待回覆，1 項作業今晚 23:59 截止。第一個行程是 10:10 作業系統，15:30 後有 4 小時空檔。</span></p>
+          <p class="fallback-note"><svg class="ico ico-xs" aria-hidden="true"><use href="#i-alert"/></svg><span class="kp">AI 摘要暫時無法使用：Claude 尚未登入。</span><button type="button">重試</button><span>·</span><a class="link" href="#/settings/brief">每日摘要設定</a></p>
+        </div>
+      </div>
+    </figure>
+
+    <!-- 06 command palette -->
+    <figure class="state">
+      <figcaption><span class="s-no">06</span><b>快速記下 · 指令面板</b><span class="kp">⌘K 或 N；規則先解析，AI 只補規則看不懂的</span></figcaption>
+      <div class="frame scrim-bg">
+        <div class="palette" role="dialog" aria-label="快速前往與快速新增">
+          <div class="pal-q"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><span class="text"><mark>明天 9:00</mark> 交報告<span class="caret"></span></span><kbd>esc</kbd></div>
+          <div class="pal-body">
+            <p class="pal-sec">快速新增</p>
+            <div class="pal-opt is-active" role="option" aria-selected="true">
+              <span class="tile t-task"><svg class="ico" aria-hidden="true"><use href="#i-todo"/></svg></span>
+              <div><span class="t">交報告</span><span class="m">待辦 · 明天 10/13（二）09:00 到期</span></div>
+              <div class="r"><span class="ai-tag rule">規則解析</span><kbd>↵</kbd></div>
+            </div>
+            <div class="parse-row">
+              <div class="seg" role="group" aria-label="類型"><button type="button" aria-pressed="true">待辦</button><button type="button" aria-pressed="false">行程</button><button type="button" aria-pressed="false">靈感</button></div>
+              <span class="tokchip"><svg class="ico ico-xs" aria-hidden="true"><use href="#i-cal-clock"/></svg>10/13（二）09:00</span>
+              <span>Tab 切換類型</span>
+            </div>
+            <div class="pal-opt" role="option" aria-selected="false">
+              <span class="tile t-cal"><svg class="ico" aria-hidden="true"><use href="#i-cal-plus"/></svg></span>
+              <div><span class="t">建立行程「交報告」</span><span class="m">明天 09:00–10:00 · Google 行事曆</span></div>
+              <div class="r"></div>
+            </div>
+            <p class="pal-sec">AI 解析 · 規則看不懂時</p>
+            <div class="pal-opt" role="option" aria-selected="false">
+              <span class="tile t-accent"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg></span>
+              <div><span class="t">跟林教授討論期末專題提案</span><span class="m">行程 · 10/14（三）10:00–11:00 · 工程三館 · 從「週三 meeting 前」推得</span></div>
+              <div class="r"><span class="ai-tag">AI 建議</span></div>
+            </div>
+            <p class="pal-sec">前往</p>
+            <div class="pal-opt" role="option" aria-selected="false">
+              <span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-todo"/></svg></span>
+              <div><span class="t">待辦</span><span class="m">4 件進行中</span></div>
+              <div class="r"></div>
+            </div>
+          </div>
+          <div class="pal-foot"><span><kbd>↑</kbd><kbd>↓</kbd>選擇</span><span><kbd>↵</kbd>建立待辦</span><span><kbd>Tab</kbd>切換類型</span><span><kbd>⌘↵</kbd>交給 AI</span><span><kbd>esc</kbd>關閉</span></div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- 07 mail row expanded + hover row -->
+    <figure class="state">
+      <figcaption><span class="s-no">07</span><b>信件展開 · 滑過</b><span class="kp">展開看 AI 摘要；滑過時時間仍保留</span></figcaption>
+      <div class="frame">
+        <section class="card queue" aria-label="專注佇列片段">
+          <section class="q-group" aria-label="今天內">
+            <div class="q-ghead"><h3>今天內</h3><span class="count">3</span><span class="hint">找個空檔處理</span></div>
+            <ul class="q-list">
+              <li class="q-row is-focus" aria-current="true">
+                <span class="tile t-warn"><svg class="ico" aria-hidden="true"><use href="#i-receipt"/></svg></span>
+                <div class="q-main"><button class="q-title" type="button" aria-expanded="true" tabindex="0">中華電信 9 月帳單 NT$599</button><p class="q-meta">中華電信 · 帳單 · 06:12</p></div>
+                <div class="q-end"><span class="when zh">還有 8 天</span></div>
+                <div class="q-detail">
+                  <p class="q-sum"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-sparkles"/></svg><span class="kp">9 月電信費 NT$599，10/20 前繳。這個門號沒有設定自動扣繳，可用 Hami Pay 或超商代收。</span></p>
+                  <div class="q-actions">
+                    <button class="btn btn-primary btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-list-plus"/></svg>轉待辦<span class="d-only">（10/20）</span><kbd>T</kbd></button>
+                    <button class="btn btn-secondary btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-mail-open"/></svg>標為已讀<kbd>E</kbd></button>
+                    <button class="btn btn-secondary btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-alarm"/></svg>延後<kbd>S</kbd></button>
+                    <button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-archive"/></svg>封存</button>
+                    <a class="link ext" href="#">在 Gmail 開啟<svg class="ico ico-xs" aria-hidden="true"><use href="#i-out"/></svg></a>
+                  </div>
+                </div>
+              </li>
+              <li class="q-row is-hover">
+                <span class="tile t-task"><svg class="ico" aria-hidden="true"><use href="#i-todo"/></svg></span>
+                <div class="q-main"><button class="q-title" type="button" aria-expanded="false" tabindex="-1">準備讀書會簡報：Ch.5 Deadlocks</button><p class="q-meta">待辦 · 讀書會 14:00 前 · 預估 40 分鐘</p></div>
+                <div class="q-end">
+                  <div class="q-acts"><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-check"/></svg>完成<kbd>E</kbd></button><button class="btn btn-ghost btn-sm" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-alarm"/></svg>延後<kbd>S</kbd></button></div>
+                  <span class="when warm">14:00</span>
+                  <button class="btn btn-secondary btn-sm q-primary" type="button"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-check"/></svg>完成</button>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </figure>
+
+    <!-- 08 undo toast -->
+    <figure class="state">
+      <figcaption><span class="s-no">08</span><b>復原提示</b><span class="kp">樂觀更新，6 秒內可復原；失敗會說清楚</span></figcaption>
+      <div class="frame viewport">
+        <div class="toast-stack">
+          <div class="toast" role="status"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-archive"/></svg><span>已封存「Re: OS 期末專題題目討論」</span><button type="button"><svg class="ico ico-xs" aria-hidden="true"><use href="#i-undo"/></svg>復原<kbd>Z</kbd></button><i class="timer" aria-hidden="true"></i></div>
+          <div class="toast toast-error" role="alert"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-alert"/></svg><span>封存失敗：Gmail 沒有回應，信還在收件匣。</span><button type="button">重試</button></div>
+        </div>
+        <div class="mini-phone" aria-label="手機上的位置">
+          <div class="space"></div>
+          <div class="toast" role="status"><svg class="ico ico-sm" aria-hidden="true"><use href="#i-check"/></svg><span>已標為已交「作業系統 HW3」</span><button type="button"><svg class="ico ico-xs" aria-hidden="true"><use href="#i-undo"/></svg>復原</button><i class="timer" aria-hidden="true" style="width:30%"></i></div>
+          <nav class="quickbar" aria-label="快速列（示意）">
+            <a href="#/today" aria-current="page"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg>今天</a>
+            <a href="#/inbox"><svg class="ico" aria-hidden="true"><use href="#i-inbox"/></svg>收件匣<span class="badge">11</span></a>
+            <a href="#/tasks"><svg class="ico" aria-hidden="true"><use href="#i-todo"/></svg>待辦</a>
+            <a href="#capture" class="cap"><span class="plus"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></span>捕捉</a>
+          </nav>
+        </div>
+      </div>
+    </figure>
+  </div>
+</main>

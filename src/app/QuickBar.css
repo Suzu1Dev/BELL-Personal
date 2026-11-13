@@ -1,0 +1,85 @@
+/* QuickBar (SPEC-ux §7; mockup app.css ".quickbar"). position:fixed at every ≤720 width. */
+.quickbar {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .quickbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--z-quickbar);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: calc(var(--quickbar-h) + env(safe-area-inset-bottom));
+    padding: 6px 8px env(safe-area-inset-bottom);
+    background: color-mix(in srgb, var(--surface) 90%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+  }
+
+  .quickbar > a,
+  .quickbar > button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: var(--tap);
+    border-radius: var(--r-sm);
+    font-size: var(--fs-xs);
+    color: var(--muted);
+  }
+
+  .quickbar .ico {
+    width: 20px;
+    height: 20px;
+  }
+
+  .quickbar > a[aria-current="page"] {
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+
+  .quickbar > a[aria-current="page"] .ico {
+    color: var(--accent);
+  }
+
+  .quickbar .badge {
+    position: absolute;
+    top: 2px;
+    left: calc(50% + 6px);
+    min-width: 20px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 9px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font: 600 var(--fs-xs)/18px var(--font-mono);
+    text-align: center;
+  }
+
+  .quickbar .cap {
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+
+  .quickbar .cap .plus {
+    width: 40px;
+    height: 26px;
+    border-radius: var(--r-pill);
+    display: grid;
+    place-items: center;
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .quickbar .cap .plus .ico {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2.2;
+  }
+}

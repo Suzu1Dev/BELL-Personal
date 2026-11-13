@@ -1,0 +1,76 @@
+/* SourceCard (SPEC-ux §9; mockup states.css "source card (settings)"). */
+.source-card {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  gap: 4px 14px;
+  align-items: start;
+  padding: 16px 18px;
+}
+
+.source-card > .tile {
+  width: 36px;
+  height: 36px;
+}
+
+.source-card > .tile .ico {
+  width: 17px;
+  height: 17px;
+}
+
+.source-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: var(--fs-md);
+  font-weight: 650;
+}
+
+.source-card p {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.source-card .meta {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.source-card .sc-error {
+  margin-top: 2px;
+  font-size: var(--fs-xs);
+  color: var(--danger);
+  font-weight: 550;
+}
+
+.source-card .acts {
+  grid-column: 2 / -1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.source-card .sc-body {
+  grid-column: 2 / -1;
+  min-width: 0;
+  margin-top: 10px;
+}
+
+@media (max-width: 720px) {
+  .source-card {
+    grid-template-columns: 36px minmax(0, 1fr);
+  }
+
+  .source-card > .pill {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .source-card .acts,
+  .source-card .sc-body {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,0 +1,439 @@
+/*
+ * #/tasks (SPEC-ux §3.3 「待辦」). Rows use the queue row grammar (.q-group,
+ * .q-ghead, .q-row, .q-main, .q-title, .q-meta, .q-end, .when, .q-detail,
+ * .q-actions) with the mockup's values, scoped to this page; the done fold
+ * follows .q-foot. The add field reuses .cap-field (CaptureField.css).
+ */
+.tasks-page {
+  max-width: 880px;
+}
+
+.tasks-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.task-add {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.task-add .cap-field > .ico {
+  color: var(--m-task);
+}
+
+.task-add-hint {
+  margin: 8px 2px 0;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.task-add-parse {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 8px 2px 0;
+}
+
+.task-add-preview {
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+
+.tasks-stale,
+.tasks-notice {
+  padding: 12px 20px 0;
+}
+
+.tasks-stale .stale-note {
+  margin-top: 0;
+}
+
+.tasks-skeleton {
+  display: grid;
+  gap: 4px;
+  padding: 10px 20px 14px;
+}
+
+.tasks-empty {
+  padding: 18px 20px 20px;
+}
+
+.tasks-page .q-group {
+  padding: 2px 8px 8px;
+}
+
+.tasks-page .q-group + .q-group {
+  border-top: 1px solid var(--border);
+}
+
+.tasks-page .q-ghead {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 12px 14px 6px;
+}
+
+.tasks-page .q-ghead h3 {
+  font-size: var(--fs-sm);
+  font-weight: 650;
+  color: var(--ink);
+}
+
+.tasks-page .q-group.is-overdue .q-ghead h3 {
+  color: var(--danger);
+}
+
+.tasks-page .q-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  column-gap: 14px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  border: 1px solid transparent;
+  transition: background var(--dur-1) var(--ease);
+}
+
+.tasks-page .q-row:hover,
+.tasks-page .q-row:focus-within {
+  background: var(--surface-soft);
+}
+
+.tasks-page .q-row.is-focus {
+  align-items: start;
+  background: color-mix(in srgb, var(--accent-soft) 50%, var(--surface));
+  border-color: var(--accent-ring);
+  padding-bottom: 14px;
+}
+
+.task-check {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  min-height: 24px;
+}
+
+.tasks-page .q-row.is-focus .task-check,
+.tasks-page .q-row.is-focus .q-end {
+  margin-top: 1px;
+}
+
+.tasks-page .q-main {
+  min-width: 0;
+}
+
+.tasks-page .q-title {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: var(--fs-md);
+  font-weight: 550;
+  color: var(--ink);
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tasks-page button.q-title:hover {
+  color: var(--accent);
+}
+
+.tasks-page .q-meta {
+  margin-top: 1px;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+}
+
+.tasks-page .q-meta .hot {
+  color: var(--danger);
+  font-weight: 550;
+}
+
+.tasks-page .q-end {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 排日期 on a todo with no due day: quiet until the row is hovered or focused; always there on touch and on phones. */
+.tasks-page .task-sched {
+  flex: none;
+  color: var(--muted);
+}
+
+@media (hover: hover) and (min-width: 721px) {
+  .tasks-page .task-sched {
+    opacity: 0;
+    transition: opacity var(--dur-1) var(--ease), background var(--dur-1) var(--ease);
+  }
+
+  .tasks-page .q-row:hover .task-sched,
+  .tasks-page .q-row:focus-within .task-sched {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 720px), (pointer: coarse) {
+  .tasks-page .task-sched kbd {
+    display: none;
+  }
+}
+
+/* 「整理中…」 while AI tidies the row (SPEC-ux §6.6.1). */
+.tasks-page .tidy-mark {
+  gap: 6px;
+}
+
+.tasks-page .tidy-mark .spin {
+  width: 11px;
+  height: 11px;
+  border-color: var(--accent-ring);
+  border-top-color: var(--accent-strong);
+}
+
+/* 「原文：…」 and 復原整理 once a tidy rewrote the todo. */
+.task-original {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+}
+
+.task-original p {
+  flex: 1 1 240px;
+  min-width: 0;
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.tasks-page .when {
+  min-width: 52px;
+  text-align: right;
+  font: 500 var(--fs-xs)/1.2 var(--font-mono);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.tasks-page .when.zh {
+  font-family: var(--font-sans);
+}
+
+.tasks-page .when.hot {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.tasks-page .when.warm {
+  color: var(--warn);
+  font-weight: 600;
+}
+
+.tasks-page .q-row.is-done .q-title {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--border-strong);
+}
+
+.tasks-page .q-detail {
+  grid-column: 2 / -1;
+  margin-top: 12px;
+}
+
+.task-editor {
+  display: grid;
+  gap: 12px;
+  max-width: 600px;
+}
+
+.task-editor-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.task-editor .switch-row {
+  padding: 0;
+}
+
+.tasks-page .q-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tasks-page .q-actions .ext {
+  margin-left: auto;
+}
+
+.tasks-page .task-delete {
+  color: var(--danger);
+}
+
+.tasks-done {
+  border-top: 1px solid var(--border);
+  background: var(--surface-soft);
+}
+
+.tasks-done-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 42px;
+  padding: 0 20px;
+  font-size: var(--fs-xs);
+  font-weight: 550;
+  color: var(--ink-2);
+  text-align: left;
+}
+
+.tasks-done-toggle:focus-visible {
+  outline-offset: -2px;
+}
+
+.tasks-done-toggle > .ico {
+  color: var(--ok);
+}
+
+.tasks-done-show {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 6px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.tasks-done-toggle[aria-expanded="true"] .tasks-done-show .ico {
+  transform: rotate(180deg);
+}
+
+.tasks-done-list {
+  padding: 0 8px 8px;
+}
+
+.tasks-done-list .q-row:hover {
+  background: var(--surface);
+}
+
+.tasks-keys {
+  margin-top: 10px;
+  padding-left: 2px;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+@media (pointer: coarse) {
+  .tasks-keys {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .task-add {
+    padding: 14px 16px 10px;
+  }
+
+  .tasks-page .q-group {
+    padding: 2px 4px 6px;
+  }
+
+  .tasks-page .q-row {
+    column-gap: 10px;
+    padding: 10px 8px;
+  }
+
+  .tasks-page .q-title {
+    display: -webkit-box;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  .tasks-page .q-row.is-focus .q-title {
+    -webkit-line-clamp: unset;
+  }
+
+  .tasks-page .q-detail {
+    grid-column: 1 / -1;
+  }
+
+  .task-editor-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tasks-done-toggle {
+    padding: 0 16px;
+  }
+}
+
+/* #/tasks/<id>: the landed row flashes once (like a searched idea). */
+.tasks-page .q-row.is-flash {
+  animation: task-flash 1.6s var(--ease);
+}
+
+@keyframes task-flash {
+  0%, 40% { background: var(--accent-soft); }
+}
+
+/* #/tasks/<id> for a finished todo, above the list. */
+.task-linked {
+  margin-bottom: 14px;
+  padding: 16px 20px;
+}
+
+.task-linked.is-flash {
+  animation: task-flash 1.6s var(--ease);
+}
+
+.task-linked-state {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-sm);
+  color: var(--ok);
+}
+
+.task-linked-title {
+  margin-top: 4px;
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+  outline: none;
+}
+
+.task-linked-title:focus-visible {
+  box-shadow: 0 0 0 3px var(--accent-ring);
+  border-radius: var(--r-sm);
+}
+
+.task-linked-notes {
+  margin-top: 6px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.task-linked .q-actions {
+  margin-top: 12px;
+}
+
+.tasks-linked-error {
+  margin-bottom: 14px;
+}

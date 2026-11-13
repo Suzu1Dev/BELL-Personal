@@ -1,0 +1,14 @@
+[Unit]
+Description=BELL Personal online data snapshot
+
+[Service]
+Type=oneshot
+UMask=0077
+Nice=10
+IOSchedulingClass=idle
+# Copies the databases through the SQLite backup API while BELL Personal keeps
+# running, then keeps the newest automatic snapshot per day (7) and per week (4)
+# and pre-deploy snapshots for 30 days (they hold cached mail; see /privacy).
+# The secrets directory is deliberately not included: after a restore, reconnect sources.
+ExecStart=/usr/bin/python3 %h/apps/bell-personal-deploy/bin/migrate-data.py snapshot %h/apps/bell-personal-deploy/data --online --into %h/apps/bell-personal-deploy/backups
+ExecStart=/usr/bin/python3 %h/apps/bell-personal-deploy/bin/migrate-data.py prune %h/apps/bell-personal-deploy/backups --keep-daily 7 --keep-weekly 4 --keep-pre-deploy-days 30

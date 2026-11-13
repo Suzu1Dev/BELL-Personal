@@ -1,0 +1,68 @@
+.habit-menu-wrap {
+  position: relative;
+}
+
+.habit-page .habit-menu-wrap {
+  grid-area: menu;
+  justify-self: end;
+}
+
+/* Above the toast host and the phone quickbar (the z-index scale), below dialogs. */
+.habit-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: calc(var(--z-toast) + 1);
+  display: grid;
+  min-width: 176px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-pop);
+}
+
+/* No room below (the last rows, or the quickbar on phones): it opens above the button. */
+.habit-menu.is-up {
+  top: auto;
+  bottom: calc(100% + 4px);
+}
+
+.habit-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  padding: 0 10px;
+  border-radius: var(--r-sm);
+  font-size: var(--fs-sm);
+  color: var(--ink);
+  text-align: left;
+  white-space: nowrap;
+  transition: background var(--dur-1) var(--ease);
+}
+
+.habit-menu-item .ico {
+  color: var(--muted);
+}
+
+.habit-menu-item:hover:not(:disabled),
+.habit-menu-item:focus-visible {
+  background: var(--surface-soft);
+}
+
+.habit-menu-item.is-danger,
+.habit-menu-item.is-danger .ico {
+  color: var(--danger);
+}
+
+.habit-menu-item:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+@media (pointer: coarse), (max-width: 720px) {
+  .habit-menu-item {
+    min-height: 44px;
+  }
+}

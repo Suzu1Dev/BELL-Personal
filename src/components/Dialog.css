@@ -1,0 +1,71 @@
+/* Dialog (SPEC-ux §9, brief B6): native <dialog>, --r-lg, --shadow-modal, blurred scrim. */
+.dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: min(720px, calc(100dvh - 48px));
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--raised);
+  color: var(--ink);
+  box-shadow: var(--shadow-modal);
+  overflow: hidden;
+}
+
+.dialog[open] {
+  animation: dialog-in .18s var(--ease);
+}
+
+.dialog::backdrop {
+  background: var(--scrim);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.dialog[open]::backdrop {
+  animation: backdrop-in .18s var(--ease);
+}
+
+@keyframes dialog-in {
+  from { opacity: 0; transform: scale(.98); }
+}
+
+@keyframes backdrop-in {
+  from { opacity: 0; }
+}
+
+/* The inner wrapper scrolls so the head stays put; clicks on the backdrop hit <dialog> itself. */
+.dialog-inner {
+  display: flex;
+  flex-direction: column;
+  max-height: inherit;
+}
+
+.dialog-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px 12px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dialog-head h2 {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-lg);
+  font-weight: 650;
+}
+
+.dialog-body {
+  padding: 16px 20px 20px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.dialog-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-soft);
+}

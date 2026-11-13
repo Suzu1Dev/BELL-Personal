@@ -1,0 +1,256 @@
+{
+  "zh-TW": {
+    "tasks": {
+      "pageHead": {
+        "title": "一件一件來。"
+      },
+      "addLabel": "新增待辦",
+      "addPlaceholder": "新增待辦，例如「週五前 繳電費」",
+      "addHint": "Enter 新增 · 可以直接寫日期和時間",
+      "groupsLabel": "待辦清單",
+      "groups": {
+        "overdue": "逾期",
+        "today": "今天",
+        "tomorrow": "明天",
+        "week": "本週",
+        "later": "之後",
+        "someday": "沒有期限"
+      },
+      "doneToday": "今天完成 {n} 件",
+      "show": "顯示",
+      "hide": "收合",
+      "emptyTitle": "沒有待辦，享受一下。",
+      "emptyHint": "按 N 隨時記下一件事。",
+      "loadErrorTitle": "待辦暫時無法載入",
+      "checkDone": "「{title}」已完成，按一下改回未完成",
+      "checkTodo": "完成「{title}」",
+      "countLabelOne": "{n} 件",
+      "countLabel": "{n} 件",
+      "overdueDaysOne": "逾期 {n} 天",
+      "overdueDays": "逾期 {n} 天",
+      "overdueHoursOne": "逾期 {n} 小時",
+      "overdueHours": "逾期 {n} 小時",
+      "dueSuffix": "截止",
+      "estimate": "預估 {text}",
+      "important": "重要",
+      "edit": {
+        "title": "標題",
+        "due": "期限",
+        "time": "時間",
+        "notes": "備註",
+        "notesPlaceholder": "補充一點細節（選填）",
+        "important": "重要（有硬性期限，接近時排到最前面）",
+        "save": "儲存",
+        "delete": "刪除",
+        "close": "收合",
+        "open": "開啟原始項目",
+        "saved": "已儲存待辦",
+        "titleRequired": "標題不能是空的。"
+      },
+      "schedule": {
+        "button": "排日期",
+        "buttonLabel": "替「{title}」排日期",
+        "title": "排到…",
+        "today": "今天",
+        "todayInSentence": "今天",
+        "tomorrow": "明天",
+        "tomorrowInSentence": "明天",
+        "weekend": "這週末",
+        "nextWeekend": "下週末",
+        "nextMonday": "下週一",
+        "pick": "選日期…",
+        "pickLabel": "排到這一天",
+        "pickSubmit": "排定",
+        "pickInvalid": "請選今天或之後的日期。"
+      },
+      "toasts": {
+        "deleted": "已刪除「{title}」",
+        "reopened": "已改回未完成「{title}」",
+        "scheduled": "已排到{when}「{title}」",
+        "saveFailed": "儲存待辦",
+        "deleteFailed": "刪除待辦",
+        "completeFailed": "完成",
+        "reopenFailed": "改回未完成",
+        "scheduleFailed": "排日期"
+      },
+      "linked": {
+        "missingTitle": "找不到這個待辦",
+        "missingHint": "可能已刪除。",
+        "back": "回到全部待辦",
+        "loadErrorTitle": "這個待辦暫時無法開啟",
+        "label": "連結的待辦",
+        "done": "已完成",
+        "doneAt": "已完成 · {time}",
+        "reopen": "改回未完成"
+      },
+      "keysHint": "J K 移動 · E 完成 · ↵ 編輯",
+      "keysHintSchedule": "J K 移動 · E 完成 · S 排日期 · ↵ 編輯",
+      "origins": {
+        "manual": "手動",
+        "quick-capture": "快速記下",
+        "mail": "信件",
+        "assignment": "作業",
+        "github": "GitHub",
+        "suggestion": "AI 建議"
+      },
+      "tidy": {
+        "working": "整理中…",
+        "workingAria": "AI 正在整理這一項",
+        "action": "整理",
+        "actionAria": "用 AI 整理「{title}」",
+        "actionHint": "AI 把標題整理得簡潔，細節移到備註，可以復原。",
+        "original": "原文：{text}",
+        "revert": "復原整理",
+        "revertAria": "復原「{title}」的整理",
+        "reverted": "已復原成「{title}」",
+        "undoFailed": "沒有復原整理：{reason}",
+        "failed": "沒有整理：{reason}。",
+        "reasons": {
+          "same": "已經很簡潔了，不需要整理。",
+          "unsure": "AI 看不太懂這一項，保留原本的內容。",
+          "rejected": "AI 的整理結果不夠可靠，保留原本的內容。",
+          "edited": "整理期間內容改過了，保留你的修改。",
+          "gone": "這一項已經刪除了。",
+          "google": "這個行程已在 Google 行事曆，請到 Google 行事曆修改。"
+        }
+      },
+      "dueFormat": {
+        "dueToday": "今天到期",
+        "dueTodayMeta": "今天截止",
+        "dueTomorrowMeta": "明天截止",
+        "dueWeekdayMeta": "週{weekday}截止",
+        "dueDateMeta": "{date} 截止",
+        "durationMinutes": "{m} 分鐘",
+        "durationHours": "{h} 小時",
+        "durationHoursMinutes": "{h} 小時 {m} 分鐘"
+      }
+    }
+  },
+  "en": {
+    "tasks": {
+      "pageHead": {
+        "title": "One thing at a time."
+      },
+      "addLabel": "Add a task",
+      "addPlaceholder": "Add a task, like “Pay bill by Fri”",
+      "addHint": "Enter to add · Type dates and times naturally",
+      "groupsLabel": "Task list",
+      "groups": {
+        "overdue": "Overdue",
+        "today": "Today",
+        "tomorrow": "Tomorrow",
+        "week": "This week",
+        "later": "Later",
+        "someday": "No due date"
+      },
+      "doneToday": "{n} completed today",
+      "show": "Show",
+      "hide": "Hide",
+      "emptyTitle": "All clear. Enjoy the breather.",
+      "emptyHint": "Press N anytime to jot something down.",
+      "loadErrorTitle": "Couldn't load tasks right now",
+      "checkDone": "“{title}” is done. Press to mark incomplete",
+      "checkTodo": "Complete “{title}”",
+      "countLabelOne": "{n} task",
+      "countLabel": "{n} tasks",
+      "overdueDaysOne": "{n}d overdue",
+      "overdueDays": "{n}d overdue",
+      "overdueHoursOne": "{n}h overdue",
+      "overdueHours": "{n}h overdue",
+      "dueSuffix": "due",
+      "estimate": "Est. {text}",
+      "important": "Important",
+      "edit": {
+        "title": "Title",
+        "due": "Due date",
+        "time": "Time",
+        "notes": "Notes",
+        "notesPlaceholder": "Add a few details (optional)",
+        "important": "Important (hard deadline, pinned to the top as it nears)",
+        "save": "Save",
+        "delete": "Delete",
+        "close": "Close",
+        "open": "Open original",
+        "saved": "Task saved",
+        "titleRequired": "Enter a title."
+      },
+      "schedule": {
+        "button": "Set date",
+        "buttonLabel": "Set due date for “{title}”",
+        "title": "Schedule for…",
+        "today": "Today",
+        "todayInSentence": "today",
+        "tomorrow": "Tomorrow",
+        "tomorrowInSentence": "tomorrow",
+        "weekend": "This weekend",
+        "nextWeekend": "Next weekend",
+        "nextMonday": "Next Monday",
+        "pick": "Pick a date…",
+        "pickLabel": "Schedule for this date",
+        "pickSubmit": "Schedule",
+        "pickInvalid": "Pick today or a future date."
+      },
+      "toasts": {
+        "deleted": "Deleted “{title}”",
+        "reopened": "Reopened “{title}”",
+        "scheduled": "Scheduled “{title}” for {when}",
+        "saveFailed": "Saving task",
+        "deleteFailed": "Deleting task",
+        "completeFailed": "Completing task",
+        "reopenFailed": "Reopening task",
+        "scheduleFailed": "Scheduling task"
+      },
+      "linked": {
+        "missingTitle": "Can't find this task",
+        "missingHint": "It may have been deleted.",
+        "back": "Back to all tasks",
+        "loadErrorTitle": "Couldn't open this task",
+        "label": "Linked task",
+        "done": "Completed",
+        "doneAt": "Completed · {time}",
+        "reopen": "Reopen"
+      },
+      "keysHint": "J K move · E complete · ↵ edit",
+      "keysHintSchedule": "J K move · E complete · S set date · ↵ edit",
+      "origins": {
+        "manual": "Manual",
+        "quick-capture": "Quick note",
+        "mail": "Mail",
+        "assignment": "Assignment",
+        "github": "GitHub",
+        "suggestion": "AI suggestion"
+      },
+      "tidy": {
+        "working": "Tidying…",
+        "workingAria": "AI is tidying this item",
+        "action": "Tidy up",
+        "actionAria": "Tidy up “{title}” with AI",
+        "actionHint": "AI shortens the title and moves details to notes. You can undo anytime.",
+        "original": "Original: {text}",
+        "revert": "Revert tidy",
+        "revertAria": "Revert AI tidy for “{title}”",
+        "reverted": "Restored “{title}”",
+        "undoFailed": "Couldn't revert tidy: {reason}",
+        "failed": "Couldn't tidy up: {reason}.",
+        "reasons": {
+          "same": "Already concise, so nothing was changed.",
+          "unsure": "AI wasn't sure how to rewrite this, so your original text stays.",
+          "rejected": "The rewrite didn't look reliable, so your original text stays.",
+          "edited": "You edited this while AI was working, so your changes stay.",
+          "gone": "This item was already deleted.",
+          "google": "This event is in Google Calendar. Edit it there instead."
+        }
+      },
+      "dueFormat": {
+        "dueToday": "Due today",
+        "dueTodayMeta": "Due today",
+        "dueTomorrowMeta": "Due tomorrow",
+        "dueWeekdayMeta": "Due {weekday}",
+        "dueDateMeta": "Due {date}",
+        "durationMinutes": "{m} min",
+        "durationHours": "{h} hr",
+        "durationHoursMinutes": "{h} hr {m} min"
+      }
+    }
+  }
+}

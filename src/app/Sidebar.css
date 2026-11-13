@@ -1,0 +1,392 @@
+/* Sidebar (SPEC-ux §3.2, §9; ported from mockup app.css "shell"). */
+.sidebar {
+  position: relative;
+  z-index: var(--z-sidebar);
+  flex: none;
+  width: var(--sidebar);
+  background: var(--surface-soft);
+  border-right: 1px solid var(--border);
+}
+
+.side-inner {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 14px 14px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.side-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 6px;
+  min-width: 0;
+  border-radius: var(--r-sm);
+}
+
+.brand-tile {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: var(--on-accent);
+  flex: none;
+}
+
+.brand-tile .ico {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.8;
+}
+
+.wordmark {
+  font-size: 17px;
+  letter-spacing: -.4px;
+  color: var(--ink);
+  white-space: nowrap;
+  font-weight: 450;
+}
+
+.wordmark b {
+  font-weight: 700;
+}
+
+.wordmark i {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.sidebar .side-close {
+  display: none;
+}
+
+.cta {
+  margin: 22px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 12px;
+  border-radius: var(--r-sm);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  box-shadow: var(--shadow-btn);
+  transition: background var(--dur-1) var(--ease);
+}
+
+.cta:hover {
+  background: var(--accent-strong);
+}
+
+.cta kbd {
+  margin-left: auto;
+  background: var(--accent-strong);
+  border-color: transparent;
+  color: var(--on-accent);
+}
+
+.side-label {
+  padding: 0 10px 8px;
+  font: 500 var(--fs-2xs)/1 var(--font-mono);
+  letter-spacing: var(--track-eyebrow);
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  transition: background var(--dur-1) var(--ease);
+}
+
+.nav a .ico {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.65;
+  color: var(--muted);
+}
+
+.nav a:hover {
+  background: var(--surface-sunk);
+  color: var(--ink);
+}
+
+.nav a[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.nav a[aria-current="page"] .ico {
+  color: var(--accent);
+}
+
+.nav .n {
+  margin-left: auto;
+  font: 500 var(--fs-xs)/1 var(--font-mono);
+  color: var(--muted);
+}
+
+.nav a[aria-current="page"] .n {
+  color: var(--accent-strong);
+}
+
+/* --muted is never on --surface-sunk (SPEC-ux §2): hovered rows switch counts to --ink-2. */
+.nav a:not([aria-current="page"]):hover .n,
+.nav a:not([aria-current="page"]):hover .ico {
+  color: var(--ink-2);
+}
+
+.side-proj {
+  margin-top: 22px;
+}
+
+.proj a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  min-width: 0;
+}
+
+.proj a:hover {
+  background: var(--surface-sunk);
+}
+
+.proj .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--c);
+  flex: none;
+}
+
+.proj .proj-name {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.proj .pct {
+  margin-left: auto;
+  font: 500 var(--fs-xs)/1 var(--font-mono);
+  color: var(--muted);
+}
+
+.proj a:hover .pct {
+  color: var(--ink-2);
+}
+
+.side-bottom {
+  margin-top: auto;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.streak-card {
+  margin-bottom: 10px;
+  padding: 12px 13px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.streak-card b {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-sm);
+  font-weight: 650;
+  color: var(--ink);
+}
+
+.streak-card b .ico {
+  color: var(--accent);
+}
+
+.streak-card p {
+  margin-top: 2px;
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+.streak-card a {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: var(--fs-xs);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.side-bottom > a {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.side-bottom > a .ico {
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+}
+
+.side-bottom > a:hover {
+  background: var(--surface-sunk);
+}
+
+.side-bottom > a:not([aria-current="page"]):hover .ico {
+  color: var(--ink-2);
+}
+
+.side-bottom > a[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.side-bottom > a[aria-current="page"] .ico {
+  color: var(--accent);
+}
+
+.side-bottom > a kbd {
+  margin-left: auto;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 10px 8px 0;
+  border-top: 1px solid var(--border);
+  min-width: 0;
+}
+
+.profile > div {
+  min-width: 0;
+}
+
+.profile b {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile small {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+/* Icon rail (≤980 by default, or collapsed by the user): labels clipped, title= on every item. */
+@media (min-width: 721px) {
+  .app-shell[data-sidebar="rail"] .sidebar {
+    width: var(--sidebar-rail);
+  }
+
+  .app-shell[data-sidebar="rail"] .side-inner {
+    padding-inline: 10px;
+  }
+
+  .app-shell[data-sidebar="rail"] :is(.wordmark, .side-label, .nav a span, .side-proj, .streak-card, .side-bottom > a span, .side-bottom > a kbd, .profile > div, .cta span, .cta kbd, .sidebar-search span, .sidebar-search kbd, .suite-brand-trigger > .ico) {
+    clip-path: inset(50%);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .app-shell[data-sidebar="rail"] :is(.nav a, .side-bottom > a) {
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .app-shell[data-sidebar="rail"] .cta {
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .app-shell[data-sidebar="rail"] :is(.brand, .suite-brand-trigger, .sidebar-search) {
+    justify-content: center;
+    padding: 2px 0;
+  }
+
+  .app-shell[data-sidebar="rail"] .profile {
+    justify-content: center;
+    padding-inline: 0;
+  }
+}
+
+/* ≤720: a 280px drawer over a scrim, opened from ≡ in the topbar. */
+@media (max-width: 720px) {
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 280px;
+    transform: translateX(-102%);
+    transition: transform var(--dur-2) var(--ease), visibility 0s linear var(--dur-2);
+    visibility: hidden;
+  }
+
+  /* The open drawer is modal: it and its scrim sit above the quickbar. */
+  .app-shell.is-drawer-open .sidebar {
+    z-index: calc(var(--z-quickbar) + 2);
+    transform: none;
+    visibility: visible;
+    box-shadow: var(--shadow-modal);
+    transition: transform var(--dur-2) var(--ease);
+  }
+
+  .side-inner {
+    height: 100%;
+  }
+
+  .sidebar .side-close {
+    display: inline-flex;
+    position: absolute;
+    top: 16px;
+    right: 10px;
+  }
+}

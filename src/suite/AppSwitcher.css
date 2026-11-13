@@ -1,0 +1,41 @@
+.suite-switcher { position: relative; display: flex; flex: none; }
+.suite-switcher-btn { display: inline-flex; align-items: center; gap: 4px; width: auto; min-height: 36px; padding: 4px 6px; }
+.suite-switcher-btn[aria-expanded="true"] { background: var(--fill-active); color: var(--text); }
+.suite-brand-trigger { display: flex; align-items: center; gap: 8px; width: 100%; min-width: 0; min-height: 36px; padding: 5px 8px; border-radius: var(--radius-sm); color: var(--text); text-align: left; }
+.suite-brand-trigger:hover, .suite-brand-trigger[aria-expanded="true"] { background: var(--fill-hover); }
+.suite-brand-trigger > .ico { margin-left: auto; color: var(--text-3); }
+.suite-switcher-overlay { position: fixed; inset: 0; z-index: 100; background: var(--scrim); }
+.suite-switcher-content { position: fixed; z-index: 101; top: 14vh; left: 50%; width: min(560px, calc(100vw - 32px)); transform: translateX(-50%); overflow: hidden; border: 1px solid var(--line-2); border-radius: var(--radius-lg); background: var(--overlay); box-shadow: var(--shadow-pop); color: var(--text); animation: suite-palette-in var(--dur-2) var(--ease-out); }
+.suite-switcher-search { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 11px 14px; border-bottom: 1px solid var(--line); color: var(--text-3); }
+.suite-switcher-search input, .suite-switcher-search input:focus, .suite-switcher-search input:focus-visible { flex: 1; min-width: 0; border: 0 !important; outline: none !important; box-shadow: none !important; background: transparent !important; color: var(--text); caret-color: var(--personal-text); font-size: var(--text-body); }
+.suite-switcher-search input::placeholder { color: var(--text-3); }
+.suite-switcher-menu { max-height: 360px; padding: 6px; overflow-y: auto; }
+.suite-app-row { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 52px; padding: 8px 10px; border: 0; border-radius: var(--radius-sm); background: none; color: var(--text); font: inherit; text-align: left; text-decoration: none; }
+.suite-app-row[data-selected="true"]:not([data-disabled="true"]) { background: var(--fill-active); }
+.suite-app-row[data-disabled="true"] { cursor: default; opacity: .65; }
+.suite-app-row.is-current { opacity: 1; }
+.suite-app-row.is-status { color: var(--text-3); font-size: var(--text-ui); }
+.suite-app-row.is-error { color: var(--danger); }
+.suite-app-tile { display: grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: var(--radius-md); background: var(--raised-2); color: var(--text-3); }
+.suite-app-tile.is-personal { background: var(--personal-tint); color: var(--personal-text); }
+.suite-app-tile.is-explain { background: var(--explain-tint); color: var(--explain-text); }
+.suite-app-tile.is-pr { background: var(--pr-tint); color: var(--pr-text); }
+.suite-app-tile.is-reader { background: var(--reader-tint); color: var(--reader-text); }
+.suite-app-tile.is-campaign { background: var(--campaign-tint); color: var(--campaign-text); }
+.suite-app-text { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; flex: 1; min-width: 0; }
+.suite-app-name, .suite-app-summary { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.suite-app-name { font-size: var(--text-ui); font-weight: 600; line-height: 18px; }
+.suite-app-summary { font-size: 12px; color: var(--text-3); line-height: 17px; }
+.suite-app-state { display: inline-flex; align-items: center; gap: 7px; }
+.suite-app-state em { display: inline-flex; align-items: center; gap: 3px; color: var(--text-3); font-size: var(--text-ui); font-style: normal; white-space: nowrap; }
+.suite-app-retry { margin-left: auto; color: var(--personal-text); font-weight: 600; }
+.suite-switcher-pop { padding: 6px; border: 1px solid var(--line-2); border-radius: var(--radius-lg); background: var(--overlay); }
+@keyframes suite-palette-in { from { opacity: 0; transform: translateX(-50%) translateY(-6px) scale(.97); } to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); } }
+@media (max-width: 600px) {
+  .suite-app-row:not(.is-status) .suite-app-summary { display: none; }
+  .suite-switcher-content { top: 10vh; }
+  .suite-app-row { min-height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .suite-switcher-content { animation: none; }
+}

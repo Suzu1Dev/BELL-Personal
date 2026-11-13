@@ -1,0 +1,28 @@
+[Unit]
+Description=BELL Personal daily dashboard
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=simple
+WorkingDirectory=%h/apps/bell-personal-deploy/current
+Environment=NODE_ENV=production
+Environment=HOME=%h
+Environment=PATH=%h/apps/bell-personal-deploy/runtime/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+EnvironmentFile=%h/.config/bell-personal/environment
+ExecStart=%h/apps/bell-personal-deploy/runtime/bin/node --import tsx server/index.ts
+# always, not on-failure: a stray signal (e.g. a broad pkill on this host) ends the
+# process cleanly with status 0, and on-failure would leave the service down.
+Restart=always
+RestartSec=5
+# BELLPERSONAL_DRAIN_SECONDS (default 10) + 6 s of cleanup must fit in here.
+TimeoutStopSec=20
+KillMode=mixed
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

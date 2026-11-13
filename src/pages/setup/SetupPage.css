@@ -1,0 +1,79 @@
+@import "../../components/ai-connect/AiConnect.css";
+
+.roles.compact {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.roles.compact .role {
+  grid-template-columns: 32px minmax(0, 1fr) 20px;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+}
+
+.roles.compact .ob-tile {
+  width: 32px;
+  height: 32px;
+}
+
+.roles.compact .role-name {
+  font-size: var(--fs-md);
+}
+
+.roles.compact .check {
+  margin-top: 0;
+}
+
+.setup-google {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.setup-google > .btn {
+  margin-bottom: 16px;
+}
+
+.setup-google .page-head {
+  display: none;
+}
+
+.src-form .sc-form {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: none;
+}
+
+.src-form .sc-form > .field {
+  align-content: start;
+  margin-top: 0;
+}
+
+.src-form .sc-form > .field > label {
+  min-height: 20px;
+  align-self: end;
+}
+
+.src-form .sc-form.moodle > .field:first-child {
+  display: none;
+}
+
+.src-form .sc-form-acts,
+.src-form .sc-form-hint,
+.src-form .sc-form > .notice {
+  grid-column: 1 / -1;
+}
+
+.src-form .sc-form-hint {
+  margin: -4px 0 0;
+}
+
+.src-form .sc-form-act-end {
+  margin-left: auto;
+}
+
+@media (max-width: 640px) {
+  .roles.compact,
+  .src-form .sc-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

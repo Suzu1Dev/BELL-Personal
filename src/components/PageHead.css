@@ -1,0 +1,52 @@
+/* Page head (SPEC-ux §3.3 layout contract, §2 type ramp: page H1 26px / 1.4 / 500, mobile 22px). */
+.page-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.page-titles {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-title {
+  margin-top: 10px;
+  font-size: var(--fs-2xl);
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: .3px;
+  color: var(--ink);
+}
+
+.page-sub {
+  margin-top: 4px;
+  font-size: var(--fs-md);
+  color: var(--muted);
+}
+
+.page-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+@media (max-width: 720px) {
+  .page-head {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .page-titles {
+    flex-basis: 100%;
+  }
+
+  .page-title {
+    font-size: 22px;
+    margin-top: 8px;
+  }
+}

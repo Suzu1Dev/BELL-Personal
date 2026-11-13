@@ -1,0 +1,19 @@
+/* BacklogNote: a single muted line under the queue card, no card, no colour. */
+.backlog {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 12px;
+  margin: -6px 0 0;
+  padding: 0 4px;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ≤1080 the columns flatten into one ordered stack: right after the queue (order 2), before the digest (3). */
+@media (max-width: 1080px) {
+  .today-grid .backlog {
+    order: 2;
+  }
+}

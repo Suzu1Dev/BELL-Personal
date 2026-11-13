@@ -1,0 +1,71 @@
+/* AppShell (SPEC-ux §3.2, §7, §9; ported from mockup app.css "shell" and "responsive"). */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.scrim {
+  display: none;
+}
+
+.workspace {
+  flex: 1;
+  min-width: 0;
+}
+
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 28px 36px 48px;
+}
+
+.page:focus {
+  outline: none;
+}
+
+@media (max-width: 1180px) {
+  :root {
+    --sidebar: 204px;
+  }
+}
+
+@media (min-width: 721px) {
+  .app-shell[data-sidebar="rail"] {
+    --sidebar-current: var(--sidebar-rail);
+  }
+}
+
+@media (max-width: 980px) and (min-width: 721px) {
+  .page {
+    padding-inline: 28px;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    scroll-padding-top: var(--topbar);
+    scroll-padding-bottom: calc(var(--quickbar-h) + env(safe-area-inset-bottom));
+  }
+
+  :root {
+    --sidebar-current: 0px;
+  }
+
+  .app-shell.is-drawer-open .scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--z-quickbar) + 1);
+    background: var(--scrim);
+    animation: scrim-in var(--dur-2) var(--ease);
+  }
+
+  .page {
+    padding: 18px 16px calc(var(--quickbar-h) + 32px + env(safe-area-inset-bottom));
+  }
+}
+
+@keyframes scrim-in {
+  from { opacity: 0; }
+}

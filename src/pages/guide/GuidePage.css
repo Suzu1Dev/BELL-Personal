@@ -1,0 +1,93 @@
+/* #/guide: one column of cards (SPEC-ux §3.3 layout contract). */
+.guide-page {
+  display: grid;
+  gap: 16px;
+  max-width: 880px;
+}
+
+.guide-card {
+  scroll-margin-top: calc(var(--topbar) + 16px);
+}
+
+.guide-page .guide-intro {
+  margin-bottom: 16px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.guide-flow {
+  display: grid;
+  gap: 2px;
+}
+
+.guide-flow li {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.guide-flow li + li {
+  border-top: 1px solid var(--border);
+}
+
+.guide-n {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+
+.guide-flow b {
+  display: block;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.guide-flow p,
+.guide-points li,
+.guide-tags dd {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+
+.guide-points {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-left: 18px;
+  list-style: disc;
+}
+
+.guide-points li::marker {
+  color: var(--faint);
+}
+
+.guide-sub {
+  margin: 14px 0 8px;
+  font-size: var(--fs-sm);
+  font-weight: 650;
+  color: var(--ink);
+}
+
+.guide-tags {
+  display: grid;
+  gap: 8px;
+}
+
+.guide-tags div {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.guide-tags dt {
+  flex: none;
+}

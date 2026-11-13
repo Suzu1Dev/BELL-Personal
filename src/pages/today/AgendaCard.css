@@ -1,0 +1,259 @@
+/* AgendaCard (SPEC-ux §4.8, §9; mockup app.css "Agenda (今日行程)", states.css ".is-stale .agenda .notice"). */
+.agenda {
+  padding-bottom: 14px;
+}
+
+.agenda:focus {
+  outline: none;
+}
+
+.agenda .notice {
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+/* The side column is narrow: the button wraps under the text, as on phones. */
+.agenda .notice > div:not(.n-acts) {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.agenda .notice .n-acts {
+  width: 100%;
+  margin-left: 0;
+  padding-left: 26px;
+}
+
+.tl.is-stale {
+  opacity: .6;
+}
+
+.tl-row {
+  display: grid;
+  grid-template-columns: 42px 3px minmax(0, 1fr);
+  column-gap: 12px;
+  padding: 6px 0;
+}
+
+.tl-time {
+  font: 500 var(--fs-xs)/1.45 var(--font-mono);
+  color: var(--ink-2);
+  text-align: right;
+}
+
+.tl-time small {
+  display: block;
+  color: var(--muted);
+  font-size: var(--fs-xs);
+}
+
+.tl-bar {
+  border-radius: 2px;
+  background: var(--rc, var(--m-cal));
+}
+
+.tl-bar.is-habit {
+  --rc: var(--m-habit);
+}
+
+.tl-body {
+  min-width: 0;
+}
+
+.tl-body b {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-sm);
+  font-weight: 550;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.tl-body > span {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  line-height: 1.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tl-body .soon {
+  font-size: var(--fs-xs);
+  font-weight: 550;
+  color: var(--m-cal);
+  white-space: nowrap;
+}
+
+.tl-checkin {
+  margin: 4px 0 0 -10px;
+}
+
+.tl-now {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  column-gap: 12px;
+  align-items: center;
+  padding: 2px 0 4px;
+}
+
+.tl-now > span {
+  font: 600 var(--fs-xs)/1 var(--font-mono);
+  color: var(--accent);
+  text-align: right;
+}
+
+.tl-now i {
+  position: relative;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+  margin-left: 2px;
+}
+
+.tl-now i::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.tl-now-label {
+  position: absolute;
+  right: 0;
+  top: -9px;
+  padding: 0 0 0 8px;
+  background: var(--surface);
+  font: 600 var(--fs-xs)/18px var(--font-sans);
+  font-style: normal;
+  color: var(--accent);
+}
+
+.tl-row.is-due .tl-bar {
+  background: repeating-linear-gradient(180deg, var(--danger) 0 4px, transparent 4px 7px);
+}
+
+.tl-row.is-due .tl-time {
+  color: var(--danger);
+}
+
+/*
+ * Past rows step down a colour (time and place --muted, title --ink-2, each
+ * still ≥ 4.5:1) and fade only the decorative bar. Element opacity took their
+ * text to about 2.2:1. The 打卡 button of an ended habit event stays as is.
+ */
+.tl-row.is-past .tl-bar {
+  opacity: .4;
+}
+
+.tl-row.is-past .tl-time {
+  color: var(--muted);
+}
+
+.tl-row.is-past .tl-body b {
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.tl-gap .tl-bar {
+  background: repeating-linear-gradient(180deg, var(--border-strong) 0 3px, transparent 3px 6px);
+}
+
+.gap-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 6px 6px 10px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  min-width: 0;
+}
+
+.gap-box .ico {
+  color: var(--accent);
+}
+
+.gap-box span {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.45;
+}
+
+.gap-box b {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 550;
+  color: var(--ink);
+}
+
+.gap-box .btn {
+  flex: none;
+}
+
+.tl-fold {
+  display: block;
+  margin: 2px 0 4px 54px;
+  padding: 4px 0;
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  font-weight: 550;
+}
+
+.tl-fold:hover {
+  color: var(--accent);
+}
+
+.tl-empty {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.tl-setup {
+  display: grid;
+  justify-items: start;
+  gap: 10px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.tl-setup-acts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+
+.tl-skel .tl-row {
+  align-items: center;
+}
+
+.tl-skel .tl-bar {
+  height: 28px;
+  background: var(--surface-sunk);
+}
+
+.tl-skel .tl-body {
+  display: grid;
+  gap: 7px;
+}
+
+@media (pointer: coarse) {
+  .tl-fold {
+    min-height: var(--tap);
+  }
+}
+
+/* The repeat mark of a weekly row (the calendar's .tl-repeat): a small icon in front of its meta line. */
+.tl-body .tl-repeat {
+  margin-right: 4px;
+  vertical-align: -2px;
+  color: var(--muted);
+}

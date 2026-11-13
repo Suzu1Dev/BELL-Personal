@@ -1,0 +1,655 @@
+/* FocusQueue (SPEC-ux §4.3, §7, §8, §9; mockup app.css "Focus queue", states.css "celebration"). */
+.queue {
+  padding: 0;
+  overflow: hidden;
+}
+
+.q-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.q-head .card-head {
+  margin: 0;
+}
+
+.q-head .chips {
+  margin-left: auto;
+  min-width: 0;
+}
+
+.q-stale {
+  padding: 0 20px 2px;
+}
+
+.q-notices {
+  display: grid;
+  gap: 8px;
+  padding: 12px 16px 4px;
+}
+
+.q-new {
+  display: flex;
+  justify-content: center;
+  padding: 10px 16px 0;
+}
+
+.q-new-pill {
+  height: 32px;
+  background: var(--accent-soft);
+  border-color: var(--accent-ring);
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.q-group {
+  padding: 2px 8px 8px;
+}
+
+.q-group + .q-group {
+  border-top: 1px solid var(--border);
+}
+
+.q-ghead {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 12px 14px 6px;
+}
+
+.q-ghead h3 {
+  font-size: var(--fs-sm);
+  font-weight: 650;
+  color: var(--ink);
+}
+
+.q-ghead .hint {
+  margin-left: auto;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.q-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  column-gap: 14px;
+  align-items: center;
+  padding: 11px 14px;
+  border-radius: var(--r-sm);
+  border: 1px solid transparent;
+  transition: background var(--dur-1) var(--ease);
+}
+
+.q-row:hover,
+.q-row:focus-within {
+  background: var(--surface-soft);
+}
+
+.q-row > .tile,
+.q-row > .person {
+  width: 30px;
+  height: 30px;
+}
+
+.q-main {
+  min-width: 0;
+}
+
+.q-title {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: var(--fs-md);
+  font-weight: 550;
+  color: var(--ink);
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.q-title:focus-visible {
+  outline-offset: 1px;
+}
+
+.q-meta {
+  margin-top: 1px;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+}
+
+.q-meta .hot {
+  color: var(--danger);
+  font-weight: 550;
+}
+
+.q-meta .replying {
+  color: var(--accent-strong);
+  font-weight: 550;
+}
+
+.q-meta .add {
+  color: var(--ok);
+}
+
+.q-meta .del {
+  color: var(--danger);
+}
+
+.q-end {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.when {
+  min-width: 52px;
+  text-align: right;
+  font: 500 var(--fs-xs)/1.2 var(--font-mono);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.when.zh {
+  font-family: var(--font-sans);
+}
+
+.when.hot {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.when.warm {
+  color: var(--warn);
+  font-weight: 600;
+}
+
+.q-acts {
+  display: none;
+  gap: 2px;
+}
+
+.q-acts .btn:hover {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-btn);
+}
+
+.q-row:not(.is-focus):not(.is-ai):hover .q-acts,
+.q-row:not(.is-focus):not(.is-ai):focus-within .q-acts {
+  display: flex;
+}
+
+.q-primary {
+  display: none;
+}
+
+/* The cursor row: opened in place. */
+.q-row.is-focus {
+  background: color-mix(in srgb, var(--accent-soft) 50%, var(--surface));
+  border-color: var(--accent-ring);
+  padding-bottom: 14px;
+}
+
+.q-detail {
+  grid-column: 2 / -1;
+  margin-top: 8px;
+  animation: q-open var(--dur-2) var(--ease);
+}
+
+@keyframes q-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.q-sum {
+  display: flex;
+  gap: 8px;
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+  color: var(--ink-2);
+  max-width: 64ch;
+}
+
+.q-sum .ico {
+  color: var(--accent);
+  margin-top: 3px;
+}
+
+.q-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.q-actions .ext {
+  margin-left: auto;
+}
+
+/* AI suggestion row: buttons always visible, never expands. */
+.q-row.is-ai {
+  background: color-mix(in srgb, var(--accent-soft) 42%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent-ring) 55%, transparent);
+}
+
+.q-row.is-ai.is-focus {
+  padding-bottom: 10px;
+  border-color: var(--accent-ring);
+}
+
+.q-row.is-ai .q-meta {
+  color: var(--ink-2);
+}
+
+.q-row.is-ai .q-end {
+  gap: 4px;
+}
+
+.q-row.is-done .q-title {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--border-strong);
+}
+
+/* Row exit after an action, re-insert flash after 復原 (SPEC-ux §8). */
+.q-row.is-leaving {
+  overflow: hidden;
+  pointer-events: none;
+  animation: q-exit .4s var(--ease) forwards;
+}
+
+@keyframes q-exit {
+  0% {
+    opacity: 1;
+    transform: none;
+    max-height: 240px;
+  }
+  55% {
+    opacity: 0;
+    transform: translateX(12px);
+    max-height: 240px;
+    padding-block: 10px;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(12px);
+    max-height: 0;
+    padding-block: 0;
+    border-width: 0;
+  }
+}
+
+.q-row.is-back {
+  animation: q-back 1s var(--ease);
+}
+
+@keyframes q-back {
+  0%,
+  40% {
+    background: var(--accent-soft);
+  }
+}
+
+.q-more {
+  display: flex;
+  justify-content: center;
+  padding: 2px 0 4px;
+}
+
+.q-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-soft);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.q-foot .done {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-2);
+  font-weight: 550;
+}
+
+.q-foot .done .ico {
+  color: var(--ok);
+}
+
+.q-foot .link {
+  position: relative;
+}
+
+.q-foot .link .is-open {
+  transform: rotate(180deg);
+}
+
+.legend {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend kbd {
+  min-width: 16px;
+  height: 17px;
+  padding: 0 4px;
+}
+
+.q-handled {
+  padding: 4px 8px 8px;
+  background: var(--surface-soft);
+}
+
+.q-handled .q-row:hover {
+  background: var(--surface);
+}
+
+.q-handled .q-row > .tile {
+  opacity: .7;
+}
+
+.q-empty {
+  padding: 16px;
+}
+
+/* ===== Celebration (state 02) ===== */
+.q-cleared {
+  padding: 20px 16px 18px;
+}
+
+.e-art {
+  position: relative;
+  width: 132px;
+  height: 72px;
+}
+
+.e-art .tile54 {
+  position: absolute;
+  left: 39px;
+  top: 10px;
+}
+
+.e-art i {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--c);
+  transform: rotate(var(--r, 20deg));
+}
+
+.e-stats {
+  display: flex;
+  margin: 16px 0 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.e-stats div {
+  padding: 9px 16px;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+
+.e-stats div:last-child {
+  border: 0;
+}
+
+.e-stats b {
+  display: block;
+  font: 600 18px/1.2 var(--font-mono);
+  letter-spacing: -.5px;
+}
+
+.e-stats span {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.left-habits {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-strong);
+  width: 100%;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.hchip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 0 12px 0 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.hchip .hcheck {
+  position: static;
+  width: 20px;
+  height: 20px;
+}
+
+.hchip .hcheck .ico {
+  width: 11px;
+  height: 11px;
+}
+
+/* The whole chip is the hit area. */
+.hchip .hcheck::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.hchip .h-streak {
+  margin-left: 2px;
+}
+
+/* touch, at any width: one visible primary action per row, 44px targets */
+@media (pointer: coarse) {
+  .q-acts,
+  .q-row:hover .q-acts,
+  .q-row:focus-within .q-acts {
+    display: none !important;
+  }
+
+  .q-primary {
+    display: inline-flex;
+  }
+
+  .legend {
+    display: none;
+  }
+
+  .hchip {
+    min-height: var(--tap);
+  }
+}
+
+@media (max-width: 720px) {
+  .queue {
+    padding: 0;
+  }
+
+  .q-head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px 0 12px;
+  }
+
+  .q-head .card-head {
+    padding: 0 16px;
+  }
+
+  .q-head .chips {
+    margin-left: 0;
+    padding: 0 16px;
+    -webkit-mask-image: linear-gradient(90deg, black 80%, transparent);
+    mask-image: linear-gradient(90deg, black 80%, transparent);
+  }
+
+  .q-head .chips:focus-within {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .q-stale {
+    padding: 0 16px 2px;
+  }
+
+  .q-group {
+    padding: 2px 6px 6px;
+  }
+
+  .q-ghead {
+    padding: 12px 10px 4px;
+  }
+
+  .q-ghead .hint {
+    display: none;
+  }
+
+  .q-row {
+    grid-template-columns: 30px minmax(0, 1fr) auto;
+    column-gap: 11px;
+    padding: 10px 8px;
+    align-items: start;
+  }
+
+  .q-title {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  .q-end {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    padding-top: 2px;
+  }
+
+  .q-end .pill {
+    display: none;
+  }
+
+  .when {
+    min-width: 0;
+  }
+
+  .q-acts,
+  .q-row:hover .q-acts,
+  .q-row:focus-within .q-acts {
+    display: none !important;
+  }
+
+  .q-primary {
+    display: inline-flex;
+    min-height: 36px;
+    padding: 6px 10px;
+  }
+
+  .q-primary::after {
+    content: "";
+    position: absolute;
+    inset: -4px -6px;
+  }
+
+  .q-row.is-ai .q-end {
+    grid-column: 2 / -1;
+    grid-row: 2;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 10px;
+    gap: 6px;
+  }
+
+  .q-detail {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+  }
+
+  .q-actions {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .q-actions .btn {
+    min-height: var(--tap);
+    min-width: 0;
+    padding: 6px 4px;
+    gap: 5px;
+    overflow: hidden;
+  }
+
+  .q-actions .ext {
+    grid-column: 1 / -1;
+    justify-self: end;
+    margin: 2px 0 0;
+  }
+
+  .q-row kbd {
+    display: none;
+  }
+
+  .q-foot {
+    padding: 11px 16px;
+  }
+
+  .legend {
+    display: none;
+  }
+
+  .q-notices {
+    padding: 12px 12px 4px;
+  }
+
+  .e-stats div {
+    padding: 8px 10px;
+  }
+}

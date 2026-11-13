@@ -1,0 +1,26 @@
+/* 「解釋這個」 (bell-suite SPEC §4.4): a quiet link-button, never the primary action of a row. */
+.explain-this {
+  flex: none;
+  white-space: nowrap;
+}
+
+.explain-this.is-compact {
+  color: var(--bell-text-muted);
+}
+
+.explain-this.is-compact:hover {
+  color: var(--bell-text);
+}
+
+.explain-this:focus-visible {
+  outline: 3px solid var(--bell-focus);
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .explain-this,
+  .btn.explain-this,
+  .btn-sm.explain-this {
+    min-height: var(--tap);
+  }
+}

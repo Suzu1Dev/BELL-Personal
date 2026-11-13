@@ -1,0 +1,38 @@
+/* Card — widget shell (SPEC-ux §9; mockup app.css "Card"). */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-card);
+  padding: 18px 20px;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  min-width: 0;
+}
+
+.card-head h2 {
+  font-size: var(--fs-md);
+  font-weight: 650;
+  letter-spacing: .2px;
+  white-space: nowrap;
+}
+
+.count {
+  font: 500 var(--fs-xs)/1 var(--font-mono);
+  color: var(--muted);
+}
+
+.card-head .link {
+  margin-left: auto;
+}
+
+@media (max-width: 720px) {
+  .card {
+    padding: 16px;
+  }
+}

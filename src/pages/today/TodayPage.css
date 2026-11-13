@@ -1,0 +1,90 @@
+/* Today layout (SPEC-ux §4.1, §4.9, §7; mockup app.css ".today-grid .col .endmark" and the ≤1080 order). */
+.today-notice {
+  margin-bottom: 16px;
+}
+
+.today-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--side-col);
+  gap: 24px;
+  align-items: start;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.endmark {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.endmark i {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+.endmark b {
+  color: var(--ink-2);
+  font-weight: 550;
+}
+
+/* 721–1080 and below: one column, habit chips (1) → queue (2) → digest (3) → agenda (4) → capture (5) → later (6) → 今日複習 (7). */
+@media (max-width: 1080px) {
+  .today-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .today-grid > .col {
+    display: contents;
+  }
+
+  .today-grid .progress-wrap { order: 0; }
+  .today-grid .habits { order: 1; }
+  .today-grid .queue { order: 2; }
+  .today-grid .digest { order: 3; }
+  .today-grid .agenda { order: 4; }
+  .today-grid .capture { order: 5; }
+  .today-grid .later { order: 6; }
+  .today-grid .explain-today { order: 7; }
+  .today-grid .pr-today { order: 8; }
+}
+
+/* A widget whose first load failed (TodayPage `failed`): one still line under its heading, no shimmer. */
+.widget-off {
+  margin: 0;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.queue .widget-off {
+  padding: 16px 20px 18px;
+}
+
+@media (max-width: 720px) {
+  .today-grid {
+    gap: 12px;
+  }
+
+  .endmark {
+    margin-top: 20px;
+    font-size: var(--fs-xs);
+  }
+}

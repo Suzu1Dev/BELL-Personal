@@ -1,0 +1,43 @@
+{
+  "_comment": "Canvas REST answers (shapes from the Canvas API docs, values invented) for now = 2026-10-12T00:42:00Z. Base URL https://cool.ntu.edu.tw.",
+  "token": "21~fakeCanvasTokenForTests0000000000000000000000000000",
+  "self": { "id": 7, "name": "林鈴", "short_name": "鈴", "sortable_name": "林, 鈴" },
+  "plannerPage1": [
+    {
+      "plannable_id": 501, "plannable_type": "assignment", "course_id": 3001, "context_type": "Course", "context_name": "機器學習 (ML)",
+      "plannable": { "id": 501, "title": "HW 1：Linear Regression", "due_at": "2026-10-13T15:59:00Z", "points_possible": 10 },
+      "plannable_date": "2026-10-13T15:59:00Z", "html_url": "/courses/3001/assignments/501",
+      "submissions": { "submitted": false, "excused": false, "graded": false, "late": false, "missing": false, "needs_grading": false, "has_feedback": false, "redo_request": false }
+    },
+    {
+      "plannable_id": 77, "plannable_type": "quiz", "course_id": 3001, "context_type": "Course", "context_name": "機器學習 (ML)",
+      "plannable": { "id": 77, "title": "Quiz 1", "due_at": "2026-10-16T15:59:00Z", "points_possible": 5 },
+      "plannable_date": "2026-10-16T15:59:00Z", "html_url": "/courses/3001/quizzes/77",
+      "submissions": { "submitted": true, "excused": false, "graded": false, "late": false, "missing": false, "needs_grading": true, "has_feedback": false, "redo_request": false }
+    },
+    {
+      "plannable_id": 99, "plannable_type": "announcement", "course_id": 3001, "context_type": "Course", "context_name": "機器學習 (ML)",
+      "plannable": { "id": 99, "title": "期中考範圍" },
+      "plannable_date": "2026-10-12T02:00:00Z", "html_url": "/courses/3001/discussion_topics/99",
+      "submissions": false
+    }
+  ],
+  "plannerPage2": [
+    {
+      "plannable_id": 88, "plannable_type": "discussion_topic", "course_id": 3002, "context_type": "Course", "context_name": "【1151】科技與社會",
+      "plannable": { "id": 88, "title": "第五週討論", "todo_date": null },
+      "plannable_date": "2026-10-20T15:59:00Z", "html_url": "https://cool.ntu.edu.tw/courses/3002/discussion_topics/88",
+      "submissions": { "submitted": true, "excused": false, "graded": true, "late": false, "missing": false, "needs_grading": false, "has_feedback": true, "redo_request": false }
+    },
+    {
+      "plannable_id": 502, "plannable_type": "assignment", "course_id": 3001, "context_type": "Course", "context_name": "機器學習 (ML)",
+      "plannable": { "id": 502, "title": "HW 0：環境設定", "due_at": "2026-10-18T15:59:00Z", "points_possible": 2 },
+      "plannable_date": "2026-10-18T15:59:00Z", "html_url": "/courses/3001/assignments/502",
+      "submissions": { "submitted": true, "excused": false, "graded": false, "late": false, "missing": false, "needs_grading": false, "has_feedback": true, "redo_request": true }
+    }
+  ],
+  "missing": [
+    { "id": 480, "name": "Reading 3", "due_at": "2026-10-08T15:59:00Z", "html_url": "https://cool.ntu.edu.tw/courses/3001/assignments/480", "course_id": 3001, "course": { "name": "機器學習 (ML)" } },
+    { "id": 300, "name": "Old essay", "due_at": "2026-08-01T15:59:00Z", "html_url": "https://cool.ntu.edu.tw/courses/3002/assignments/300", "course_id": 3002, "course": { "name": "科技與社會" } }
+  ]
+}

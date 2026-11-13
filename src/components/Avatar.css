@@ -1,0 +1,26 @@
+/* Avatar (mockup app.css ".avatar", ".person"). */
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: none;
+  background: var(--surface-sunk);
+  color: var(--ink-2);
+  font: 600 13px/1 var(--font-sans);
+  border: 1px solid var(--border);
+}
+
+.person {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: none;
+  background: var(--surface-sunk);
+  color: var(--ink-2);
+  font: 600 14px/1 "Noto Serif CJK TC", "Noto Serif TC", "Songti TC", serif;
+  border: 1px solid var(--border);
+}

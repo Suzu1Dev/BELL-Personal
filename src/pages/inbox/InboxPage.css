@@ -1,0 +1,328 @@
+/*
+ * #/inbox (SPEC-ux §3.3). The list reuses the focus-queue row grammar: the
+ * `.queue`/`.q-*` rules below are ported verbatim from the mockup's app.css
+ * ("Focus queue" and its responsive rules), scoped to `.inbox` so they never
+ * leak into Today. Page-only additions: the split layout, the unread mark
+ * and `.mail-reader` (SPEC-ux §9 "Not in the mockup but required"), all
+ * from tokens. 延後 opens Today's shared `.snooze-pop` (SnoozePopover).
+ */
+
+/* ===== Layout ===== */
+.inbox-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+.inbox-layout.is-split { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+.inbox-layout.is-split .mail-reader {
+  position: sticky;
+  top: calc(var(--topbar) + 16px);
+  max-height: calc(100vh - var(--topbar) - 40px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.inbox-back { margin: -6px 0 12px -8px; }
+.inbox-notes { padding: 12px 16px 0; }
+.inbox-notes + .q-group { margin-top: 4px; }
+.inbox-notes .stale-note { margin-top: 0; }
+.inbox-skel { padding: 8px 20px 16px; display: grid; gap: 12px; }
+.inbox-none { padding: 16px 22px 20px; font-size: var(--fs-sm); color: var(--muted); }
+.inbox-searching { padding: 6px 22px 16px; }
+.inbox-cached { margin: 8px 2px 0; font-size: var(--fs-xs); color: var(--ink-2); }
+.inbox .q-more { display: flex; justify-content: center; padding: 4px 0 12px; }
+
+/* ===== Tools row: search field and the 收件匣 · 封存 · 全部 switch (SPEC-mail-assignments §3.1, §4.1) ===== */
+.inbox .inbox-tools { display: flex; align-items: center; gap: 10px; padding: 0 20px; }
+.inbox-search-box { flex: 1 1 auto; min-width: 0; }
+.inbox-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 6px 0 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-soft);
+  transition: border-color var(--dur-1), box-shadow var(--dur-1);
+}
+.inbox-search:focus-within { box-shadow: none; }
+.inbox-search > .ico { color: var(--muted); flex: none; }
+.inbox-search input {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: var(--fs-md);
+  color: var(--ink);
+}
+.inbox-search input::placeholder { color: var(--muted); }
+.inbox-search input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; display: none; }
+.inbox-search kbd { margin-right: 4px; }
+.inbox-search:focus-within kbd { display: none; }
+.inbox-search .inbox-search-clear { width: 28px; min-height: 28px; height: 28px; }
+.inbox .inbox-views { flex: none; }
+.inbox .inbox-views button { min-height: 30px; }
+.inbox-empty { padding: 16px; }
+.page-actions .btn.is-busy .ico { animation: inbox-spin 1s linear infinite; }
+@keyframes inbox-spin { to { transform: rotate(360deg); } }
+
+/* ===== Focus-queue grammar (mockup app.css, scoped) ===== */
+.inbox .queue { padding: 0; overflow: hidden; }
+.inbox .q-head { display: flex; flex-direction: column; align-items: stretch; gap: 12px; padding: 14px 0 12px; border-bottom: 1px solid var(--border); }
+.inbox .q-head .card-head { margin: 0; padding: 0 20px; }
+.inbox .q-head .chips {
+  margin-left: 0;
+  padding: 0 20px;
+  -webkit-mask-image: linear-gradient(90deg, black 85%, transparent);
+  mask-image: linear-gradient(90deg, black 85%, transparent);
+}
+
+.inbox .q-head .chips:focus-within {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.inbox .q-group { padding: 2px 8px 8px; }
+.inbox .q-group + .q-group { border-top: 1px solid var(--border); }
+.inbox .q-ghead { display: flex; align-items: center; gap: 8px; padding: 10px 6px 4px 14px; min-height: 40px; }
+.inbox .q-ghead h3 { font-size: var(--fs-sm); font-weight: 650; color: var(--ink); }
+.inbox .q-ghead .g-act { margin-left: auto; color: var(--ink-2); }
+.inbox .q-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  column-gap: 14px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  border: 1px solid transparent;
+  transition: background var(--dur-1) var(--ease);
+  cursor: default;
+}
+.inbox .q-row:hover,
+.inbox .q-row:focus-within { background: var(--surface-soft); }
+.inbox .q-row > .tile,
+.inbox .q-row > .person { width: 30px; height: 30px; }
+.inbox .q-main { min-width: 0; }
+.inbox .q-title {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: var(--fs-md);
+  font-weight: 550;
+  color: var(--ink);
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.inbox .q-meta {
+  margin-top: 1px;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+}
+.inbox .q-end { display: flex; align-items: center; gap: 10px; }
+.inbox .when { min-width: 52px; text-align: right; font: 500 var(--fs-xs)/1.2 var(--font-mono); color: var(--muted); white-space: nowrap; }
+.inbox .when.zh { font-family: var(--font-sans); }
+.inbox .when.hot { color: var(--danger); font-weight: 600; }
+.inbox .when.warm { color: var(--warn); font-weight: 600; }
+.inbox .q-acts { display: none; gap: 2px; }
+.inbox .q-acts .btn:hover { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-btn); }
+/* Hover or focus shows the row's primary, 封存 and 刪除 — the cursor row too (SPEC-mail-assignments §2.2). */
+.inbox .q-row:not(.is-ai):hover .q-acts,
+.inbox .q-row:not(.is-ai):focus-within .q-acts { display: flex; }
+.inbox .q-row:hover .unread-dot,
+.inbox .q-row:focus-within .unread-dot { display: none; }
+/* Beside the reading pane only two icon buttons (封存 or 移回, 刪除): labelled ones would squeeze the subject. */
+.inbox .q-acts.is-compact { gap: 0; }
+.inbox .q-acts.is-compact .btn-icon { width: 32px; min-height: 32px; height: 32px; }
+.inbox .q-ghead .hint { margin-left: auto; font-size: var(--fs-xs); color: var(--muted); }
+/* The spec's --accent-soft fill, plus an --accent-ring underline so a match still reads on the cursor row (whose fill is half --accent-soft). */
+/* A search match: the soft fill alone vanishes on the hover and cursor rows (≈1.1:1), so the word is also heavier and underlined in --accent (≥3:1 on every row fill, both themes). */
+.inbox mark.hit {
+  background: var(--accent-soft); color: inherit; border-radius: var(--r-xs); padding: 0 1px;
+  font-weight: 650; text-decoration: underline 2px var(--accent); text-underline-offset: 3px; text-decoration-skip-ink: none;
+}
+.inbox .q-primary { display: none; }
+.inbox .q-row.is-focus { background: color-mix(in srgb, var(--accent-soft) 50%, var(--surface)); border-color: var(--accent-ring); }
+.inbox .q-sum { display: flex; gap: 8px; font-size: var(--fs-sm); line-height: 1.65; color: var(--ink-2); max-width: 64ch; }
+.inbox .q-sum .ico { color: var(--accent); margin-top: 3px; flex: none; }
+.inbox .q-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.inbox .q-actions .ext { margin-left: auto; }
+.inbox .q-row.is-ai { background: linear-gradient(115deg, var(--accent-soft), transparent 70%); border-color: color-mix(in srgb, var(--accent-ring) 55%, transparent); }
+.inbox .q-row.is-ai .q-meta { color: var(--ink-2); }
+.inbox .q-row.is-ai .q-end { gap: 4px; }
+.inbox .q-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-soft);
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+.inbox .q-foot .done { color: var(--ink-2); font-weight: 550; }
+.inbox .legend { margin-left: auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+.inbox .legend > span { display: inline-flex; align-items: center; gap: 5px; }
+.inbox .legend kbd { min-width: 16px; height: 17px; padding: 0 4px; }
+
+/* Unread: heavier title and a small accent mark before the time; read rows step back. */
+.inbox-list .q-row.is-unread .q-title { font-weight: 650; }
+.inbox-list .q-row:not(.is-unread) .q-title { font-weight: 450; color: var(--ink-2); }
+.inbox .unread-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; }
+.inbox .q-note { color: var(--ink-2); font-weight: 550; }
+.inbox .q-note.is-replying { color: var(--accent-strong); }
+
+/* ===== Reading pane (.mail-reader) ===== */
+.mail-reader { padding: 20px 24px 18px; min-width: 0; }
+.mail-reader.is-empty { display: grid; place-items: center; min-height: 360px; }
+.mail-reader.is-empty .empty-state { border: 0; background: none; }
+.mail-reader .skel { display: block; margin-top: 12px; }
+.mr-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 14px; align-items: start; }
+.mr-head > .person,
+.mr-head > .tile { width: 36px; height: 36px; margin-top: 2px; }
+.mr-head > .person { font-size: 16px; }
+.mr-head .when { padding-top: 6px; min-width: 0; }
+.mr-subject { font-size: var(--fs-xl); font-weight: 600; line-height: var(--lh-tight); color: var(--ink); letter-spacing: .1px; }
+.mr-from { margin-top: 4px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; font-size: var(--fs-sm); color: var(--ink-2); min-width: 0; }
+.mr-from b { font-weight: 600; color: var(--ink); }
+.mr-addr { font-size: var(--fs-xs); color: var(--muted); overflow-wrap: anywhere; }
+.mail-reader > .q-sum { margin-top: 16px; padding: 12px 14px; border-radius: var(--r-sm); background: color-mix(in srgb, var(--accent-soft) 45%, var(--surface)); border: 1px solid color-mix(in srgb, var(--accent-ring) 45%, transparent); max-width: none; }
+.mr-state { margin-top: 12px; font-size: var(--fs-sm); color: var(--ink-2); font-weight: 550; }
+.mr-state.is-replying, .mr-state.is-processing { color: var(--accent-strong); }
+.qa-slot { display: inline-flex; }
+.mail-reader > .notice { margin-top: 14px; }
+.mr-body { margin-top: 18px; border-top: 1px solid var(--border); }
+.mr-msg { padding: 14px 0; }
+.mr-msg + .mr-msg { border-top: 1px solid var(--border); }
+.mr-msg-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; font-size: var(--fs-sm); color: var(--ink-2); }
+.mr-msg-head b { font-weight: 600; color: var(--ink); }
+.mr-msg-head .mono { margin-left: auto; font-size: var(--fs-xs); color: var(--muted); }
+.mr-text {
+  margin-top: 10px;
+  font-size: var(--fs-md);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  max-width: 72ch;
+}
+details.mr-msg > summary { display: grid; gap: 2px; cursor: pointer; list-style: none; border-radius: var(--r-xs); }
+details.mr-msg > summary::-webkit-details-marker { display: none; }
+details.mr-msg > summary:hover .mr-msg-head b { color: var(--accent); }
+.mr-snip { font-size: var(--fs-sm); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+details.mr-msg[open] .mr-snip { display: none; }
+.mr-loading { display: grid; gap: 4px; padding: 6px 0; }
+.mr-suggestions { margin-top: 6px; padding-top: 14px; border-top: 1px solid var(--border); }
+.mr-suggestions h3 { font-size: var(--fs-sm); font-weight: 650; color: var(--ink); margin-bottom: 8px; }
+.mr-suggestions .q-list { display: grid; gap: 6px; }
+.mr-note { margin-top: 12px; font-size: var(--fs-xs); color: var(--muted); }
+
+/* ===== Original layout (SPEC-mail-html §5): the view switch, the paper card, the images notice, attachments ===== */
+.mr-viewbar { display: flex; justify-content: flex-end; margin-top: 14px; }
+.mr-viewbar + .mr-body { margin-top: 10px; }
+/* The images notice: its two buttons sit under the sentence (a long sender name never squeezes it). */
+.mr-msg > .notice.mr-images { margin-top: 10px; flex-wrap: wrap; }
+.mr-msg > .notice.mr-images > div:not(.n-acts) { flex: 1 1 0; min-width: 0; }
+.mr-msg > .notice.mr-images .n-acts { flex-wrap: wrap; width: 100%; margin-left: 0; padding-left: 26px; align-self: auto; }
+.mr-msg > .notice.mr-images .n-acts .btn { max-width: 100%; }
+/* 一律顯示「address」的圖片 wraps on a phone instead of being cut: the address is what gets trusted. */
+.mr-msg > .notice.mr-images .n-acts .btn-ghost { height: auto; white-space: normal; text-align: start; overflow-wrap: anywhere; line-height: 1.45; }
+/* The mail's own page is white whatever the theme; the app's chrome stays around it. */
+.mr-paper {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--paper);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.mr-frame { display: block; width: 100%; height: 160px; border: 0; background: var(--paper); color-scheme: light; }
+.mr-paper.is-measuring .mr-frame { visibility: hidden; }
+.mr-fallback { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; margin: 10px 0 0; }
+/* Focus lands here after 顯示圖片 (the notice's button is gone): read out, not outlined. */
+.mr-shown:focus { outline: none; }
+.mr-msg .mr-note .link { font-size: inherit; }
+.mr-attachments { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; list-style: none; padding: 0; }
+.mr-attachments > li { width: 168px; min-width: 0; }
+.mr-att {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 8px;
+  width: 100%;
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface-soft);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color var(--dur-1) var(--ease), background var(--dur-1) var(--ease);
+}
+a.mr-att:hover { border-color: var(--border-strong); background: var(--surface); }
+.mr-att img { grid-column: 1 / -1; width: 100%; height: 104px; object-fit: cover; border-radius: var(--r-xs); background: var(--surface-sunk); }
+/* The server refused it (not an image, or too many pixels to decode): no broken-image icon, no link. */
+.mr-att-thumb { grid-column: 1 / -1; display: grid; place-items: center; height: 104px; border-radius: var(--r-xs); background: var(--surface-sunk); color: var(--muted); }
+.mr-att-name { font-size: var(--fs-xs); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mr-att-size { font-size: var(--fs-xs); color: var(--muted); }
+
+/* ===== Responsive ===== */
+@media (pointer: coarse) {
+  .inbox .q-acts,
+  .inbox .q-row:hover .q-acts,
+  .inbox .q-row:focus-within .q-acts { display: none !important; }
+  .inbox .q-primary { display: inline-flex; }
+  .inbox .legend { display: none; }
+  .inbox-search { height: var(--tap); }
+  .inbox-search input { height: 40px; }
+  .inbox-search kbd { display: none; }
+  .inbox-search .inbox-search-clear { width: 36px; min-height: 36px; height: 36px; }
+  .inbox .inbox-views button { min-height: var(--tap); }
+}
+@media (max-width: 720px) {
+  .inbox .q-head .card-head { padding: 0 16px; }
+  /* The tools row stacks: the field full width, then three equal segments. */
+  .inbox .inbox-tools { flex-direction: column; align-items: stretch; gap: 10px; padding: 0 16px; }
+  .inbox-search { height: var(--tap); }
+  .inbox-search input { font-size: var(--fs-lg); }
+  .inbox-search kbd { display: none; }
+  .inbox .inbox-views { display: flex; }
+  .inbox .inbox-views button { flex: 1 1 0; min-height: var(--tap); }
+  .inbox-searching { padding: 4px 16px 14px; }
+  .inbox .q-head .chips { padding: 0 16px; }
+  .inbox .q-group { padding: 2px 6px 6px; }
+  .inbox .q-ghead { padding: 10px 4px 4px 10px; }
+  .inbox .q-row { column-gap: 11px; padding: 10px 8px; align-items: start; }
+  .inbox .q-title { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: keep-all; overflow-wrap: anywhere; }
+  .inbox .q-end { flex-direction: column; align-items: flex-end; gap: 6px; padding-top: 2px; }
+  .inbox .when { min-width: 0; }
+  .inbox .unread-dot { position: absolute; left: 2px; top: 22px; width: 6px; height: 6px; }
+  .inbox .q-acts,
+  .inbox .q-row:hover .q-acts,
+  .inbox .q-row:focus-within .q-acts { display: none !important; }
+  .inbox .q-primary { display: inline-flex; min-height: 36px; padding: 6px 10px; }
+  .inbox .q-primary::after { content: ""; position: absolute; inset: -4px -6px; }
+  .inbox .q-row kbd { display: none; }
+  .inbox .q-row.is-ai .q-end { grid-column: 2 / -1; grid-row: 2; flex-direction: row; justify-content: flex-start; margin-top: 10px; gap: 6px; }
+  .inbox .q-actions { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .inbox .q-actions .btn { min-height: var(--tap); padding: 6px 4px; gap: 5px; min-width: 0; overflow: hidden; width: 100%; }
+  .inbox .q-actions .qa-slot { display: flex; position: static; }
+  .inbox .q-actions .ext { grid-column: 1 / -1; justify-self: end; margin: 2px 0 0; }
+  .inbox .q-actions kbd { display: none; }
+  .inbox .q-foot { padding: 11px 16px; }
+  .inbox .legend { display: none; }
+  /* Only the key legend in it (hidden here): no empty strip under the list. */
+  .inbox .q-foot:not(:has(.done)) { display: none; }
+  .mail-reader { padding: 16px; }
+  .mr-subject { font-size: var(--fs-lg); }
+  .mr-head > .person,
+  .mr-head > .tile { width: 30px; height: 30px; }
+  .mail-reader > .q-sum { padding: 10px 12px; }
+  .mr-text { font-size: var(--fs-md); }
+  .mr-viewbar .seg { display: flex; width: 100%; }
+  .mr-viewbar .seg button { flex: 1 1 0; }
+  .mr-paper { margin-left: -6px; margin-right: -6px; }
+  .mr-attachments > li { width: calc(50% - 5px); }
+}
