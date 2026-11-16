@@ -1,7 +1,8 @@
 import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
+import { realpathSync } from "node:fs";
 import { mkdtemp, rm } from "node:fs/promises";
-import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { homedir, tmpdir } from "node:os";
+import { basename, dirname, join, resolve } from "node:path";
 import type { AiConnectionMethod } from "../../shared/ai-connections.js";
 import type { AiRuntimeErrorDetail } from "../../shared/api.js";
 import { reasoningEfforts, type ModelCatalog, type ModelOption, type ReasoningEffort } from "../../shared/models.js";
@@ -23,6 +24,7 @@ export type { AiRuntimeErrorDetail };
 interface RpcNotification { method: string; params?: Record<string, unknown>; }
 export interface CodexRpc {
   cwd: string;
+  codexHome?: string;
   request<T = unknown>(method: string, params: unknown): Promise<T>;
   subscribe(listener: (event: RpcNotification) => void, onError: (error: Error) => void): () => void;
   close(): Promise<void>;
@@ -71,6 +73,25 @@ export const codexArguments = [
   ...disabledFeatures.flatMap((feature) => ["-c", `features.${feature}=false`]),
 ];
 
+const GLOBAL_INSTRUCTION_FILES = new Set(["AGENTS.md", "AGENTS.override.md"]);
+const defaultCodexHome = (env: NodeJS.ProcessEnv = process.env) => env.CODEX_HOME?.trim() || join(homedir(), ".codex");
+function canonicalDir(dir: string): string {
+  try { return realpathSync(dir); } catch { return resolve(dir); }
+}
+/**
+ * `codex-cli` (`codex-home/src/instructions/mod.rs`) loads global
+ * `<CODEX_HOME>/AGENTS.md` (or `AGENTS.override.md`) even when
+ * `project_doc_max_bytes=0`. With the user's shared CLI login (`codexHome`
+ * set), only those two files in `CODEX_HOME` are permitted; any project/cwd
+ * source or any source in a throwaway API-key home (`codexHome` omitted) fails.
+ */
+export function hasUnexpectedInstructionSources(sources: readonly string[] | undefined, codexHome?: string): boolean {
+  if (!sources?.length) return false;
+  if (!codexHome) return true;
+  const expectedDir = canonicalDir(codexHome);
+  return sources.some((source) => !GLOBAL_INSTRUCTION_FILES.has(basename(source)) || canonicalDir(dirname(source)) !== expectedDir);
+}
+
 class StdioRpc implements CodexRpc {
   private id = 0;
   private buffer = "";
@@ -79,7 +100,7 @@ class StdioRpc implements CodexRpc {
   private pending = new Map<number, { resolve: (value: unknown) => void; reject: (error: Error) => void; timer: NodeJS.Timeout }>();
   private listeners = new Set<{ event: (event: RpcNotification) => void; error: (error: Error) => void }>();
   private readonly abort: () => void;
-  constructor(private child: ChildProcessWithoutNullStreams, public cwd: string, private signal: AbortSignal, private cleanup: () => Promise<void> = async () => {}) {
+  constructor(private child: ChildProcessWithoutNullStreams, public cwd: string, private signal: AbortSignal, private cleanup: () => Promise<void> = async () => {}, public codexHome?: string) {
     this.abort = () => this.fail(signal.reason instanceof Error ? signal.reason : new DOMException("Cancelled", "AbortError"));
     signal.addEventListener("abort", this.abort, { once: true });
     child.stdout.setEncoding("utf8");
@@ -170,7 +191,7 @@ export function codexRpcFactory(path = "codex"): CodexRpcFactory {
       await prepared.cleanup().catch(() => undefined);
       throw error;
     }
-    const rpc = new StdioRpc(child, cwd, signal, prepared.cleanup);
+    const rpc = new StdioRpc(child, cwd, signal, prepared.cleanup, launch ? undefined : defaultCodexHome(prepared.env));
     try {
       await rpc.request("initialize", { clientInfo: { name: "bell_personal", title: "BELL Personal", version: "0.1.0" }, capabilities: { experimentalApi: true } });
       child.stdin.write(JSON.stringify({ jsonrpc: "2.0", method: "initialized" }) + "\n");
@@ -307,8 +328,9 @@ export async function runCodexTurn(factory: CodexRpcFactory, turn: CodexTurn): P
       baseInstructions: turn.baseInstructions, developerInstructions: turn.developerInstructions, config,
       allowProviderModelFallback: false,
     });
+    const sharedCodexHome = turn.launch ? undefined : (client.codexHome ?? defaultCodexHome());
     if ((turn.model && thread.model !== turn.model) || (turn.effort && thread.reasoningEffort && thread.reasoningEffort !== turn.effort)
-      || thread.sandbox.type !== "readOnly" || thread.sandbox.networkAccess === true || thread.instructionSources?.length)
+      || thread.sandbox.type !== "readOnly" || thread.sandbox.networkAccess === true || hasUnexpectedInstructionSources(thread.instructionSources, sharedCodexHome))
       throw new AppError(502, "Codex 未套用指定模型或隔離設定，工作已停止。");
     const messages = new Map<string, string>();
     let rejectCompletion: (error: Error) => void = () => {};

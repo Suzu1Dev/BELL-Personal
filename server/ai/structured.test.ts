@@ -5,7 +5,7 @@ import path from "node:path";
 import { z } from "zod";
 import { AppError, SchemaValidationError } from "../errors.js";
 import { claudeFixtureEvents as fixtureEvents, fakeCommand, testServices, type RecordedCall } from "../test-helpers.js";
-import type { CodexRpc } from "./codex.js";
+import { hasUnexpectedInstructionSources, runCodexTurn, type CodexRpc } from "./codex.js";
 import { AgentSlots } from "./agent-slots.js";
 import { AI_KEY_VAULT, keyRejectedMessage } from "./connection-runtime.js";
 import { runtimeRefusal } from "./codex.js";
@@ -668,5 +668,65 @@ test("runStructured attaches runtime 503 details across Claude and Codex, clears
       assert.equal("method" in (error.detail as Record<string, unknown>), false);
       return true;
     },
+  );
+});
+
+test("Codex shared CLI login permits global CODEX_HOME AGENTS.md while still rejecting project or API-key instruction sources", async () => {
+  assert.equal(hasUnexpectedInstructionSources(["/Users/demo/.codex/AGENTS.md", "/Users/demo/.codex/AGENTS.override.md"], "/Users/demo/.codex"), false);
+  assert.equal(hasUnexpectedInstructionSources(["/tmp/codex-fake/AGENTS.md"], "/Users/demo/.codex"), true);
+  assert.equal(hasUnexpectedInstructionSources(["/Users/demo/.codex/AGENTS.md"], undefined), true);
+
+  const makeFactory = (instructionSources: string[], codexHome = "/Users/demo/.codex") => async (): Promise<CodexRpc> => {
+    let listener: ((event: { method: string; params?: Record<string, unknown> }) => void) | undefined;
+    return {
+      cwd: "/tmp/codex-fake",
+      codexHome,
+      async request<T>(method: string): Promise<T> {
+        if (method === "config/read") return { config: {} } as T;
+        if (method === "thread/start") {
+          return {
+            thread: { id: "th1" },
+            model: "gpt-test",
+            reasoningEffort: "low",
+            sandbox: { type: "readOnly", networkAccess: false },
+            instructionSources,
+          } as T;
+        }
+        if (method === "turn/start") {
+          queueMicrotask(() => {
+            listener?.({ method: "item/completed", params: { threadId: "th1", item: { id: "m1", type: "agentMessage", text: '{"ok":true}' } } });
+            listener?.({ method: "turn/completed", params: { threadId: "th1", turn: { status: "completed" } } });
+          });
+          return {} as T;
+        }
+        return {} as T;
+      },
+      subscribe(event) { listener = event; return () => { listener = undefined; }; },
+      async close() {},
+    };
+  };
+
+  const allowed = await runCodexTurn(makeFactory(["/Users/demo/.codex/AGENTS.md"]), {
+    role: "重新整理摘要",
+    model: "gpt-test",
+    effort: "low",
+    baseInstructions: "boundary",
+    developerInstructions: "schema",
+    input: "{}",
+    signal: new AbortController().signal,
+  });
+  assert.equal(allowed, '{"ok":true}');
+
+  await assert.rejects(
+    runCodexTurn(makeFactory(["/tmp/codex-fake/AGENTS.md"]), {
+      role: "重新整理摘要",
+      model: "gpt-test",
+      effort: "low",
+      baseInstructions: "boundary",
+      developerInstructions: "schema",
+      input: "{}",
+      signal: new AbortController().signal,
+    }),
+    /未套用指定模型或隔離設定/,
   );
 });
